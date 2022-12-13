@@ -1,13 +1,13 @@
 import axios from 'axios'
 import { useState } from 'react'
 import { Register } from './Register'
-import { Link, Navigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { requestLogin } from './Requests'
 
 export const Login = ({ setAuth, isLoggedIn }) => {
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
-    const [register, setRegister] = useState(false)
+    // const [register, setRegister] = useState(false)
     const [error, setError] = useState(null)
     const navigate = useNavigate()
 
@@ -29,11 +29,11 @@ export const Login = ({ setAuth, isLoggedIn }) => {
 
     return (
         <div>
-            {register===false ? (
+            {/* {register===false ? ( */}
             <div className='login-box'>
                 <h3>Please log in below.</h3>
                 {error && <div className="error">{error}</div>}
-                <form id="login-form" onSubmit={handleSubmit}>
+                <form id="form-login" onSubmit={handleSubmit}>
                     <div className='field'>
                         <label htmlFor='my-username' className="label">Username</label>
                         <input
@@ -61,15 +61,15 @@ export const Login = ({ setAuth, isLoggedIn }) => {
                             className='button'
                         >Login</button>
                     </div>
-                    <div id="register">
+                    {/* <div id="register">
                     <h3>Or if you are first time visitor, please
                                 <Link to="/register" onClick={()=> setRegister(!register)}> register.</Link></h3>
-                    </div>
+                    </div> */}
                 </form>
             </div>
-            ) : (
+            {/* ) : (
                 <Register />
-            )}
+            )} */}
         </div>
     )
 }

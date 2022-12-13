@@ -1,15 +1,106 @@
 import logo from './logo.svg';
 import './App.css';
+import 'bulma/css/bulma.min.css'
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import useLocalStorageState from 'use-local-storage-state';
+import { Header } from './components/Header';
+import { NavBar } from './components/NavBar';
+import { Login } from './components/Login';
+import { Register } from './components/Register';
+import { Profile } from './components/Profile';
+import { Wins } from './components/Wins';
+import { Starrs } from './components/Starrs';
+import { TargetCompanies } from './components/TargetCompanies';
+import { TargetJobs } from './components/TargetJobs';
+import { Resumes } from './components/Resumes';
+// import { CoverLetters } from './components/CoverLetters';
+import { Dashboard } from './components/Dashboard';
+
 
 function App() {
-  return (
+	const [token, setToken] = useLocalStorageState('token', null)
+	const [username, setUsername] = useLocalStorageState('username', '')
+	console.log(username)
+	const setAuth = (username, token) => {
+		setToken(token)
+		setUsername(username)
+	}
+
+	// const isLoggedIn = !!(username && token)  
+	const isLoggedIn = true
+	
+	return (
     <div className="App">
-      <header className="App-header">An Organized Agent is an Employed Agent.</header>
+		{isLoggedIn ? (
+                    <>
+                        <div>
+                            <Header setAuth={setAuth} />
+                            <NavBar />
+                            <Routes>
+                                <Route 
+                                    path="/" 
+                                    element={ <Login token={token} isLoggedIn={isLoggedIn} /> }
+                                />
+                                <Route 
+                                    path="/register" 
+                                    exact
+                                    element={ <Register setAuth={setAuth} /> }
+                                />
+                                <Route 
+                                    path="/profile"
+                                    exact 
+                                    element={ <Profile token={token} isLoggedIn={isLoggedIn}/> }
+                                />
+                                <Route 
+                                    path="/home"
+                                    exact
+                                    element={ <Dashboard token={token} isLoggedIn={isLoggedIn} /> }
+                                />
+                                <Route 
+                                    path="/wins"
+                                    exact
+                                    element={ <Wins token={token} isLoggedIn={isLoggedIn} /> }
+                                />
+                                <Route 
+                                    path="/starrs" 
+                                    exact
+                                    element={ <Starrs token={token} isLoggedIn={isLoggedIn} /> }
+                                />
+                                <Route 
+                                    path="/targetcompanies"
+                                    exact
+                                    element={ <TargetCompanies token={token} isLoggedIn={isLoggedIn} /> }
+                                />
+                                <Route 
+                                    path="/targetjobs"
+                                    exact
+                                    element={ <TargetJobs token={token} isLoggedIn={isLoggedIn} /> }
+                                />
+                                <Route 
+                                    path="/resumes"
+                                    exact
+                                    element={ <Resumes token={token} isLoggedIn={isLoggedIn} /> }
+                                />
+                                {/* <Route 
+                                    path="/coverletters"
+                                    exact
+                                    element={ <CoverLetters token={token} isLoggedIn={isLoggedIn} /> }
+                                /> */}
+                            </Routes>
+                        </div>
+                    </>
+                ) : (
+                    <>
+						<header className="App-header">An Organized Agent is an Employed Agent.</header>
+                        <main id="home-box">
+                            <Login setAuth={setAuth} isLoggedIn={isLoggedIn} />
+                        </main>
+                    </>
+
+                )}
     </div>
-  );
+	);
 }
 
 export default App;
