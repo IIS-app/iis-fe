@@ -25,6 +25,8 @@ export const NavBar = ({ setLogin, username, token }) => {
                         <Link className='button is-success is-small'to="/TargetJobs">🎯 Jobs</Link>
                         <Link className='button is-success is-small'to="/Resumes">Resume</Link>
                         <Link className='button is-success is-small'to="/CoverLetters">Cover Letters</Link>
+                        <Link className='button is-success is-small'to="/MotivationalQuotes">Motivational Quotes</Link>
+                        
                     </div>
                 </nav>
         </header>
