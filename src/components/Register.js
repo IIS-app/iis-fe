@@ -1,6 +1,6 @@
 import axios from 'axios'
 import { useState } from 'react'
-import { Navigate } from 'react-router'
+import { useNavigate } from 'react-router-dom'
 import { requestNewUser, requestLogin } from './Requests'
 
 export const Register = ({setAuth}) => {
@@ -30,19 +30,18 @@ export const Register = ({setAuth}) => {
             <div className='register-box'>
                 <h4>Please register below.</h4>
                 {error && <div className="error">{error}</div>}
-                <form className='form' id="registration-form" onSubmit= {handleSubmit}>
+                <form className='form-register' id="registration-form" onSubmit= {handleSubmit}>
                     <div className='field'>
                         <label htmlFor='username' className="label">Create a Username</label>
                         <div className='control has-icons-left'>
                             <input
                                 id='username'
                                 onChange={(e) => setUsername(e.target.value)}
-                                className='input is-success'
+                                className='input'
                                 autoComplete='on'
                                 type='text'
                                 name='Username'
-                                placeholder='Username'
-                                value='bulma' />
+                                placeholder='Username' />
                             <span class="icon is-small is-left">
                                 <i class="fas fa-user"></i>
                             </span>
@@ -58,8 +57,7 @@ export const Register = ({setAuth}) => {
                                 autoComplete='off'
                                 name='Email'
                                 type='email'
-                                placeholder='Email'
-                                value='bulma' />
+                                placeholder='Email' />
                             <span class="icon is-small is-left">
                                 <i class="fas fa-envelope"></i>
                             </span>
