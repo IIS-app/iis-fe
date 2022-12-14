@@ -1,6 +1,6 @@
 
 import './App.css';
-import 'bulma/css/bulma.min.css'
+import 'bulma/css/bulma.min.css';
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import useLocalStorageState from 'use-local-storage-state';
@@ -11,12 +11,13 @@ import { Register } from './components/Register';
 import { Profile } from './components/Profile';
 import { Wins } from './components/Wins';
 import { Starrs } from './components/Starrs';
+import { StarrForm } from './components/StarrForm';
 import { TargetCompanies } from './components/TargetCompanies';
 import { TargetJobs } from './components/TargetJobs';
 import { Resumes } from './components/Resumes';
 import { CoverLetters } from './components/CoverLetters';
 import { Dashboard } from './components/Dashboard';
-
+import { MotivationalQuotes } from './components/MotivationalQuotes';
 
 function App() {
 	const [token, setToken] = useLocalStorageState('token', null)
@@ -60,11 +61,16 @@ function App() {
                                     exact
                                     element={ <Wins token={token} isLoggedIn={isLoggedIn} /> }
                                 />
-                                {/* <Route 
+                                { <Route 
                                     path="/starrs" 
                                     exact
                                     element={ <Starrs token={token} isLoggedIn={isLoggedIn} /> }
-                                /> */}
+                                /> }
+                                { <Route 
+                                    path="/starrform" 
+                                    exact
+                                    element={ <StarrForm token={token} isLoggedIn={isLoggedIn} /> }
+                                /> }
                                 <Route 
                                     path="/targetcompanies"
                                     exact
@@ -84,6 +90,11 @@ function App() {
                                     path="/coverletters"
                                     exact
                                     element={ <CoverLetters token={token} isLoggedIn={isLoggedIn} /> }
+                                />
+                                <Route 
+                                    path="/motivationalquotes"
+                                    exact
+                                    element={ <MotivationalQuotes token={token} isLoggedIn={isLoggedIn} /> }
                                 />
                             </Routes>
                         </div>
