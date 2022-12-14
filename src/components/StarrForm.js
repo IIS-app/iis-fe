@@ -1,84 +1,100 @@
 import { useState } from 'react';
 import ReactDOM from 'react-dom/client';
 
-function MyForm() {
-  const [inputs, setInputs] = useState({});
 
-  const handleChange = (event) => {
-    const title = event.target.title;
-    const summary = event.target.summary;
-    const situation = event.target.situation;
-    const task = event.target.task;
-    const action = event.target.action;
-    const result = event.target.result;
-    const reflection = event.target.reflection;
+export const StarrForm = () => {
+    const [title, setTitle] = useState('');
+    const [situation, setSituation]= useState('');
+    const [task, setTask] = useState('');
+    const [ action, setAction] = useState('');
+    const [ result, setResult] = useState('');
+    const [ reflection, setReflection] = useState('');
+    const [ error, setError] = useState(null);
+  
 
-    setInputs(values => ({
-        
-    }))
-  }
+    const handleSubmit = (e) => {
+      e.preventDefault()
+      setError(null)
+      const form = { title, situation, task, action, result, reflection } 
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    alert(inputs);
-  }
 
-  return (
-    <form onSubmit={handleSubmit}>
-      <label>Title of Starr:
-      <input 
-        type="text" 
-        name="title" 
-        value={inputs.title || ""} 
-        onChange={handleChange}
-      />
-      </label>
-      <label>Summary:
-        <input 
-          type="text" 
-          value={inputs.summary || ""} 
-          onChange={handleChange}
-        />
-        </label>
-        <label>Situation:
-          <input 
-            type="text"
-            value={inputs.situation || ""}
-            onChange={handleChange}
-          />
-        </label>
-        <label>Task:
-          <input 
-            type="text"
-            value={inputs.task}
-            onChange={handleChange}
-          />
-        </label>
-        <label>Action:
-          <input 
-            type="text"
-            value={inputs.action}
-            onChange={handleChange}
-          />
-        </label>
-        <label>Result:
-          <input 
-            type="text"
-            value={inputs.result}
-            onChange={handleChange}
-          />
-        </label>
-        <label>Refelction:
-          <input 
-            type="text"
-            value={inputs.reflection}
-            onChange={handleChange}
-          />
-        </label>
-        <input type="submit" />
-    </form>
-  )
+
+    }
+      
+    return (
+        <div className='starrform'>
+            <h2>Write a New STARR story here!</h2>
+            <p> ...pssst. A STARR is a way to highlight your problem solving skills. Use the form below to tell your story.</p>
+            <form className='form-starr' id='starr-form' onSubmit={handleSubmit}>
+                <fieldset style={{border: 'solid', width:'88%', }}> <legend>fill out form, agent awesome.</legend>
+                    <label>STARR story Title</label>
+                    <div className='control'>
+                        <input 
+                            type="text" 
+                            className='input'
+                            autoFocus  
+                            value={title}
+                            onChange={(e) => setTitle(e.target.value)}
+                        />
+                    </div>
+                    <label>Situation: </label>
+                    <div className='control'>
+                        <textarea 
+                            className='textarea'
+                            autoFocus
+                            value={situation}
+                            onChange={(e) => setSituation(e.target.value)}
+                            id='innerMsg'
+                            type='text'
+                            autoComplete='off'
+                            maxLength={200}
+                            name='innerMsg'
+                            placeholder='Make yourelf laugh, like, a LOT.'
+                        ></textarea>
+                    </div>
+                    <label>Task: </label>
+                    <div className='control'>
+                        <textarea 
+                            className='textarea'
+                            autoFocus
+                            value={task}
+                            onChange={(e) => setTask(e.target.value)}   
+                        ></textarea>
+                    </div>
+                    <label>Action: </label>
+                    <div className='control'>
+                        <textarea 
+                            className='textarea'
+                            autoFocus
+                            value={action}
+                            onChange={(e) => setAction(e.target.value)}   
+                        ></textarea>
+                    </div>
+                    <label>Result: </label>
+                    <div className='control'>
+                        <textarea 
+                            className='textarea'                
+                            autoFocus
+                            value={result}
+                            onChange={(e) => setResult(e.target.value)}   
+                        ></textarea>
+                    </div>
+                    <label>Reflection  : </label>
+                    <div className='control'>
+                        <textarea  
+                            className='textarea'                
+                            autoFocus
+                            value={reflection}
+                            onChange={(e) => setReflection(e.target.value)}   
+                        ></textarea>
+                    </div>
+                </fieldset>              
+                    <button>Add STARR!</button>
+            </form>
+        </div>
+    )
 }
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(<MyForm />);
+
+
+                
