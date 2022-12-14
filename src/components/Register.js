@@ -1,6 +1,6 @@
 import axios from 'axios'
 import { useState } from 'react'
-import { use } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { requestNewUser, requestLogin } from './Requests'
 
 export const Register = ({setAuth}) => {
