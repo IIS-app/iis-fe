@@ -5,19 +5,19 @@ import { Link, useNavigate } from 'react-router-dom'
 import { requestLogin } from './Requests'
 
 export const Login = ({ setAuth, isLoggedIn }) => {
-    const [username, setUsername] = useState('')
+    const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
-    // const [register, setRegister] = useState(false)
+    const [register, setRegister] = useState(false)
     const [error, setError] = useState(null)
     const navigate = useNavigate()
 
     const handleSubmit = (e) => {
         e.preventDefault()
         setError(null)
-        requestLogin(username, password)
+        requestLogin(email, password)
         .then((res) => {
             const token = res.data.auth_token
-            setAuth(username, token)
+            setAuth(email, token)
             navigate("/home")
         })
         .catch((error) => {
@@ -25,22 +25,21 @@ export const Login = ({ setAuth, isLoggedIn }) => {
         })
     }
 
-// TODO: update classnames on form fields and inputs
 
     return (
         <div>
-            {/* {register===false ? ( */}
+            {register===false ? (
             <div className='login-box'>
                 <h3>Please log in below.</h3>
                 {error && <div className="error">{error}</div>}
                 <form id="form-login" onSubmit={handleSubmit}>
                     <div className='field'>
-                        <label htmlFor='my-username' className="label">Username</label>
+                        <label htmlFor='email' className="label">Email</label>
                         <input
-                            id='my-username'
-                            onChange={(e) => setUsername(e.target.value)}
+                            id='email'
+                            onChange={(e) => setEmail(e.target.value)}
                             className='input'
-                            autoComplete='off'
+                            autoComplete='on'
                             autoFocus
                             type='text'
                             name='My Username'
@@ -61,15 +60,15 @@ export const Login = ({ setAuth, isLoggedIn }) => {
                             className='button'
                         >Login</button>
                     </div>
-                    {/* <div id="register">
+                    <div id="register">
                     <h3>Or if you are first time visitor, please
                                 <Link to="/register" onClick={()=> setRegister(!register)}> register.</Link></h3>
-                    </div> */}
+                    </div>
                 </form>
             </div>
-            {/* ) : (
+            ) : (
                 <Register />
-            )} */}
+            )}
         </div>
     )
 }
