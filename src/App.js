@@ -14,21 +14,19 @@ import { Starrs } from './components/Starrs';
 import { TargetCompanies } from './components/TargetCompanies';
 import { TargetJobs } from './components/TargetJobs';
 import { Resumes } from './components/Resumes';
-// import { CoverLetters } from './components/CoverLetters';
+import { CoverLetters } from './components/CoverLetters';
 import { Dashboard } from './components/Dashboard';
 
 
 function App() {
 	const [token, setToken] = useLocalStorageState('token', null)
-	const [username, setUsername] = useLocalStorageState('username', '')
-	console.log(username)
-	const setAuth = (username, token) => {
+	const [email, setEmail] = useLocalStorageState('email', '')
+	const setAuth = (email, token) => {
 		setToken(token)
-		setUsername(username)
+		setEmail(email)
 	}
 
-	// const isLoggedIn = !!(username && token)  
-	const isLoggedIn = true
+	const isLoggedIn = !!(email && token)  
 	
 	return (
     <div className="App">
@@ -40,7 +38,7 @@ function App() {
                             <Routes>
                                 <Route 
                                     path="/" 
-                                    element={ <Login token={token} isLoggedIn={isLoggedIn} /> }
+                                    element={ <Login token={token} isLoggedIn={isLoggedIn} setAuth={setAuth}/> }
                                 />
                                 <Route 
                                     path="/register" 
@@ -62,11 +60,11 @@ function App() {
                                     exact
                                     element={ <Wins token={token} isLoggedIn={isLoggedIn} /> }
                                 />
-                                <Route 
+                                {/* <Route 
                                     path="/starrs" 
                                     exact
                                     element={ <Starrs token={token} isLoggedIn={isLoggedIn} /> }
-                                />
+                                /> */}
                                 <Route 
                                     path="/targetcompanies"
                                     exact
@@ -82,11 +80,11 @@ function App() {
                                     exact
                                     element={ <Resumes token={token} isLoggedIn={isLoggedIn} /> }
                                 />
-                                {/* <Route 
+                                <Route 
                                     path="/coverletters"
                                     exact
                                     element={ <CoverLetters token={token} isLoggedIn={isLoggedIn} /> }
-                                /> */}
+                                />
                             </Routes>
                         </div>
                     </>

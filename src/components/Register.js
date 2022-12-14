@@ -4,9 +4,11 @@ import { useNavigate } from 'react-router-dom'
 import { requestNewUser, requestLogin } from './Requests'
 
 export const Register = ({setAuth}) => {
-    const [username, setUsername] = useState ('')
+    const [codename, setCodename] = useState ('')
     const [email, setEmail] = useState ('')
     const [password, setPassword] = useState ('')
+    const [firstName, setFirstName] = useState ('')
+    const [lastName, setLastName] = useState ('')
     const [error, setError] = useState (null)
     const [token, setToken] = useState ('')
     const navigate = useNavigate()
@@ -14,12 +16,15 @@ export const Register = ({setAuth}) => {
     const handleSubmit = (e) => {
         e.preventDefault()
         setError(null)
-        requestNewUser (username, email, password)
+        requestNewUser (email, password, firstName, lastName, codename)
             .then((res) => (
-                requestLogin(username, email, password)
+                requestLogin(email, password)
             ))
-            .then((res) => setAuth(email, res.data.auth_token),
-                navigate("/home"))
+            .then((res) => {
+                const token = res.data.auth_token
+                setAuth(email, token)
+                navigate("/home")
+            })
             .catch((error) => {
                 setError(error.message)
             })    
@@ -28,27 +33,43 @@ export const Register = ({setAuth}) => {
     return (
         <div>
             <div className='register-box'>
-                <h4>Please register below.</h4>
+                <h1 className=''>Please register below.</h1>
                 {error && <div className="error">{error}</div>}
                 <form className='form-register' id="registration-form" onSubmit= {handleSubmit}>
-                    <div className='field'>
-                        <label htmlFor='username' className="label">Create a Username</label>
+                <div className='field'>
+                        <label htmlFor='firstName' className="label">Agent's First Name</label>
                         <div className='control has-icons-left'>
                             <input
-                                id='username'
-                                onChange={(e) => setUsername(e.target.value)}
+                                id='firstName'
+                                onChange={(e) => setFirstName(e.target.value)}
                                 className='input'
                                 autoComplete='on'
                                 type='text'
-                                name='Username'
-                                placeholder='Username' />
-                            <span class="icon is-small is-left">
-                                <i class="fas fa-user"></i>
+                                name='firstName'
+                                placeholder="Agent's First Name" />
+                            <span className="icon is-small is-left">
+                                <i className="fas fa-user"></i>
                             </span>
                         </div>
                     </div>
                     <div className='field'>
-                        <label htmlFor='email' className="label">Enter your email.</label>
+                        <label htmlFor='lastName' className="label">Agent's Last Name</label>
+                        <div className='control has-icons-left'>
+                            <input
+                                id='lastName'
+                                onChange={(e) => setLastName(e.target.value)}
+                                className='input'
+                                autoComplete='on'
+                                type='text'
+                                name='lastName'
+                                placeholder="Agent's Last Name" />
+                            <span className="icon is-small is-left">
+                                <i className="fas fa-user"></i>
+                            </span>
+                        </div>
+                    </div>
+                    <div className='field'>
+                        <label htmlFor='email' className="label">Agent's Primary Digital Contact</label>
                         <div className='control has-icons-left'>
                             <input
                                 id='email'
@@ -58,13 +79,13 @@ export const Register = ({setAuth}) => {
                                 name='Email'
                                 type='email'
                                 placeholder='Email' />
-                            <span class="icon is-small is-left">
-                                <i class="fas fa-envelope"></i>
+                            <span className="icon is-small is-left">
+                                <i className="fas fa-envelope"></i>
                             </span>
                         </div>
                     </div>
                     <div className='field'>
-                        <label htmlFor='password' className="label">Add a Password</label>
+                        <label htmlFor='password' className="label">Agent's Secured Entry Algorithm</label>
                         <div className='control has-icons-left'>
                             <input
                                 id='password'
@@ -73,8 +94,24 @@ export const Register = ({setAuth}) => {
                                 autoComplete='off'
                                 type='password'
                                 placeholder='Password' />
-                            <span class="icon is-small is-left">
-                                <i class="fas fa-lock"></i>
+                            <span className="icon is-small is-left">
+                                <i className="fas fa-lock"></i>
+                            </span>
+                        </div>
+                    </div>
+                    <div className='field'>
+                        <label htmlFor='codename' className="label">Agent Codename</label>
+                        <div className='control has-icons-left'>
+                            <input
+                                id='codename'
+                                onChange={(e) => setCodename(e.target.value)}
+                                className='input'
+                                autoComplete='on'
+                                type='text'
+                                name='codename'
+                                placeholder='Agent Codename' />
+                            <span className="icon is-small is-left">
+                                <i className="fas fa-user"></i>
                             </span>
                         </div>
                     </div>
