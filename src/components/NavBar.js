@@ -1,5 +1,4 @@
 import { Link } from 'react-router-dom';
-import axios from 'axios';
 
 export const NavBar = ({ setLogin, username, token }) => {
 

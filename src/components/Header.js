@@ -14,7 +14,7 @@ export const Header = ({ setAuth }) => {
     return (
         <header>
             <Link
-                className=''
+                className='button is-small'
                 onClick={handleLogout}
             >Log Out</Link>
             
