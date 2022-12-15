@@ -1,4 +1,5 @@
 import axios from 'axios'
+import { act } from 'react-dom/test-utils'
 
 // REGISTER USER
 export const requestNewUser = (email, password, firstName, lastName, codename) => {
@@ -29,9 +30,31 @@ export const requestLogin = (email, password) => {
 // LOGOUT USER
 export const requestLogout = (token) => {
     const url = 'https://internal-interview-service.onrender.com/auth/token/logout/'
-
     const response = axios.post(url, {
+        
         headers: { Authorization: `Token ${token}`,}
     })
         return response   
+}
+
+// CREATE STARR FORM ... hopefully 
+export const requestStarrForm = (question, summary, situation, task, action, result, reflection) => {
+    const url = 'https://internal-interview-service.onrender.com/auth/token/starr-stories/'
+
+    const response = axios.post(url, {
+
+        question: question,
+        summary: summary,
+        situation: situation,
+        task: task,
+        action: action,
+        result: result,
+        reflection: reflection,        
+        }, 
+        {headers: { 
+            Authorization: `Token ${token}`       
+        }
+        }
+    )
+        return response
 }
