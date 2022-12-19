@@ -23,3 +23,6 @@ body {
   color: white;
 }
 
+.question-box {
+  border: 1px black double;
+}
