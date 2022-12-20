@@ -1,30 +1,33 @@
 import { useState } from "react"
+import { requestCreateTargetCompany } from './Requests'
 
-export const TargetCompanies = () => {
+export const TargetCompanyForm = (token) => {
+    const [companyId, setCompanyId] = useState('')
     const [companyName, setCompanyName] = useState('')
     const [url, setUrl] = useState('')
     const [rank, setRank] = useState('')
     const [contact, setContact] = useState('')
     const [comments, setComments] = useState('')
-    const [ createdAt, sestCreatedAt] = useState('')
+    const [createdAt, setCreatedAt] = useState('')
     const [updatedAt, setUpdatedAt] = useState('')
     const [error, setError] = useState('')
-   
+
 
     const handleSubmit = (e) => {
         e.preventDefault(
-        setError(null)
+        setError(null),
+        requestCreateTargetCompany(token, setCompanyName, url)
         )
     }
 
     return (
         <div className="target-companies">   
-         {error && <div className="error">{error}</div>}
+            {error && <div className="error">{error}</div>}
             <h1 className="targetcomp">Target Companies</h1>
             <form className="company-form" id='form-company' onSubmit={handleSubmit}>
                 <fieldset style={{border: 'solid', width:'58%', }}>
                 <legend><strong>Add to your list of Target Companies</strong></legend>
-                <label className="text-align is-centered">🎯 Target Company(Rank): 🎯</label>
+                <label className="text-align is-centered">Company Name ({rank})</label>
                     <div className='control'>
                         <input 
                             className='input'
@@ -53,7 +56,7 @@ export const TargetCompanies = () => {
                     <div className='control'>
                         <input
                             className="input"
-                            value={contact}
+                            value="eventually company contacts model-view will be displayed here"
                             id='contact'
                             type='text'
                             name='contact'
@@ -64,7 +67,7 @@ export const TargetCompanies = () => {
                     <div className='control'>
                         <input
                             className="input"
-                            value={comments}
+                            value="this will be a comments section tied to a comments model via company id"
                             id='comments'
                             type='text'
                             name='comments'
@@ -76,10 +79,11 @@ export const TargetCompanies = () => {
                 <div className='control'>
                     <label htmlFor='submit' className='label'></label>
                     <input 
-                        to="/create"
+                        to="/targetcompanies"
                         className='button submit'
                         type='submit'
-                        value='You have your targets, Agent {codename}. Happy Hunting'
+                        value={`Add your next target, Agent. Happy Hunting`}
+                        // TODO: would like to have {codename} available in lieu of Agent.
                     />
                 </div>
             </form>

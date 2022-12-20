@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import ReactDOM from 'react-dom/client';
 import { useNavigate } from 'react-router';
-import { requestStarrForm } from './Requests';
+import { requestCreateStarr } from './Requests';
 import axios from 'axios';
 
 export const StarrForm = ({token}) => {
@@ -20,7 +20,7 @@ export const StarrForm = ({token}) => {
     const handleSubmit = (e) => {
         e.preventDefault()
         setError(null)
-        requestStarrForm(token, question, summary, situation, task, action, result, reflection)
+        requestCreateStarr(token, question, summary, situation, task, action, result, reflection)
 
         .then((res) => {
             // setStarrId(res.data.id)

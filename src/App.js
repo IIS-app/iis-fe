@@ -25,6 +25,7 @@ import { MotivationalQuotes } from './components/MotivationalQuotes';
 function App() {
 	const [token, setToken] = useLocalStorageState('token', null)
 	const [email, setEmail] = useLocalStorageState('email', '')
+    
 	const setAuth = (email, token) => {
 		setToken(token)
 		setEmail(email)
@@ -42,7 +43,7 @@ function App() {
                             <Routes>
                                 <Route 
                                     path="/" 
-                                    element={ <Login token={token} isLoggedIn={isLoggedIn} setAuth={setAuth}/> }
+                                    element={ <Dashboard token={token} isLoggedIn={isLoggedIn} setAuth={setAuth}/> }
                                 />
                                 <Route 
                                     path="/register" 

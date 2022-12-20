@@ -1,6 +1,6 @@
 export const TargetJobs = () => {
 
     return (
-        <h1 className="jobtarget">Target Jobs</h1>
+        <h1 className="target-job">Target Jobs</h1>
     )
 }

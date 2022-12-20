@@ -1,8 +1,9 @@
-import axios from 'axios'
 import { useState } from 'react'
 import { Register } from './Register'
 import { Link, useNavigate } from 'react-router-dom'
 import { requestLogin } from './Requests'
+import { requestUserInfo } from './Requests'
+
 
 export const Login = ({ setAuth, isLoggedIn }) => {
     const [email, setEmail] = useState('')
@@ -20,6 +21,13 @@ export const Login = ({ setAuth, isLoggedIn }) => {
             setAuth(email, token)
             navigate("/home")
         })
+        // .then((e) => {
+        //     requestUserInfo()
+        // })
+        // .then((res) => {
+        //     const codename = res.data.codename            
+        //     navigate("/home")
+        // })
         .catch((error) => {
             setError(error.message)
         })
