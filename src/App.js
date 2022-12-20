@@ -13,7 +13,7 @@ import { Wins } from './components/Wins';
 import { Starrs } from './components/Starrs';
 import { StarrForm } from './components/StarrForm';
 import { TargetCompanies } from './components/TargetCompanies';
-import { TargetCompanyForm } from './components/TargetCompaniesForm';
+import { TargetCompanyForm } from './components/TargetCompanyForm';
 import { Questions } from './components/Questions';
 import { QuestionForm } from './components/QuestionForm';
 import { TargetJobs } from './components/TargetJobs';
