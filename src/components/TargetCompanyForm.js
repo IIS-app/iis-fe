@@ -1,7 +1,7 @@
 import { useState } from "react"
-import { requestCreateTargetCompany } from './Requests';
+import { requestCreateTargetCompany } from './Requests'
 
-export const TargetCompanyForm = () => {
+export const TargetCompanyForm = (token) => {
     const [companyId, setCompanyId] = useState('')
     const [companyName, setCompanyName] = useState('')
     const [url, setUrl] = useState('')
@@ -15,7 +15,7 @@ export const TargetCompanyForm = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault(
-        setError(null)
+        setError(null),
         requestCreateTargetCompany(token, setCompanyName, url)
         )
     }
