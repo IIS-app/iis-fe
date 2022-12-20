@@ -64,16 +64,16 @@ function App() {
                                     exact
                                     element={ <Wins token={token} isLoggedIn={isLoggedIn} /> }
                                 />
-                                { <Route 
+                                <Route 
                                     path="/starrs" 
                                     exact
                                     element={ <Starrs token={token} isLoggedIn={isLoggedIn} /> }
-                                /> }
-                                { <Route 
+                                />
+                                <Route 
                                     path="/starrform" 
                                     exact
                                     element={ <StarrForm token={token} isLoggedIn={isLoggedIn} /> }
-                                /> }
+                                />
                                 <Route 
                                     path="/targetcompanies"
                                     exact
