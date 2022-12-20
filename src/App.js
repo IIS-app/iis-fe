@@ -13,6 +13,7 @@ import { Wins } from './components/Wins';
 import { Starrs } from './components/Starrs';
 import { StarrForm } from './components/StarrForm';
 import { TargetCompanies } from './components/TargetCompanies';
+import { TargetCompanyForm } from './components/TargetCompanyForm';
 import { Questions } from './components/Questions';
 import { QuestionForm } from './components/QuestionForm';
 import { TargetJobs } from './components/TargetJobs';
@@ -77,6 +78,11 @@ function App() {
                                     path="/targetcompanies"
                                     exact
                                     element={ <TargetCompanies token={token} isLoggedIn={isLoggedIn} /> }
+                                />
+                                <Route 
+                                    path="/targetcompany/add"
+                                    exact
+                                    element={ <TargetCompanyForm token={token} isLoggedIn={isLoggedIn} /> }
                                 />
                                 <Route 
                                     path="/targetjobs"
