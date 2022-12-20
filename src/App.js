@@ -14,6 +14,7 @@ import { Starrs } from './components/Starrs';
 import { StarrForm } from './components/StarrForm';
 import { TargetCompanies } from './components/TargetCompanies';
 import { Questions } from './components/Questions';
+import { QuestionForm } from './components/QuestionForm';
 import { TargetJobs } from './components/TargetJobs';
 import { Resumes } from './components/Resumes';
 import { CoverLetters } from './components/CoverLetters';
@@ -86,6 +87,11 @@ function App() {
                                     path="/questions"
                                     exact
                                     element={ <Questions token={token} isLoggedIn={isLoggedIn} /> }
+                                />
+                                <Route 
+                                    path="/questions/add"
+                                    exact
+                                    element={ <QuestionForm token={token} isLoggedIn={isLoggedIn} /> }
                                 />
                                 <Route 
                                     path="/resumes"
