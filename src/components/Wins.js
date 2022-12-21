@@ -1,13 +1,15 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router';
 import { requestCreateWin } from './Requests';
+import { requestListWins } from './Requests';
 
 export const Wins = ({token}) => {
-    const [questionId, setQuestionId] = useState(null)
-    const [questionType, setQuestionType]= useState('');
-    const [question, setQuestion] = useState('');
-    const [questionAnswer, setQuestionAnswer] = useState('')
-    const [questionCompany, setQuestionCompany] = useState('');
+    const [winId, setWinId] = useState(null)
+    const [wins, setWins] = useState(null)
+    const [winTitle, setWinTitle]= useState('');
+    const [winDescription, setWinDescription]= useState('');
+    const [winDate, setWinDate] = useState('');
+    const [winPicture, setWinPicture] = useState('')
     const [error, setError] = useState(null);
     const navigate = useNavigate()
 
@@ -15,89 +17,30 @@ export const Wins = ({token}) => {
     const handleSubmit = (e) => {
         e.preventDefault()
         setError(null)
-        requestCreateQuestion(token, questionType, question, questionCompany, questionAnswer)
-
+        requestListWins(token)
         .then((res) => {
-            // setQuestionId(res.data.id)
-            navigate('/questions')
+            setWins([res.data])
         })
         .catch((error) => {
-        setError(error.message)
+            setError(error.message)
         })
     }
-
+    
+    // TODO: this is where I stopped, need to update inputs to Links will pick up AM 12/21
     return (
-        <div className='question'>
+        <div className='container-list'>
         {error && <div className="error">{error}</div>}
-            <h2>What question do you want to answer today?</h2>
-            <form className='question-form' id='question-form' onSubmit={handleSubmit}>
-                <fieldset style={{border: 'solid', width:'88%', }}>
-                    <legend>Question and Answer</legend>
-                    <label htmlFor="question">Question</label>
-                    <div className='control'>
-                        <input 
-                            type="text"
-                            id="question"
-                            className='input'
-                            autoFocus
-                            autoComplete='off'
-                            value={question}
-                            maxLength={200}
-                            onChange={(e) => setQuestion(e.target.value)}
-                            />
-                    </div>
-                    <label>Type</label>
-                    <div className='control'>
-                        {/* <input 
-                            className='radio-input'
-                            value={questionType}
-                            onChange={(e) => setQuestionType(e.target.value)}
-                            id='questionType'
-                            type='radio'
-                            name='questionType'
-                        /> */}
-                        <input type="radio" id="answer" name="answer" value={questionType}/>
-                        <label for="answer">To Answer</label>
-                        <input type="radio" id="ask" name="ask" value="60"/>
-                        <label for="ask">To Ask</label>
-                    </div>
-                    <label htmlFor='questionCompany'>Company</label>
-                    <div className='control'>
-                        <input 
-                            className='text'
-                            value={questionCompany}
-                            onChange={(e) => setQuestionCompany(e.target.value)}
-                            id='questionCompany'
-                            type='text'
-                            autoComplete='off'
-                            name='questionCompany'
-                            />
-                    </div>
-                    <label htmlFor='questionAnswer'>Answer </label>
-                    <div className='control'>
-                        <textarea 
-                            className='textarea'
-                            value={questionAnswer}
-                            onChange={(e) => setQuestionAnswer(e.target.value)}
-                            id='questionAnswer'
-                            type='text'
-                            autoComplete='off'
-                            maxLength={1000}
-                            name='task'
-                        />
-                    </div>
-                </fieldset> 
-                <div className='control'>
-                    <label htmlFor='submit' className='label'></label>
+            <h2>Review the Details of Your Win</h2>
+                <div className='editButton'>
+                    <label htmlFor='editWin' className='label'></label>
                     <input
-                        id='submit'
-                        to="/create"
-                        className='button submit'
-                        type='submit'
-                        value='Save My Work!'
+                        id='editWin'
+                        to={`/wins/${winId}`}
+                        className='button edit'
+                        type='link'
+                        value='Edit this Win'
                     />
                 </div>
-            </form>
         </div>
     )
 }
