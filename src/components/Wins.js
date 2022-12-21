@@ -26,7 +26,7 @@ export const Wins = ({token}) => {
         })
     }
     
-    // TODO: this is where I stopped, need to update inputs to Links will pick up AM 12/21
+    // TODO: this is where I stopped, this is part of code for the Win Detail then reduce for Win List, will need to update inputs to Links will pick up AM 12/21
     return (
         <div className='container-list'>
         {error && <div className="error">{error}</div>}
