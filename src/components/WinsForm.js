@@ -2,8 +2,9 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router';
 import { requestCreateWin } from './Requests';
 import { requestListWins } from './Requests';
+import { Link } from 'react-router-dom'
 
-export const Wins = ({token}) => {
+export const WinsForm = ({token}) => {
     const [winId, setWinId] = useState(null)
     const [winTitle, setWinTitle]= useState('');
     const [winDescription, setWinDescription]= useState('');
@@ -20,7 +21,7 @@ export const Wins = ({token}) => {
 
         .then((res) => {
             setWinId(res.data.id)
-            navigate('/wins')
+            // navigate('/wins')
         })
         .catch((error) => {
         setError(error.message)

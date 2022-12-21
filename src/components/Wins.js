@@ -1,7 +1,10 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router';
 import { requestCreateWin } from './Requests';
 import { requestListWins } from './Requests';
+import { Link } from 'react-router-dom';
+import axios from 'axios';
+
 
 export const Wins = ({token}) => {
     const [winId, setWinId] = useState(null)
@@ -14,24 +17,38 @@ export const Wins = ({token}) => {
     const navigate = useNavigate()
 
 
-    const handleSubmit = (e) => {
-        e.preventDefault()
-        setError(null)
-        requestListWins(token)
-        .then((res) => {
-            setWins([res.data])
+    useEffect =(() => {
+        const url = 'https://internal-interview-service.onrender.com/wins/'
+        axios.get(url,
+            {headers: {
+                Authorization: `Token ${token}`
+                }
+            }
+        )
+        .then(res => {
+            setWins(res.data)
         })
         .catch((error) => {
             setError(error.message)
         })
-    }
+    }, [token])
+
     
-    // TODO: this is where I stopped, this is part of code for the Win Detail then reduce for Win List, will need to update inputs to Links will pick up AM 12/21
     return (
-        <div className='container-list'>
+        <div className='container-main'>
         {error && <div className="error">{error}</div>}
-            <h2>Review the Details of Your Win</h2>
-                <div className='editButton'>
+            <h2>List of Wins</h2>
+            <div className='container-list'>
+            {wins.map(win => (
+                <section>
+                    <h4>{winTitle}</h4>
+                    <p>{winDate}</p>
+                </section>
+                ))
+            }
+
+            </div>
+                <div className='button-submit'>
                     <label htmlFor='editWin' className='label'></label>
                     <input
                         id='editWin'
@@ -40,6 +57,13 @@ export const Wins = ({token}) => {
                         type='link'
                         value='Edit this Win'
                     />
+                </div>
+                <div className='container-button'>
+                    <Link
+                        to="/wins/add"
+                        className='button add'
+                        value='Add a New Win'
+                    >Add a New Win</Link>
                 </div>
         </div>
     )

@@ -10,6 +10,7 @@ import { Login } from './components/Login';
 import { Register } from './components/Register';
 import { Profile } from './components/Profile';
 import { Wins } from './components/Wins';
+import { WinsForm } from './components/WinsForm';
 import { Starrs } from './components/Starrs';
 import { StarrForm } from './components/StarrForm';
 import { TargetCompanies } from './components/TargetCompanies';
@@ -64,6 +65,11 @@ function App() {
                                     path="/wins"
                                     exact
                                     element={ <Wins token={token} isLoggedIn={isLoggedIn} /> }
+                                />
+                                <Route 
+                                    path="/wins/add"
+                                    exact
+                                    element={ <WinsForm token={token} isLoggedIn={isLoggedIn} /> }
                                 />
                                 <Route 
                                     path="/starrs" 
