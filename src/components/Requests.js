@@ -17,7 +17,6 @@ export const requestNewUser = (email, password, firstName, lastName, codename) =
 // POST LOGIN USER - ep ✅
 export const requestLogin = (email, password) => {
     const url = 'https://internal-interview-service.onrender.com/auth/token/login/'
-
     const response = axios.post(url, {
         email: email,
         password: password
@@ -28,15 +27,13 @@ export const requestLogin = (email, password) => {
 // POST LOGOUT USER - ep ✅
 export const requestLogout = (token) => {
     const url = 'https://internal-interview-service.onrender.com/auth/token/logout/'
-    const response = axios.post(url, 
-        {
-        headers:
-            { Authorization: `Token ${token}`
-            }
-        }
-    )
-        return response   
+    const headers = {
+        Authorization: `Token ${token}`
+    }
+    const response = axios.post(url, {}, { headers })
+    return response   
 }
+
 
 // GET USER INFO - ep ✅
 export const requestUserInfo = (token) => {
@@ -276,13 +273,11 @@ export const requestUpdateTargetCompanyRankings = (token, companyId, rank) => {
 // GET LIST OF WINS - ep ✅
 export const requestListWins = (token) => {
     const url = 'https://internal-interview-service.onrender.com/wins/'
-    const response = axios.get(url,
+    return axios.get(url,
         {headers: {
             Authorization: `Token ${token}`
             }
-        }
-    )
-    return response
+        });
 }
 
 // POST CREATE A NEW WIN - ep ✅

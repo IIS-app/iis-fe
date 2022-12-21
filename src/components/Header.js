@@ -2,8 +2,7 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { requestLogout } from './Requests'
 
-export const Header = ({ setAuth }) => {
-    const [token, setToken] = useState([])
+export const Header = ({ token,setAuth }) => {
 
     const handleLogout = () => {
         requestLogout(token)

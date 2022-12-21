@@ -24,7 +24,7 @@ import { Dashboard } from './components/Dashboard';
 import { MotivationalQuotes } from './components/MotivationalQuotes';
 
 function App() {
-	const [token, setToken] = useLocalStorageState('token', null)
+	const [token, setToken] = useLocalStorageState('token', '')
 	const [email, setEmail] = useLocalStorageState('email', '')
     
 	const setAuth = (email, token) => {
@@ -39,7 +39,7 @@ function App() {
 		{isLoggedIn ? (
                     <>
                         <div>
-                            <Header setAuth={setAuth} />
+                            <Header token={token} setAuth={setAuth} />
                             <NavBar />
                             <Routes>
                                 <Route 
