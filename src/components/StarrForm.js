@@ -1,21 +1,20 @@
 import { useState } from 'react';
-import ReactDOM from 'react-dom/client';
 import { useNavigate } from 'react-router';
 import { requestCreateStarr } from './Requests';
-import axios from 'axios';
+import { requestStarrs } from './Requests';
+import { Link } from 'react-router-dom';
 
 export const StarrForm = ({token}) => {
     const [starrId, setStarrId] = useState(null)
-    const [question, setQuestion] = useState('Title for Scenario');
-    const [summary, setSummary] = useState('A summary of what');
-    const [situation, setSituation]= useState('What is the situation');
-    const [task, setTask] = useState('What task');
-    const [action, setAction] = useState('What action');
-    const [result, setResult] = useState('What result');
-    const [reflection, setReflection] = useState('What reflection');
+    const [question, setQuestion] = useState('What is Your Starr Story Called?');
+    const [summary, setSummary] = useState('Summarize your Starr story');
+    const [situation, setSituation]= useState('Describe the situation or conflict');
+    const [task, setTask] = useState('What task needs to be solved');
+    const [action, setAction] = useState('What action did you take to accomplish this task');
+    const [result, setResult] = useState('What was the result of your action');
+    const [reflection, setReflection] = useState('Upon reflection, what did this experience teach you');
     const [error, setError] = useState(null);
     const navigate = useNavigate()
-
 
     const handleSubmit = (e) => {
         e.preventDefault()
@@ -23,7 +22,7 @@ export const StarrForm = ({token}) => {
         requestCreateStarr(token, question, summary, situation, task, action, result, reflection)
 
         .then((res) => {
-            // setStarrId(res.data.id)
+            setStarrId(res.data.id)
             navigate('/starrs')
         })
         .catch((error) => {
@@ -141,6 +140,12 @@ export const StarrForm = ({token}) => {
                         value='Give me a STARR!'
                     />
                 </div>
+                <p>{question}</p>
+                <p>{summary}</p>
+                <p>{situation}</p>
+                <p>{action}</p>
+                <p>{result}</p>
+                <p>{reflection}</p>
             </form>
         </div>
     )

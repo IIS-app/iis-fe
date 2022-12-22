@@ -9,6 +9,8 @@ export const TargetCompanies = () => {
                 <nav>
                     <Link className='button is-link' to="/targetcompany/add">Add a Target</Link>
                 </nav>
-        </>        
+           
+        </>  
+        
     )
 }
