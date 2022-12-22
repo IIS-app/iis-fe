@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router';
 import { requestCreateStarr } from './Requests';
 import { requestStarrs } from './Requests';
-import { Link } from 'react-router-dom';
+
 
 export const StarrForm = ({token}) => {
     const [starrId, setStarrId] = useState(null)
@@ -23,7 +23,7 @@ export const StarrForm = ({token}) => {
 
         .then((res) => {
             setStarrId(res.data.id)
-            navigate('/starrs')
+           // navigate('/starrs')
         })
         .catch((error) => {
         setError(error.message)
