@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router';
 import { requestCreateWin } from './Requests';
 import { requestListWins } from './Requests';
-
+import { Link } from 'react-router-dom'
 
 export const WinsForm = ({token}) => {
     const [winId, setWinId] = useState(null)
@@ -102,3 +102,6 @@ export const WinsForm = ({token}) => {
     )
 }
 
+
+
+                

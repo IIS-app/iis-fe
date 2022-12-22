@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-// POST REGISTER USER - ep ✅
+// POST REGISTER USER - ep ✅ app ✅
 export const requestNewUser = (email, password, firstName, lastName, codename) => {
     const url = 'https://internal-interview-service.onrender.com/auth/users/'
 
@@ -14,10 +14,9 @@ export const requestNewUser = (email, password, firstName, lastName, codename) =
     return response
 }
 
-// POST LOGIN USER - ep ✅
+// POST LOGIN USER - ep ✅ app ✅
 export const requestLogin = (email, password) => {
     const url = 'https://internal-interview-service.onrender.com/auth/token/login/'
-
     const response = axios.post(url, {
         email: email,
         password: password
@@ -25,20 +24,18 @@ export const requestLogin = (email, password) => {
     return response
 }
 
-// POST LOGOUT USER - ep ✅
+// POST LOGOUT USER - ep ✅ app ✅
 export const requestLogout = (token) => {
     const url = 'https://internal-interview-service.onrender.com/auth/token/logout/'
-    const response = axios.post(url, 
-        {
-        headers:
-            { Authorization: `Token ${token}`
-            }
-        }
-    )
-        return response   
+    const headers = {
+        Authorization: `Token ${token}`
+    }
+    const response = axios.post(url, {}, { headers })
+    return response   
 }
 
-// GET USER INFO - ep 
+
+// GET USER INFO - ep ✅
 export const requestUserInfo = (token) => {
     const url = 'https://internal-interview-service.onrender.com/auth/users/me/'
     const response = axios.post(url, {
@@ -51,7 +48,7 @@ export const requestUserInfo = (token) => {
         return response   
 }
 
-// PATCH UPDATE USER INFO - ep 
+// ❌ PATCH UPDATE USER INFO - ep 
 export const requestUpdateUserInfo = (token) => {
     const url = 'https://internal-interview-service.onrender.com/auth/users/me/'
     const response = axios.patch(url, {
@@ -62,9 +59,6 @@ export const requestUpdateUserInfo = (token) => {
     })
         return response   
 }
-
-
-
 
 // GET LIST OF STARRS - ep ✅
 export const requestStarrs = async (token) => {
@@ -83,18 +77,6 @@ export const requestStarrs = async (token) => {
   };
   
 
-// GET STARR DETAIL - ep ✅
-export const requestStarrDetail = (token, starrId) => {
-    const url = `https://internal-interview-service.onrender.com/starr-stories/${starrId}`
-    const response = axios.get(url,
-        {headers: { 
-            Authorization: `Token ${token}`       
-            }
-        }
-    )
-    return response
-}
-
 // POST CREATE NEW STARR RECORD - ep ✅
 export const requestCreateStarr = (token, question, summary, situation, task, action, result, reflection) => {
     const url = 'https://internal-interview-service.onrender.com/starr-stories/'
@@ -108,6 +90,18 @@ export const requestCreateStarr = (token, question, summary, situation, task, ac
             result: result,
             reflection: reflection,        
         }, 
+        {headers: { 
+            Authorization: `Token ${token}`       
+            }
+        }
+    )
+    return response
+}
+
+// GET STARR DETAIL - ep ✅
+export const requestStarrDetail = (token, starrId) => {
+    const url = `https://internal-interview-service.onrender.com/starr-stories/${starrId}`
+    const response = axios.get(url,
         {headers: { 
             Authorization: `Token ${token}`       
             }
@@ -138,8 +132,8 @@ export const requestUpdateStarr = (token, starrId, question, summary, situation,
 }
 
 // ❌ GET LIST OF COMPANY QUESTIONS
-export const requestTargetCompanies = (token) => {
-    const url = 'https://internal-interview-service.onrender.com/com/questions'
+export const requestListCompanyQuestions = (token) => {
+    const url = 'https://internal-interview-service.onrender.com/com/questions/cq'
     const response = axios.get(url,
         {headers: { 
             Authorization: `Token ${token}`       
@@ -150,8 +144,20 @@ export const requestTargetCompanies = (token) => {
 }
 
 // ❌ GET LIST OF INTERVIEW QUESTIONS
-export const requestStarrForm = (token) => {
-    const url = 'https://internal-interview-service.onrender.com/com/'
+export const requestListInterviewQuestions = (token) => {
+    const url = 'https://internal-interview-service.onrender.com/com/questions/iq'
+    const response = axios.get(url,
+        {headers: { 
+            Authorization: `Token ${token}`       
+            }
+        }
+    )
+    return response
+}
+
+// ❌ GET LIST OF USER QUESTIONS
+export const requestListUserQuestions = (token) => {
+    const url = 'https://internal-interview-service.onrender.com/com/questions/me'
     const response = axios.get(url,
         {headers: { 
             Authorization: `Token ${token}`       
@@ -197,7 +203,19 @@ export const requestUpdateQuestion = (token, questionId, question, answer, type)
     return response
 }
 
-// POST CREATE A NEW TARGET COMPANY - ep ✅
+// GET LIST OF TARGET COMPANIES - ep ✅
+export const requestListTargetCompanies = (token, companyName, website) => {
+    const url = 'https://internal-interview-service.onrender.com/target-company/'
+    const response = axios.get(url,
+        {headers: {
+            Authorization: `Token ${token}`
+            }
+        }
+    )
+    return response
+}
+
+// POST CREATE A NEW TARGET COMPANY RECORD - ep ✅
 export const requestCreateTargetCompany = (token, companyName, website) => {
     const url = 'https://internal-interview-service.onrender.com/target-company/'
     const response = axios.post(url,
@@ -213,12 +231,12 @@ export const requestCreateTargetCompany = (token, companyName, website) => {
     return response
 }
 
-// GET LIST OF TARGET COMPANIES - ep ✅
-export const requestListTargetCompanies = (token, companyName, website) => {
-    const url = 'https://internal-interview-service.onrender.com/target-company/'
+// GET COMPANY DETAIL - ep ✅
+export const requestCompanyDetail = (token, companyId) => {
+    const url = `https://internal-interview-service.onrender.com/starr-stories/${companyId}`
     const response = axios.get(url,
-        {headers: {
-            Authorization: `Token ${token}`
+        {headers: { 
+            Authorization: `Token ${token}`       
             }
         }
     )
@@ -248,6 +266,64 @@ export const requestUpdateTargetCompanyRankings = (token, companyId, rank) => {
         {
         id: companyId,
         rank:rank,
+        },
+        {headers: {
+            Authorization: `Token ${token}`
+            }
+        }
+    )
+    return response
+}
+
+// GET LIST OF WINS - ep ✅ app ✅
+export const requestListWins = (token) => {
+    const url = 'https://internal-interview-service.onrender.com/wins/'
+    return axios.get(url,
+        {headers: {
+            Authorization: `Token ${token}`
+            }
+        });
+}
+
+// POST CREATE A NEW WIN - ep ✅
+export const requestCreateWin = (token, winTitle, winDescription, winDate, winPicture) => {
+    const url = 'https://internal-interview-service.onrender.com/wins/'
+    const response = axios.post(url,
+        {
+            title: winTitle,
+            win: winDescription,
+            occured_date: winDate,
+            win_picture: winPicture
+        },
+        {headers: {
+            Authorization: `Token ${token}`
+            }
+        }
+    )
+    return response
+}
+
+// GET WIN DETAIL - ep ✅
+export const requestWinDetail = (token, winId) => {
+    const url = `https://internal-interview-service.onrender.com/wins/${winId}`
+    const response = axios.get(url,
+        {headers: { 
+            Authorization: `Token ${token}`       
+            }
+        }
+    )
+    return response
+}
+
+// PATCH UPDATE A WIN RECORD - ep ✅
+export const requestUpdateWin = (token, winId, winTitle, winDescription, winDate, winPicture) => {
+    const url = `https://internal-interview-service.onrender.com/wins/${winId}`
+    const response = axios.patch(url,
+        {
+            title: winTitle,
+            win: winDescription,
+            occured_date: winDate,
+            win_picture: winPicture
         },
         {headers: {
             Authorization: `Token ${token}`

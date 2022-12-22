@@ -10,6 +10,7 @@ import { Login } from './components/Login';
 import { Register } from './components/Register';
 import { Profile } from './components/Profile';
 import { Wins } from './components/Wins';
+import { WinsForm } from './components/WinsForm';
 import { Starrs } from './components/Starrs';
 import { StarrForm } from './components/StarrForm';
 import { TargetCompanies } from './components/TargetCompanies';
@@ -23,7 +24,7 @@ import { Dashboard } from './components/Dashboard';
 import { MotivationalQuotes } from './components/MotivationalQuotes';
 
 function App() {
-	const [token, setToken] = useLocalStorageState('token', null)
+	const [token, setToken] = useLocalStorageState('token', '')
 	const [email, setEmail] = useLocalStorageState('email', '')
     
 	const setAuth = (email, token) => {
@@ -38,7 +39,7 @@ function App() {
 		{isLoggedIn ? (
                     <>
                         <div>
-                            <Header setAuth={setAuth} />
+                            <Header token={token} setAuth={setAuth} />
                             <NavBar />
                             <Routes>
                                 <Route 
@@ -64,6 +65,11 @@ function App() {
                                     path="/wins"
                                     exact
                                     element={ <Wins token={token} isLoggedIn={isLoggedIn} /> }
+                                />
+                                <Route 
+                                    path="/wins/add"
+                                    exact
+                                    element={ <WinsForm token={token} isLoggedIn={isLoggedIn} /> }
                                 />
                                 <Route 
                                     path="/starrs" 
