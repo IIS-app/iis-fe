@@ -19,7 +19,6 @@ export const Wins = ({token}) => {
         const fetchData = async () => {
             try {
             const res = await requestListWins(token);
-            console.log(res.data);
             setWins(res.data);
             } catch (error) {
             setError(error.message);
