@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-// POST REGISTER USER - ep ✅
+// POST REGISTER USER - ep ✅ app ✅
 export const requestNewUser = (email, password, firstName, lastName, codename) => {
     const url = 'https://internal-interview-service.onrender.com/auth/users/'
 
@@ -14,7 +14,7 @@ export const requestNewUser = (email, password, firstName, lastName, codename) =
     return response
 }
 
-// POST LOGIN USER - ep ✅
+// POST LOGIN USER - ep ✅ app ✅
 export const requestLogin = (email, password) => {
     const url = 'https://internal-interview-service.onrender.com/auth/token/login/'
     const response = axios.post(url, {
@@ -24,7 +24,7 @@ export const requestLogin = (email, password) => {
     return response
 }
 
-// POST LOGOUT USER - ep ✅
+// POST LOGOUT USER - ep ✅ app ✅
 export const requestLogout = (token) => {
     const url = 'https://internal-interview-service.onrender.com/auth/token/logout/'
     const headers = {
@@ -270,7 +270,7 @@ export const requestUpdateTargetCompanyRankings = (token, companyId, rank) => {
     return response
 }
 
-// GET LIST OF WINS - ep ✅
+// GET LIST OF WINS - ep ✅ app ✅
 export const requestListWins = (token) => {
     const url = 'https://internal-interview-service.onrender.com/wins/'
     return axios.get(url,
