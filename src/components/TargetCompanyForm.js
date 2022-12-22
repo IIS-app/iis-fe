@@ -1,7 +1,8 @@
 import { useState } from "react"
-import { requestCreateTargetCompany } from './Requests'
+import { useNavigate } from "react-router"
+import { requestCreateTargetCompany } from './Requests';
 
-export const TargetCompanyForm = (token) => {
+export const TargetCompanyForm = (token, {setSubmitted}) => {
     const [companyId, setCompanyId] = useState('')
     const [companyName, setCompanyName] = useState('')
     const [url, setUrl] = useState('')
@@ -10,14 +11,22 @@ export const TargetCompanyForm = (token) => {
     const [comments, setComments] = useState('')
     const [createdAt, setCreatedAt] = useState('')
     const [updatedAt, setUpdatedAt] = useState('')
-    const [error, setError] = useState('')
-
+    const [error, setError] = useState(null)
+    const navigate = useNavigate()
 
     const handleSubmit = (e) => {
-        e.preventDefault(
-        setError(null),
+        e.preventDefault()
+        // eslint-disable-next-line no-unused-expressions
+        setError(null)
         requestCreateTargetCompany(token, setCompanyName, url)
-        )
+        
+        .then((res) => {
+            setSubmitted(true)
+            navigate('/targetcompanies')
+        })
+            .catch((error) => {
+            setError(error.message)
+        })
     }
 
     return (

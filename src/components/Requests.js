@@ -61,16 +61,21 @@ export const requestUpdateUserInfo = (token) => {
 }
 
 // GET LIST OF STARRS - ep ✅
-export const requestStarrs = (token) => {
-    const url = 'https://internal-interview-service.onrender.com/starr-stories/'
-    const response = axios.get(url,
-        {headers: { 
-            Authorization: `Token ${token}`       
-            }
-        }
-    )
-    return response
-}
+export const requestStarrs = async (token) => {
+    try {
+      const url = 'https://internal-interview-service.onrender.com/starr-stories/'
+      const response = await axios.get(url, {
+        headers: {
+          Authorization: `Token ${token}`,
+        },
+      });
+      return response;
+    } catch (error) {
+      console.error(error);
+      throw error;
+    }
+  };
+  
 
 // POST CREATE NEW STARR RECORD - ep ✅
 export const requestCreateStarr = (token, question, summary, situation, task, action, result, reflection) => {
