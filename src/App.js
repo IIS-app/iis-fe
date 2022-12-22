@@ -131,7 +131,7 @@ function App() {
                             <Login setAuth={setAuth} isLoggedIn={isLoggedIn} />
                         </main>
                     </>
-
+                    
                 )}
     </div>
 	);
