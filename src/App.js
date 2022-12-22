@@ -10,7 +10,8 @@ import { Login } from './components/Login';
 import { Register } from './components/Register';
 import { Profile } from './components/Profile';
 import { Wins } from './components/Wins';
-import { WinsForm } from './components/WinsForm';
+import { WinForm } from './components/WinForm';
+import { WinDetail } from './components/WinDetail';
 import { Starrs } from './components/Starrs';
 import { StarrForm } from './components/StarrForm';
 import { TargetCompanies } from './components/TargetCompanies';
@@ -69,7 +70,17 @@ function App() {
                                 <Route 
                                     path="/wins/add"
                                     exact
-                                    element={ <WinsForm token={token} isLoggedIn={isLoggedIn} /> }
+                                    element={ <WinForm token={token} isLoggedIn={isLoggedIn} /> }
+                                />
+                                <Route 
+                                    path="/wins/:id"
+                                    exact
+                                    element={ <WinDetail token={token} isLoggedIn={isLoggedIn} /> }
+                                />
+                                <Route 
+                                    path="/wins/edit/:id"
+                                    exact
+                                    element={ <WinForm token={token} isLoggedIn={isLoggedIn} /> }
                                 />
                                 <Route 
                                     path="/starrs" 

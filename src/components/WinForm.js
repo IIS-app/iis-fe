@@ -4,8 +4,8 @@ import { requestCreateWin } from './Requests';
 import { requestListWins } from './Requests';
 import { Link } from 'react-router-dom'
 
-export const WinsForm = ({token}) => {
-    const [winId, setWinId] = useState(null)
+export const WinForm = ({token}) => {
+    const [winId, setWinId] = useState(winId)
     const [winTitle, setWinTitle]= useState('');
     const [winDescription, setWinDescription]= useState('');
     const [winDate, setWinDate] = useState('');
