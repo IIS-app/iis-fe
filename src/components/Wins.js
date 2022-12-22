@@ -43,7 +43,9 @@ export const Wins = ({token}) => {
                     <li key="winDate">{win.occured_date}</li>
                     {win.win_picture ? <img key="winPicture" src={win.win_picture} alt={win.title} /> :''}
                     <Link 
-                        to={`/wins/edit/${win.pk}`}
+                        to={{
+                            pathname: `/wins/edit/${win.pk}`,
+                            state: { win }}}
                         id="win-list-edit"
                         className="button edit"
                         >Edit this Win</Link>

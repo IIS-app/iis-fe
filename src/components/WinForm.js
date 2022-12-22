@@ -5,7 +5,7 @@ import { requestListWins } from './Requests';
 import { Link } from 'react-router-dom'
 
 export const WinForm = ({token}) => {
-    const [winId, setWinId] = useState(winId)
+    const [winId, setWinId] = useState(null)
     const [winTitle, setWinTitle]= useState('');
     const [winDescription, setWinDescription]= useState('');
     const [winDate, setWinDate] = useState('');

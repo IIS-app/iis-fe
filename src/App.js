@@ -73,7 +73,7 @@ function App() {
                                     element={ <WinForm token={token} isLoggedIn={isLoggedIn} /> }
                                 />
                                 <Route 
-                                    path="/wins/:id"
+                                    path="/wins/:pk"
                                     exact
                                     element={ <WinDetail token={token} isLoggedIn={isLoggedIn} /> }
                                 />

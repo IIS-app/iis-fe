@@ -1,10 +1,16 @@
 import { useState, useEffect } from 'react';
 import { requestWinDetail } from './Requests';
 import { requestListWins } from './Requests';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
 
-export const WinDetail = ({ token, pk, title, occured_date, win, win_picture }) => {    
+export const WinDetail = (token) => {
+    const location = useLocation();
+    const { pk } = location.state.win
+    const { title } = location.state.win
+    const { occured_date } = location.state.win
+    const { win } = location.state.win
+    const { win_picture } = location.state.win
     const [winDetail, setWinDetail] = useState(null);
     const [error, setError] = useState(null);
 

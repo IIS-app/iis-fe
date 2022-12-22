@@ -304,8 +304,9 @@ export const requestCreateWin = (token, winTitle, winDescription, winDate, winPi
 }
 
 // GET WIN DETAIL - ep ✅
-export const requestWinDetail = (token, pk) => {
+export const requestWinDetail = ({pk, token}) => {
     const url = `https://internal-interview-service.onrender.com/wins/${pk}`
+    console.log({pk})
     const response = axios.get(url,
         {headers: { 
             Authorization: `Token ${token}`       
