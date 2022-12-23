@@ -1,8 +1,6 @@
 import { useState, useEffect } from 'react';
-import { requestCreateWin } from './Requests';
 import { requestListWins } from './Requests';
 import { Link } from 'react-router-dom';
-import axios from 'axios';
 
 
 export const Wins = ({token}) => {
@@ -13,27 +11,20 @@ export const Wins = ({token}) => {
     const [winDate, setWinDate] = useState('');
     const [winPicture, setWinPicture] = useState('')
     const [error, setError] = useState(null);
-
+    const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
-        const fetchData = async () => {
-            try {
-            const res = await requestListWins(token);
-            setWins(res.data);
-            console.log(res.data);
-            } catch (error) {
-            setError(error.message);
-            }
-        };
+        setError(null);
+        setIsLoading(true);
+        requestListWins(token)
+            .then((res => {setWins(res.data)}))   
+            .catch(error => setError(error.message))
+            .finally(() => setIsLoading(false))
+    },[token])
 
-        fetchData();
-    }, [token]);
-
-
-    
     return (
         <>
-        <div className='container main'>
+        <div className='container-main'>
         {error && <div className="error">{error}</div>}
             <h2>List of Wins</h2>
             <div className='container-list'>
@@ -43,13 +34,10 @@ export const Wins = ({token}) => {
                     <li key="winDate">{win.occured_date}</li>
                     {win.win_picture ? <img key="winPicture" src={win.win_picture} alt={win.title} /> :''}
                     <Link 
-                        to={{
-                            pathname: `/wins/edit/${win.pk}`,
-                            state: { win }}}
-                        id="win-list-edit"
+                        to={`/wins/edit/${win.pk}`}                        id="win-list-edit"
                         className="button edit"
                         >Edit this Win</Link>
-                    <Link 
+                    <Link
                         to={`/wins/${win.pk}`}
                         id="win-list-detail"
                         className="button view"
