@@ -42,7 +42,7 @@ export const Starrs = (token) => {
 
             </div>
                 <div className='button-submit'>
-                    <label htmlFor='editStarr' className='label'></label>
+                    <label htmlFor='editStarr' className='form-label'></label>
                     <input
                         id='editStarr'
                         to={`/starrs/${starrId}`}
@@ -53,7 +53,7 @@ export const Starrs = (token) => {
                 </div>
                 <div className='container-button'>
                     <Link
-                        to="/starrsform"
+                        to="/starrform"
                         className='button add'
                         defaultValue='Add a New Starr to your Sky'
                     >Add a New Starr</Link>

@@ -21,56 +21,48 @@ export const Login = ({ setAuth, isLoggedIn }) => {
             setAuth(email, token)
             navigate("/home")
         })
-        // .then((e) => {
-        //     requestUserInfo()
-        // })
-        // .then((res) => {
-        //     const codename = res.data.codename            
-        //     navigate("/home")
-        // })
         .catch((error) => {
             setError(error.message)
         })
     }
 
-
     return (
         <div>
             {register===false ? (
-            <div className='login-box'>
+            <div className='container-login'>
                 <h3>Please log in below.</h3>
                 {error && <div className="error">{error}</div>}
                 <form id="form-login" onSubmit={handleSubmit}>
-                    <div className='field'>
-                        <label htmlFor='email' className="label">Email</label>
+                    <div className='container-input'>
+                        <label htmlFor='email' className="form-label">Email</label>
                         <input
                             id='email'
                             onChange={(e) => setEmail(e.target.value)}
-                            className='input'
+                            className='form-input-text'
                             autoComplete='on'
                             autoFocus
                             type='text'
                             name='My Username'
                             placeholder='My Username' />
                     </div>
-                    <div className='field'>
-                        <label htmlFor='my-password' className="label">Password</label>
+                    <div className='container-input'>
+                        <label htmlFor='my-password' className="form-label">Password</label>
                         <input
                             id='my-password'
                             onChange={(e) => setPassword(e.target.value)}
-                            className='input'
+                            className='form-input-text'
                             autoComplete='off'
                             type='password'
                             placeholder='My Password' />
                     </div>
-                    <div className='control'>
+                    <div className='container-input'>
                         <button
-                            className='button'
+                            className='button-login'
                         >Login</button>
                     </div>
                     <div id="register">
                     <h3>Or if you are first time visitor, please
-                                <Link to="/register" onClick={()=> setRegister(!register)}> register.</Link></h3>
+                                <Link className='link-text' to="/register" onClick={(e)=> setRegister(!register)}> register.</Link></h3>
                     </div>
                 </form>
             </div>

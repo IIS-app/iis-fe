@@ -31,17 +31,17 @@ export const Register = ({setAuth}) => {
 
     return (
         <div>
-            <div className='register-box'>
+            <div className='container-register'>
                 <h1 className=''>Please register below.</h1>
                 {error && <div className="error">{error}</div>}
-                <form className='form-register' id="registration-form" onSubmit= {handleSubmit}>
-                <div className='field'>
-                        <label htmlFor='firstName' className="label">Agent's First Name</label>
-                        <div className='control has-icons-left'>
+                <form className='form-register' id="form-register" onSubmit= {handleSubmit}>
+                <div className='container-input'>
+                        <label htmlFor='firstName' className="form-label">Agent's First Name</label>
+                        <div className='container-input has-icons-left'>
                             <input
                                 id='firstName'
                                 onChange={(e) => setFirstName(e.target.value)}
-                                className='input'
+                                className='form-input-text'
                                 autoComplete='on'
                                 type='text'
                                 name='firstName'
@@ -51,13 +51,13 @@ export const Register = ({setAuth}) => {
                             </span>
                         </div>
                     </div>
-                    <div className='field'>
-                        <label htmlFor='lastName' className="label">Agent's Last Name</label>
-                        <div className='control has-icons-left'>
+                    <div className='container-input'>
+                        <label htmlFor='lastName' className="form-label">Agent's Last Name</label>
+                        <div className='container-input has-icons-left'>
                             <input
                                 id='lastName'
                                 onChange={(e) => setLastName(e.target.value)}
-                                className='input'
+                                className='form-input-text'
                                 autoComplete='on'
                                 type='text'
                                 name='lastName'
@@ -67,13 +67,13 @@ export const Register = ({setAuth}) => {
                             </span>
                         </div>
                     </div>
-                    <div className='field'>
-                        <label htmlFor='email' className="label">Agent's Primary Digital Contact</label>
-                        <div className='control has-icons-left'>
+                    <div className='container-input'>
+                        <label htmlFor='email' className="form-label">Agent's Primary Digital Contact</label>
+                        <div className='container-input has-icons-left'>
                             <input
                                 id='email'
                                 onChange={(e) => setEmail(e.target.value)}
-                                className='input'
+                                className='form-input-text'
                                 autoComplete='off'
                                 name='Email'
                                 type='email'
@@ -83,13 +83,13 @@ export const Register = ({setAuth}) => {
                             </span>
                         </div>
                     </div>
-                    <div className='field'>
-                        <label htmlFor='password' className="label">Agent's Secured Entry Algorithm</label>
-                        <div className='control has-icons-left'>
+                    <div className='container-input'>
+                        <label htmlFor='password' className="form-label">Agent's Secured Entry Algorithm</label>
+                        <div className='container-input has-icons-left'>
                             <input
                                 id='password'
                                 onChange={(e) => setPassword(e.target.value)}
-                                className='input'
+                                className='form-input-text'
                                 autoComplete='off'
                                 type='password'
                                 placeholder='Password' />
@@ -98,13 +98,13 @@ export const Register = ({setAuth}) => {
                             </span>
                         </div>
                     </div>
-                    <div className='field'>
-                        <label htmlFor='codename' className="label">Agent Codename</label>
-                        <div className='control has-icons-left'>
+                    <div className='container-input'>
+                        <label htmlFor='codename' className="form-label">Agent Codename</label>
+                        <div className='container-input has-icons-left'>
                             <input
                                 id='codename'
                                 onChange={(e) => setCodename(e.target.value)}
-                                className='input'
+                                className='form-input-text'
                                 autoComplete='on'
                                 type='text'
                                 name='codename'
@@ -114,8 +114,8 @@ export const Register = ({setAuth}) => {
                             </span>
                         </div>
                     </div>
-                    <div className='field'>
-                        <div className='control'>
+                    <div className='container-input'>
+                        <div className='container-input'>
                             <button
                                 className='button is-primary'
                             >Register</button>

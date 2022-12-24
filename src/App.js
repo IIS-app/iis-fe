@@ -1,6 +1,6 @@
 
 import './App.css';
-import 'bulma/css/bulma.min.css';
+// import 'bulma/css/bulma.min.css';
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import useLocalStorageState from 'use-local-storage-state';
@@ -78,7 +78,7 @@ function App() {
                                     element={ <WinDetail token={token} isLoggedIn={isLoggedIn} /> }
                                 />
                                 <Route 
-                                    path="/wins/edit/:id"
+                                    path="/wins/edit/:pk"
                                     exact
                                     element={ <WinForm token={token} isLoggedIn={isLoggedIn} /> }
                                 />
