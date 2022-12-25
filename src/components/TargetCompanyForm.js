@@ -34,12 +34,12 @@ export const TargetCompanyForm = (token, {setSubmitted}) => {
             {error && <div className="error">{error}</div>}
             <h1 className="targetcomp">Target Companies</h1>
             <form className="company-form" id='form-company' onSubmit={handleSubmit}>
-                <fieldset style={{border: 'solid', width:'58%', }}>
+                <container-inputset style={{border: 'solid', width:'58%', }}>
                 <legend><strong>Add to your list of Target Companies</strong></legend>
-                <label className="text-align is-centered">Company Name ({rank})</label>
-                    <div className='control'>
+                <label className="form-label">Company Name ({rank})</label>
+                    <div className='container-input'>
                         <input 
-                            className='input'
+                            className='form-input-text'
                             autoFocus
                             value={companyName}
                             onChange={(e) => setCompanyName(e.target.value)}
@@ -50,10 +50,10 @@ export const TargetCompanyForm = (token, {setSubmitted}) => {
                             name='company-name'
                             />
                     </div>
-                    <label className="text-align is-centered">Company Website:</label>
-                    <div className='control'>
+                    <label className="form-label">Company Website:</label>
+                    <div className='container-input'>
                         <input
-                            className="input"
+                            className='form-input-text'
                             value={url}
                             id='website'
                             type='url'
@@ -61,10 +61,10 @@ export const TargetCompanyForm = (token, {setSubmitted}) => {
                             onChange={(e) => setUrl(e.target.value)}
                         />                      
                     </div>
-                    <label className="text-align is-centered">Company Contacts: </label>
-                    <div className='control'>
+                    <label className="form-label">Company Contacts: </label>
+                    <div className='container-input'>
                         <input
-                            className="input"
+                            className='form-input-text'
                             value="eventually company contacts model-view will be displayed here"
                             id='contact'
                             type='text'
@@ -72,10 +72,10 @@ export const TargetCompanyForm = (token, {setSubmitted}) => {
                             onChange={(e) => setContact(e.target.value)}
                         />                        
                     </div>
-                    <label className="text-align is-centered">Agent Comment Log: </label>
-                    <div className='control'>
+                    <label className="form-label">Agent Comment Log: </label>
+                    <div className='container-input'>
                         <input
-                            className="input"
+                            className='form-input-text'
                             value="this will be a comments section tied to a comments model via company id"
                             id='comments'
                             type='text'
@@ -84,9 +84,9 @@ export const TargetCompanyForm = (token, {setSubmitted}) => {
                             onChange={(e) => setComments(e.target.value)}
                         />                        
                     </div>
-                </fieldset>
-                <div className='control'>
-                    <label htmlFor='submit' className='label'></label>
+                </container-inputset>
+                <div className='container-input'>
+                    <label htmlFor='submit' className='form-label'></label>
                     <input 
                         to="/targetcompanies"
                         className='button submit'

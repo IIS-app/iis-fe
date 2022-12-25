@@ -2,15 +2,16 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router';
 import { requestCreateWin } from './Requests';
 import { requestListWins } from './Requests';
-import { Link } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 
-export const WinsForm = ({token}) => {
+export const WinForm = ({token}) => {
+    const { pk } = useParams()
     const [winId, setWinId] = useState(null)
-    const [winTitle, setWinTitle]= useState('');
-    const [winDescription, setWinDescription]= useState('');
-    const [winDate, setWinDate] = useState('');
+    const [winTitle, setWinTitle]= useState('')
+    const [winDescription, setWinDescription]= useState('')
+    const [winDate, setWinDate] = useState('')
     const [winPicture, setWinPicture] = useState('')
-    const [error, setError] = useState(null);
+    const [error, setError] = useState(null)
     const navigate = useNavigate()
 
 
@@ -33,14 +34,14 @@ export const WinsForm = ({token}) => {
         {error && <div className="error">{error}</div>}
             <h2>What will you be celebrating today?</h2>
             <form className='form win' id='form-win' onSubmit={handleSubmit}>
-                <fieldset style={{border: 'solid', width:'88%', }}>
+                <container-inputset style={{border: 'solid', width:'88%', }}>
                     <legend>Celebrate You!</legend>
-                    <label htmlFor="winTitle">Add a Name for Your Win.</label>
-                    <div className='control'>
+                    <label className='form-label' htmlFor="winTitle">Add a Name for Your Win.</label>
+                    <div className='container-input'>
                         <input 
                             type="text"
                             id="winTitle"
-                            className='input'
+                            className='form-input-text'
                             autoFocus
                             autoComplete='off'
                             value={winTitle}
@@ -48,8 +49,8 @@ export const WinsForm = ({token}) => {
                             onChange={(e) => setWinTitle(e.target.value)}
                             />
                     </div>
-                    <label htmlFor='winDate'>Provide a Date for the Event.</label>
-                    <div className='control'>
+                    <label className='form-label' htmlFor='winDate'>Provide a Date for the Event.</label>
+                    <div className='container-input'>
                         <input 
                             className='text'
                             value={winDate}
@@ -60,10 +61,10 @@ export const WinsForm = ({token}) => {
                             name='winDate'
                         />
                     </div>
-                    <label htmlFor='winDescription'>Describe the Circumstances of the Event. </label>
-                    <div className='control'>
+                    <label className='form-label' htmlFor='winDescription'>Describe the Circumstances of the Event. </label>
+                    <div className='container-input'>
                         <textarea 
-                            className='textarea'
+                            className='input-textarea'
                             value={winDescription}
                             onChange={(e) => setWinDescription(e.target.value)}
                             id='winDescription'
@@ -73,8 +74,8 @@ export const WinsForm = ({token}) => {
                             name='winDescription'
                         />
                     </div>
-                    <label htmlFor='winPicture'>Provide any Visuals</label>
-                    <div className='control'>
+                    <label className='form-label' htmlFor='winPicture'>Provide any Visuals</label>
+                    <div className='container-input'>
                         <input 
                             className='file upload'
                             value={winPicture}
@@ -86,9 +87,9 @@ export const WinsForm = ({token}) => {
                             multiple
                         />
                     </div>
-                </fieldset> 
-                <div className='control'>
-                    <label htmlFor='submit' className='label'></label>
+                </container-inputset> 
+                <div className='container-input'>
+                    <label htmlFor='submit' className='form-label'></label>
                     <input
                         id='submit'
                         to="/wins"

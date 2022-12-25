@@ -36,13 +36,13 @@ export const StarrForm = ({token}) => {
             <h2>Write a New STARR story here!</h2>
             <p> ...pssst.(IIS ICON here) A STARR is a way to highlight your problem solving skills. Use the form below to tell your story.</p>
             <form className='form-starr' id='starr-form' onSubmit={handleSubmit}>
-                <fieldset style={{border: 'solid', width:'88%', }}>
+                <container-inputset style={{border: 'solid', width:'88%', }}>
                     <legend><strong>fill out form, agent awesome.</strong></legend>
-                    <label>STARR story Title</label>
-                    <div className='control'>
+                    <label className='form-label'>STARR story Title</label>
+                    <div className='container-input'>
                         <input 
                             type="text" 
-                            className='input'
+                            className='form-input-text'
                             autoFocus
                             autoComplete='off'
                             value={question}
@@ -50,10 +50,10 @@ export const StarrForm = ({token}) => {
                             onChange={(e) => setQuestion(e.target.value)}
                             />
                     </div>
-                    <label>Summary: </label>
-                    <div className='control'>
+                    <label className='form-label'>Summary: </label>
+                    <div className='container-input'>
                         <textarea 
-                            className='textarea'
+                            className='input-textarea'
                             autoFocus
                             value={summary}
                             onChange={(e) => setSummary(e.target.value)}
@@ -64,10 +64,10 @@ export const StarrForm = ({token}) => {
                             name='summary'
                             />
                     </div>
-                    <label>Situation: </label>
-                    <div className='control'>
+                    <label className='form-label'>Situation: </label>
+                    <div className='container-input'>
                         <textarea 
-                            className='textarea'
+                            className='input-textarea'
                             value={situation}
                             onChange={(e) => setSituation(e.target.value)}
                             id='situation'
@@ -78,10 +78,10 @@ export const StarrForm = ({token}) => {
                             // placeholder='Make yourelf laugh, like, a LOT.'
                             />
                     </div>
-                    <label>Task: </label>
-                    <div className='control'>
+                    <label className='form-label'>Task: </label>
+                    <div className='container-input'>
                         <textarea 
-                            className='textarea'
+                            className='input-textarea'
                             value={task}
                             onChange={(e) => setTask(e.target.value)}
                             id='task'
@@ -91,10 +91,10 @@ export const StarrForm = ({token}) => {
                             name='task'
                         />
                     </div>
-                    <label>Action: </label>
-                    <div className='control'>
+                    <label className='form-label'>Action: </label>
+                    <div className='container-input'>
                         <textarea 
-                            className='textarea'
+                            className='input-textarea'
                             value={action}
                             onChange={(e) => setAction(e.target.value)}
                             id='action'
@@ -104,10 +104,10 @@ export const StarrForm = ({token}) => {
                             name='action'
                             />
                     </div>
-                    <label>Result: </label>
-                    <div className='control'>
+                    <label className='form-label'>Result: </label>
+                    <div className='container-input'>
                         <textarea 
-                            className='textarea'
+                            className='input-textarea'
                             value={result}
                             onChange={(e) => setResult(e.target.value)}
                             id='result'
@@ -117,10 +117,10 @@ export const StarrForm = ({token}) => {
                             name='result'
                         />
                     </div>
-                    <label>Reflection  : </label>
-                    <div className='control'>
+                    <label className='form-label'>Reflection  : </label>
+                    <div className='container-input'>
                         <textarea 
-                            className='textarea'
+                            className='input-textarea'
                             value={reflection}
                             onChange={(e) => setReflection(e.target.value)}
                             id='reflection'
@@ -130,12 +130,12 @@ export const StarrForm = ({token}) => {
                             name='reflection'
                         />
                     </div>
-                </fieldset> 
-                <div className='control'>
-                    <label htmlFor='submit' className='label'></label>
+                </container-inputset> 
+                <div className='container-input'>
+                    <label htmlFor='submit' className='form-label'></label>
                     <input 
                         to="/create"
-                        className='button submit'
+                        className='button-submit'
                         type='submit'
                         value='Give me a STARR!'
                     />
