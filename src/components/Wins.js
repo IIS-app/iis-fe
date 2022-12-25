@@ -1,8 +1,6 @@
 import { useState, useEffect } from 'react';
-import { requestCreateWin } from './Requests';
 import { requestListWins } from './Requests';
 import { Link } from 'react-router-dom';
-import axios from 'axios';
 
 
 export const Wins = ({token}) => {
@@ -13,57 +11,49 @@ export const Wins = ({token}) => {
     const [winDate, setWinDate] = useState('');
     const [winPicture, setWinPicture] = useState('')
     const [error, setError] = useState(null);
-
+    const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
-        const fetchData = async () => {
-            try {
-            const res = await requestListWins(token);
-            setWins(res.data);
-            } catch (error) {
-            setError(error.message);
-            }
-        };
+        setError(null);
+        setIsLoading(true);
+        requestListWins(token)
+            .then((res => {setWins(res.data)}))   
+            .catch(error => setError(error.message))
+            .finally(() => setIsLoading(false))
+    },[token])
 
-        fetchData();
-    }, [token]);
-
-
-    
     return (
+        <>
         <div className='container-main'>
         {error && <div className="error">{error}</div>}
             <h2>List of Wins</h2>
             <div className='container-list'>
-            {wins ? wins.map(({title, occured_date})=> (
-                <section className="list-item" key={winDate.id}>
-                    <h4>{title}</h4>
-                    <p>{occured_date}</p>
-                </section>
+            {wins ? wins.map(win => (
+                <ul className="list-item" key={win.pk}>
+                    <li key="winTitle">{win.title}</li>
+                    <li key="winDate">{win.occured_date}</li>
+                    {win.win_picture ? <img key="winPicture" src={win.win_picture} alt={win.title} /> :''}
+                    <Link 
+                        to={`/wins/edit/${win.pk}`}                        id="win-list-edit"
+                        className="button edit"
+                        >Edit this Win</Link>
+                    <Link
+                        to={`/wins/${win.pk}`}
+                        id="win-list-detail"
+                        className="button view"
+                        >View Win Details</Link>
+                </ul>
                 )) : null}
 
             </div>
-                <div className='button-submit'>
-                    <label htmlFor='editWin' className='label'></label>
-                    <input
-                        id='editWin'
-                        to={`/wins/${winId}`}
-                        className='button edit'
-                        type='link'
-                        defaultValue='Edit this Win'
-                    />
-                </div>
-                <div className='container-button'>
+                <div className='container button'>
                     <Link
+                        id='button add win'
                         to="/wins/add"
                         className='button add'
-                        defaultValue='Add a New Win'
                     >Add a New Win</Link>
                 </div>
         </div>
+        </>
     )
 }
-
-
-
-                

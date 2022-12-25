@@ -30,15 +30,15 @@ export const QuestionForm = ({token}) => {
         <div className='question'>
         {error && <div className="error">{error}</div>}
             <h2>What question do you want to answer today?</h2>
-            <form className='question-form' id='question-form' onSubmit={handleSubmit}>
-                <fieldset style={{border: 'solid', width:'88%', }}>
+            <form className='form-question' id='form-question' onSubmit={handleSubmit}>
+                <container-inputset style={{border: 'solid', width:'88%', }}>
                     <legend>Question and Answer</legend>
-                    <label htmlFor="question">Question</label>
-                    <div className='control'>
+                    <label className='form-label' htmlFor="question">Question</label>
+                    <div className='container-input'>
                         <input 
                             type="text"
                             id="question"
-                            className='input'
+                            className='form-input-text'
                             autoFocus
                             autoComplete='off'
                             value={question}
@@ -46,8 +46,8 @@ export const QuestionForm = ({token}) => {
                             onChange={(e) => setQuestion(e.target.value)}
                             />
                     </div>
-                    <label>Type</label>
-                    <div className='control'>
+                    <label className='form-label'>Type</label>
+                    <div className='container-input'>
                         {/* <input 
                             className='radio-input'
                             value={questionType}
@@ -57,12 +57,12 @@ export const QuestionForm = ({token}) => {
                             name='questionType'
                         /> */}
                         <input type="radio" id="answer" name="answer" value={questionType}/>
-                        <label for="answer">To Answer</label>
+                        <label className='form-label' for="answer">To Answer</label>
                         <input type="radio" id="ask" name="ask" value="60"/>
-                        <label for="ask">To Ask</label>
+                        <label className='form-label' for="ask">To Ask</label>
                     </div>
-                    <label htmlFor='questionCompany'>Company</label>
-                    <div className='control'>
+                    <label className='form-label' htmlFor='questionCompany'>Company</label>
+                    <div className='container-input'>
                         <input 
                             className='text'
                             value={questionCompany}
@@ -73,10 +73,10 @@ export const QuestionForm = ({token}) => {
                             name='questionCompany'
                             />
                     </div>
-                    <label htmlFor='questionAnswer'>Answer </label>
-                    <div className='control'>
+                    <label className='form-label' htmlFor='questionAnswer'>Answer </label>
+                    <div className='container-input'>
                         <textarea 
-                            className='textarea'
+                            className='input-textarea'
                             value={questionAnswer}
                             onChange={(e) => setQuestionAnswer(e.target.value)}
                             id='questionAnswer'
@@ -86,13 +86,13 @@ export const QuestionForm = ({token}) => {
                             name='task'
                         />
                     </div>
-                </fieldset> 
-                <div className='control'>
-                    <label htmlFor='submit' className='label'></label>
+                </container-inputset> 
+                <div className='container-input'>
+                    <label htmlFor='submit' className='form-label'></label>
                     <input
                         id='submit'
                         to="/create"
-                        className='button submit'
+                        className='button-submit'
                         type='submit'
                         value='Save My Work!'
                     />
