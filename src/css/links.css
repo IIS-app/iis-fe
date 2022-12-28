@@ -1,6 +1,9 @@
 .link-button-nav,
 .button-submit,
-.button-login {
+.button-login,
+.button-add,
+.button-view,
+.button-edit {
     background-color: #28353c;
     border: 2px #00b9a3 groove;
     border-radius: 8px;
@@ -35,9 +38,19 @@
 .button-login:hover,
 .button-login:focus,
 .button-submit:hover,
-.button-submit:focus {
+.button-submit:focus
+.button-add:hover,
+.button-add:focus
+ {
     background-color: #096C81;
     box-shadow: 2px 2px #C3FE96;
     text-shadow: 2px 2px 4px rgb(89, 64, 93);
 }
 
+.button-edit {
+    background-image: ;
+}
+
+.button-view {
+    background-image: ;
+}

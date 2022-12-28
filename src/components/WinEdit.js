@@ -1,31 +1,43 @@
-import { useState } from 'react';
-import { useNavigate } from 'react-router';
-import { requestCreateWin } from './Requests';
-import { requestListWins } from './Requests';
+import { useEffect, useState } from 'react';
+import { requestUpdateWin } from './Requests';
+import { requestWinDetail } from './Requests';
 import { Link, useParams } from 'react-router-dom'
 
-export const WinForm = ({token}) => {
+export const WinEdit = ({ token }) => {
     const { pk } = useParams()
-    const [winId, setWinId] = useState(null)
+    const [winDetail, setWinDetail] = useState([])
+    const [winId, setWinId] = useState('')
     const [winTitle, setWinTitle]= useState('')
     const [winDescription, setWinDescription]= useState('')
     const [winDate, setWinDate] = useState('')
     const [winPicture, setWinPicture] = useState()
     const [error, setError] = useState(null)
-    const navigate = useNavigate()
+    const [isLoading, setIsLoading] = useState(true)
 
+
+    useEffect(() => {
+        setError(null)
+        setIsLoading(true)
+        requestWinDetail(token, { pk })
+            .then(res => {
+                setWinId(res.data.pk)
+                setWinDetail(res.data)
+                setWinTitle(res.data.title)
+                setWinDate(res.data.occured_date)
+                setWinDescription(res.data.win)
+                setWinPicture(res.data.win_picture)
+            })
+            .catch(error => setError(error.message))
+            .finally(() => setIsLoading(false))
+    },[token, pk]);
 
     const handleSubmit = (e) => {
         e.preventDefault()
         setError(null)
-        requestCreateWin(token, winTitle, winDescription, winDate, winPicture)
-
-        .then((res) => {
-            setWinId(res.data.id)
-            // navigate('/wins')
-        })
-        .catch((error) => {
-        setError(error.message)
+        requestUpdateWin(token, { pk }, winTitle, winDescription, winDate, winPicture)
+            window.alert('Your Win is even more amazing now.')
+            .catch((error) => {
+                setError(error.message)
         })
     }
 
@@ -45,7 +57,7 @@ export const WinForm = ({token}) => {
                             autoFocus
                             autoComplete='off'
                             value={winTitle}
-                            maxLength={200}
+                            maxLength={50}
                             onChange={(e) => setWinTitle(e.target.value)}
                             />
                     </div>
