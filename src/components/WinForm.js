@@ -33,7 +33,7 @@ export const WinForm = ({token}) => {
         <div className='container-form'>
         {error && <div className="error">{error}</div>}
             <h2>What will you be celebrating today?</h2>
-            <form className='form win' id='form-win' onSubmit={handleSubmit}>
+            <form className='form-win' id='form-win' onSubmit={handleSubmit}>
                 <container-inputset style={{border: 'solid', width:'88%', }}>
                     <legend>Celebrate You!</legend>
                     <label className='form-label' htmlFor="winTitle">Add a Name for Your Win.</label>
@@ -93,7 +93,7 @@ export const WinForm = ({token}) => {
                     <input
                         id='submit'
                         to="/wins"
-                        className='button submit'
+                        className='button-submit'
                         type='submit'
                         value='Save My Work!'
                     />

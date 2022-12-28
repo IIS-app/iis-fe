@@ -6,13 +6,13 @@ import { requestStarrs } from './Requests';
 
 export const StarrForm = ({token}) => {
     const [starrId, setStarrId] = useState(null)
-    const [question, setQuestion] = useState('What is Your Starr Story Called?');
-    const [summary, setSummary] = useState('Summarize your Starr story');
-    const [situation, setSituation]= useState('Describe the situation or conflict');
-    const [task, setTask] = useState('What task needs to be solved');
-    const [action, setAction] = useState('What action did you take to accomplish this task');
-    const [result, setResult] = useState('What was the result of your action');
-    const [reflection, setReflection] = useState('Upon reflection, what did this experience teach you');
+    const [question, setQuestion] = useState('');
+    const [summary, setSummary] = useState('');
+    const [situation, setSituation]= useState('');
+    const [task, setTask] = useState('');
+    const [action, setAction] = useState('');
+    const [result, setResult] = useState('');
+    const [reflection, setReflection] = useState('');
     const [error, setError] = useState(null);
     const navigate = useNavigate()
 
@@ -31,7 +31,7 @@ export const StarrForm = ({token}) => {
     }
 
     return (
-        <div className='starrform'>
+        <div className='container-form'>
         {error && <div className="error">{error}</div>}
             <h2>Write a New STARR story here!</h2>
             <p> ...pssst.(IIS ICON here) A STARR is a way to highlight your problem solving skills. Use the form below to tell your story.</p>
@@ -45,9 +45,10 @@ export const StarrForm = ({token}) => {
                             className='form-input-text'
                             autoFocus
                             autoComplete='off'
-                            value={question}
+                            placeholder='What is Your STARR Story Called?'
                             maxLength={200}
                             onChange={(e) => setQuestion(e.target.value)}
+                            required
                             />
                     </div>
                     <label className='form-label'>Summary: </label>
@@ -55,97 +56,97 @@ export const StarrForm = ({token}) => {
                         <textarea 
                             className='input-textarea'
                             autoFocus
-                            value={summary}
+                            placeholder='Summarize your STARR story'
                             onChange={(e) => setSummary(e.target.value)}
                             id='summary'
                             type='text'
                             autoComplete='off'
                             maxLength={200}
                             name='summary'
+                            required
                             />
                     </div>
                     <label className='form-label'>Situation: </label>
                     <div className='container-input'>
                         <textarea 
                             className='input-textarea'
-                            value={situation}
+                            placeholder='Describe the situation or conflict.'
                             onChange={(e) => setSituation(e.target.value)}
                             id='situation'
                             type='text'
                             autoComplete='off'
                             maxLength={500}
                             name='situation'
-                            // placeholder='Make yourelf laugh, like, a LOT.'
+                            required
                             />
                     </div>
                     <label className='form-label'>Task: </label>
                     <div className='container-input'>
                         <textarea 
                             className='input-textarea'
-                            value={task}
+                            placeholder='What task needs to be solved?'
                             onChange={(e) => setTask(e.target.value)}
                             id='task'
                             type='text'
                             autoComplete='off'
                             maxLength={500}
                             name='task'
+                            required
                         />
                     </div>
                     <label className='form-label'>Action: </label>
                     <div className='container-input'>
                         <textarea 
                             className='input-textarea'
-                            value={action}
+                            placeholder='What action did you take to accomplish this task?'
                             onChange={(e) => setAction(e.target.value)}
                             id='action'
                             type='text'
                             autoComplete='off'
                             maxLength={500}
                             name='action'
+                            required
                             />
                     </div>
                     <label className='form-label'>Result: </label>
                     <div className='container-input'>
                         <textarea 
                             className='input-textarea'
-                            value={result}
+                            placeholder='What was the result of your action?'
                             onChange={(e) => setResult(e.target.value)}
                             id='result'
                             type='text'
                             autoComplete='off'
                             maxLength={500}
                             name='result'
+                            required
                         />
                     </div>
                     <label className='form-label'>Reflection  : </label>
                     <div className='container-input'>
                         <textarea 
                             className='input-textarea'
-                            value={reflection}
+                            placeholder='Upon reflection, what did this experience teach you?'
                             onChange={(e) => setReflection(e.target.value)}
                             id='reflection'
                             type='text'
                             autoComplete='off'
                             maxLength={500}
                             name='reflection'
+                            required
                         />
                     </div>
                 </container-inputset> 
                 <div className='container-input'>
                     <label htmlFor='submit' className='form-label'></label>
                     <input 
-                        to="/create"
+                        id='submit'
+                        to="/starrs"
                         className='button-submit'
                         type='submit'
-                        value='Give me a STARR!'
+                        value='Give me my STARR!'
                     />
                 </div>
-                <p>{question}</p>
-                <p>{summary}</p>
-                <p>{situation}</p>
-                <p>{action}</p>
-                <p>{result}</p>
-                <p>{reflection}</p>
             </form>
         </div>
     )

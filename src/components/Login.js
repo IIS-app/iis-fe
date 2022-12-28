@@ -34,7 +34,7 @@ export const Login = ({ setAuth, isLoggedIn }) => {
                 {error && <div className="error">{error}</div>}
                 <form id="form-login" onSubmit={handleSubmit}>
                     <div className='container-input'>
-                        <label htmlFor='email' className="form-label">Email</label>
+                        <label htmlFor='email' className="form-label">email</label>
                         <input
                             id='email'
                             onChange={(e) => setEmail(e.target.value)}
@@ -43,17 +43,17 @@ export const Login = ({ setAuth, isLoggedIn }) => {
                             autoFocus
                             type='text'
                             name='My Username'
-                            placeholder='My Username' />
+                            placeholder='my email' />
                     </div>
                     <div className='container-input'>
-                        <label htmlFor='my-password' className="form-label">Password</label>
+                        <label htmlFor='my-password' className="form-label">password</label>
                         <input
                             id='my-password'
                             onChange={(e) => setPassword(e.target.value)}
                             className='form-input-text'
                             autoComplete='off'
                             type='password'
-                            placeholder='My Password' />
+                            placeholder='my password' />
                     </div>
                     <div className='container-input'>
                         <button
@@ -61,8 +61,8 @@ export const Login = ({ setAuth, isLoggedIn }) => {
                         >Login</button>
                     </div>
                     <div id="register">
-                    <h3>Or if you are first time visitor, please
-                                <Link className='link-text' to="/register" onClick={(e)=> setRegister(!register)}> register.</Link></h3>
+                    <h3>or if you are first time visitor, please
+                                <Link className='button' to="/register" onClick={(e)=> setRegister(!register)}> register.</Link></h3>
                     </div>
                 </form>
             </div>

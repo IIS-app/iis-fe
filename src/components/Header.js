@@ -13,7 +13,7 @@ export const Header = ({ token,setAuth }) => {
     return (
         <header>
             <Link
-                className='button is-small'
+                className='button-login'
                 onClick={handleLogout}
             >Log Out</Link>
             

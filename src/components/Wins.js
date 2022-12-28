@@ -30,17 +30,17 @@ export const Wins = ({token}) => {
             <div className='container-list'>
             {wins ? wins.map(win => (
                 <ul className="list-item" key={win.pk}>
-                    <li key="winTitle">{win.title}</li>
-                    <li key="winDate">{win.occured_date}</li>
-                    {win.win_picture ? <img key="winPicture" src={win.win_picture} alt={win.title} /> :''}
+                    <li key={win.pk}>{win.title}</li>
+                    <li key={win.pk}>{win.occured_date}</li>
+                    {win.win_picture ? <img key={win.pk} src={win.win_picture} alt={win.title} /> :''}
                     <Link 
                         to={`/wins/edit/${win.pk}`}                        id="win-list-edit"
-                        className="button edit"
+                        className="button-edit"
                         >Edit this Win</Link>
                     <Link
                         to={`/wins/${win.pk}`}
                         id="win-list-detail"
-                        className="button view"
+                        className="button-view"
                         >View Win Details</Link>
                 </ul>
                 )) : null}
@@ -48,9 +48,9 @@ export const Wins = ({token}) => {
             </div>
                 <div className='container button'>
                     <Link
-                        id='button add win'
+                        id='button-add'
                         to="/wins/add"
-                        className='button add'
+                        className='button-add'
                     >Add a New Win</Link>
                 </div>
         </div>

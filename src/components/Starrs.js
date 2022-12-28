@@ -5,61 +5,55 @@ import { StarrForm } from './StarrForm';
 
 export const Starrs = (token) => {
     const [starrId, setStarrId] = ('')
-    const [starr, setStarr] = ('')
-    const [question, setQuestion] = useState('');
-    const [summary, setSummary] = useState('');
-    const [situation, setSituation]= useState('');
-    const [task, setTask] = useState('');
-    const [action, setAction] = useState('');
-    const [result, setResult] = useState('');
-    const [reflection, setReflection] = useState('');
+    const [starrs, setStarrs] = ('')
     const [error, setError] = useState(null);
+    const [isLoading, setIsLoading] = useState(true);
+
 
     useEffect(() => {
-        const fetchData = async () => {
-            try {
-            const res = await requestStarrs(token);
-            setStarr(res.data);
-            } catch (error) {
-            setError(error.message);
-            }
-        };
+        setError(null);
+        setIsLoading(true);
+        requestStarrs(token)
+            .then((res => {setStarrs(res.data)}))   
+            .catch(error => setError(error.message))
+            .finally(() => setIsLoading(false))
+    },[token])
 
-        fetchData();
-    }, [token]);
 
     return (
-      <div className='container-main'>
+        <>
         {error && <div className="error">{error}</div>}
-            <h2>Starr List!</h2>
+        <div className='container-main'>
+            <h2>STARRs List!</h2>
             <div className='container-list'>
-            {starr ? starr.map(({question, summary})=> (
-                <section className="list-item" key={question.id}>
-                    <h4>{question}</h4>
-                    <p>{summary}</p>
-                </section>
+            {starrs ? starrs.map(starr => (
+                <ul className="list-item" key={starr.pk}>
+                    <li key={starr.pk}>{starr.question}</li>
+                    <li key={starr.pk}>{starr.summary}</li>
+                <Link 
+                    to={`/starrs/edit/${starr.pk}`}
+                    key={starr.pk}
+                    id="starr-list-edit"
+                    className="button-edit"
+                    >Edit this STARR</Link>
+                <Link
+                    to={`/starrs/${starr.pk}`}
+                    id="starr-list-detail"
+                    className="button-view"
+                    >View STARR Details</Link>
+                </ul>
                 )) : null}
 
             </div>
-                <div className='button-submit'>
-                    <label htmlFor='editStarr' className='form-label'></label>
-                    <input
-                        id='editStarr'
-                        to={`/starrs/${starrId}`}
-                        className='button edit'
-                        type='link'
-                        defaultValue='Edit upon a Starr'
-                    />
-                </div>
                 <div className='container-button'>
                     <Link
                         to="/starrform"
-                        className='button add'
+                        className='button-submit'
                         defaultValue='Add a New Starr to your Sky'
                     >Add a New Starr</Link>
                 </div>
-      </div>
-
+        </div>
+        </>
     )
 
 }

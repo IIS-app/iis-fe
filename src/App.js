@@ -1,5 +1,7 @@
 
 import './App.css';
+import './css/forms.css'
+import './css/links.css'
 // import 'bulma/css/bulma.min.css';
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
