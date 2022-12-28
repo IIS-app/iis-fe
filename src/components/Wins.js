@@ -1,15 +1,12 @@
 import { useState, useEffect } from 'react';
 import { requestListWins } from './Requests';
 import { Link } from 'react-router-dom';
+import { WinForm } from './WinForm';
 
 
 export const Wins = ({token}) => {
     const [winId, setWinId] = useState(null)
     const [wins, setWins] = useState(null)
-    const [winTitle, setWinTitle]= useState('');
-    const [winDescription, setWinDescription]= useState('');
-    const [winDate, setWinDate] = useState('');
-    const [winPicture, setWinPicture] = useState('')
     const [error, setError] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
 
@@ -24,8 +21,8 @@ export const Wins = ({token}) => {
 
     return (
         <>
-        <div className='container-main'>
         {error && <div className="error">{error}</div>}
+        <div className='container-main'>
             <h2>List of Wins</h2>
             <div className='container-list'>
             {wins ? wins.map(win => (
@@ -33,27 +30,29 @@ export const Wins = ({token}) => {
                     <li key={win.pk}>{win.title}</li>
                     <li key={win.pk}>{win.occured_date}</li>
                     {win.win_picture ? <img key={win.pk} src={win.win_picture} alt={win.title} /> :''}
-                    <Link 
-                        to={`/wins/edit/${win.pk}`}                        id="win-list-edit"
-                        className="button-edit"
-                        >Edit this Win</Link>
-                    <Link
-                        to={`/wins/${win.pk}`}
-                        id="win-list-detail"
-                        className="button-view"
-                        >View Win Details</Link>
+                <Link 
+                    to={`/wins/edit/${win.pk}`}                        id="win-list-edit"
+                    className="button-edit"
+                    >Edit this Win</Link>
+                <Link
+                    to={`/wins/${win.pk}`}
+                    id="win-list-detail"
+                    className="button-view"
+                    >View Win Details</Link>
                 </ul>
+
                 )) : null}
 
             </div>
-                <div className='container button'>
+                <div className='container-button'>
                     <Link
-                        id='button-add'
-                        to="/wins/add"
-                        className='button-add'
-                    >Add a New Win</Link>
+                        to="/winform"
+                        className='button-submit'
+                        defaultValue='Add a win'
+                    >Add a Win</Link>
                 </div>
         </div>
         </>
     )
 }
+export default Wins

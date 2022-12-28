@@ -42,6 +42,7 @@ export const Starrs = (token) => {
                     className="button-view"
                     >View STARR Details</Link>
                 </ul>
+                
                 )) : null}
 
             </div>
@@ -55,6 +56,5 @@ export const Starrs = (token) => {
         </div>
         </>
     )
-
 }
 export default Starrs
