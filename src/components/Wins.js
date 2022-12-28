@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { requestListWins } from './Requests';
 import { Link } from 'react-router-dom';
+import { WinSnapshot } from './WinSnapshot'
 
 
 export const Wins = ({token}) => {
@@ -24,35 +25,24 @@ export const Wins = ({token}) => {
 
     return (
         <>
+        <div className='container button'>
+            <Link
+                key="button-add"
+                id='button-add'
+                to="/wins/add"
+                className='button-add'
+            >Add a New Win</Link>
+        </div>
         <div className='container-main'>
         {error && <div className="error">{error}</div>}
             <h2>List of Wins</h2>
             <div className='container-list'>
             {wins ? wins.map(win => (
-                <ul className="list-item" key={win.pk}>
-                    <li key={win.pk}>{win.title}</li>
-                    <li key={win.pk}>{win.occured_date}</li>
-                    {win.win_picture ? <img key={win.pk} src={win.win_picture} alt={win.title} /> :''}
-                    <Link 
-                        to={`/wins/edit/${win.pk}`}                        id="win-list-edit"
-                        className="button-edit"
-                        >Edit this Win</Link>
-                    <Link
-                        to={`/wins/${win.pk}`}
-                        id="win-list-detail"
-                        className="button-view"
-                        >View Win Details</Link>
+                <ul className="list">
+                    <WinSnapshot key={win.pk} win={win}/>
                 </ul>
                 )) : null}
-
             </div>
-                <div className='container button'>
-                    <Link
-                        id='button-add'
-                        to="/wins/add"
-                        className='button-add'
-                    >Add a New Win</Link>
-                </div>
         </div>
         </>
     )

@@ -14,6 +14,7 @@ import { Profile } from './components/Profile';
 import { Wins } from './components/Wins';
 import { WinForm } from './components/WinForm';
 import { WinDetail } from './components/WinDetail';
+import { WinEdit } from './components/WinEdit';
 import { Starrs } from './components/Starrs';
 import { StarrForm } from './components/StarrForm';
 import { TargetCompanies } from './components/TargetCompanies';
@@ -82,7 +83,7 @@ function App() {
                                 <Route 
                                     path="/wins/edit/:pk"
                                     exact
-                                    element={ <WinForm token={token} isLoggedIn={isLoggedIn} /> }
+                                    element={ <WinEdit token={token} isLoggedIn={isLoggedIn} /> }
                                 />
                                 <Route 
                                     path="/starrs" 

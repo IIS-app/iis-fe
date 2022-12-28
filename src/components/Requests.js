@@ -304,7 +304,7 @@ export const requestCreateWin = (token, winTitle, winDescription, winDate, winPi
 }
 
 // GET WIN DETAIL - ep ✅
-export const requestWinDetail = (token, {pk}) => {
+export const requestWinDetail = (token, { pk }) => {
     const url = `https://internal-interview-service.onrender.com/wins/${pk}`
     console.log({pk})
     const response = axios.get(url,
@@ -317,8 +317,9 @@ export const requestWinDetail = (token, {pk}) => {
 }
 
 // PATCH UPDATE A WIN RECORD - ep ✅
-export const requestUpdateWin = (token, winId, winTitle, winDescription, winDate, winPicture) => {
-    const url = `https://internal-interview-service.onrender.com/wins/${winId}`
+export const requestUpdateWin = (token, { pk }, winTitle, winDescription, winDate, winPicture) => {
+    const url = `https://internal-interview-service.onrender.com/wins/${pk}`
+    console.log(pk, winTitle, winDate)
     const response = axios.patch(url,
         {
             title: winTitle,

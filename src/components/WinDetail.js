@@ -3,7 +3,7 @@ import { requestWinDetail } from './Requests';
 import { Link, useLocation } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
 
-export const WinDetail = ({token}) => {
+export const WinDetail = ({ token }) => {
     const { pk } = useParams()
     const [winTitle, setWinTitle] = useState('')
     const [winDate, setWinDate] = useState('')
@@ -30,7 +30,7 @@ export const WinDetail = ({token}) => {
 
     return (
         <div className='container-list'>
-        {error && <div className="error">{error}</div>}
+        {error && <div className="error">{ error }</div>}
             <h2>Review the Details of Your Win</h2>
                 <ul className="detail record" key={pk}>
                     <li>{winTitle}</li>
