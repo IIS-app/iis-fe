@@ -7,6 +7,10 @@ import { WinSnapshot } from './WinSnapshot'
 export const Wins = ({token}) => {
     const [winId, setWinId] = useState(null)
     const [wins, setWins] = useState(null)
+    const [winTitle, setWinTitle]= useState('');
+    const [winDescription, setWinDescription]= useState('');
+    const [winDate, setWinDate] = useState('');
+    const [winPicture, setWinPicture] = useState('')
     const [error, setError] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
 
@@ -31,14 +35,12 @@ export const Wins = ({token}) => {
         </div>
         <div className='container-main'>
         {error && <div className="error">{error}</div>}
-        <div className='container-main'>
             <h2>List of Wins</h2>
             <div className='container-list'>
             {wins ? wins.map(win => (
                 <ul className="list">
                     <WinSnapshot key={win.pk} win={win}/>
                 </ul>
-
                 )) : null}
             </div>
         </div>
