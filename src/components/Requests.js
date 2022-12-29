@@ -1,4 +1,5 @@
 import axios from 'axios'
+import { useNavigate } from 'react-router'
 
 // POST REGISTER USER - ep ✅ app ✅
 export const requestNewUser = (email, password, firstName, lastName, codename) => {
@@ -62,19 +63,14 @@ export const requestUpdateUserInfo = (token) => {
 
 // GET LIST OF STARRS - ep ✅
 export const requestStarrs = async (token) => {
-    try {
-      const url = 'https://internal-interview-service.onrender.com/starr-stories/'
-      const response = await axios.get(url, {
+    const url = 'https://internal-interview-service.onrender.com/starr-stories/'
+    const response = axios.get(url, {
         headers: {
-          Authorization: `Token ${token}`,
+            Authorization: `Token ${token}`,
         },
-      });
-      return response;
-    } catch (error) {
-      console.error(error);
-      throw error;
-    }
-  };
+    });
+    return response;
+};
   
 
 // POST CREATE NEW STARR RECORD - ep ✅
@@ -278,11 +274,12 @@ export const requestUpdateTargetCompanyRankings = (token, companyId, rank) => {
 // GET LIST OF WINS - ep ✅ app ✅
 export const requestListWins = (token) => {
     const url = 'https://internal-interview-service.onrender.com/wins/'
-    return axios.get(url,
+    const response = axios.get(url,
         {headers: {
             Authorization: `Token ${token}`
-            }
-        });
+        }
+    });
+    return response
 }
 
 // POST CREATE A NEW WIN - ep ✅
@@ -306,7 +303,6 @@ export const requestCreateWin = (token, winTitle, winDescription, winDate, winPi
 // GET WIN DETAIL - ep ✅
 export const requestWinDetail = (token, { pk }) => {
     const url = `https://internal-interview-service.onrender.com/wins/${pk}`
-    console.log({pk})
     const response = axios.get(url,
         {headers: { 
             Authorization: `Token ${token}`       
@@ -316,17 +312,30 @@ export const requestWinDetail = (token, { pk }) => {
     return response
 }
 
+// DELETE WIN RECORD - ep ✅  app ❌
+export const requestDeleteWin = (token, pk) => {
+    const url = `https://internal-interview-service.onrender.com/wins/${pk}`
+    const response = axios
+        .delete(url,
+            {headers: { 
+                Authorization: `Token ${token}`       
+                }
+            })
+        // (()=>{navigate("/wins")})
+    return response
+}
+
 // PATCH UPDATE A WIN RECORD - ep ✅
 export const requestUpdateWin = (token, { pk }, winTitle, winDescription, winDate, winPicture) => {
     const url = `https://internal-interview-service.onrender.com/wins/${pk}`
-    console.log(pk, winTitle, winDate)
-    const response = axios.patch(url,
-        {
-            title: winTitle,
-            win: winDescription,
-            occured_date: winDate,
-            win_picture: winPicture
-        },
+
+    const formData = new FormData()
+        formData.append('title', winTitle)
+        formData.append('win', winDescription)
+        formData.append('occured_date', winDate)
+        formData.append('win_picture', winPicture)
+
+    const response = axios.patch(url, formData,
         {headers: {
             Authorization: `Token ${token}`
             }

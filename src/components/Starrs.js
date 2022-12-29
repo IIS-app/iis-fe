@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { requestStarrs } from './Requests';
 import { StarrForm } from './StarrForm';
 
-export const Starrs = (token) => {
+export const Starrs = ({token}) => {
     const [starrId, setStarrId] = ('')
     const [starrs, setStarrs] = ('')
     const [error, setError] = useState(null);
@@ -30,17 +30,17 @@ export const Starrs = (token) => {
                 <ul className="list-item" key={starr.pk}>
                     <li key={starr.pk}>{starr.question}</li>
                     <li key={starr.pk}>{starr.summary}</li>
-                <Link 
-                    to={`/starrs/edit/${starr.pk}`}
-                    key={starr.pk}
-                    id="starr-list-edit"
-                    className="button-edit"
-                    >Edit this STARR</Link>
-                <Link
-                    to={`/starrs/${starr.pk}`}
-                    id="starr-list-detail"
-                    className="button-view"
-                    >View STARR Details</Link>
+                    <Link 
+                        to={`/starrs/edit/${starr.pk}`}
+                        key={starr.pk}
+                        id="starr-list-edit"
+                        className="button-edit"
+                        >Edit this STARR</Link>
+                    <Link
+                        to={`/starrs/${starr.pk}`}
+                        id="starr-list-detail"
+                        className="button-view"
+                        >View STARR Details</Link>
                 </ul>
                 )) : null}
 
