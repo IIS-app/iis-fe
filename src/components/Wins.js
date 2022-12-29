@@ -5,12 +5,7 @@ import { WinSnapshot } from './WinSnapshot'
 
 
 export const Wins = ({token}) => {
-    const [winId, setWinId] = useState(null)
     const [wins, setWins] = useState(null)
-    const [winTitle, setWinTitle]= useState('');
-    const [winDescription, setWinDescription]= useState('');
-    const [winDate, setWinDate] = useState('');
-    const [winPicture, setWinPicture] = useState('')
     const [error, setError] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
 
@@ -25,7 +20,7 @@ export const Wins = ({token}) => {
 
     return (
         <>
-        <div className='container button'>
+        <div className='container-button'>
             <Link
                 key="button-add"
                 id='button-add'
@@ -33,15 +28,15 @@ export const Wins = ({token}) => {
                 className='button-add'
             >Add a New Win</Link>
         </div>
-        <div className='container-main'>
         {error && <div className="error">{error}</div>}
-            <h2>List of Wins</h2>
+        <h2>List of Wins</h2>
+        <div className='container-main'>
             <div className='container-list'>
-            {wins ? wins.map(win => (
-                <ul className="list">
-                    <WinSnapshot key={win.pk} win={win}/>
+                <ul key="win-info" className="list">
+                    {wins ? wins.map(win => (
+                        <WinSnapshot key={win.pk} win={win}/>
+                        )) : null}
                 </ul>
-                )) : null}
             </div>
         </div>
         </>

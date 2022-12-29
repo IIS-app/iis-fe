@@ -1,12 +1,12 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router';
 import { requestCreateWin } from './Requests';
-import { requestListWins } from './Requests';
 import { Link, useParams } from 'react-router-dom'
+import { WinEdit } from './WinEdit'
 
 export const WinForm = ({token}) => {
     const { pk } = useParams()
-    const [winId, setWinId] = useState(null)
+    const [win, setWin] = useState(null)
     const [winTitle, setWinTitle]= useState('')
     const [winDescription, setWinDescription]= useState('')
     const [winDate, setWinDate] = useState('')
@@ -21,8 +21,10 @@ export const WinForm = ({token}) => {
         requestCreateWin(token, winTitle, winDescription, winDate, winPicture)
 
         .then((res) => {
-            setWinId(res.data.id)
-            // navigate('/wins')
+            setWin(res.data)
+            navigate('/wins')
+            // or this could work? except edit form pk is useParams
+            // navigate(<WinEdit pk={pk} data={win} />)
         })
         .catch((error) => {
         setError(error.message)
@@ -34,7 +36,7 @@ export const WinForm = ({token}) => {
         {error && <div className="error">{error}</div>}
             <h2>What will you be celebrating today?</h2>
             <form className='form-win' id='form-win' onSubmit={handleSubmit}>
-                <container-inputset style={{border: 'solid', width:'88%', }}>
+                <div className="container-form" style={{border: 'solid', width:'88%', }}>
                     <legend>Celebrate You!</legend>
                     <label className='form-label' htmlFor="winTitle">Add a Name for Your Win.</label>
                     <div className='container-input'>
@@ -87,7 +89,7 @@ export const WinForm = ({token}) => {
                             multiple
                         />
                     </div>
-                </container-inputset> 
+                </div> 
                 <div className='container-input'>
                     <label htmlFor='submit' className='form-label'></label>
                     <input
