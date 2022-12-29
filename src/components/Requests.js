@@ -1,4 +1,5 @@
 import axios from 'axios'
+import { useNavigate } from 'react-router'
 
 // POST REGISTER USER - ep ✅ app ✅
 export const requestNewUser = (email, password, firstName, lastName, codename) => {
@@ -312,6 +313,19 @@ export const requestWinDetail = (token, { pk }) => {
             }
         }
     )
+    return response
+}
+
+// DELETE WIN RECORD - ep ✅  app 
+export const requestDeleteWin = (token, pk) => {
+    const url = `https://internal-interview-service.onrender.com/wins/${pk}`
+    const response = axios
+        .delete(url,
+            {headers: { 
+                Authorization: `Token ${token}`       
+                }
+            })
+        // (()=>{navigate("/wins")})
     return response
 }
 

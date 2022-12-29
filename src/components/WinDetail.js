@@ -40,7 +40,7 @@ export const WinDetail = ({ token }) => {
                         to={`/wins/edit/${pk}`}
                         id="win-list-edit"
                         className="button-edit"
-                        >Make My Win Better</Link>
+                    >Make My Win Better</Link>
                 </ul>
         </div>
     )

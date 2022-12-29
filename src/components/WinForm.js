@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router';
 import { requestCreateWin } from './Requests';
-import { requestListWins } from './Requests';
 import { Link, useParams } from 'react-router-dom'
 import { WinEdit } from './WinEdit'
 
@@ -24,6 +23,8 @@ export const WinForm = ({token}) => {
         .then((res) => {
             setWin(res.data)
             navigate('/wins')
+            // or this could work? except edit form pk is useParams
+            // navigate(<WinEdit pk={pk} data={win} />)
         })
         .catch((error) => {
         setError(error.message)
