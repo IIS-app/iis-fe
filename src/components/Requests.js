@@ -63,19 +63,14 @@ export const requestUpdateUserInfo = (token) => {
 
 // GET LIST OF STARRS - ep ✅
 export const requestStarrs = async (token) => {
-    try {
-      const url = 'https://internal-interview-service.onrender.com/starr-stories/'
-      const response = await axios.get(url, {
+    const url = 'https://internal-interview-service.onrender.com/starr-stories/'
+    const response = axios.get(url, {
         headers: {
-          Authorization: `Token ${token}`,
+            Authorization: `Token ${token}`,
         },
-      });
-      return response;
-    } catch (error) {
-      console.error(error);
-      throw error;
-    }
-  };
+    });
+    return response;
+};
   
 
 // POST CREATE NEW STARR RECORD - ep ✅
@@ -279,11 +274,12 @@ export const requestUpdateTargetCompanyRankings = (token, companyId, rank) => {
 // GET LIST OF WINS - ep ✅ app ✅
 export const requestListWins = (token) => {
     const url = 'https://internal-interview-service.onrender.com/wins/'
-    return axios.get(url,
+    const response = axios.get(url,
         {headers: {
             Authorization: `Token ${token}`
-            }
-        });
+        }
+    });
+    return response
 }
 
 // POST CREATE A NEW WIN - ep ✅
@@ -316,7 +312,7 @@ export const requestWinDetail = (token, { pk }) => {
     return response
 }
 
-// DELETE WIN RECORD - ep ✅  app 
+// DELETE WIN RECORD - ep ✅  app ❌
 export const requestDeleteWin = (token, pk) => {
     const url = `https://internal-interview-service.onrender.com/wins/${pk}`
     const response = axios

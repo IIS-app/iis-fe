@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { requestStarrs } from './Requests';
 import { StarrForm } from './StarrForm';
 
-export const Starrs = (token) => {
+export const Starrs = ({token}) => {
     const [starrId, setStarrId] = ('')
     const [starrs, setStarrs] = ('')
     const [error, setError] = useState(null);
