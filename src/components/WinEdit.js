@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { requestUpdateWin } from './Requests';
 import { requestWinDetail } from './Requests';
 import { Link, useParams } from 'react-router-dom'
@@ -10,7 +10,8 @@ export const WinEdit = ({ token }) => {
     const [winTitle, setWinTitle]= useState('')
     const [winDescription, setWinDescription]= useState('')
     const [winDate, setWinDate] = useState('')
-    const [winPicture, setWinPicture] = useState()
+    const [winPicture, setWinPicture] = useState(null)
+    const imageRef = useRef(null)
     const [error, setError] = useState(null)
     const [isLoading, setIsLoading] = useState(true)
 
@@ -31,22 +32,53 @@ export const WinEdit = ({ token }) => {
             .finally(() => setIsLoading(false))
     },[token, pk]);
 
+    // const handleSubmit = (e) => {
+    //     e.preventDefault()
+    //     setError(null)
+    //     requestUpdateWin(token, { pk }, winTitle, winDescription, winDate, winPicture)
+    //         .catch((error) => {
+    //             setError(error.message)
+    //     })
+    // }
+
+    // const reader = new FileReader()
+    // reader.onloadend = () => {
+    //     imageRef.current.src = reader.result
+    // };
+    // reader.readAsDataURL(winPicture);
+
+
     const handleSubmit = (e) => {
-        e.preventDefault()
-        setError(null)
+        e.preventDefault();
+        setError(null);
+
+        // Create a Blob object from the file
+        if (winPicture) {
+            const blob = winPicture.slice(0, winPicture.size, winPicture.type);
+            console.log(winPicture)
+            // Read the file's data as a data URL
+            const reader = new FileReader();
+                reader.onloadend = () => {
+                imageRef.current.src = reader.result;
+                };
+                reader.readAsDataURL(blob);
+
+            }
+            // Send the request to the server
         requestUpdateWin(token, { pk }, winTitle, winDescription, winDate, winPicture)
-            window.alert('Your Win is even more amazing now.')
             .catch((error) => {
-                setError(error.message)
-        })
+            setError(error.message);
+            });
     }
+
+
 
     return (
         <div className='container-form'>
         {error && <div className="error">{error}</div>}
             <h2>What will you be celebrating today?</h2>
             <form className='form-win' id='form-win' onSubmit={handleSubmit}>
-                <container-inputset style={{border: 'solid', width:'88%', }}>
+                <div className='container-form' style={{border: 'solid', width:'88%', }}>
                     <legend>Celebrate You!</legend>
                     <label className='form-label' htmlFor="winTitle">Add a Name for Your Win.</label>
                     <div className='container-input'>
@@ -89,8 +121,7 @@ export const WinEdit = ({ token }) => {
                     <label className='form-label' htmlFor='winPicture'>Provide any Visuals</label>
                     <div className='container-input'>
                         <input 
-                            className='file upload'
-                            value={winPicture}
+                            className='file-upload'
                             onChange={(e) => setWinPicture(e.target.files[0])}
                             id='winPicture'
                             type='file'
@@ -98,8 +129,9 @@ export const WinEdit = ({ token }) => {
                             name='winPicture'
                             multiple
                         />
+                        <img ref={ imageRef } style={{ width: "200px"}} alt={winTitle}/>
                     </div>
-                </container-inputset> 
+                </div> 
                 <div className='container-input'>
                     <label htmlFor='submit' className='form-label'></label>
                     <input

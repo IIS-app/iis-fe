@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import { requestWinDetail } from './Requests';
-import { Link, useLocation } from 'react-router-dom';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 
 export const WinDetail = ({ token }) => {
     const { pk } = useParams()
@@ -32,16 +31,16 @@ export const WinDetail = ({ token }) => {
         <div className='container-list'>
         {error && <div className="error">{ error }</div>}
             <h2>Review the Details of Your Win</h2>
-                <ul className="detail record" key={pk}>
+                <ul className="details-win" key={pk}>
                     <li>{winTitle}</li>
                     <li>{winDate}</li>
                     <li>{winDescription}</li>
-                    <img src={winPicture} alt={winTitle} />
+                    {winPicture ? <img key={pk} src={winPicture} alt={winTitle} /> :''}
                     <Link 
                         to={`/wins/edit/${pk}`}
                         id="win-list-edit"
-                        className="button edit"
-                        ></Link>
+                        className="button-edit"
+                        >Make My Win Better</Link>
                 </ul>
         </div>
     )

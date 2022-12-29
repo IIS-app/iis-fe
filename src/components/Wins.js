@@ -38,7 +38,7 @@ export const Wins = ({token}) => {
             <h2>List of Wins</h2>
             <div className='container-list'>
             {wins ? wins.map(win => (
-                <ul className="list">
+                <ul key="win-info" className="list">
                     <WinSnapshot key={win.pk} win={win}/>
                 </ul>
                 )) : null}
