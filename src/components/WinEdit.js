@@ -11,7 +11,7 @@ export const WinEdit = ({ token }) => {
     const [winDescription, setWinDescription]= useState('')
     const [winDate, setWinDate] = useState('')
     const [winPicture, setWinPicture] = useState(null)
-    const imageRef = useRef(null)
+    const [winLoadedPicture, setWinLoadedPicture] = useState(null)
     const [error, setError] = useState(null)
     const [isLoading, setIsLoading] = useState(true)
 
@@ -20,13 +20,14 @@ export const WinEdit = ({ token }) => {
         setError(null)
         setIsLoading(true)
         requestWinDetail(token, { pk })
-            .then(res => {
-                setWinId(res.data.pk)
-                setWinDetail(res.data)
-                setWinTitle(res.data.title)
-                setWinDate(res.data.occured_date)
-                setWinDescription(res.data.win)
-                setWinPicture(res.data.win_picture)
+        .then(res => {
+            setWinId(res.data.pk)
+            setWinDetail(res.data)
+            setWinTitle(res.data.title)
+            setWinDate(res.data.occured_date)
+            setWinDescription(res.data.win)
+            setWinLoadedPicture(res.data.win_picture)
+            console.log(res)
             })
             .catch(error => setError(error.message))
             .finally(() => setIsLoading(false))
@@ -46,19 +47,19 @@ export const WinEdit = ({ token }) => {
     //     e.preventDefault();
     //     setError(null);
 
-    //     // Create a Blob object from the file
-    //     if (winPicture) {
-    //         const blob = winPicture.slice(0, winPicture.size, winPicture.type);
-    //         console.log(winPicture)
-    //         // Read the file's data as a data URL
-    //         const reader = new FileReader();
-    //             reader.onloadend = () => {
-    //             imageRef.current.src = reader.result;
-    //             };
-    //             reader.readAsDataURL(blob);
+        // // Create a Blob object from the file
+        // if (winPicture) {
+        //     const blob = winPicture.slice(0, winPicture.size, winPicture.type);
+        //     console.log(winPicture)
+        //     // Read the file's data as a data URL
+        //     const reader = new FileReader();
+        //         reader.onloadend = () => {
+        //         imageRef.current.src = reader.result;
+        //         };
+        //         reader.readAsDataURL(blob);
 
-    //         }
-    //         // Send the request to the server
+        //     }
+        //     // Send the request to the server
     //     requestUpdateWin(token, { pk }, winTitle, winDescription, winDate, winPicture)
     //         .catch((error) => {
     //         setError(error.message);
@@ -123,7 +124,8 @@ export const WinEdit = ({ token }) => {
                             name='winPicture'
                             multiple
                         />
-                        <img ref={ imageRef } style={{ width: "200px"}} alt={winTitle}/>
+                        {winLoadedPicture ? <img src="https://assets-prd.ignimgs.com/2022/07/19/nicolas-cage-in-con-air-1658251738731.jpg" style={{ width: "200px"}} alt={winTitle} /> :''}
+
                     </div>
                 </div> 
                 <div className='container-input'>

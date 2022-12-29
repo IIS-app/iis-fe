@@ -9,7 +9,7 @@ export const WinSnapshot = ({ token, win }) => {
     return (
         <div className="container-win">
             <li className="list-win" >{`${win.title} on ${win.occured_date}`}</li>
-            {/* {win.win_picture ? <img key={`${win.pk}.something-unique??`} src={win.win_picture} alt={win.title} /> :''} */}
+            {win.win_picture ? <img key={`${win.pk}.something-unique??`} src={win.win_picture} alt={win.title} /> :''}
             <div className="container-action-links">
                 <Link 
                     key={`${win.pk}.edit`}

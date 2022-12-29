@@ -333,7 +333,7 @@ export const requestUpdateWin = (token, { pk }, winTitle, winDescription, winDat
         formData.append('title', winTitle)
         formData.append('win', winDescription)
         formData.append('occured_date', winDate)
-        formData.append('win_picture', '')
+        formData.append('win_picture', winPicture)
 
     const response = axios.patch(url, formData,
         {headers: {
