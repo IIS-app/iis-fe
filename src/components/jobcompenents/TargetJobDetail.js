@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { requestTargetJobDetail } from './Requests';
+import { requestTargetJobDetail } from '../requests/JobRequests';
 import { Link, useParams } from 'react-router-dom';
 
 export const TargetJobDetail = ({ token }) => {

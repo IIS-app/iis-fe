@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router";
-import { requestStarrs} from "./Requests";
-import { requestCreateStarr } from "./Requests";
+import { requestStarrDetail} from "../requests/StarrRequests";
 import { Link } from 'react-router-dom';
 
 export const StarrDetail = (token, starrId, question, summary, situation, task, action, result, reflection)

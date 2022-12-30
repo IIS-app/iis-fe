@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router';
-import { requestCreateQuestion } from './Requests';
+import { requestCreateQuestion } from '../requests/QuestionRequests';
 
 export const QuestionForm = ({token}) => {
     const [questionId, setQuestionId] = useState(null)

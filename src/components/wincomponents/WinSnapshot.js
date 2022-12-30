@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { requestDeleteWin } from './Requests'
+import { requestDeleteWin } from '../requests/WinRequests'
 
 
 export const WinSnapshot = ({ token, win }) => {

@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { requestListWins } from './Requests';
+import { requestListWins } from '../requests/WinRequests';
 import { Link } from 'react-router-dom';
 import { WinSnapshot } from './WinSnapshot'
 
