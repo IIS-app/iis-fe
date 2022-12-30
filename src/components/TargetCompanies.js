@@ -7,7 +7,7 @@ export const TargetCompanies = () => {
         <>
             <h1 className="target-companies">🎯 Target Companies 🎯</h1>
                 <nav>
-                    <Link className='button is-link' to="/targetcompany/add">Add a Target</Link>
+                    <Link className='button-add' to="/targetcompany/add">Add a Target</Link>
                 </nav>
            
         </>  
