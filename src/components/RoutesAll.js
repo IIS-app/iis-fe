@@ -19,7 +19,7 @@ import { Dashboard } from './sitecomponents/Dashboard';
 import { MotivationalQuotes } from './sitecomponents/MotivationalQuotes';
 
 
-export const RoutesAll = (token, isLoggedIn, setAuth) => {
+export const RoutesAll = ({token}, isLoggedIn, setAuth) => {
     return (
         <Routes>
             <Route 
