@@ -11,7 +11,7 @@ export const requestListWins = (token) => {
     return response
 }
 
-// POST CREATE A NEW WIN - ep ✅
+// POST CREATE A NEW WIN - ep ✅ app ✅
 export const requestCreateWin = (token, winTitle, winDescription, winDate, winPicture) => {
     const url = 'https://internal-interview-service.onrender.com/wins/'
     const response = axios.post(url,
@@ -29,7 +29,7 @@ export const requestCreateWin = (token, winTitle, winDescription, winDate, winPi
     return response
 }
 
-// GET WIN DETAIL - ep ✅
+// GET WIN DETAIL - ep ✅ app ✅
 export const requestWinDetail = (token, { pk }) => {
     const url = `https://internal-interview-service.onrender.com/wins/${pk}`
     const response = axios.get(url,
@@ -54,7 +54,7 @@ export const requestDeleteWin = (token, pk) => {
     return response
 }
 
-// PATCH UPDATE A WIN RECORD - ep ✅
+// PATCH UPDATE A WIN RECORD - ep ✅ app ✅
 export const requestUpdateWin = (token, { pk }, winTitle, winDescription, winDate, winPicture) => {
     const url = `https://internal-interview-service.onrender.com/wins/${pk}`
 
