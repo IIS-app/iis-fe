@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
-import { requestLogout } from './Requests'
+import { requestLogout } from '../requests/GeneralRequests'
 
 export const Header = ({ token,setAuth }) => {
 

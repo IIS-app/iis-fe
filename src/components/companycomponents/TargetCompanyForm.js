@@ -1,6 +1,6 @@
 import { useState } from "react"
 import { useNavigate } from "react-router"
-import { requestCreateTargetCompany } from './Requests';
+import { requestCreateTargetCompany } from '../requests/CompanyRequests';
 
 export const TargetCompanyForm = (token, {setSubmitted}) => {
     const [companyId, setCompanyId] = useState('')

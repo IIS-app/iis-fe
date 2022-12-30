@@ -1,8 +1,8 @@
 import { useState } from 'react'
 import { Register } from './Register'
 import { Link, useNavigate } from 'react-router-dom'
-import { requestLogin } from './Requests'
-import { requestUserInfo } from './Requests'
+import { requestLogin } from '../requests/GeneralRequests'
+import { requestUserInfo } from '../requests/GeneralRequests'
 
 
 export const Login = ({ setAuth, isLoggedIn }) => {

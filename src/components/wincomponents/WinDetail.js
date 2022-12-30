@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { requestWinDetail } from './Requests';
+import { requestWinDetail } from '../requests/WinRequests';
 import { Link, useParams } from 'react-router-dom';
 
 export const WinDetail = ({ token }) => {

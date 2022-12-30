@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { requestNewUser, requestLogin } from './Requests'
+import { requestNewUser, requestLogin } from '../requests/GeneralRequests'
 
 export const Register = ({setAuth}) => {
     const [codename, setCodename] = useState ('')

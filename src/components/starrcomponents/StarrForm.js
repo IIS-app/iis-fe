@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router';
-import { requestCreateStarr } from './Requests';
-import { requestStarrs } from './Requests';
+import { requestCreateStarr } from '../requests/StarrRequests';
 
 
 export const StarrForm = ({token}) => {

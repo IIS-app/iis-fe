@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { requestStarrs } from './Requests';
+import { requestStarrs } from '../requests/StarrRequests';
 import { StarrForm } from './StarrForm';
 
 export const Starrs = ({token}) => {

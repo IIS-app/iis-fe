@@ -1,6 +1,6 @@
 import { useEffect, useState, useRef } from 'react';
-import { requestUpdateWin } from './Requests';
-import { requestWinDetail } from './Requests';
+import { requestUpdateWin } from '../requests/WinRequests';
+import { requestWinDetail } from '../requests/WinRequests';
 import { Link, useParams } from 'react-router-dom'
 
 export const WinEdit = ({ token }) => {
