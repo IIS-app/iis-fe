@@ -2,30 +2,12 @@
 import './App.css';
 import './css/forms.css'
 import './css/links.css'
-// import 'bulma/css/bulma.min.css';
 import React from 'react';
-import { Routes, Route } from 'react-router-dom';
 import useLocalStorageState from 'use-local-storage-state';
-import { Header } from './components/Header';
-import { NavBar } from './components/NavBar';
-import { Login } from './components/Login';
-import { Register } from './components/Register';
-import { Profile } from './components/Profile';
-import { Wins } from './components/Wins';
-import { WinForm } from './components/WinForm';
-import { WinDetail } from './components/WinDetail';
-import { WinEdit } from './components/WinEdit';
-import { Starrs } from './components/Starrs';
-import { StarrForm } from './components/StarrForm';
-import { TargetCompanies } from './components/TargetCompanies';
-import { TargetCompanyForm } from './components/TargetCompanyForm';
-import { Questions } from './components/Questions';
-import { QuestionForm } from './components/QuestionForm';
-import { TargetJobs } from './components/TargetJobs';
-import { Resumes } from './components/Resumes';
-import { CoverLetters } from './components/CoverLetters';
-import { Dashboard } from './components/Dashboard';
-import { MotivationalQuotes } from './components/MotivationalQuotes';
+import { Header } from './components/sitecomponents/Header';
+import { NavBar } from './components/sitecomponents/NavBar';
+import { Login } from './components/usercomponents/Login';
+import { RoutesAll } from './components/RoutesAll';
 
 function App() {
 	const [token, setToken] = useLocalStorageState('token', '')
@@ -45,97 +27,7 @@ function App() {
                         <div>
                             <Header token={token} setAuth={setAuth} />
                             <NavBar />
-                            <Routes>
-                                <Route 
-                                    path="/" 
-                                    element={ <Dashboard token={token} isLoggedIn={isLoggedIn} setAuth={setAuth}/> }
-                                />
-                                <Route 
-                                    path="/register" 
-                                    exact
-                                    element={ <Register setAuth={setAuth} /> }
-                                />
-                                <Route 
-                                    path="/profile"
-                                    exact 
-                                    element={ <Profile token={token} isLoggedIn={isLoggedIn}/> }
-                                />
-                                <Route 
-                                    path="/home"
-                                    exact
-                                    element={ <Dashboard token={token} isLoggedIn={isLoggedIn} /> }
-                                />
-                                <Route 
-                                    path="/wins"
-                                    exact
-                                    element={ <Wins token={token} isLoggedIn={isLoggedIn} /> }
-                                />
-                                <Route 
-                                    path="/wins/add"
-                                    exact
-                                    element={ <WinForm token={token} isLoggedIn={isLoggedIn} /> }
-                                />
-                                <Route 
-                                    path="/wins/:pk"
-                                    exact
-                                    element={ <WinDetail token={token} isLoggedIn={isLoggedIn} /> }
-                                />
-                                <Route 
-                                    path="/wins/edit/:pk"
-                                    exact
-                                    element={ <WinEdit token={token} isLoggedIn={isLoggedIn} /> }
-                                />
-                                <Route 
-                                    path="/starrs" 
-                                    exact
-                                    element={ <Starrs token={token} isLoggedIn={isLoggedIn} /> }
-                                />
-                                <Route 
-                                    path="/starrform" 
-                                    exact
-                                    element={ <StarrForm token={token} isLoggedIn={isLoggedIn} /> }
-                                />
-                                <Route 
-                                    path="/targetcompanies"
-                                    exact
-                                    element={ <TargetCompanies token={token} isLoggedIn={isLoggedIn} /> }
-                                />
-                                <Route 
-                                    path="/targetcompany/add"
-                                    exact
-                                    element={ <TargetCompanyForm token={token} isLoggedIn={isLoggedIn} /> }
-                                />
-                                <Route 
-                                    path="/targetjobs"
-                                    exact
-                                    element={ <TargetJobs token={token} isLoggedIn={isLoggedIn} /> }
-                                />
-                                <Route 
-                                    path="/questions"
-                                    exact
-                                    element={ <Questions token={token} isLoggedIn={isLoggedIn} /> }
-                                />
-                                <Route 
-                                    path="/questions/add"
-                                    exact
-                                    element={ <QuestionForm token={token} isLoggedIn={isLoggedIn} /> }
-                                />
-                                <Route 
-                                    path="/resumes"
-                                    exact
-                                    element={ <Resumes token={token} isLoggedIn={isLoggedIn} /> }
-                                />
-                                <Route 
-                                    path="/coverletters"
-                                    exact
-                                    element={ <CoverLetters token={token} isLoggedIn={isLoggedIn} /> }
-                                />
-                                <Route 
-                                    path="/motivationalquotes"
-                                    exact
-                                    element={ <MotivationalQuotes token={token} isLoggedIn={isLoggedIn} /> }
-                                />
-                            </Routes>
+                            <RoutesAll token={token} setAuth={setAuth} isLoggedIn={isLoggedIn}  />
                         </div>
                     </>
                 ) : (

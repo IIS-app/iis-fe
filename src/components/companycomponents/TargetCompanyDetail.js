@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router";
-import { requestUpdateTargetCompany} from './Requests'
+import { requestUpdateTargetCompany} from '../requests/CompanyRequests'
 
 export const TargetCompanyDetail = ({ token, setSelected}) => {
     const { companyId } = useParams()

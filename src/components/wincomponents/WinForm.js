@@ -1,11 +1,9 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router';
-import { requestCreateWin } from './Requests';
-import { Link, useParams } from 'react-router-dom'
-import { WinEdit } from './WinEdit'
+import { requestCreateWin } from '../requests/WinRequests';
+import { useParams } from 'react-router-dom'
 
 export const WinForm = ({token}) => {
-    const { pk } = useParams()
     const [win, setWin] = useState(null)
     const [winTitle, setWinTitle]= useState('')
     const [winDescription, setWinDescription]= useState('')

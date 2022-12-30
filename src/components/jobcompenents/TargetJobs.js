@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { requestListTargetJobs } from './Requests';
+import { requestListTargetJobs } from '../requests/JobRequests';
 import { Link } from 'react-router-dom';
 import { TargetJobSnapshot } from './TargetJobSnapshot'
 
