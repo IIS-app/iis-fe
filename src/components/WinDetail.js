@@ -32,10 +32,10 @@ export const WinDetail = ({ token }) => {
         {error && <div className="error">{ error }</div>}
             <h2>Review the Details of Your Win</h2>
                 <ul className="details-win" key={pk}>
-                    <li>{winTitle}</li>
-                    <li>{winDate}</li>
-                    <li>{winDescription}</li>
-                    {winPicture ? <img key={pk} src={winPicture} alt={winTitle} /> :''}
+                    <li key={`{pk}.title`}>{winTitle}</li>
+                    <li key={`{pk}.date`}>{winDate}</li>
+                    <li key={`{pk}.desc`}>{winDescription}</li>
+                    {winPicture ? <img key={`{pk}.pic`} src={winPicture} alt={winTitle} /> :''}
                     <Link 
                         to={`/wins/edit/${pk}`}
                         id="win-list-edit"
