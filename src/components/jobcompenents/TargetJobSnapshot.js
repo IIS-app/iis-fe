@@ -4,7 +4,7 @@ import { requestDeleteTargetJob } from '../requests/JobRequests'
 
 
 export const TargetJobSnapshot = ({ token, job }) => {
-
+    const [isComplete, setIsComplete] = useState('')
     return (
         <div className="container-job">
             <li className="list-job" >{`${job.title} at ${job.company} added on ${job.created_date}`}</li>
@@ -28,10 +28,10 @@ export const TargetJobSnapshot = ({ token, job }) => {
                     to="#"
                     id="job-delete"
                     className="button-action"
-                    onClick={() => requestDeleteTargetJob(token, job.pk)}
+                    // onClick={() => requestDeleteTargetJob(token, job.pk)}
                     title={`WARNING this will delete your 🎯 Job: "${job.title}!" AND NO TAKE BACKS...YET`}
                     >❌
-                </Link>
+                </Link> 
                 <Link
                     key={`${job.pk}.view`}
                     to={`/jobs/${job.pk}`}

@@ -32,6 +32,7 @@ import { Droppable, Draggable } from '@hello-pangea/dnd';
         text-align: center;
         margin: 10px 0;
     `;
+    
     export const TJDossierBuild2 = () => {
         return (
     <ParentContainer>
