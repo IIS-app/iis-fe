@@ -12,7 +12,6 @@ export const Wins = ({token}) => {
     useEffect(() => {
         setError(null);
         setIsLoading(true);
-        console.log(token)
         requestListWins(token)
             .then((res => {setWins(res.data)}))   
             .catch(error => setError(error.message))

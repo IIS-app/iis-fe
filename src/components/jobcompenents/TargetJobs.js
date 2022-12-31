@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { requestListTargetJobs } from '../requests/JobRequests';
 import { Link } from 'react-router-dom';
 import { TargetJobSnapshot } from './TargetJobSnapshot'
+import { TargetJobDetail } from './TargetJobDetail';
 
 
 export const TargetJobs = ({token}) => {
@@ -19,7 +20,7 @@ export const TargetJobs = ({token}) => {
     },[token])
 
     return (
-        <>
+    <>
         <div className='container-button'>
             <Link
                 key="button-add"
@@ -39,7 +40,8 @@ export const TargetJobs = ({token}) => {
                 </ul>
             </div>
         </div>
-        </>
+        <TargetJobDetail />
+    </>    
     )
 }
 
