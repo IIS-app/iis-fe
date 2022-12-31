@@ -9,7 +9,7 @@
     border-radius: 8px;
     /* border-style: ; */
     box-sizing: border-box;
-    color: #C3FE96;
+    color: #96FF7D;
     cursor: pointer;
     display: inline-block;
     font-size: 85%vw;
@@ -43,7 +43,7 @@
 .button-add:focus
  {
     background-color: #096C81;
-    box-shadow: 2px 2px #C3FE96;
+    box-shadow: 2px 2px #96FF7D;
     text-shadow: 2px 2px 4px rgb(89, 64, 93);
 }
 
