@@ -4,7 +4,7 @@ import { requestCreateStarr } from '../requests/StarrRequests';
 
 
 export const StarrForm = ({token}) => {
-    const [starrId, setStarrId] = useState(null)
+    const [starr, setStarr] = useState(null)
     const [question, setQuestion] = useState('');
     const [summary, setSummary] = useState('');
     const [situation, setSituation]= useState('');
@@ -21,8 +21,8 @@ export const StarrForm = ({token}) => {
         requestCreateStarr(token, question, summary, situation, task, action, result, reflection)
 
         .then((res) => {
-            setStarrId(res.data.id)
-           // navigate('/starrs')
+            setStarr(res.data.id)
+            navigate('/starrs')
         })
         .catch((error) => {
         setError(error.message)
@@ -47,6 +47,7 @@ export const StarrForm = ({token}) => {
                             placeholder='What is Your STARR Story Called?'
                             maxLength={200}
                             onChange={(e) => setQuestion(e.target.value)}
+                            value={question}
                             required
                             />
                     </div>
@@ -54,14 +55,14 @@ export const StarrForm = ({token}) => {
                     <div className='container-input'>
                         <textarea 
                             className='input-textarea'
-                            autoFocus
                             placeholder='Summarize your STARR story'
                             onChange={(e) => setSummary(e.target.value)}
                             id='summary'
                             type='text'
                             autoComplete='off'
-                            maxLength={200}
+                            maxLength={500}
                             name='summary'
+                            value={summary}
                             required
                             />
                     </div>
@@ -76,6 +77,7 @@ export const StarrForm = ({token}) => {
                             autoComplete='off'
                             maxLength={500}
                             name='situation'
+                            value={situation}
                             required
                             />
                     </div>
@@ -90,6 +92,7 @@ export const StarrForm = ({token}) => {
                             autoComplete='off'
                             maxLength={500}
                             name='task'
+                            value={task}
                             required
                         />
                     </div>
@@ -104,6 +107,7 @@ export const StarrForm = ({token}) => {
                             autoComplete='off'
                             maxLength={500}
                             name='action'
+                            value={action}
                             required
                             />
                     </div>
@@ -118,6 +122,7 @@ export const StarrForm = ({token}) => {
                             autoComplete='off'
                             maxLength={500}
                             name='result'
+                            value={result}
                             required
                         />
                     </div>
@@ -132,6 +137,7 @@ export const StarrForm = ({token}) => {
                             autoComplete='off'
                             maxLength={500}
                             name='reflection'
+                            value={reflection}
                             required
                         />
                     </div>

@@ -61,7 +61,7 @@ export const requestCreateTargetJobDossier = (token) => {
 }
 
 // ❌ GET TARGET JOB DETAIL - ep   app
-export const requestJobDetail = (token, { pk }) => {
+export const requestTargetJobDetail = (token, { pk }) => {
     const url = `https://internal-interview-service.onrender.com/target-jobs/${pk}`
     const response = axios.get(url,
         {headers: { 
