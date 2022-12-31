@@ -1,4 +1,4 @@
-mport { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { requestTargetJobDetail } from '../requests/JobRequests';
 import { Link, useParams } from 'react-router-dom';
 import styled from 'styled-components';
@@ -32,7 +32,7 @@ import { Droppable, Draggable } from '@hello-pangea/dnd';
         text-align: center;
         margin: 10px 0;
     `;
-    
+
     export const TJDossierBuild2 = () => {
         return (
     <ParentContainer>
