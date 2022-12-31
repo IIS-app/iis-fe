@@ -86,3 +86,58 @@ import { Droppable, Draggable } from '@hello-pangea/dnd';
     </ParentContainer>
   );
 }
+
+    export const TJDossierBuild2 = () => {
+        return (
+    <ParentContainer>
+      <Droppable droppableId="cover-letters-resumes" type="cover-letter" accept={['cover-letter', 'resume']}>
+        {(provided, snapshot) => (
+          <ColumnContainer
+            ref={provided.innerRef}
+            {...provided.droppableProps}
+          >
+            <ColumnTitle>Cover Letters and Resumes</ColumnTitle>
+            {/* Render the cover letters and resumes here */}
+            {provided.placeholder}
+          </ColumnContainer>
+        )}
+      </Droppable>
+      <Droppable droppableId="wins" type="win" accept="win">
+        {(provided, snapshot) => (
+          <ColumnContainer
+            ref={provided.innerRef}
+            {...provided.droppableProps}
+          >
+            <ColumnTitle>Wins</ColumnTitle>
+            {/* Render the wins here */}
+            {provided.placeholder}
+          </ColumnContainer>
+        )}
+      </Droppable>
+      <Droppable droppableId="starrs" type="starr" accept="starr">
+        {(provided, snapshot) => (
+          <ColumnContainer
+            ref={provided.innerRef}
+            {...provided.droppableProps}
+          >
+            <ColumnTitle>STARR Stories</ColumnTitle>
+            {/* Render the STARR stories here */}
+            {provided.placeholder}
+          </ColumnContainer>
+        )}
+      </Droppable>
+      <Droppable droppableId="questions" type="question" accept="question">
+        {(provided, snapshot) => (
+          <ColumnContainer
+            ref={provided.innerRef}
+            {...provided.droppableProps}
+          >
+            <ColumnTitle>Questions</ColumnTitle>
+            {/* Render the questions here */}
+            {provided.placeholder}
+          </ColumnContainer>
+        )}
+      </Droppable>
+    </ParentContainer>
+  );
+}
