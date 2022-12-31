@@ -45,6 +45,18 @@ export const requestStarrDetail = (token, starrId) => {
     return response
 }
 
+// DELETE STARR RECORD - ep ✅  app ❌
+export const requestDeleteStarr = (token, pk) => {
+    const url = `https://internal-interview-service.onrender.com/starr-stories/${pk}`
+    const response = axios
+        .delete(url,
+            {headers: { 
+                Authorization: `Token ${token}`       
+                }
+            })
+        // (()=>{navigate("/starr")})
+    return response
+}
 // PATCH UPDATE STARR RECORD - ep ✅
 export const requestUpdateStarr = (token, starrId, question, summary, situation, task, action, result, reflection) => {
     const url = `https://internal-interview-service.onrender.com/starr-stories/${starrId}`
