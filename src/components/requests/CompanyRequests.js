@@ -30,8 +30,8 @@ export const requestCreateTargetCompany = (token, companyName, companyRank, comp
 }
 
 // GET COMPANY DETAIL - ep ✅
-export const requestTargetCompanyDetail = (token, pk) => {
-    const url = `https://internal-interview-service.onrender.com/starr-stories/${pk}`
+export const requestTargetCompanyDetail = (token, { pk }) => {
+    const url = `https://internal-interview-service.onrender.com/target-company/${pk}`
     const response = axios.get(url,
         {headers: { 
             Authorization: `Token ${token}`       
@@ -42,7 +42,7 @@ export const requestTargetCompanyDetail = (token, pk) => {
 
 // DELETE COMPANY RECORD - ep ✅  app ❌
 export const requestDeleteTargetCompany = (token, pk) => {
-    const url = `https://internal-interview-service.onrender.com/wins/${pk}`
+    const url = `https://internal-interview-service.onrender.com/target-company/${pk}`
     const response = axios
         .delete(url,
             {headers: { 

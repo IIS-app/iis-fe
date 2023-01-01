@@ -11,14 +11,14 @@ export const TCSnapshot = ({ token, company }) => {
             <div className="container-action-links">
                 <Link 
                     key={`${company.pk}.edit`}
-                    to={`/company/edit/${company.pk}`}                        
+                    to={`/targetcompany/edit/${company.pk}`}                        
                     id="win-edit"
                     className="button-action"
                     >📝
                 </Link>
                 <Link
                     key={`${company.pk}.view`}
-                    to={`/target-company/${company.pk}`}
+                    to={`/targetcompany/${company.pk}`}
                     id="targetco-view"
                     className="button-action"
                     >👀

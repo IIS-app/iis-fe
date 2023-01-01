@@ -4,7 +4,7 @@ import { requestTargetCompanyDetail} from '../requests/CompanyRequests'
 
 export const TCDetail = ({ token }) => {
     const { pk } = useParams()
-    const [rank, setCompanyRank] = useState('')
+    const [companyRank, setCompanyRank] = useState('')
     const [companyName, setCompanyName] = useState('')
     const [companyUrl, setCompanyUrl] = useState('')
     const [companyJobsUrl, setCompanyJobsUrl] = useState('')
@@ -38,13 +38,13 @@ export const TCDetail = ({ token }) => {
         {error && <div className="error">{ error }</div>}
             <h2>Company Information</h2>
                 <ul className="details-targetco" key={pk}>
-                    <li key={`{pk}.rank`}>{}</li>
-                    <li key={`{pk}.company_name`}>{}</li>
-                    <li key={`{pk}.website`}>{}</li>
-                    <li key={`{pk}.jobs_page`}>{}</li>
-                    <li key={`{pk}.comments`}>{}</li>
+                    <li key={`{pk}.rank`}>{companyRank}</li>
+                    <li key={`{pk}.company_name`}>{companyName}</li>
+                    <li key={`{pk}.website`}><Link className="link-inline" to={companyUrl}>{companyUrl}</Link></li>
+                    <li key={`{pk}.jobs_page`}>{companyJobsUrl}</li>
+                    <li key={`{pk}.comments`}>{companyNotes}</li>
                     <Link 
-                        to={`/target-company/edit/${pk}`}
+                        to={`/targetcompany/edit/${pk}`}
                         id="targetco-list-edit"
                         className="button-edit"
                     >Add More Company Recon</Link>

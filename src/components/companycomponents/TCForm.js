@@ -31,7 +31,7 @@ export const TCForm = ({token}) => {
     return (
         <div className="container-form">   
             {error && <div className="error">{error}</div>}
-            <h1 className="targetcomp">🎯 Where would you like to work? 🎯</h1>
+            <h2 className="targetcomp">🎯 Where would you like to work? 🎯</h2>
             <form className="form-company" id='form-company' onSubmit={handleSubmit}>
                 <div className="container-form" style={{border: 'solid', width:'58%', }}>
                 <legend><strong>Just the basics get you started!</strong></legend>

@@ -1,17 +1,17 @@
 import { useEffect, useState, useRef } from 'react';
-import { requestUpdateWin } from '../requests/WinRequests';
-import { requestWinDetail } from '../requests/WinRequests';
+import { requestUpdateTargetCompany } from '../requests/CompanyRequests';
+import { requestTargetCompanyDetail } from '../requests/CompanyRequests';
 import { Link, useParams } from 'react-router-dom'
 
-export const WinEdit = ({ token }) => {
+export const TCEdit = ({ token }) => {
     const { pk } = useParams()
-    const [winDetail, setWinDetail] = useState([])
-    const [winId, setWinId] = useState('')
-    const [winTitle, setWinTitle]= useState('')
-    const [winDescription, setWinDescription]= useState('')
-    const [winDate, setWinDate] = useState('')
-    const [winPicture, setWinPicture] = useState(null)
-    const [winLoadedPicture, setWinLoadedPicture] = useState(null)
+    const [companyDetail, setCompanyDetail] = useState('')
+    const [CompanyId, setCompanyId] = useState('')
+    const [companyRank, setCompanyRank] = useState('')
+    const [companyName, setCompanyName] = useState('')
+    const [companyUrl, setCompanyUrl] = useState('')
+    const [companyJobsUrl, setCompanyJobsUrl] = useState('')
+    const [companyNotes, setCompanyNotes] = useState('')
     const [error, setError] = useState(null)
     const [isLoading, setIsLoading] = useState(true)
 
@@ -19,14 +19,14 @@ export const WinEdit = ({ token }) => {
     useEffect(() => {
         setError(null)
         setIsLoading(true)
-        requestWinDetail(token, { pk })
+        requestTargetCompanyDetail(token, { pk })
         .then(res => {
-            setWinId(res.data.pk)
-            setWinDetail(res.data)
-            setWinTitle(res.data.title)
-            setWinDate(res.data.occured_date)
-            setWinDescription(res.data.win)
-            setWinLoadedPicture(res.data.win_picture)
+            setCompanyId(res.data.pk)
+            setCompanyDetail(res.data)
+            setCompanyName(res.data.company_name)
+            setCompanyUrl(res.data.website)
+            setCompanyJobsUrl(res.data.job_page)
+            setCompanyNotes(res.data.comments)
             console.log(res)
             })
             .catch(error => setError(error.message))
@@ -36,106 +36,80 @@ export const WinEdit = ({ token }) => {
     const handleSubmit = (e) => {
         e.preventDefault()
         setError(null)
-        requestUpdateWin(token, { pk }, winTitle, winDescription, winDate, winPicture)
+        requestUpdateTargetCompany(token, { pk }, token, companyRank, companyName, companyUrl, companyJobsUrl, companyNotes)
             .catch((error) => {
-                setError(error.message)
+            setError(error.message)
         })
     }
 
 
-    // const handleSubmit = (e) => {
-    //     e.preventDefault();
-    //     setError(null);
-
-        // // Create a Blob object from the file
-        // if (winPicture) {
-        //     const blob = winPicture.slice(0, winPicture.size, winPicture.type);
-        //     console.log(winPicture)
-        //     // Read the file's data as a data URL
-        //     const reader = new FileReader();
-        //         reader.onloadend = () => {
-        //         imageRef.current.src = reader.result;
-        //         };
-        //         reader.readAsDataURL(blob);
-
-        //     }
-        //     // Send the request to the server
-    //     requestUpdateWin(token, { pk }, winTitle, winDescription, winDate, winPicture)
-    //         .catch((error) => {
-    //         setError(error.message);
-    //         });
-    // }
-
-
-
     return (
-        <div className='container-form'>
-        {error && <div className="error">{error}</div>}
-            <h2>What will you be celebrating today?</h2>
-            <form className='form-win' id='form-win' onSubmit={handleSubmit}>
-                <div className='container-form' style={{border: 'solid', width:'88%', }}>
-                    <legend>Celebrate You!</legend>
-                    <label className='form-label' htmlFor="winTitle">Add a Name for Your Win.</label>
+        <div className="container-form">   
+            {error && <div className="error">{error}</div>}
+            <h2 className="targetcomp">🎯 What additional intel do you have? 🎯</h2>
+            <form className="form-company" id='form-company' onSubmit={handleSubmit}>
+                <div className="container-form" style={{border: 'solid', width:'58%', }}>
+                <legend><strong>Just the basics get you started!</strong></legend>
+                <label className="form-label" htmlFor="companyName">Company Name</label>
                     <div className='container-input'>
                         <input 
-                            type="text"
-                            id="winTitle"
+                            type='text'
+                            id='companyName'
                             className='form-input-text'
                             autoFocus
                             autoComplete='off'
-                            value={winTitle}
-                            maxLength={50}
-                            onChange={(e) => setWinTitle(e.target.value)}
+                            value={companyName}
+                            onChange={(e) => setCompanyName(e.target.value)}
+                            maxLength={100}
+                            name='companyName'
                             />
                     </div>
-                    <label className='form-label' htmlFor='winDate'>Provide a Date for the Event.</label>
+                    <label className="form-label" htmlFor="Compan">Company Website:</label>
                     <div className='container-input'>
-                        <input 
-                            className='text'
-                            value={winDate}
-                            onChange={(e) => setWinDate(e.target.value)}
-                            id='win-date'
-                            type='date'
+                        <input
+                            type='url'
+                            id='companyUrl'
+                            className='form-input-url'
                             autoComplete='off'
-                            name='winDate'
-                        />
+                            value={companyUrl}
+                            onChange={(e) => setCompanyUrl(e.target.value)}
+                            name='companyUrl'
+                        />                      
                     </div>
-                    <label className='form-label' htmlFor='winDescription'>Describe the Circumstances of the Event. </label>
+                    <label className="form-label" htmlFor="companyJobsUrl">Company Careers Page:</label>
                     <div className='container-input'>
-                        <textarea 
-                            className='input-textarea'
-                            value={winDescription}
-                            onChange={(e) => setWinDescription(e.target.value)}
-                            id='winDescription'
+                        <input
+                            type='url'
+                            id='companyJobsUrl'
+                            className='form-input-url'
+                            autoComplete='off'
+                            value={companyJobsUrl}
+                            onChange={(e) => setCompanyJobsUrl(e.target.value)}
+                            name='companyJobsUrl'
+                        />                      
+                    </div>
+                    <label className="form-label" htmlFor="companyNotes">Agent Comment Log: </label>
+                    <div className='container-input'>
+                        <input
+                            className='form-input-text'
+                            value={companyNotes}
+                            id='companyNotes'
                             type='text'
-                            autoComplete='off'
-                            maxLength={1000}
-                            name='winDescription'
-                        />
+                            name='companyNotes'
+                            maxLength={2000}
+                            onChange={(e) => setCompanyNotes(e.target.value)}
+                        />                        
                     </div>
-                    <label className='form-label' htmlFor='winPicture'>Provide any Visuals</label>
-                    <div className='container-input'>
-                        <input 
-                            className='file-upload'
-                            onChange={(e) => setWinPicture(e.target.files[0])}
-                            id='winPicture'
-                            type='file'
-                            autoComplete='off'
-                            name='winPicture'
-                            multiple
-                        />
-                        {winLoadedPicture ? <img src="https://assets-prd.ignimgs.com/2022/07/19/nicolas-cage-in-con-air-1658251738731.jpg" style={{ width: "200px"}} alt={winTitle} /> :''}
-
-                    </div>
-                </div> 
+                </div>
                 <div className='container-input'>
                     <label htmlFor='submit' className='form-label'></label>
-                    <input
+                    <input 
+                        to="/targetcompanies"
                         id='submit'
-                        to="/wins"
                         className='button-submit'
                         type='submit'
-                        value='Save My Work!'
+                        value="It's Just the Beginning!"
+                        // TODO: would like to have {codename} available in lieu of Agent.
                     />
                 </div>
             </form>
