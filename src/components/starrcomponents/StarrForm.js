@@ -21,8 +21,8 @@ export const StarrForm = ({token}) => {
         requestCreateStarr(token, question, summary, situation, task, action, result, reflection)
 
         .then((res) => {
-            setStarr(res.data.id)
-            navigate('/starrs')
+            setStarr(res.data)
+            //navigate('/starrs')
         })
         .catch((error) => {
         setError(error.message)
@@ -34,114 +34,115 @@ export const StarrForm = ({token}) => {
         {error && <div className="error">{error}</div>}
             <h2>Write a New STARR story here!</h2>
             <p> ...pssst.(IIS ICON here) A STARR is a way to highlight your problem solving skills. Use the form below to tell your story.</p>
-            <form className='form-starr' id='starr-form' onSubmit={handleSubmit}>
-                <container-inputset style={{border: 'solid', width:'88%', }}>
+            <form className='form-starr' id='form-starr' onSubmit={handleSubmit}>
+                <div className='container-form' style={{border: 'solid', width:'88%', }}>
                     <legend><strong>fill out form, agent awesome.</strong></legend>
-                    <label className='form-label'>STARR story Title</label>
+                    <label className='form-label' htmlFor='question'>STARR story Title</label>
                     <div className='container-input'>
                         <input 
-                            type="text" 
-                            className='form-input-text'
                             autoFocus
                             autoComplete='off'
-                            placeholder='What is Your STARR Story Called?'
+                            className='form-input-text'
+                            id='question'
                             maxLength={200}
                             onChange={(e) => setQuestion(e.target.value)}
-                            value={question}
+                            placeholder='What is Your STARR Story Called?'
                             required
+                            type="text" 
+                            value={question}
                             />
                     </div>
-                    <label className='form-label'>Summary: </label>
+                    <label className='form-label' htmlFor='summary'>Summary: </label>
                     <div className='container-input'>
                         <textarea 
-                            className='input-textarea'
-                            placeholder='Summarize your STARR story'
-                            onChange={(e) => setSummary(e.target.value)}
-                            id='summary'
-                            type='text'
                             autoComplete='off'
+                            className='input-textarea'
+                            id='summary'
                             maxLength={500}
                             name='summary'
-                            value={summary}
+                            onChange={(e) => setSummary(e.target.value)}
+                            placeholder='Summarize your STARR story'
                             required
+                            type='text'
+                            value={summary}
                             />
                     </div>
-                    <label className='form-label'>Situation: </label>
+                    <label className='form-label' htmlFor='situation'>Situation: </label>
                     <div className='container-input'>
                         <textarea 
-                            className='input-textarea'
-                            placeholder='Describe the situation or conflict.'
-                            onChange={(e) => setSituation(e.target.value)}
-                            id='situation'
-                            type='text'
                             autoComplete='off'
+                            className='input-textarea'
+                            id='situation'
                             maxLength={500}
                             name='situation'
-                            value={situation}
+                            onChange={(e) => setSituation(e.target.value)}
+                            placeholder='Describe the situation or conflict.'
                             required
+                            type='text'
+                            value={situation}
                             />
                     </div>
-                    <label className='form-label'>Task: </label>
+                    <label className='form-label' htmlFor='task'>Task: </label>
                     <div className='container-input'>
                         <textarea 
-                            className='input-textarea'
-                            placeholder='What task needs to be solved?'
-                            onChange={(e) => setTask(e.target.value)}
-                            id='task'
-                            type='text'
                             autoComplete='off'
+                            className='input-textarea'
+                            id='task'
                             maxLength={500}
                             name='task'
-                            value={task}
+                            onChange={(e) => setTask(e.target.value)}
+                            placeholder='What task needs to be solved?'
                             required
+                            type='text'
+                            value={task}
                         />
                     </div>
-                    <label className='form-label'>Action: </label>
+                    <label className='form-label' htmlFor='action'>Action: </label>
                     <div className='container-input'>
                         <textarea 
-                            className='input-textarea'
-                            placeholder='What action did you take to accomplish this task?'
-                            onChange={(e) => setAction(e.target.value)}
-                            id='action'
-                            type='text'
                             autoComplete='off'
+                            className='input-textarea'
+                            id='action'
                             maxLength={500}
                             name='action'
-                            value={action}
+                            onChange={(e) => setAction(e.target.value)}
+                            placeholder='What action did you take to accomplish this task?'
                             required
+                            type='text'
+                            value={action}
                             />
                     </div>
-                    <label className='form-label'>Result: </label>
+                    <label className='form-label' htmlFor='result'>Result: </label>
                     <div className='container-input'>
                         <textarea 
-                            className='input-textarea'
-                            placeholder='What was the result of your action?'
-                            onChange={(e) => setResult(e.target.value)}
-                            id='result'
-                            type='text'
                             autoComplete='off'
+                            className='input-textarea'
+                            id='result'
                             maxLength={500}
                             name='result'
-                            value={result}
+                            onChange={(e) => setResult(e.target.value)}
+                            placeholder='What was the result of your action?'
                             required
+                            type='text'
+                            value={result}
                         />
                     </div>
-                    <label className='form-label'>Reflection  : </label>
+                    <label className='form-label' htmlFor='reflection'>Reflection  : </label>
                     <div className='container-input'>
                         <textarea 
-                            className='input-textarea'
-                            placeholder='Upon reflection, what did this experience teach you?'
-                            onChange={(e) => setReflection(e.target.value)}
-                            id='reflection'
-                            type='text'
                             autoComplete='off'
+                            className='input-textarea'
+                            id='reflection'
                             maxLength={500}
                             name='reflection'
-                            value={reflection}
+                            onChange={(e) => setReflection(e.target.value)}
+                            placeholder='Upon reflection, what did this experience teach you?'
                             required
+                            type='text'
+                            value={reflection}
                         />
                     </div>
-                </container-inputset> 
+                </div> 
                 <div className='container-input'>
                     <label htmlFor='submit' className='form-label'></label>
                     <input 
