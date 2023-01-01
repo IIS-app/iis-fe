@@ -43,31 +43,6 @@ export const WinEdit = ({ token }) => {
     }
 
 
-    // const handleSubmit = (e) => {
-    //     e.preventDefault();
-    //     setError(null);
-
-        // // Create a Blob object from the file
-        // if (winPicture) {
-        //     const blob = winPicture.slice(0, winPicture.size, winPicture.type);
-        //     console.log(winPicture)
-        //     // Read the file's data as a data URL
-        //     const reader = new FileReader();
-        //         reader.onloadend = () => {
-        //         imageRef.current.src = reader.result;
-        //         };
-        //         reader.readAsDataURL(blob);
-
-        //     }
-        //     // Send the request to the server
-    //     requestUpdateWin(token, { pk }, winTitle, winDescription, winDate, winPicture)
-    //         .catch((error) => {
-    //         setError(error.message);
-    //         });
-    // }
-
-
-
     return (
         <div className='container-form'>
         {error && <div className="error">{error}</div>}

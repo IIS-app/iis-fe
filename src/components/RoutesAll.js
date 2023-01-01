@@ -11,7 +11,9 @@ import { StarrForm } from './starrcomponents/StarrForm';
 import { StarrDetail } from './starrcomponents/StarrDetail';
 import { StarrEdit } from './starrcomponents/StarrEdit';
 import { TargetCompanies } from './companycomponents/TargetCompanies';
-import { TargetCompanyForm } from './companycomponents/TCForms';
+import { TCForm } from './companycomponents/TCForm';
+import { TCDetail } from './companycomponents/TCDetail';
+import { TCEdit } from './companycomponents/TCEdit';
 import { Questions } from './questioncomponents/Questions';
 import { QuestionForm } from './questioncomponents/QuestionForm';
 import { TargetJobs } from './jobcompenents/TargetJobs';
@@ -91,8 +93,19 @@ export const RoutesAll = ({token}, isLoggedIn, setAuth) => {
             <Route 
             path="/targetcompany/add"
             exact
-            element={ <TargetCompanyForm token={token} isLoggedIn={isLoggedIn} /> }
+            element={ <TCForm token={token} isLoggedIn={isLoggedIn} /> }
             />
+            <Route 
+            path="/targetcompany/:pk"
+            exact
+            element={ <TCDetail token={token} isLoggedIn={isLoggedIn} /> }
+            />
+            <Route 
+            path="/targetcompany/edit/:pk"
+            exact
+            element={ <TCEdit token={token} isLoggedIn={isLoggedIn} /> }
+            />
+
             <Route 
             path="/targetjobs"
             exact
