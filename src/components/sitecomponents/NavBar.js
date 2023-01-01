@@ -7,6 +7,7 @@ export const NavBar = ({ setLogin, username, token }) => {
         <>
         <header className='header'>
             <h1 className='head'>Focus, Agent.</h1>
+            <img className='logo' src={`${process.env.PUBLIC_URL}/iis-logo.png`} alt="Logo" />
             <nav className='navigation'>
                 <div>
                     <Link className='link-button-nav' to="/">Home</Link>
