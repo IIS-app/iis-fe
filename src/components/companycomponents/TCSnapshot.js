@@ -1,36 +1,35 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { requestDeleteWin } from '../requests/WinRequests'
+import { requestDeleteTargetCompany } from '../requests/CompanyRequests'
 
 
-export const WinSnapshot = ({ token, win }) => {
-    const [isComplete, setIsComplete] = useState('')
+export const TCSnapshot = ({ token, company }) => {
 
     return (
-        <div className="container-win">
-            <li className="list-win" >{`${win.title} on ${win.occured_date}`}</li>
+        <div className="container-targetco">
+            <li className="list-targetco" >{`${company.company_name} added on ${company.created_at}`}</li>
             <div className="container-action-links">
                 <Link 
-                    key={`${win.pk}.edit`}
-                    to={`/wins/edit/${win.pk}`}                        
+                    key={`${company.pk}.edit`}
+                    to={`/company/edit/${company.pk}`}                        
                     id="win-edit"
                     className="button-action"
                     >📝
                 </Link>
                 <Link
-                    key={`${win.pk}.view`}
-                    to={`/wins/${win.pk}`}
-                    id="win-view"
+                    key={`${company.pk}.view`}
+                    to={`/target-company/${company.pk}`}
+                    id="targetco-view"
                     className="button-action"
                     >👀
                 </Link>
                 <Link
-                    key={`${win.pk}.delete`}
+                    key={`${company.pk}.delete`}
                     to="#"
-                    id="win-delete"
+                    id="targetco-delete"
                     className="button-action"
-                    onClick={() => requestDeleteWin(token, win.pk)}
-                    title={`WARNING this will delete your win: "${win.title}!" AND NO TAKE BACKS...YET`}
+                    onClick={() => requestDeleteTargetCompany(token, company.pk)}
+                    title={`WARNING this will delete "${company.company_name}" AND NO TAKE BACKS...YET`}
                     >❌
                 </Link>
             </div>

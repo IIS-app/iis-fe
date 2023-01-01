@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { requestList } from '../requests/WinRequests';
+import { requestListTargetCompanies } from '../requests/CompanyRequests';
 import { Link } from 'react-router-dom';
 import { TCSnapshot } from './TCSnapshot'
 
@@ -19,31 +19,26 @@ export const TargetCompanies = ({token}) => {
     },[token])
 
     return (
-        <>
-            <h1 className="target-companies">🎯 Target Companies 🎯</h1>
-                <nav>
-                    <Link className='button-add' to="/targetcompany/add">Add a Target</Link>
-                </nav>
-
-        <div className='container-button'>
-            <Link
-                key="button-add"
-                id='button-add'
-                to="/targetcompany/add"
-                className='button-add'
-            >Add a New 🎯 Company 🎯</Link>
+    <>
+    <div className='container-button'>
+        <Link
+            key="button-add"
+            id='button-add'
+            to="/targetcompany/add"
+            className='button-add'
+        >Add a New 🎯 Company 🎯</Link>
+    </div>
+    {error && <div className="error">{error}</div>}
+    <h2>🎯 Target Companies 🎯</h2>
+    <div className='container-main'>
+        <div className='container-list'>
+            <ul key="tc-info" className="list">
+                {companies ? companies.map(company => (
+                    <TCSnapshot key={company.pk} company={company}/>
+                    )) : null}
+            </ul>
         </div>
-        {error && <div className="error">{error}</div>}
-        <h2>Target Companies</h2>
-        <div className='container-main'>
-            <div className='container-list'>
-                <ul key="tc-info" className="list">
-                    {companies ? companies.map(company => (
-                        <TCSnapshot key={company.pk} company={company}/>
-                        )) : null}
-                </ul>
-            </div>
-        </div>
-        </>       
+    </div>
+    </>       
     )
 }
