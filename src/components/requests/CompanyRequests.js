@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 // GET LIST OF TARGET COMPANIES - ep ✅
-export const requestListTargetCompanies = (token, companyName, website) => {
+export const requestListTargetCompanies = (token) => {
     const url = 'https://internal-interview-service.onrender.com/target-company/'
     const response = axios.get(url,
         {headers: {
@@ -18,7 +18,10 @@ export const requestCreateTargetCompany = (token, companyName, website) => {
     const response = axios.post(url,
         {
             company_name: companyName,
-            website: website
+            website: companyUrl,
+            rank: companyRank,
+            job_page: companyJobsUrl,
+            comments: companyNotes,
         },
         {headers: {
             Authorization: `Token ${token}`
@@ -61,9 +64,12 @@ export const requestUpdateTargetCompanyRankings = (token, companyId, rank) => {
     const url = `https://internal-interview-service.onrender.com/target-company/ranks`
     const response = axios.patch(url,
         {
-        id: companyId,
-        rank:rank,
-        },
+            pk: 1,
+            company_name: google,
+            rank: null,
+            website:
+            job_page:
+            comments: },
         {headers: {
             Authorization: `Token ${token}`
             }

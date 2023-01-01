@@ -9,7 +9,7 @@ import { WinEdit } from './wincomponents/WinEdit';
 import { Starrs } from './starrcomponents/Starrs';
 import { StarrForm } from './starrcomponents/StarrForm';
 import { TargetCompanies } from './companycomponents/TargetCompanies';
-import { TargetCompanyForm } from './companycomponents/TargetCompanyForm';
+import { TargetCompanyForm } from './companycomponents/TCForms';
 import { Questions } from './questioncomponents/Questions';
 import { QuestionForm } from './questioncomponents/QuestionForm';
 import { TargetJobs } from './jobcompenents/TargetJobs';
