@@ -62,7 +62,7 @@ export const Login = ({ setAuth, isLoggedIn }) => {
                     </div>
                     <div id="register">
                     <h3>or if you are first time visitor, please
-                                <Link className='button' to="/register" onClick={(e)=> setRegister(!register)}> register.</Link></h3>
+                                <Link className='link-inline' to="/register" onClick={(e)=> setRegister(!register)}> register.</Link></h3>
                     </div>
                 </form>
             </div>
