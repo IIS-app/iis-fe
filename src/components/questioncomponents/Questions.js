@@ -5,7 +5,12 @@ export const Questions = () => {
     return (
         <>
         <h1 className="Questions">Questions</h1>
-        <Link to="/questions/add">Add Your Own Question</Link>
+        <Link 
+            className='button-add'
+            key="button-add"
+            id="button-add"
+            to="/questions/add"
+        >Add Your Own Question</Link>
         <div>
             <h1>Questions to Answer</h1>
             <div className="question-box">

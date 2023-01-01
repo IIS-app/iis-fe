@@ -74,7 +74,7 @@ export const StarrEdit = ({ token }) => {
                             value={summary}
                             onChange={(e) => setSummary(e.target.value)}
                             id='summary'
-                            type='date'
+                            type='text'
                             autoComplete='off'
                             name='summary'
                         />
