@@ -7,8 +7,7 @@ export const StarrSnapshot = ({ token, starr }) => {
 
     return (
         <div className="container-starr">
-            <li className="list-starr" >{`${starr.question}`}</li>
-            
+            <li className="list-starr" >{`${starr.question}`}</li>           
             <div className="container-action-links">
                 <Link 
                     key={`${starr.pk}.edit`}
