@@ -8,6 +8,8 @@ import { WinDetail } from './wincomponents/WinDetail';
 import { WinEdit } from './wincomponents/WinEdit';
 import { Starrs } from './starrcomponents/Starrs';
 import { StarrForm } from './starrcomponents/StarrForm';
+import { StarrDetail } from './starrcomponents/StarrDetail';
+import { StarrEdit } from './starrcomponents/StarrEdit';
 import { TargetCompanies } from './companycomponents/TargetCompanies';
 import { TargetCompanyForm } from './companycomponents/TCForms';
 import { Questions } from './questioncomponents/Questions';
@@ -67,11 +69,21 @@ export const RoutesAll = ({token}, isLoggedIn, setAuth) => {
             element={ <Starrs token={token} isLoggedIn={isLoggedIn} /> }
             />
             <Route 
-            path="/starrform" 
+            path="/starrs/add" 
             exact
             element={ <StarrForm token={token} isLoggedIn={isLoggedIn} /> }
             />
             <Route 
+            path="/starrs/:pk" 
+            exact
+            element={ <StarrDetail token={token} isLoggedIn={isLoggedIn} /> }
+            />
+            <Route
+            path="starrs/edit/:pk"
+            exact
+            element={ <StarrEdit token={token} isLoggedIn={isLoggedIn} /> }
+            />
+            <Route  
             path="/targetcompanies"
             exact
             element={ <TargetCompanies token={token} isLoggedIn={isLoggedIn} /> }

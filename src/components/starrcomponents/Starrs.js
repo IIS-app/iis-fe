@@ -18,7 +18,6 @@ export const Starrs = ({token}) => {
             .finally(() => setIsLoading(false))
     },[token])
 
-
     return (
         <>
         <div className='container-button'>
@@ -39,9 +38,7 @@ export const Starrs = ({token}) => {
                         )) : null}
                 </ul>
             </div>
-        </div>
-        
+        </div>       
         </>
     )
-
 }
