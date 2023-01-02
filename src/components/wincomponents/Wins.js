@@ -5,7 +5,7 @@ import { WinSnapshot } from './WinSnapshot'
 
 
 export const Wins = ({token}) => {
-    const [wins, setWins] = useState(null)
+    const [wins, setWins] = useState([])
     const [error, setError] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
 

@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router';
 import { requestCreateWin } from '../requests/WinRequests';
-import { useParams } from 'react-router-dom'
 
 export const WinForm = ({token}) => {
     const [win, setWin] = useState(null)
@@ -21,8 +20,6 @@ export const WinForm = ({token}) => {
         .then((res) => {
             setWin(res.data)
             navigate('/wins')
-            // or this could work? except edit form pk is useParams
-            // navigate(<WinEdit pk={pk} data={win} />)
         })
         .catch((error) => {
         setError(error.message)
@@ -47,12 +44,13 @@ export const WinForm = ({token}) => {
                             value={winTitle}
                             maxLength={200}
                             onChange={(e) => setWinTitle(e.target.value)}
+                            name="winTitle"
                             />
                     </div>
                     <label className='form-label' htmlFor='winDate'>Provide a Date for the Event.</label>
                     <div className='container-input'>
                         <input 
-                            className='text'
+                            className='form-input-date'
                             value={winDate}
                             onChange={(e) => setWinDate(e.target.value)}
                             id='win-date'

@@ -31,7 +31,7 @@ export const QuestionForm = ({token}) => {
         {error && <div className="error">{error}</div>}
             <h2>What question do you want to answer today?</h2>
             <form className='form-question' id='form-question' onSubmit={handleSubmit}>
-                <container-inputset style={{border: 'solid', width:'88%', }}>
+                <div className="container-input"style={{border: 'solid', width:'88%', }}>
                     <legend>Question and Answer</legend>
                     <label className='form-label' htmlFor="question">Question</label>
                     <div className='container-input'>
@@ -86,7 +86,7 @@ export const QuestionForm = ({token}) => {
                             name='task'
                         />
                     </div>
-                </container-inputset> 
+                </div> 
                 <div className='container-input'>
                     <label htmlFor='submit' className='form-label'></label>
                     <input
