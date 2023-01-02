@@ -54,3 +54,44 @@
 .button-view {
     background-image: ;
 }
+
+img {
+    width: 15%;
+    height: 15%;
+}
+
+.logo {
+    width: 7%;
+    height: 7%;
+}
+
+.button-register {
+    background-color: #28353c;
+    border: 2px #00b9a3 groove;
+    border-radius: 5px;
+    box-shadow: 2px 2px #96FF7D;
+    text-shadow: 2px 2px 4px rgb(89, 64, 93);
+    /* border-style: ; */
+    box-sizing: border-box;
+    color: #96FF7D;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 75%vw;
+    font-stretch: 85%vh;
+    font-weight: 400;
+    height: 35px;
+    width: max-content;
+    line-height: 10px;
+    /* list-style: none; */
+    margin-bottom: 0.2em;
+    margin: .2em;
+    outline: none;
+    padding: 10px 16px;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    transition: color 100ms;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+}
