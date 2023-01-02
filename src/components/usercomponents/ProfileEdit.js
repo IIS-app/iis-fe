@@ -40,11 +40,20 @@ export const ProfileEdit = ({token}) => {
             .finally(() => setIsLoading(false))
     },[token, pk]);
 
+    const modules = {
+        toolbar: [
+            [{ 'header': [1, 2, 3, false] }],
+            [{ 'bold': true }, { 'italic': true }, { 'underline': true }, { 'strike': true }],
+            [{ list:  "ordered" }, { list:  "bullet" }],
+            ["blockquote", "code-block"],
+        ]
+    }
+
     const handleSubmit = (e) => {
         e.preventDefault()
         setError(null)
 
-        requestUpdateUserInfo(token, { pk }, id, first_name, last_name, codename, email, personal_pitch, linkedin, github, codepen, portfolio)
+        requestUpdateUserInfo(token, { pk }, userId, userFirstName, userLastName, codename, userEmail, personalNotes, linkedin, github, codepen, portfolio)
             .catch((error) => {
             setError(error.message)
         })
@@ -66,81 +75,97 @@ export const ProfileEdit = ({token}) => {
                             className='form-input-text'
                             autoFocus
                             autoComplete='off'
-                            value={first_name}
+                            value={userFirstName}
                             maxLength={20}
-                            onChange={(e) => setUserFirstName(e.target.first_name)}
+                            onChange={(e) => setUserFirstName(e.target.value)}
                             />
                     </div>
                     <label className='form-label' htmlFor='userLastName'>What is your Bond name, Agent?</label>
                     <div className='container-input'>
                         <input 
                             className='text'
-                            value={last_name}
+                            value={userLastName}
                             onChange={(e) => setUserLastName(e.target.value)}
-                            id='summary'
+                            id='userLastName'
                             type='text'
                             autoComplete='off'
-                            name='summary'
+                            name='userLastName'
                         />
                     </div>
-                    <label className='form-label' htmlFor='situation'>Describe the Situation. </label>
+                    <label className='form-label' htmlFor='codename'>Codename. </label>
                     <div className='container-input'>
                         <textarea 
                             className='input-textarea'
-                            value={situation}
-                            onChange={(e) => setSituation(e.target.value)}
-                            id='situation'
+                            value={codename}
+                            onChange={(e) => setCodename(e.target.value)}
+                            id='codename'
                             type='text'
                             autoComplete='off'
                             maxLength={1000}
-                            name='situation'
+                            name='codename'
                         />
                     </div>
-                    <label className='form-label' htmlFor='task'>What is the task at hand?</label>
+                    <label className='form-label' htmlFor='userEmail'></label>
                     <div className='container-input'>
                         <input 
                             className='input-textarea'
-                            value={task}
-                            onChange={(e) => setTask(e.target.value)}
+                            value={userEmail}
+                            onChange={(e) => setUserEmail(e.target.value)}
                             id='task'
                             type='text'
                             autoComplete='off'
                             name='task'
                         />
                     </div>
-                    <label className='form-label' htmlFor='action'>What actions did you take?</label>
+                    <label className='form-label' htmlFor='personalNotes'>Pitches</label>
+                    <div className='container-input'>
+                        <ReactQuill 
+                            className='custom-quill'
+                            value={personalNotes}
+                            onChange={(e) => setPersonalNotes(e.target.value)}
+                            id='personalNotes'
+                            maxLength={2000}
+                            style={{height: 'auto', minHeight: '200px'}}
+                            theme="snow"
+                            name='personalNotes'
+                            modules={modules}
+                        />
+                    </div>
+                    <label className='form-label' htmlFor='linkedin'>What's your LinkedIn?</label>
+                    <div className='container-input'>
+                        <input 
+                            className='form-input-url'                  
+                            value={linkedin}
+                            onChange={(e) => setLinkedin(e.target.value)}
+                            id='linkedin'
+                            pattern="https://.*"
+                            type='url'
+                            autoComplete='off'
+                            name='linkedin'
+                        />
+                    </div>
+                    <label className='form-label' htmlFor='github'>Your Github, perchance?</label>
                     <div className='container-input'>
                         <input 
                             className='input-textarea'
-                            value={action}
-                            onChange={(e) => setAction(e.target.value)}
-                            id='action'
+                            value={github}
+                            onChange={(e) => setGithub(e.target.value)}
+                            id='github'
                             type='text'
                             autoComplete='off'
-                            name='action'
+                            name='github'
                         />
                     </div>
-                    <label className='form-label' htmlFor='result'>What was the result of your actions?</label>
-                    <div className='container-input'>
-                        <input 
-                            className='input-textarea'                  value={result}
-                            onChange={(e) => setResult(e.target.value)}
-                            id='result'
-                            type='text'
-                            autoComplete='off'
-                            name='result'
-                        />
-                    </div>
-                    <label className='form-label' htmlFor='reflection'>What, upon reflection, did you learn from this?</label>
+                    <label className='form-label' htmlFor='codepen'>Any work on Codepen?</label>
                     <div className='container-input'>
                         <input 
                             className='input-textarea'
-                            value={reflection}
-                            onChange={(e) => setReflection(e.target.value)}
-                            id='reflection'
+                            value={codepen}
+                            onChange={(e) => setCodePen(e.target.value)}
+                            id='codepen'
                             type='text'
                             autoComplete='off'
-                            name='reflection'
+                            name='codepen'
                         />
                     </div>
                 </div> 
@@ -148,7 +173,7 @@ export const ProfileEdit = ({token}) => {
                     <label htmlFor='submit' className='form-label'></label>
                     <input
                         id='submit'
-                        to="/starss"
+                        to="/profile"
                         className='button-submit'
                         type='submit'
                         value='Save My Work!'

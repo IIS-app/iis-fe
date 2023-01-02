@@ -75,7 +75,7 @@ export const Profile = ({ token }) => {
                 />
             </div> 
                 <Link
-                    to={`/profile/edit/${userId}}`}
+                    to={`/profile/edit/{}`}
                     >
                     <button>Edit</button>
                 </Link>               
