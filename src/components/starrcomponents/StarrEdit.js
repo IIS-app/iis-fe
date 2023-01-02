@@ -40,9 +40,19 @@ export const StarrEdit = ({ token }) => {
     const handleSubmit = (e) => {
         e.preventDefault()
         setError(null)
-        requestUpdateStarr(token, { pk }, question, summary, situation, task, result, reflection)
+        // data map checks
+        console.log(`token: ${token}, pk: ${pk}`)
+        console.log('question:', question)
+        console.log('summary:', summary)
+        console.log('situation:', situation)
+        console.log('task:', task)
+        console.log('action:', action)
+        console.log('result:', result)
+        console.log('reflection:', reflection)
+
+        requestUpdateStarr(token, { pk }, question, summary, situation, task, action, result, reflection)
             .catch((error) => {
-                setError(error.message)
+            setError(error.message)
         })
     }
 
@@ -74,7 +84,7 @@ export const StarrEdit = ({ token }) => {
                             value={summary}
                             onChange={(e) => setSummary(e.target.value)}
                             id='summary'
-                            type='date'
+                            type='text'
                             autoComplete='off'
                             name='summary'
                         />
@@ -96,6 +106,7 @@ export const StarrEdit = ({ token }) => {
                     <div className='container-input'>
                         <input 
                             className='input-textarea'
+                            value={task}
                             onChange={(e) => setTask(e.target.value)}
                             id='task'
                             type='text'
@@ -107,6 +118,7 @@ export const StarrEdit = ({ token }) => {
                     <div className='container-input'>
                         <input 
                             className='input-textarea'
+                            value={action}
                             onChange={(e) => setAction(e.target.value)}
                             id='action'
                             type='text'
@@ -117,7 +129,7 @@ export const StarrEdit = ({ token }) => {
                     <label className='form-label' htmlFor='result'>What was the result of your actions?</label>
                     <div className='container-input'>
                         <input 
-                            className='input-textarea'
+                            className='input-textarea'                  value={result}
                             onChange={(e) => setResult(e.target.value)}
                             id='result'
                             type='text'
@@ -129,6 +141,7 @@ export const StarrEdit = ({ token }) => {
                     <div className='container-input'>
                         <input 
                             className='input-textarea'
+                            value={reflection}
                             onChange={(e) => setReflection(e.target.value)}
                             id='reflection'
                             type='text'

@@ -61,6 +61,15 @@ export const requestDeleteStarr = (token, pk) => {
 export const requestUpdateStarr = (token, {pk}, question, summary, situation, task, action, result, reflection) => {
     const url = `https://internal-interview-service.onrender.com/starr-stories/${pk}`
 
+    console.log(`token: ${token}, pk: ${pk}`)
+    console.log('question', question)
+    console.log('summary', summary)
+    console.log('situation', situation)
+    console.log('task', task)
+    console.log('action', action)
+    console.log('result', result)
+    console.log('reflection', reflection)
+
     const formData = new FormData()
         formData.append('question', question)
         formData.append('summary', summary)
@@ -70,6 +79,10 @@ export const requestUpdateStarr = (token, {pk}, question, summary, situation, ta
         formData.append('result', result)
         formData.append('reflection', reflection)
 
+        for (const [key, value] of formData.entries()) {
+            console.log(`form: ${key}: ${value}`)
+        }
+    
     const response = axios.patch(url, formData,
         {headers: {
             Authorization: `Token ${token}`
