@@ -1,23 +1,37 @@
 import { useState } from "react"
 import { useNavigate } from 'react-router';
 import { requestCreateTargetCompany } from '../requests/CompanyRequests';
+import ReactQuill from 'react-quill'
+import 'react-quill/dist/quill.snow.css'
+import 'react-quill/dist/quill.bubble.css'
 
 export const TCForm = ({token}) => {
-    const [targetCompany, setTargetCompany] = useState('')
+    const [targetCompany, setTargetCompany] = useState([])
     const [companyRank, setCompanyRank] = useState('')
     const [companyName, setCompanyName] = useState('')
     const [companyUrl, setCompanyUrl] = useState('')
     const [companyJobsUrl, setCompanyJobsUrl] = useState('')
     const [companyNotes, setCompanyNotes] = useState('')
     const [error, setError] = useState(null)
-    const [isLoading, setIsLoading] = true
+    const [isLoading, setIsLoading] = useState(true)
     const navigate = useNavigate()
+
+    const modules = {
+        toolbar: [
+            [{ 'header': [1, 2, 3, false] }],
+            [{ 'bold': true }, { 'italic': true }, { 'underline': true }, { 'strike': [] }],
+            [{ list:  "ordered" }, { list:  "bullet" }],
+            ["blockquote", "code-block"],
+        ]
+    }
 
 
     const handleSubmit = (e) => {
         e.preventDefault()
         setError(null)
-        requestCreateTargetCompany(token, companyRank, companyName, companyUrl, companyJobsUrl, companyNotes)
+        setTargetCompany([])
+        console.log(targetCompany)
+        requestCreateTargetCompany(token, companyName, companyRank,companyUrl, companyJobsUrl, companyNotes)
         
         .then((res) => {
             setTargetCompany(res.data)
@@ -35,7 +49,7 @@ export const TCForm = ({token}) => {
             <form className="form-company" id='form-company' onSubmit={handleSubmit}>
                 <div className="container-form" style={{border: 'solid', width:'58%', }}>
                 <legend><strong>Just the basics get you started!</strong></legend>
-                <label className="form-label" htmlFor="companyName">Company Name</label>
+                    <label className="form-label" htmlFor="companyName">Company Name</label>
                     <div className='container-input'>
                         <input 
                             type='text'
@@ -43,20 +57,37 @@ export const TCForm = ({token}) => {
                             className='form-input-text'
                             autoFocus
                             autoComplete='off'
-                            value={companyName}
                             onChange={(e) => setCompanyName(e.target.value)}
                             maxLength={100}
                             name='companyName'
                             />
                     </div>
-                    <label className="form-label" htmlFor="Compan">Company Website:</label>
+                    <label className="form-label" htmlFor="companyRank">On a scale of 1 to 5, rank your interest.</label>
+                    <div className='container-input'>
+                        <input 
+                            type='number'
+                            id='companyRank'
+                            className='form-input-number'
+                            autoFocus
+                            autoComplete='off'
+                            min="1"
+                            max="5"
+                            step="1"
+                            onChange={(e) => setCompanyRank(e.target.value)}
+                            name='companyRank'
+                            value={companyRank}
+                            // placeholder="Leave blank if you are unsure."
+                            />
+                    </div>
+                    <label className="form-label" htmlFor="companyUrl">Company Website:</label>
                     <div className='container-input'>
                         <input
                             type='url'
                             id='companyUrl'
                             className='form-input-url'
                             autoComplete='off'
-                            value={companyUrl}
+                            placeholder="https://company.com"
+                            pattern="https://.*" 
                             onChange={(e) => setCompanyUrl(e.target.value)}
                             name='companyUrl'
                         />                      
@@ -68,32 +99,44 @@ export const TCForm = ({token}) => {
                             id='companyJobsUrl'
                             className='form-input-url'
                             autoComplete='off'
-                            value={companyJobsUrl}
+                            placeholder="https://company.com/jobs"
+                            pattern="https://.*" 
                             onChange={(e) => setCompanyJobsUrl(e.target.value)}
                             name='companyJobsUrl'
                         />                      
                     </div>
                     <label className="form-label" htmlFor="companyNotes">Agent Comment Log: </label>
                     <div className='container-input'>
+                        <ReactQuill
+                            modules={modules}
+                            theme="bubble"
+                            className='custom-quill'
+                            id='companyNotes'
+                            name='companyNotes'
+                            maxLength={2000}
+                            onChange={(value) => setCompanyNotes(value)}
+                        />                        
+                    </div>
+                    {/* <label className="form-label" htmlFor="companyNotes">Agent Comment Log: </label>
+                    <div className='container-input'>
                         <input
                             className='form-input-text'
-                            value={companyNotes}
                             id='companyNotes'
                             type='text'
                             name='companyNotes'
                             maxLength={2000}
                             onChange={(e) => setCompanyNotes(e.target.value)}
                         />                        
-                    </div>
+                    </div> */}
                 </div>
                 <div className='container-input'>
                     <label htmlFor='submit' className='form-label'></label>
                     <input 
                         to="/targetcompanies"
                         id='submit'
-                        className='button submit'
+                        className='button-submit'
                         type='submit'
-                        value="It's Just the Beginning!"
+                        value="Let's Nail Down Assets!"
                         // TODO: would like to have {codename} available in lieu of Agent.
                     />
                 </div>

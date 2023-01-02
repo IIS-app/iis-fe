@@ -10,7 +10,7 @@ export const WinEdit = ({ token }) => {
     const [winTitle, setWinTitle]= useState('')
     const [winDescription, setWinDescription]= useState('')
     const [winDate, setWinDate] = useState('')
-    const [winPicture, setWinPicture] = useState(null)
+    const [winPicture, setWinPicture] = useState('', null)
     const [winLoadedPicture, setWinLoadedPicture] = useState(null)
     const [error, setError] = useState(null)
     const [isLoading, setIsLoading] = useState(true)

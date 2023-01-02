@@ -2,6 +2,10 @@ import { useEffect, useState, useRef } from 'react';
 import { requestUpdateTargetCompany } from '../requests/CompanyRequests';
 import { requestTargetCompanyDetail } from '../requests/CompanyRequests';
 import { Link, useParams } from 'react-router-dom'
+import ReactQuill from 'react-quill'
+import 'react-quill/dist/quill.snow.css'
+import 'react-quill/dist/quill.bubble.css'
+
 
 export const TCEdit = ({ token }) => {
     const { pk } = useParams()
@@ -33,9 +37,19 @@ export const TCEdit = ({ token }) => {
             .finally(() => setIsLoading(false))
     },[token, pk]);
 
+    const modules = {
+        toolbar: [
+            [{ 'header': [1, 2, 3, false] }],
+            [{ 'bold': true }, { 'italic': true }, { 'underline': true }, { 'strike': true }],
+            [{ list:  "ordered" }, { list:  "bullet" }],
+            ["blockquote", "code-block"],
+        ]
+    }
+
     const handleSubmit = (e) => {
         e.preventDefault()
         setError(null)
+        console.log(token, { pk }, token, companyRank, companyName, companyUrl, companyJobsUrl, companyNotes)
         requestUpdateTargetCompany(token, { pk }, token, companyRank, companyName, companyUrl, companyJobsUrl, companyNotes)
             .catch((error) => {
             setError(error.message)
@@ -90,15 +104,16 @@ export const TCEdit = ({ token }) => {
                     </div>
                     <label className="form-label" htmlFor="companyNotes">Agent Comment Log: </label>
                     <div className='container-input'>
-                        <input
-                            className='form-input-text'
-                            value={companyNotes}
-                            id='companyNotes'
-                            type='text'
-                            name='companyNotes'
-                            maxLength={2000}
-                            onChange={(e) => setCompanyNotes(e.target.value)}
-                        />                        
+                        <ReactQuill
+                        modules={modules}
+                        theme="bubble"
+                        className='custom-quill'
+                        id='companyNotes'
+                        name='companyNotes'
+                        maxLength={2000}
+                        value={companyNotes}
+                        onChange={(value) => setCompanyNotes(value)}
+                        />                 
                     </div>
                 </div>
                 <div className='container-input'>

@@ -63,3 +63,11 @@ textarea {
 input[type="submit"]:hover {
   background-color: #45a049;
 } */
+
+
+.custom-quill {
+  border: 1px solid black;
+  border-radius: 4px;
+  background-color: white;
+  color:black;
+}

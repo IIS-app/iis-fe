@@ -16,8 +16,8 @@ export const requestCreateTargetCompany = (token, companyName, companyRank, comp
     const url = 'https://internal-interview-service.onrender.com/target-company/'
     const response = axios.post(url,
         {
-            rank: companyRank,
             company_name: companyName,
+            rank: companyRank,
             website: companyUrl,
             job_page: companyJobsUrl,
             comments: companyNotes,
@@ -41,7 +41,7 @@ export const requestTargetCompanyDetail = (token, { pk }) => {
 }
 
 // DELETE COMPANY RECORD - ep ✅  app ❌
-export const requestDeleteTargetCompany = (token, pk) => {
+export const requestDeleteTargetCompany = (token, {pk}) => {
     const url = `https://internal-interview-service.onrender.com/target-company/${pk}`
     const response = axios
         .delete(url,
@@ -55,16 +55,19 @@ export const requestDeleteTargetCompany = (token, pk) => {
 
 
 // PATCH UPDATE A TARGET COMPANY RECORD - ep ✅
-export const requestUpdateTargetCompany = (token, pk, companyRank, companyName, companyUrl, companyJobsUrl, companyNotes) => {
+export const requestUpdateTargetCompany = (token, { pk }, companyRank, companyName, companyUrl, companyJobsUrl, companyNotes) => {
     const url = `https://internal-interview-service.onrender.com/target-company/${pk}`
-    const response = axios.patch(url,
-        {
-            rank: companyRank,
-            company_name: companyName,
-            website: companyUrl,
-            job_page: companyJobsUrl,
-            comments: companyNotes,
-        },
+
+    const formData = new FormData()
+        formData.append('rank', companyRank)
+        formData.append('company_name', companyName)
+        formData.append('website', companyUrl)
+        formData.append('job_page', companyJobsUrl)
+        formData.append('comments', companyNotes)
+
+    console.log(formData)
+
+    const response = axios.patch(url, formData,
         {headers: {
             Authorization: `Token ${token}`
             }

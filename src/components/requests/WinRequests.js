@@ -42,7 +42,7 @@ export const requestWinDetail = (token, { pk }) => {
 }
 
 // DELETE WIN RECORD - ep ✅  app ❌
-export const requestDeleteWin = (token, pk) => {
+export const requestDeleteWin = (token, {pk}) => {
     const url = `https://internal-interview-service.onrender.com/wins/${pk}`
     const response = axios
         .delete(url,
