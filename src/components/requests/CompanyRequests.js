@@ -55,8 +55,17 @@ export const requestDeleteTargetCompany = (token, {pk}) => {
 
 
 // PATCH UPDATE A TARGET COMPANY RECORD - ep ✅
-export const requestUpdateTargetCompany = (token, { pk }, companyRank, companyName, companyUrl, companyJobsUrl, companyNotes) => {
+// export const requestUpdateTargetCompany = (token, { pk }, companyRank, companyName, companyUrl, companyJobsUrl, companyNotes) => {
+
+export const requestUpdateTargetCompany = (token, {pk}, companyName, companyRank, companyUrl, companyJobsUrl, companyNotes) => {
     const url = `https://internal-interview-service.onrender.com/target-company/${pk}`
+
+    console.log(`token: ${token}, pk: ${pk}`)
+    console.log('companyRank:', companyRank)
+    console.log('companyName:', companyName)
+    console.log('companyUrl:', companyUrl)
+    console.log('companyJobsUrl:', companyJobsUrl)
+    console.log('companyNotes:', companyNotes)
 
     const formData = new FormData()
         formData.append('rank', companyRank)
@@ -65,9 +74,12 @@ export const requestUpdateTargetCompany = (token, { pk }, companyRank, companyNa
         formData.append('job_page', companyJobsUrl)
         formData.append('comments', companyNotes)
 
-    console.log(formData)
+        for (const [key, value] of formData.entries()) {
+            console.log(`${key}: ${value}`)
+        }
 
-    const response = axios.patch(url, formData,
+    const response = axios.patch(url, 
+        formData,
         {headers: {
             Authorization: `Token ${token}`
             }

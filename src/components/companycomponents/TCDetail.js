@@ -1,6 +1,10 @@
 import { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import { requestTargetCompanyDetail} from '../requests/CompanyRequests'
+import ReactQuill from 'react-quill'
+import 'react-quill/dist/quill.snow.css'
+import 'react-quill/dist/quill.bubble.css'
+
 
 export const TCDetail = ({ token }) => {
     const { pk } = useParams()
@@ -42,7 +46,12 @@ export const TCDetail = ({ token }) => {
                     <li key={`{pk}.company_name`}>{companyName}</li>
                     <li key={`{pk}.website`}><Link className="link-inline" to={companyUrl}>{companyUrl}</Link></li>
                     <li key={`{pk}.jobs_page`}>{companyJobsUrl}</li>
-                    <li key={`{pk}.comments`}>{companyNotes}</li>
+                    <ReactQuill
+                        key={`{pk}.comments`}
+                        value={companyNotes}
+                        reaadOnly={true}
+                        theme={'bubble'}
+                    />
                     <Link 
                         to={`/targetcompany/edit/${pk}`}
                         id="targetco-list-edit"

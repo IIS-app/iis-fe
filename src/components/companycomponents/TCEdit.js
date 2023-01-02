@@ -28,13 +28,13 @@ export const TCEdit = ({ token }) => {
             setCompanyId(res.data.pk)
             setCompanyDetail(res.data)
             setCompanyName(res.data.company_name)
+            setCompanyRank(res.data.rank)
             setCompanyUrl(res.data.website)
             setCompanyJobsUrl(res.data.job_page)
             setCompanyNotes(res.data.comments)
-            console.log(res)
             })
-            .catch(error => setError(error.message))
-            .finally(() => setIsLoading(false))
+        .catch(error => setError(error.message))
+        .finally(() => setIsLoading(false))
     },[token, pk]);
 
     const modules = {
@@ -49,11 +49,23 @@ export const TCEdit = ({ token }) => {
     const handleSubmit = (e) => {
         e.preventDefault()
         setError(null)
-        console.log(token, { pk }, token, companyRank, companyName, companyUrl, companyJobsUrl, companyNotes)
-        requestUpdateTargetCompany(token, { pk }, token, companyRank, companyName, companyUrl, companyJobsUrl, companyNotes)
+
+        // TODO: What is going on with the data map?
+        // Checked and this DATA is CORRECT, but by the time it gets to the requests formData...it's not great
+        console.log(`token: ${token}, pk: ${pk}`)
+        console.log('companyRank:', companyRank)
+        console.log('companyName:', companyName)
+        console.log('companyUrl:', companyUrl)
+        console.log('companyJobsUrl:', companyJobsUrl)
+        console.log('companyNotes:', companyNotes)
+        // requestUpdateTargetCompany(token, { pk }, token, companyRank, companyName, companyUrl, companyJobsUrl, companyNotes)
+        
+        requestUpdateTargetCompany(token, { pk }, companyName, companyRank, companyUrl, companyJobsUrl, companyNotes)
+            console.log(`name: ${companyName}, rank:${companyRank}, url:${companyUrl}, jobsUrl: ${companyJobsUrl}, notes:${companyNotes}`)
             .catch((error) => {
-            setError(error.message)
-        })
+                setError(error.message)
+                console.log('API error:', error.message)
+            })
     }
 
 
@@ -77,6 +89,24 @@ export const TCEdit = ({ token }) => {
                             maxLength={100}
                             name='companyName'
                             />
+                    </div>
+                    <label className="form-label" htmlFor="companyRank">On a scale of 1 to 5, rank your interest.</label>
+                    <div className='container-input'>
+                        <input 
+                            type='number'
+                            id='companyRank'
+                            className='form-input-number'
+                            autoFocus
+                            autoComplete='off'
+                            min="1"
+                            max="5"
+                            step="1"
+                            onChange={(e) => setCompanyRank(e.target.value)}
+                            name='companyRank'
+                            value={companyRank}
+                            // placeholder="Leave blank if you are unsure."
+                            />
+                            <p>{`Current Rank: ${companyRank}`}</p>
                     </div>
                     <label className="form-label" htmlFor="Compan">Company Website:</label>
                     <div className='container-input'>

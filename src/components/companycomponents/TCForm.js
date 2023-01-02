@@ -19,7 +19,7 @@ export const TCForm = ({token}) => {
     const modules = {
         toolbar: [
             [{ 'header': [1, 2, 3, false] }],
-            [{ 'bold': true }, { 'italic': true }, { 'underline': true }, { 'strike': [] }],
+            [{ 'bold': true }, { 'italic': true }, { 'underline': true }, { 'strike': true }],
             [{ list:  "ordered" }, { list:  "bullet" }],
             ["blockquote", "code-block"],
         ]
