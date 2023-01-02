@@ -4,7 +4,7 @@ import { requestUserInfo } from '../requests/GeneralRequests';
 import ReactQuill from 'react-quill'
 import 'react-quill/dist/quill.snow.css'
 import 'react-quill/dist/quill.bubble.css'
-
+ 
 
 export const Profile = ({ token }) => {
     const [userId, setUserId] = useState('');
@@ -24,21 +24,17 @@ export const Profile = ({ token }) => {
     useEffect(() => {
         setError(null)
         requestUserInfo(token)
-            .then(res => {
+        .then(res => {
                 setUserId(res.id)
-                console.log(userFirstName)
-                setUserFirstName(res.first_name);
-                console.log(userFirstName)
-                setUserLastName(res.last_name);
-                setCodename(res.codename);
-                setUserEmail(res.email);
-                // setPassword(res.password);
-                setPersonalNotes(res.personal_pitch);
-                setLinkedin(res.linkedin);
-                setGithub(res.github);
-                setCodePen(res.codepen);
-                setPortfolio(res.portfolio);
-                console.log(res)
+                setUserFirstName(res.data.first_name);
+                setUserLastName(res.data.last_name);
+                setCodename(res.data.codename);
+                setUserEmail(res.data.email);
+                setPersonalNotes(res.data.personal_pitch);
+                setLinkedin(res.data.linkedin);
+                setGithub(res.data.github);
+                setCodePen(res.data.codepen);
+                setPortfolio(res.data.portfolio);
             })
             .catch(error => setError(error.message))
             },[token])
@@ -60,12 +56,10 @@ export const Profile = ({ token }) => {
 
             <h2>The facts.</h2>
             <div key={userId}>
-                {console.log(codename)}
                 <p>{`First Name: ${userFirstName}`}</p>
                 <p>{`Last Name: ${userLastName}`}</p>
                 <p>{`Codename: ${codename}`}</p>
                 <p>{`Email: ${userEmail}`}</p>
-                {/* <p>{`Password: ${password}`}</p> */}
                 <p>{`LinkedIn: ${linkedin}`}</p>
                 <p>{`Github: ${github}`}</p>          
                 <p>Personal Notes:</p>
@@ -77,12 +71,14 @@ export const Profile = ({ token }) => {
                     style={{height: 'auto', minHeight: '200px'}}
                     name='personalNotes'
                     maxLength={2000}
-                    onChange={(value) => setPersonalNotes(value)}
-                    
+                    onChange={(value) => setPersonalNotes(value)}              
                 />
-
-            </div>
-            
+            </div> 
+                <Link
+                    to={`/profile/edit/${userId}}`}
+                    >
+                    <button>Edit</button>
+                </Link>               
         </div>
     )
 };

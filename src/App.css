@@ -45,9 +45,15 @@ body {
 }
 
 .container-action-links {
-  display: inline;
+  display: flex;
+  justify-content: space-between;
+  border: 1px solid;
+  border-radius: 5px;
+  padding: 2px;
 }
 
 .button-action {
   margin-right: 10px;
+
 }
+

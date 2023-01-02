@@ -1,37 +1,40 @@
-import { useEffect, useState } from 'react';
-import { requestUpdateStarr } from '../requests/StarrRequests';
-import { requestStarrDetail } from '../requests/StarrRequests';
-import { Link, useParams } from 'react-router-dom'
+import { useEffect, useState } from "react";
+import { requestUpdateUserInfo, requestUserInfo } from "../requests/GeneralRequests";
+import { Link, useParams } from "react-router-dom";
+import ReactQuill from 'react-quill'
+import 'react-quill/dist/quill.snow.css'
+import 'react-quill/dist/quill.bubble.css'
 
-export const StarrEdit = ({ token }) => {
-    const { pk } = useParams()
-    const [StarrDetail, setStarrDetail] = useState([])
-    const [starr, setStarr] = useState('')
-    const [question, setQuestion] = useState('')
-    const [summary, setSummary] = useState('')
-    const [situation, setSituation]= useState('')
-    const [task, setTask] = useState('')
-    const [action, setAction] = useState('')
-    const [result, setResult] = useState('')
-    const [reflection, setReflection] = useState('')
+export const ProfileEdit = ({token}) => {
+    const {pk} = useParams()
+    const [userId, setUserId] = useState('');
+    const [userFirstName, setUserFirstName] = useState('');
+    const [userLastName, setUserLastName] = useState('');
+    const [codename, setCodename] = useState('');
+    const [userEmail, setUserEmail] = useState('');
+    const [personalNotes, setPersonalNotes] = useState('');
+    const [linkedin, setLinkedin] = useState('');
+    const [ github, setGithub] = useState('');
+    const [ codepen, setCodePen] = useState('');
+    const [ portfolio, setPortfolio] = useState('');
     const [error, setError] = useState(null)
     const [isLoading, setIsLoading] = useState(true)
-
 
     useEffect(() => {
         setError(null)
         setIsLoading(true)
-        requestStarrDetail(token, { pk })
+        requestUserInfo(token, {pk})
         .then(res => {
-            setStarr(res.data.pk)
-            setStarrDetail(res.data)
-            setQuestion(res.data.question)
-            setSummary(res.data.summary)
-            setSituation(res.data.situation)
-            setTask(res.data.task)
-            setAction(res.data.action)
-            setResult(res.data.result)
-            setReflection(res.data.reflection)
+            setUserId(res.id)
+            setUserFirstName(res.data.first_name);
+            setUserLastName(res.data.last_name);
+            setCodename(res.data.codename);
+            setUserEmail(res.data.email);
+            setPersonalNotes(res.data.personal_pitch);
+            setLinkedin(res.data.linkedin);
+            setGithub(res.data.github);
+            setCodePen(res.data.codepen);
+            setPortfolio(res.data.portfolio);
             })
             .catch(error => setError(error.message))
             .finally(() => setIsLoading(false))
@@ -41,7 +44,7 @@ export const StarrEdit = ({ token }) => {
         e.preventDefault()
         setError(null)
 
-        requestUpdateStarr(token, { pk }, question, summary, situation, task, action, result, reflection)
+        requestUpdateUserInfo(token, { pk }, id, first_name, last_name, codename, email, personal_pitch, linkedin, github, codepen, portfolio)
             .catch((error) => {
             setError(error.message)
         })
@@ -49,31 +52,31 @@ export const StarrEdit = ({ token }) => {
 
 
     return (
-        <div className='container-form'>
+        <div className="container-form">
         {error && <div className="error">{error}</div>}
-            <h2>What will you be celebrating today?</h2>
-            <form className='form-starr' id='form-starr' onSubmit={handleSubmit}>
-                <div className='container-form' style={{border: 'solid', width:'88%', }}>
+            <h2>Edit your Profile.</h2>
+            <form className="form-profile" id="form-profile" onSubmit={handleSubmit}>
+            <div className='container-form' style={{border: 'solid', width:'88%', }}>
                     <legend>Celebrate You!</legend>
-                    <label className='form-label' htmlFor="question">Name your New STARR.</label>
+                    <label className='form-label' htmlFor="userFirstName">Who are you</label>
                     <div className='container-input'>
                         <input 
                             type="text"
-                            id="question"
+                            id="userFirstName"
                             className='form-input-text'
                             autoFocus
                             autoComplete='off'
-                            value={question}
-                            maxLength={50}
-                            onChange={(e) => setQuestion(e.target.question)}
+                            value={first_name}
+                            maxLength={20}
+                            onChange={(e) => setUserFirstName(e.target.first_name)}
                             />
                     </div>
-                    <label className='form-label' htmlFor='summary'>Povide a Summary of the event.</label>
+                    <label className='form-label' htmlFor='userLastName'>What is your Bond name, Agent?</label>
                     <div className='container-input'>
                         <input 
                             className='text'
-                            value={summary}
-                            onChange={(e) => setSummary(e.target.value)}
+                            value={last_name}
+                            onChange={(e) => setUserLastName(e.target.value)}
                             id='summary'
                             type='text'
                             autoComplete='off'
@@ -151,11 +154,12 @@ export const StarrEdit = ({ token }) => {
                         value='Save My Work!'
                     />
                 </div>
+    
             </form>
         </div>
-    )
+
+
+    )    
 }
 
 
-
-                

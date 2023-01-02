@@ -41,6 +41,11 @@ export const RoutesAll = ({token}, isLoggedIn, setAuth) => {
                 element={ <Profile token={token} isLoggedIn={isLoggedIn}/> }
             />
             <Route 
+                path="/profile/edit"
+                exact 
+                element={ <Profile token={token} isLoggedIn={isLoggedIn}/> }
+            />
+            <Route 
                 path="/home"
                 exact
                 element={ <Dashboard token={token} isLoggedIn={isLoggedIn} /> }
