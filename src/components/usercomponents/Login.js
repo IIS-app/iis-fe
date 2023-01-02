@@ -31,6 +31,7 @@ export const Login = ({ setAuth, isLoggedIn }) => {
             {register===false ? (
             <div className='container-login'>
                 <h3>Please log in below.</h3>
+                    <img src={`${process.env.PUBLIC_URL}/iis-logo.png`} alt="Logo" />
                 {error && <div className="error">{error}</div>}
                 <form id="form-login" onSubmit={handleSubmit}>
                     <div className='container-input'>
@@ -61,8 +62,13 @@ export const Login = ({ setAuth, isLoggedIn }) => {
                         >Login</button>
                     </div>
                     <div id="register">
-                    <h3>or if you are first time visitor, please
-                                <Link className='link-inline' to="/register" onClick={(e)=> setRegister(!register)}> register.</Link></h3>
+                    <h3>New Agent? please...
+                                <Link 
+                                className='link-inline' 
+                                id='link-register'
+                                to="/register" 
+                                onClick={(e)=> setRegister(!register)}
+                                > Register </Link></h3>
                     </div>
                 </form>
             </div>
