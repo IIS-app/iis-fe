@@ -38,7 +38,7 @@ export const requestLogout = (token) => {
 // GET USER INFO - ep ✅
 export const requestUserInfo = (token) => {
     const url = 'https://internal-interview-service.onrender.com/auth/users/me/'
-    const response = axios.post(url, {
+    const response = axios.get(url, {
         
         headers:
             { Authorization: `Token ${token}`
