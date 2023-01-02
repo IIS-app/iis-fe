@@ -2,7 +2,7 @@ import axios from 'axios'
 
 // ❌ GET LIST OF COMPANY QUESTIONS
 export const requestListCompanyQuestions = (token) => {
-    const url = 'https://internal-interview-service.onrender.com/com/questions/cq'
+    const url = 'https://internal-interview-service.onrender.com/questions/cq'
     const response = axios.get(url,
         {headers: { 
             Authorization: `Token ${token}`       
@@ -14,7 +14,7 @@ export const requestListCompanyQuestions = (token) => {
 
 // ❌ GET LIST OF INTERVIEW QUESTIONS
 export const requestListInterviewQuestions = (token) => {
-    const url = 'https://internal-interview-service.onrender.com/com/questions/iq'
+    const url = 'https://internal-interview-service.onrender.com/questions/iq'
     const response = axios.get(url,
         {headers: { 
             Authorization: `Token ${token}`       
@@ -26,7 +26,7 @@ export const requestListInterviewQuestions = (token) => {
 
 // ❌ GET LIST OF USER QUESTIONS
 export const requestListUserQuestions = (token) => {
-    const url = 'https://internal-interview-service.onrender.com/com/questions/me'
+    const url = 'https://internal-interview-service.onrender.com/questions/'
     const response = axios.get(url,
         {headers: { 
             Authorization: `Token ${token}`       
@@ -37,7 +37,7 @@ export const requestListUserQuestions = (token) => {
 }
 
 // ❌ POST CREATE NEW QUESTION RECORD
-export const requestCreateQuestion = (token, questionId, question, answer, type) => {
+export const requestCreateQuestion = (token, question, answer, type) => {
     const url = 'https://internal-interview-service.onrender.com/questions/'
     const response = axios.post(url,
         {
@@ -55,8 +55,8 @@ export const requestCreateQuestion = (token, questionId, question, answer, type)
 }
 
 // ❌ PATCH UPDATE QUESTION RECORD
-export const requestUpdateQuestion = (token, questionId, question, answer, type) => {
-    const url = `https://internal-interview-service.onrender.com/questions/${questionId}`
+export const requestUpdateQuestion = (token, {pk}, question, answer, type) => {
+    const url = `https://internal-interview-service.onrender.com/questions/${pk}`
     const response = axios.patch(url,
         {
             questionId: questionId,
