@@ -11,22 +11,21 @@ export const Profile = ({ token }) => {
     const [personalPitch, setPersonalPitch] = useState([]);
     const [linkedin, setLinkedin] = useState('');
     const [ github, setGithub] = useState('');
-  
+
 
     useEffect(() => {
     requestUserInfo(token).then(response => {
-      const { first_name, last_name, codename, email, password, personal_pitch, linkedin, github } = response.data;
-      setFirstName(first_name);
-      setLastName(last_name);
-      setCodename(codename);
-      setEmail(email);
-      setPassword(password);
-      setPersonalPitch(personal_pitch);
-      setLinkedin(linkedin);
-      setGithub(github);
-      
-    });
-    }, []);
+        const { first_name, last_name, codename, email, password, personal_pitch, linkedin, github } = response.data;
+        setFirstName(first_name);
+        setLastName(last_name);
+        setCodename(codename);
+        setEmail(email);
+        setPassword(password);
+        setPersonalPitch(personal_pitch);
+        setLinkedin(linkedin);
+        setGithub(github);
+        });
+    }, [token]);
 
     return (
         <div className='container-profile'>
