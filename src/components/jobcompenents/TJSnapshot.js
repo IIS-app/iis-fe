@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { requestDeleteTargetJob } from '../requests/JobRequests'
 
 
-export const TargetJobSnapshot = ({ token, job }) => {
+export const TJSnapshot = ({ token, job }) => {
 
     return (
         <div className="container-job">
