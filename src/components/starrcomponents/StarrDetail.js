@@ -12,8 +12,8 @@ export const StarrDetail = ({token}) => {
     const [action, setAction] = useState('');
     const [result, setResult] = useState('');
     const [reflection, setReflection] = useState('');
-    const [isLoading, setIsLoading] = useState(true)
     const [error, setError] = useState(null);
+    const [isLoading, setIsLoading] = useState(true)
     
     useEffect(() => {
         setError(null)
@@ -50,7 +50,7 @@ export const StarrDetail = ({token}) => {
                         to={`/starrs/edit/${pk}`}
                         id="starrs-list-edit"
                         className="button-edit"
-                    >Make My STARRS Shine On, You Crazy Coder</Link>
+                    >Edit your STARR stories here.</Link>
                 </ul>       
         </div>
     )

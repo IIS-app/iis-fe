@@ -42,9 +42,8 @@ export const requestUserInfo = (token) => {
         
         headers:
             { Authorization: `Token ${token}`
-            }
         }
-    )
+    })
         return response   
 }
 

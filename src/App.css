@@ -10,7 +10,8 @@ body {
 
 
 .App {
-  text-align: center;
+  text-align: left;
+  padding-left: 3em;
 }
 
 
@@ -25,29 +26,3 @@ body {
   color: white;
 }
 
-.question-box {
-  border: 1px black double;
-}
-
-.container-win,
-.container-main {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  border: 1px solid;
-  border-radius: 3px;
-  padding: 3px;
-}
-
-.list {
-  list-style: none;
-  font-size: smaller;
-}
-
-.container-action-links {
-  display: inline;
-}
-
-.button-action {
-  margin-right: 10px;
-}

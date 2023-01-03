@@ -40,15 +40,6 @@ export const StarrEdit = ({ token }) => {
     const handleSubmit = (e) => {
         e.preventDefault()
         setError(null)
-        // data map checks
-        console.log(`token: ${token}, pk: ${pk}`)
-        console.log('question:', question)
-        console.log('summary:', summary)
-        console.log('situation:', situation)
-        console.log('task:', task)
-        console.log('action:', action)
-        console.log('result:', result)
-        console.log('reflection:', reflection)
 
         requestUpdateStarr(token, { pk }, question, summary, situation, task, action, result, reflection)
             .catch((error) => {
@@ -60,93 +51,94 @@ export const StarrEdit = ({ token }) => {
     return (
         <div className='container-form'>
         {error && <div className="error">{error}</div>}
-            <h2>What will you be celebrating today?</h2>
+            <h2>Update your STARR here</h2>
             <form className='form-starr' id='form-starr' onSubmit={handleSubmit}>
                 <div className='container-form' style={{border: 'solid', width:'88%', }}>
-                    <legend>Celebrate You!</legend>
                     <label className='form-label' htmlFor="question">Name your New STARR.</label>
                     <div className='container-input'>
                         <input 
-                            type="text"
-                            id="question"
-                            className='form-input-text'
                             autoFocus
                             autoComplete='off'
-                            value={question}
+                            className='form-input-text'
+                            id="question"
                             maxLength={50}
-                            onChange={(e) => setQuestion(e.target.question)}
+                            name="question"
+                            onChange={(e) => setQuestion(e.target.value)}
+                            type="text"
+                            value={question}
                             />
                     </div>
-                    <label className='form-label' htmlFor='summary'>Povide a Summary of the event.</label>
+                    <label className='form-label' htmlFor='summary'>Summarize your STARR story.</label>
                     <div className='container-input'>
                         <input 
-                            className='text'
-                            value={summary}
-                            onChange={(e) => setSummary(e.target.value)}
-                            id='summary'
-                            type='text'
                             autoComplete='off'
+                            className='text'
+                            id='summary'
+                            onChange={(e) => setSummary(e.target.value)}
                             name='summary'
+                            type='text'
+                            value={summary}
                         />
                     </div>
-                    <label className='form-label' htmlFor='situation'>Describe the Situation. </label>
+                    <label className='form-label' htmlFor='situation'>Describe the Situation or conflict. </label>
                     <div className='container-input'>
                         <textarea 
-                            className='input-textarea'
-                            value={situation}
-                            onChange={(e) => setSituation(e.target.value)}
-                            id='situation'
-                            type='text'
                             autoComplete='off'
+                            className='input-textarea'
+                            id='situation'
                             maxLength={1000}
                             name='situation'
+                            onChange={(e) => setSituation(e.target.value)}
+                            type='text'
+                            value={situation}
                         />
                     </div>
-                    <label className='form-label' htmlFor='task'>What is the task at hand?</label>
+                    <label className='form-label' htmlFor='task'>What task needs to be solved?</label>
                     <div className='container-input'>
                         <input 
+                            autoComplete='off'
                             className='input-textarea'
-                            value={task}
-                            onChange={(e) => setTask(e.target.value)}
                             id='task'
-                            type='text'
-                            autoComplete='off'
                             name='task'
+                            onChange={(e) => setTask(e.target.value)}
+                            type='text'
+                            value={task}
                         />
                     </div>
-                    <label className='form-label' htmlFor='action'>What actions did you take?</label>
+                    <label className='form-label' htmlFor='action'>What action did you take to accomplish this task?</label>
                     <div className='container-input'>
                         <input 
+                            autoComplete='off'
                             className='input-textarea'
-                            value={action}
-                            onChange={(e) => setAction(e.target.value)}
                             id='action'
-                            type='text'
-                            autoComplete='off'
                             name='action'
+                            onChange={(e) => setAction(e.target.value)}
+                            type='text'
+                            value={action}
                         />
                     </div>
-                    <label className='form-label' htmlFor='result'>What was the result of your actions?</label>
+                    <label className='form-label' htmlFor='result'>What was the result of your action?</label>
                     <div className='container-input'>
                         <input 
-                            className='input-textarea'                  value={result}
-                            onChange={(e) => setResult(e.target.value)}
+                            autoComplete='off'
+                            className='input-textarea'                  
                             id='result'
-                            type='text'
-                            autoComplete='off'
                             name='result'
+                            onChange={(e) => setResult(e.target.value)}
+                            type='text'
+                            value={result}
                         />
                     </div>
-                    <label className='form-label' htmlFor='reflection'>What, upon reflection, did you learn from this?</label>
+                    <label className='form-label' htmlFor='reflection'>Upon reflection, what did this experience teach you?</label>
                     <div className='container-input'>
                         <input 
-                            className='input-textarea'
-                            value={reflection}
-                            onChange={(e) => setReflection(e.target.value)}
-                            id='reflection'
-                            type='text'
                             autoComplete='off'
+                            className='input-textarea'
+                            id='reflection'
                             name='reflection'
+                            onChange={(e) => setReflection(e.target.value)}
+                            type='text'
+                            value={reflection}
                         />
                     </div>
                 </div> 
@@ -154,7 +146,7 @@ export const StarrEdit = ({ token }) => {
                     <label htmlFor='submit' className='form-label'></label>
                     <input
                         id='submit'
-                        to="/starss"
+                        to='starrs'
                         className='button-submit'
                         type='submit'
                         value='Save My Work!'

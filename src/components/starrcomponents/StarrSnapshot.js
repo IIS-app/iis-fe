@@ -41,7 +41,7 @@ export const StarrSnapshot = ({ token, starr }) => {
                     id="starr-delete"
                     className="button-action"
                     onClick={handleDelete}
-                    title={`WARNING this will delete your starr: "${starr.question}!" AND NO TAKE BACKS...YET`}
+                    title={`WARNING - this will delete your starr: "${starr.question}!"`}
                     >❌
                 </Link>
             </div>

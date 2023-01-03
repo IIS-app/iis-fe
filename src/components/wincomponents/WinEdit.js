@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useState } from 'react';
 import { requestUpdateWin } from '../requests/WinRequests';
 import { requestWinDetail } from '../requests/WinRequests';
 import { Link, useParams } from 'react-router-dom'
