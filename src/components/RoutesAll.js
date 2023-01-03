@@ -2,6 +2,7 @@ import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { Register } from './usercomponents/Register';
 import { Profile } from './usercomponents/Profile';
+import { ProfileEdit } from './usercomponents/ProfileEdit';
 import { Wins } from './wincomponents/Wins';
 import { WinForm } from './wincomponents/WinForm';
 import { WinDetail } from './wincomponents/WinDetail';
@@ -39,6 +40,11 @@ export const RoutesAll = ({token}, isLoggedIn, setAuth) => {
                 path="/profile"
                 exact 
                 element={ <Profile token={token} isLoggedIn={isLoggedIn}/> }
+            />
+            <Route 
+                path="/profile/edit"
+                exact 
+                element={ <ProfileEdit token={token} isLoggedIn={isLoggedIn}/> }
             />
             <Route 
                 path="/home"

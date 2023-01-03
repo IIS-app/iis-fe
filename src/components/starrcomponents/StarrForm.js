@@ -33,7 +33,6 @@ export const StarrForm = ({token}) => {
         <div className='container-form'>
         {error && <div className="error">{error}</div>}
             <h2>Write a New STARR story here!</h2>
-            <p> ...pssst.(IIS ICON here) A STARR is a way to highlight your problem solving skills. Use the form below to tell your story.</p>
             <form className='form-starr' id='form-starr' onSubmit={handleSubmit}>
                 <div className='container-form' style={{border: 'solid', width:'88%', }}>
                     <legend><strong>fill out form, agent awesome.</strong></legend>

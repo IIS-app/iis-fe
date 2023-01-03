@@ -1,3 +1,42 @@
+/* CONTAINER SIZING AND STYLING */
+
+.question-box {
+  border: 1px black double;
+}
+
+.container-win,
+.container-main,
+.container-starr,
+.container-targetco {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  border: 1px solid;
+  border-radius: 3px;
+  padding: 3px;
+}
+
+
+.container-action-links {
+  display: flex;
+  justify-content: space-between;
+  border: 1px solid;
+  border-radius: 5px;
+  padding: 2px;
+}
+
+.button-action {
+  margin-right: 10px;
+  
+}
+
+.list {
+  list-style: none;
+  font-size: smaller;
+}
+
+/* FORM PARENT STYLES */
+
 .form-login, .form-register {
   display: flex;
   flex-direction: column;
@@ -19,6 +58,8 @@
   border: 1px solid #ccc;
   border-radius: 5px;
 }
+
+/* INPUT RELATED STYLING */
 
 label {
   display: block;
@@ -48,23 +89,9 @@ textarea {
   border-radius: 4px;
 }
 
-/* input[type="submit"] {
-  width: 100%;
-  background-color: #4caf50;
-  color: white;
-  padding: 14px 20px;
-  margin-bottom: 20px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 16px;
-  font-weight: bold;
-}
 
-input[type="submit"]:hover {
-  background-color: #45a049;
-} */
-
+/* STYLING FOR QUILL */
+/* REMEMBER STYLE EDIT VS READ, esp. on snow theme */
 
 .custom-quill {
   border: 1px solid black;

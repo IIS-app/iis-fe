@@ -40,8 +40,9 @@ export const TCDetail = ({ token }) => {
     return (
         <div className='container-list'>
         {error && <div className="error">{ error }</div>}
+
             <h2>Company Information</h2>
-                <ul className="details-targetco" key={pk}>
+                <ul key={pk} className="details-targetco" >
                     <li key={`{pk}.rank`}>{companyRank}</li>
                     <li key={`{pk}.company_name`}>{companyName}</li>
                     <li key={`{pk}.website`}><Link className="link-inline" to={companyUrl}>{companyUrl}</Link></li>
