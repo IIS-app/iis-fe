@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { requestTJDetail } from '../requests/JobRequests';
+import { requestTargetJobDetail } from '../requests/JobRequests';
 import { Link, useParams } from 'react-router-dom';
 import styled from 'styled-components'
 import { DragDropContext, Draggable, Droppable } from '@hello-pangea/dnd';
@@ -56,7 +56,7 @@ export const TJDetail = ({ token }) => {
     useEffect(() => {
         setError(null)
         setIsLoading(true)
-        requestTJDetail(token, { pk })
+        requestTargetJobDetail(token, { pk })
             .then(res => {
                 setJobDetail(res.data)
                 setJobTitle(res.data.title)
