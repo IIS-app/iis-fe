@@ -6,7 +6,7 @@ export const StarrSnapshot = ({ token, starr }) => {
     const [isComplete, setIsComplete] = useState('')
 
     const handleDelete = () => {
-        requestDeleteStarr(token, starr.pk)
+        requestDeleteStarr( token )
             .then(response => {
                 if (response.status === 204) {
                     // Successfully deleted starr
@@ -37,7 +37,7 @@ export const StarrSnapshot = ({ token, starr }) => {
                 </Link>
                 <Link
                     key={`${starr.pk}.delete`}
-                    to="#"
+                    to='starrs'
                     id="starr-delete"
                     className="button-action"
                     onClick={handleDelete}

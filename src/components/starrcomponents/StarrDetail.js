@@ -37,7 +37,7 @@ export const StarrDetail = ({token}) => {
     return (
         <div className="container-list">
         {error && <div className="error">{error}</div>}
-            <h3 The Nitty and Gritty of your Starrs></h3>
+            <h3 Your Starr Details></h3>
                 <ul className="details-starr" key={pk}>
                     <li key={`{pk}.question`}>{question}</li>
                     <li key={`{pk}.summary`}>{summary}</li>
