@@ -12,7 +12,6 @@ export const ProfileView = ({ token }) => {
     const [userLastName, setUserLastName] = useState('');
     const [codename, setCodename] = useState('');
     const [userEmail, setUserEmail] = useState('');
-    // const [password, setPassword] = useState('');
     const [personalNotes, setPersonalNotes] = useState('');
     const [linkedin, setLinkedin] = useState('');
     const [ github, setGithub] = useState('');
