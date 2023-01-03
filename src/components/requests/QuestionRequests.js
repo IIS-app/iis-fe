@@ -59,7 +59,6 @@ export const requestUpdateQuestion = (token, {pk}, question, answer, type) => {
     const url = `https://internal-interview-service.onrender.com/questions/${pk}`
     const response = axios.patch(url,
         {
-            questionId: questionId,
             question: question,
             answer: answer,
             type: type            

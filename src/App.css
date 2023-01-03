@@ -10,7 +10,8 @@ body {
 
 
 .App {
-  text-align: center;
+  text-align: left;
+  padding-left: 3em;
 }
 
 
@@ -23,37 +24,5 @@ body {
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
-}
-
-.question-box {
-  border: 1px black double;
-}
-
-.container-win,
-.container-main {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  border: 1px solid;
-  border-radius: 3px;
-  padding: 3px;
-}
-
-.list {
-  list-style: none;
-  font-size: smaller;
-}
-
-.container-action-links {
-  display: flex;
-  justify-content: space-between;
-  border: 1px solid;
-  border-radius: 5px;
-  padding: 2px;
-}
-
-.button-action {
-  margin-right: 10px;
-
 }
 
