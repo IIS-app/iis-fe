@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 import { requestListTargetJobs } from '../requests/JobRequests';
 import { Link } from 'react-router-dom';
-import { TargetJobSnapshot } from './TargetJobSnapshot'
-import { TargetJobDetail } from './TargetJobDetail';
+import { TargetJobSnapshot } from './TJSnapshot'
+import { TJDetail } from './TJDetail';
 
 
 export const TargetJobs = ({token}) => {
@@ -35,12 +35,12 @@ export const TargetJobs = ({token}) => {
             <div className='container-list'>
                 <ul key="job-info" className="list">
                     {jobs ? jobs.map(job => (
-                        <TargetJobSnapshot key={job.pk} job={job}/>
+                        <TJSnapshot key={job.pk} job={job}/>
                         )) : null}
                 </ul>
             </div>
         </div>
-        <TargetJobDetail />
+        <TJDossier />
     </>    
     )
 }
