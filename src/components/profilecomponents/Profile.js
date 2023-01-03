@@ -13,7 +13,6 @@ export const Profile = ({ token }) => {
     const [userLastName, setUserLastName] = useState('');
     const [codename, setCodename] = useState('');
     const [userEmail, setUserEmail] = useState('');
-    // const [password, setPassword] = useState('');
     const [personalNotes, setPersonalNotes] = useState('');
     const [linkedin, setLinkedin] = useState('');
     const [ github, setGithub] = useState('');
@@ -25,8 +24,6 @@ export const Profile = ({ token }) => {
     return (
         <div className='container-profile'>
         {error && <div className="error">{ error }</div>}
-
-            <h2>The facts.</h2>
             <ProfileView token={token}/>
         </div>
     )
