@@ -67,7 +67,7 @@ export const ProfileEdit = ({token}) => {
             <form className="form-profile" id="form-profile" onSubmit={handleSubmit}>
             <div className='container-form' style={{border: 'solid', width:'88%', }}>
                     <legend>Celebrate You!</legend>
-                    <label className='form-label' htmlFor="userFirstName">Who are you</label>
+                    <label className='form-label' htmlFor="userFirstName">First Name</label>
                     <div className='container-input'>
                         <input 
                             type="text"
@@ -80,7 +80,7 @@ export const ProfileEdit = ({token}) => {
                             onChange={(e) => setUserFirstName(e.target.value)}
                             />
                     </div>
-                    <label className='form-label' htmlFor='userLastName'>What is your Bond name, Agent?</label>
+                    <label className='form-label' htmlFor='userLastName'>Your last name, Agent.</label>
                     <div className='container-input'>
                         <input 
                             className='text'
@@ -92,7 +92,7 @@ export const ProfileEdit = ({token}) => {
                             name='userLastName'
                         />
                     </div>
-                    <label className='form-label' htmlFor='codename'>Codename. </label>
+                    <label className='form-label' htmlFor='codename'>Choose your Codename, Agent. </label>
                     <div className='container-input'>
                         <textarea 
                             className='input-textarea'
@@ -105,7 +105,7 @@ export const ProfileEdit = ({token}) => {
                             name='codename'
                         />
                     </div>
-                    <label className='form-label' htmlFor='userEmail'></label>
+                    <label className='form-label' htmlFor='userEmail'>Email</label>
                     <div className='container-input'>
                         <input 
                             className='input-textarea'
@@ -131,7 +131,7 @@ export const ProfileEdit = ({token}) => {
                             modules={modules}
                         />
                     </div>
-                    <label className='form-label' htmlFor='linkedin'>What's your LinkedIn?</label>
+                    <label className='form-label' htmlFor='linkedin'>LinkedIn Profile link</label>
                     <div className='container-input'>
                         <input 
                             className='form-input-url'                  
@@ -144,26 +144,26 @@ export const ProfileEdit = ({token}) => {
                             name='linkedin'
                         />
                     </div>
-                    <label className='form-label' htmlFor='github'>Your Github, perchance?</label>
+                    <label className='form-label' htmlFor='github'>Github link</label>
                     <div className='container-input'>
                         <input 
-                            className='input-textarea'
+                            className='form-input-url'
                             value={github}
                             onChange={(e) => setGithub(e.target.value)}
                             id='github'
-                            type='text'
+                            type='url'
                             autoComplete='off'
                             name='github'
                         />
                     </div>
-                    <label className='form-label' htmlFor='codepen'>Any work on Codepen?</label>
+                    <label className='form-label' htmlFor='codepen'>Codepen link</label>
                     <div className='container-input'>
                         <input 
-                            className='input-textarea'
+                            className='form-input-url'
                             value={codepen}
                             onChange={(e) => setCodePen(e.target.value)}
                             id='codepen'
-                            type='text'
+                            type='url'
                             autoComplete='off'
                             name='codepen'
                         />
