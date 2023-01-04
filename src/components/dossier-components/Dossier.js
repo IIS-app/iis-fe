@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { requestListWins } from '../requests/WinRequests';
+import { requestDossierDetail } from '../requests/DossierRequests';
 import { Link, useParams } from 'react-router-dom';
 import ErrorBoundary from './ErrorBoundary'
 import styled from 'styled-components'
@@ -67,13 +68,19 @@ const LeftStyledDroppable = styled.div`
     `;
 
 //MAIN FUNCTION EXPORT
-export const TJDossier = ({ token }) => {
+export const Dossier = ({ token }) => {
     const { pk } = useParams();
     const [wins, setWins] = useState([]);
+    const [win, setWin] = useState([]);
+    const [starrs, setStarrs] = useState([]);
+    const [dossier, setDossier] = useState ([]);
+    const [items, setItems] = useState ([]);
+    const [item, setItem] = useState ([]);
     const [error, setError] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
     const [isDraggingOver, setIsDraggingOver] = useState(false);
 
+    // GET LIST OF WINS - drag ✅ 
     useEffect(() => {
         setError(null);
         setIsLoading(true);
@@ -83,24 +90,90 @@ export const TJDossier = ({ token }) => {
             .finally(() => setIsLoading(false))
     }, [token])
 
-    //part of the example code also
+    // GET DOSSIER CONTENTS - drag ✅ 
+    useEffect(() => {
+        setError(null);
+        setIsLoading(true);
+        requestDossierDetail(token)
+            .then(({ data }) => { setDossier(data) })
+            .catch(error => setError(error.message))
+            .finally(() => setIsLoading(false))
+    }, [token])
+
+
+    // DND verify drag destination and update arrays
     const onDragEnd = (result) => {
-        // dropped outside the list
+        // check not dropped outside the list      
         if (!result.destination) {
             return;
         }
+        // // is drop in dossier container
+        // if (result.destination.droppableId === "dossier") {
+        //     switch (result.type) {
+        //         case "win":
+        //             // remove dragged win from win container
+        //             const newWins = wins.filter(win => win.pk !== result.draggableId);
+        //             setWins(newWins);      
+        //             // add win to dossier container
+        //             let newDossierItems = dossier.concat({
+        //                 key: result.draggableId,
+        //                 type: "win" 
+        //             });
+        //             setDossier(newDossierItems);
+        //             // break;
+        //         // case "starr":
+        //         //     // remove dragged starr from starr container
+        //         //     const newStarrs = starrs.filter(starr => starr.pk !== result.draggableId);
+        //         //     setStarrs(newStarrs);
+
+        //         //     // add starr to dossier container
+        //         //     newDossierItems = dossier.concat({
+        //         //         key: result.draggableId,
+        //         //         type: "starr"
+        //         //     });
+        //         //     setDossier(newDossierItems);
+        //         //     break;
+        //         default:
+        //             // break;
+        //     }
+        // }
     }
 
     return (
         <ErrorBoundary>
             <DragDropContext>
                 <ParentContainer>
+                    {/* dossier droppable container */}
                     <Droppable droppableId="dossier">
                         {(provided, snapshot) => (
                             <LeftStyledDroppable
                                 ref={provided.innerRef}
                                 {...provided.droppableProps}>
                                 <ColumnTitle>Drop Items Here</ColumnTitle>
+                                {/* map through contents of dossier */}
+                                {items ? items.map((item, index) => (
+                                    // actual library draggable container
+                                    <Draggable
+                                        key={item.pk}
+                                        draggableId={`${item.pk}`}
+                                        index={index}
+                                        onDragEnd={onDragEnd}
+                                    >
+                                        {(provided, snapshot) => (
+                                            <div>
+                                                <StyledDraggable
+                                                    ref={provided.innerRef}
+                                                    {...provided.dragHandleProps}
+                                                    {...provided.draggableProps}
+                                                >
+                                                    <li className="content-dossier">{`${dossier.item}`}</li>
+                                                </StyledDraggable>
+                                                {provided.placeholder}
+                                            </div>
+                                        )}
+                                    </Draggable>
+                                )) : null}
+
                                 {provided.placeholder}
                             </LeftStyledDroppable>
                         )}

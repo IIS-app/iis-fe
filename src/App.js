@@ -4,10 +4,10 @@ import './css/forms.css'
 import './css/links.css'
 import React from 'react';
 import useLocalStorageState from 'use-local-storage-state';
-import { Header } from './components/sitecomponents/Header';
-import { NavBar } from './components/sitecomponents/NavBar';
-import { Login } from './components/usercomponents/Login';
 import { RoutesAll } from './components/RoutesAll';
+import { Header } from './components/site-components/Header';
+import { NavBar } from './components/site-components/NavBar';
+import { Login } from './components/user-components/Login';
 
 function App() {
 	const [token, setToken] = useLocalStorageState('token', '')

@@ -32,14 +32,14 @@ export const TJSnapshot = ({ token, job }) => {
                     title={`WARNING this will delete your 🎯 Job: "${job.title}!" AND NO TAKE BACKS...YET`}
                     >❌
                 </Link>
-                <Link
+                {/* <Link
                     key={`${job.pk}.view`}
                     to={`/jobs/${job.pk}`}
                     id="job-view"
                     className="button-dossier"
                     alt="Click here to open Dossier"
                     >📂
-                </Link>
+                </Link> */}
             </div>
         </div>
     )
