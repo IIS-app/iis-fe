@@ -12,33 +12,34 @@ const ParentContainer = styled.div`
     flex-direction: row;
     align-items: stretch;
     border-radius: 5px;
-    // overflow: hidden;
-    border: white;
+    overflow: hidden;
+    border: white 1px;
     height: min-content;
 `
 const LeftStyledDroppable = styled.div`
     width: 45%;
-    height: 500px;
-    margin: 20px;
-    border:  black solid 5px;
+    height: 300px;
+    margin: 10px;
+    border:  black solid 2px;
     border-radius: 5px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    background: #36454e;
     `
-
-const StyledDroppable = styled.div`
-    background:;
+    
+    const StyledDroppable = styled.div`
+    background:#36454e;
+    border:  black solid 2px;
     display: flex;
     flex-direction: column;
     width: 45%;
-    height: min-content;
-    height: 500px;
+    height: 300px;
     flex: 1;
     justify-content: space-around;
-    margin: 20px;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    margin: 10px;
+    padding: 10px;
     border-radius: 5px;
     overflow: hidden;
     overflow-y: scroll;
@@ -46,14 +47,17 @@ const StyledDroppable = styled.div`
     const StyledDraggable = styled.div`
     userSelect: 'none';
     padding: 8px;
-    margin: 0 0 8px 0;
-    background: grey;
+    margin: 8px 0 8px 0;
+    background: #96FF7D;
     border-radius: 5px;
     border: 1px ${props => (props.isDragging ? 'dashed #4099ff' : 'solid #ddd')};
     list-style: none;
     flex-direction: column;
     display: flex;
     overflow-y: scroll;
+    font-size: smaller;
+    color: #28353c;
+    font-weight: 600;
     `
 
     const ColumnTitle = styled.h3`
