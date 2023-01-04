@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { requestListTargetJobs } from '../requests/JobRequests';
 import { Link } from 'react-router-dom';
 import { TJSnapshot } from './TJSnapshot'
-import { TJDossier } from './TJDossier';
+import { Dossier } from '../dossier-components/Dossier';
 
 
 export const TargetJobs = ({token}) => {
@@ -40,7 +40,7 @@ export const TargetJobs = ({token}) => {
                 </ul>
             </div>
         </div>
-        <TJDossier token={token} />
+        <Dossier token={token} />
     </>    
     )
 }

@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { requestTJDetail } from '../requests/JobRequests';
+import { requestDossierDetail } from '../requests/DossierRequests'
 import { Link, useParams } from 'react-router-dom';
 import styled from 'styled-components';
 
@@ -31,7 +31,7 @@ import styled from 'styled-components';
     margin: 10px 0;
     `;
     
-    export const TJDossierBuild = () => {
+    export const DossierBuild = () => {
         
 
     
