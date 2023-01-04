@@ -3,21 +3,30 @@ import { Routes, Route } from 'react-router-dom';
 import { Register } from './usercomponents/Register';
 import { Profile } from './profilecomponents/Profile';
 import { ProfileEdit } from './profilecomponents/ProfileEdit';
+
 import { Wins } from './wincomponents/Wins';
 import { WinForm } from './wincomponents/WinForm';
 import { WinDetail } from './wincomponents/WinDetail';
 import { WinEdit } from './wincomponents/WinEdit';
+
+import { TJDossier } from './jobcomponents/TJDossier';
+import { TJDossierBuild } from './jobcomponents/TJDossierBuild';
+import { TJDossierDetail } from './jobcomponents/TJDossierDetail';
+
 import { Starrs } from './starrcomponents/Starrs';
 import { StarrForm } from './starrcomponents/StarrForm';
 import { StarrDetail } from './starrcomponents/StarrDetail';
 import { StarrEdit } from './starrcomponents/StarrEdit';
+
 import { TargetCompanies } from './companycomponents/TargetCompanies';
 import { TCForm } from './companycomponents/TCForm';
 import { TCDetail } from './companycomponents/TCDetail';
 import { TCEdit } from './companycomponents/TCEdit';
 import { Questions } from './questioncomponents/Questions';
+
 import { QuestionForm } from './questioncomponents/QuestionForm';
 import { TargetJobs } from './jobcompenents/TargetJobs';
+
 import { Resumes } from './Resumes';
 import { CoverLetters } from './CoverLetters';
 import { Dashboard } from './sitecomponents/Dashboard';
@@ -141,6 +150,22 @@ export const RoutesAll = ({token}, isLoggedIn, setAuth) => {
                 exact
                 element={ <MotivationalQuotes token={token} isLoggedIn={isLoggedIn} /> }
             />
+                <Route 
+                path="/dossier"
+                exact
+                element={ <TJDossier token={token} isLoggedIn={isLoggedIn} /> }
+            />
+            <Route 
+                path="/dossier/add"
+                exact
+                element={ <TJDossierBuild token={token} isLoggedIn={isLoggedIn} /> }
+            />
+            <Route 
+                path="/dossier/:pk"
+                exact
+                element={ <TJDossierDetail token={token} isLoggedIn={isLoggedIn} /> }
+            />
+
         </Routes>
     )
 }

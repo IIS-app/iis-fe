@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { requestListWins } from '../requests/WinRequests';
-import { requestDossier } from '../requests/WinRequests';
+import { requestDossier } from '../requests/RequestDossier';
 import { Link, useParams } from 'react-router-dom';
 import ErrorBoundary from './ErrorBoundary'
 import styled from 'styled-components'
@@ -71,6 +71,7 @@ const LeftStyledDroppable = styled.div`
 export const TJDossier = ({ token }) => {
     const { pk } = useParams();
     const [wins, setWins] = useState([]);
+    const [dossier, setDossier] = useState ([]);
     const [error, setError] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
     const [isDraggingOver, setIsDraggingOver] = useState(false);
@@ -85,22 +86,36 @@ export const TJDossier = ({ token }) => {
             .finally(() => setIsLoading(false))
     }, [token])
 
-    // GET LIST OF DOSSIERS - drag 
-    export const requestListDossiers = (token) => {
-    const url = 'https://internal-interview-service.onrender.com/dossier/'
-    const response = axios.get(url,
-        {headers: {
-            Authorization: `Token ${token}`
-        }
-    });
-    return response
-}
+    // GET DOSSIER CONTENTS - drag ✅ 
+    useEffect(() => {
+        setError(null);
+        setIsLoading(true);
+        requestDossier(token)
+            .then((res => { setWins(res.data) }))
+            .catch(error => setError(error.message))
+            .finally(() => setIsLoading(false))
+    }, [token])
 
-    //part of the example code also
+
+    // DND verify drag destination and update arrays
     const onDragEnd = (result) => {
-        // dropped outside the list
+        // check not dropped outside the list      
         if (!result.destination) {
             return;
+        }
+        // is drop in dossier container
+        if (result.destination.droppableId === "dossier") {
+            // remove dragged win from win container
+            const newWins = wins.filter(win => win.pk !== result.draggableId);
+            setWins(newWins)
+
+            // add win to dossier container
+            const newDossierItems = dossierItems.concat({
+                key: result.draggableId,
+                type: "win" 
+            });
+            setDossier(newDossierItems)
+
         }
     }
 
