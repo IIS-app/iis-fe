@@ -64,8 +64,8 @@
 label {
   display: block;
   margin-bottom: 10px;
-  font-size: 16px;
-  font-weight: bold;
+  /* font-size: 16px; */
+  /* font-weight: bold; */
 }
 
 input[type="text"],
@@ -99,3 +99,4 @@ textarea {
   background-color: white;
   color:black;
 }
+

@@ -119,7 +119,7 @@ export const Register = ({setAuth}) => {
                             <button
                                 className='button-submit'
                             >Register</button>
-                            <Link to='/login' className='button-submit' >Return to Login</Link>
+                            <Link to='/home' className='button-submit' >Return to Login</Link>
                         </div>
                     </div>
                 </form>

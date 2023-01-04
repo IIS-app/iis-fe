@@ -11,9 +11,9 @@ export const requestListDossiers = (token) => {
     return response
 }
 
-// ❌ POST CREATE A NEW TARGET JOB FULL RECORD - ep   app
+// ❌ POST CREATE A DOSSIER RECORD - ep   app
 export const requestCreateTargetJobFull = (token, jobTitle, jobUrl, jobCompany, jobNotes) => {
-    const url = 'https://internal-interview-service.onrender.com/target-jobs/add'
+    const url = 'https://internal-interview-service.onrender.com/dossier/add'
     const response = axios.post(url,
         {
             title: jobTitle,
