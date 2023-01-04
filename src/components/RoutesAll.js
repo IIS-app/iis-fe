@@ -9,9 +9,9 @@ import { WinForm } from './win-components/WinForm';
 import { WinDetail } from './win-components/WinDetail';
 import { WinEdit } from './win-components/WinEdit';
 
-import { TJDossier } from './jobcomponents/TJDossier';
-import { TJDossierBuild } from './jobcomponents/TJDossierBuild';
-import { TJDossierDetail } from './jobcomponents/TJDossierDetail';
+import { Dossier } from './dossier-components/Dossier';
+import { DossierBuild } from './dossier-components/DossierBuild';
+import { DossierDetail } from './dossier-components/DossierDetail';
 
 import { Starrs } from './starr-components/Starrs';
 import { StarrForm } from './starr-components/StarrForm';
@@ -27,8 +27,8 @@ import { Questions } from './question-components/Questions';
 import { QuestionForm } from './question-components/QuestionForm';
 import { TargetJobs } from './job-compenents/TargetJobs';
 
-import { Resumes } from './Resumes';
-import { CoverLetters } from './CoverLetters';
+import { Resumes } from './resume-components/Resumes';
+import { CoverLetters } from './coverletter-components/CoverLetters';
 import { Dashboard } from './site-components/Dashboard';
 import { MotivationalQuotes } from './site-components/MotivationalQuotes';
 
@@ -153,17 +153,17 @@ export const RoutesAll = ({token}, isLoggedIn, setAuth) => {
                 <Route 
                 path="/dossier"
                 exact
-                element={ <TJDossier token={token} isLoggedIn={isLoggedIn} /> }
+                element={ <Dossier token={token} isLoggedIn={isLoggedIn} /> }
             />
             <Route 
                 path="/dossier/add"
                 exact
-                element={ <TJDossierBuild token={token} isLoggedIn={isLoggedIn} /> }
+                element={ <DossierBuild token={token} isLoggedIn={isLoggedIn} /> }
             />
             <Route 
                 path="/dossier/:pk"
                 exact
-                element={ <TJDossierDetail token={token} isLoggedIn={isLoggedIn} /> }
+                element={ <DossierDetail token={token} isLoggedIn={isLoggedIn} /> }
             />
 
         </Routes>

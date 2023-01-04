@@ -46,19 +46,6 @@ export const requestCreateTargetJobBase = (token, jobTitle, jobUrl) => {
     return response
 }
 
-// ❌ POST CREATE A NEW TARGET JOB DOSSIER RECORD - ep 
-export const requestCreateTargetJobDossier = (token) => {
-    const url = 'https://internal-interview-service.onrender.com/target-jobs/{pk}/add-dossier'
-    const response = axios.post(url,
-        {
-        },
-        {headers: {
-            Authorization: `Token ${token}`
-            }
-        }
-    )
-    return response
-}
 
 // ❌ GET TARGET JOB DETAIL - ep   app
 export const requestTargetJobDetail = (token, { pk }) => {
@@ -105,20 +92,3 @@ export const requestDeleteTargetJob = (token, pk) => {
     return response
 }
 
-// ❌ PATCH UPDATE A DOSSIER TARGET JOB RECORD - ep   app
-// TODO: figure out what this is going to look like???
-export const requestUpdateTargetJob = (token, { pk }, wins, starrs, questions, resumes, letters) => {
-    const url = `https://internal-interview-service.onrender.com/target-jobs/dossier/${pk}`
-
-    const formData = new FormData()
-        formData.append('wins', wins)
-   
-
-    const response = axios.patch(url, formData,
-        {headers: {
-            Authorization: `Token ${token}`
-            }
-        }
-    )
-    return response
-}

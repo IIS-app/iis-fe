@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { requestListWins } from '../requests/WinRequests';
-import { requestDossier } from '../requests/RequestDossier';
+import { requestDossierDetail } from '../requests/DossierRequests/';
 import { Link, useParams } from 'react-router-dom';
 import ErrorBoundary from './ErrorBoundary'
 import styled from 'styled-components'
@@ -68,7 +68,7 @@ const LeftStyledDroppable = styled.div`
     `;
 
 //MAIN FUNCTION EXPORT
-export const TJDossier = ({ token }) => {
+export const Dossier = ({ token }) => {
     const { pk } = useParams();
     const [wins, setWins] = useState([]);
     const [dossier, setDossier] = useState ([]);
@@ -90,8 +90,8 @@ export const TJDossier = ({ token }) => {
     useEffect(() => {
         setError(null);
         setIsLoading(true);
-        requestDossier(token)
-            .then((res => { setWins(res.data) }))
+        requestDossierDetail(token)
+            .then((res => { setDossier(res.data) }))
             .catch(error => setError(error.message))
             .finally(() => setIsLoading(false))
     }, [token])

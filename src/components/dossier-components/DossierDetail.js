@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react';
-import { requestTJDossierDetail } from '../requests/DossierRequests';
+import { requestDossierDetail } from '../requests/DossierRequests';
 import { Link, useParams } from 'react-router-dom';
 import styled from 'styled-components'
 
-export const TJDossierDetail = ({ token }) => {
+export const DossierDetail = ({ token }) => {
 
     return (
         <p>here comes dossier</p>

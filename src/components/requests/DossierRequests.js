@@ -40,23 +40,8 @@ export const requestCreateDossier = (token) => {
 }
 
 
-// POST CREATE A NEW TARGET JOB DOSSIER RECORD - ep 
-export const requestCreateTJDossier = (token) => {
-    const url = 'https://internal-interview-service.onrender.com/target-jobs/{pk}/add-dossier'
-    const response = axios.post(url,
-        {
-        },
-        {headers: {
-            Authorization: `Token ${token}`
-            }
-        }
-    )
-    return response
-}
-
-
 // PATCH UPDATE A DOSSIER RECORD - ep   app
-export const requestTJDossier = (token) => {
+export const requestDossierDetail = (token) => {
     const url = `https://internal-interview-service.onrender.com/dossier/1`
     const response = axios.patch(url,
         {
@@ -86,7 +71,7 @@ export const requestTJDossier = (token) => {
 
 // DELETE DOSSIER RECORD - ep   app 
 // when a target job is deleted, none of the associated record keys stored in the dossier are deleted bc they LIVE in the other tables. A future feature might be to erase parts but management or updating of content is done outside the target job/dossier section
-export const requestDeleteTJDossier = (token, pk) => {
+export const requestDeleteDossier = (token, pk) => {
     const url = `https://internal-interview-service.onrender.com/dossier/${pk}`
     const response = axios
         .delete(url,
