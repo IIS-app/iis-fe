@@ -37,7 +37,8 @@ export const TJSnapshot = ({ token, job }) => {
                     to={`/jobs/${job.pk}`}
                     id="job-view"
                     className="button-dossier"
-                    >Start Dossier 📂
+                    alt="Click here to open Dossier"
+                    >📂
                 </Link>
             </div>
         </div>

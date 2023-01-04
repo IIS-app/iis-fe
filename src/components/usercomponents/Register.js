@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, Link } from 'react-router-dom'
 import { requestNewUser, requestLogin } from '../requests/GeneralRequests'
 
 export const Register = ({setAuth}) => {
@@ -117,8 +117,9 @@ export const Register = ({setAuth}) => {
                     <div className='container-input'>
                         <div className='container-input'>
                             <button
-                                className='button is-primary'
+                                className='button-submit'
                             >Register</button>
+                            <Link to='/login' className='button-submit' >Return to Login</Link>
                         </div>
                     </div>
                 </form>
