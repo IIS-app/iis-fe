@@ -7,18 +7,14 @@
     background-color: #28353c;
     border: 2px #00b9a3 groove;
     border-radius: 8px;
-    /* border-style: ; */
     box-sizing: border-box;
     color: #96FF7D;
     cursor: pointer;
     display: inline-block;
-    font-size: 85%vw;
-    font-stretch: 85%vh;
     font-weight: 500;
     height: 40px;
     width: max-content;
     line-height: 20px;
-    /* list-style: none; */
     margin-bottom: 0.2em;
     margin: .2em;
     outline: none;
