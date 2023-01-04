@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { requestListWins } from '../requests/WinRequests';
+import { requestDossier } from '../requests/WinRequests';
 import { Link, useParams } from 'react-router-dom';
 import ErrorBoundary from './ErrorBoundary'
 import styled from 'styled-components'
@@ -74,6 +75,7 @@ export const TJDossier = ({ token }) => {
     const [isLoading, setIsLoading] = useState(true);
     const [isDraggingOver, setIsDraggingOver] = useState(false);
 
+    // GET LIST OF WINS - drag ✅ 
     useEffect(() => {
         setError(null);
         setIsLoading(true);
@@ -82,6 +84,17 @@ export const TJDossier = ({ token }) => {
             .catch(error => setError(error.message))
             .finally(() => setIsLoading(false))
     }, [token])
+
+    // GET LIST OF DOSSIERS - drag 
+    export const requestListDossiers = (token) => {
+    const url = 'https://internal-interview-service.onrender.com/dossier/'
+    const response = axios.get(url,
+        {headers: {
+            Authorization: `Token ${token}`
+        }
+    });
+    return response
+}
 
     //part of the example code also
     const onDragEnd = (result) => {

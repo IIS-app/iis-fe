@@ -72,9 +72,9 @@ export const requestTargetJobDetail = (token, { pk }) => {
     return response
 }
 
-// ❌ PATCH UPDATE A TARGET JOB RECORD - ep   app
+// ❌ PATCH UPDATE A DOSSIER RECORD - ep   app
 export const requestUpdateTargetJobFull = (token, { pk }, jobTitle, jobUrl, jobCompany, jobNotes) => {
-    const url = `https://internal-interview-service.onrender.com/target-jobs/${pk}`
+    const url = `https://internal-interview-service.onrender.com/dossier/1`
     const response = axios.patch(url,
         {
             title: jobTitle,
@@ -82,6 +82,24 @@ export const requestUpdateTargetJobFull = (token, { pk }, jobTitle, jobUrl, jobC
             company: jobCompany,
             notes: jobNotes,
         },
+        {
+            title: dossierTitle,
+            job: jobKey,
+            resume: resumeKey,resumeTitle
+            cover_letter: coverLetterKey, coverLetterTitle
+            starrs: [
+                starrKey, starrTitle
+            ],
+            questions: [
+                questionKey, question, questionType
+            ],
+            wins: [
+                winKey, winTitle, winDate,
+                11
+            ],
+            draft: true
+        }
+        }
         {headers: {
             Authorization: `Token ${token}`
             }
@@ -101,7 +119,7 @@ export const requestDeleteTargetJob = (token, pk) => {
                 Authorization: `Token ${token}`       
                 }
             })
-        // (()=>{navigate("/somewhere right?")})
+        // (()=>{navigate(/somewhere right?)})
     return response
 }
 
