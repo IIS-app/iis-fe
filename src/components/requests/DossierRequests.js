@@ -11,14 +11,25 @@ export const requestListDossiers = (token) => {
     return response
 }
 
+// GET DETAIL OF DOSSIER RECORD - ep  app 
+export const requestDossierDetail = (token) => {
+    const url = 'https://internal-interview-service.onrender.com/dossier/'
+    const response = axios.get(url,
+        {headers: {
+            Authorization: `Token ${token}`
+        }
+    });
+    return response
+}
+
 // POST CREATE A DOSSIER RECORD - ep   app
-export const requestCreateDossier = (token) => {
+export const requestCreateDossier = (token, dossierTitle, jobKey, resumeKey, coverLetterKey, starrKey, questionKey, winKey, isDraft) => {
     const url = 'https://internal-interview-service.onrender.com/dossier/'
     const response = axios.post(url,
         {
             title: dossierTitle,
             job: jobKey,
-            resume: resumeKey,
+            resume: [resumeKey],
             cover_letter: [coverLetterKey],
             starrs: [
                 [starrKey]
@@ -41,23 +52,17 @@ export const requestCreateDossier = (token) => {
 
 
 // PATCH UPDATE A DOSSIER RECORD - ep   app
-export const requestDossierDetail = (token) => {
+export const requestUpdateDossierDetail = (token, dossierTitle, jobKey, resumeKey, coverLetterKey, starrKey, questionKey, winKey, isDraft) => {
     const url = `https://internal-interview-service.onrender.com/dossier/1`
     const response = axios.patch(url,
         {
             title: dossierTitle,
             job: jobKey,
-            resume: [resumeKey,resumeTitle],
-            cover_letter: [[coverLetterKey, coverLetterTitle]],
-            starrs: [
-                [[starrKey, starrTitle]]
-            ],
-            questions: [
-                [questionKey, question, questionType]
-            ],
-            wins: [
-                [winKey, winTitle, winDate]
-            ],
+            resume: resumeKey,
+            cover_letter: coverLetterKey,
+            starrs: [starrKey],
+            questions: [questionKey],
+            wins: [winKey],
             draft: isDraft
         },
         {headers: {
