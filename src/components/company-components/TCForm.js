@@ -43,12 +43,12 @@ export const TCForm = ({token}) => {
     }
 
     return (
-        <div className="container-form">   
+        <div className="container-main">   
             {error && <div className="error">{error}</div>}
-            <h2 className="targetcomp">🎯 Where would you like to work? 🎯</h2>
+            <h2 className="targetco">🎯 Where would you like to work? 🎯</h2>
             <form className="form-company" id='form-company' onSubmit={handleSubmit}>
-                <div className="container-form" style={{border: 'solid', width:'58%', }}>
-                <legend><strong>Just the basics get you started!</strong></legend>
+                <div className="container-form">
+                <legend>🎯 Add 🎯 Company Details</legend>
                     <label className="form-label" htmlFor="companyName">Company Name</label>
                     <div className='container-input'>
                         <input 

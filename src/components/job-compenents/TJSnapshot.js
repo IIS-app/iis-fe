@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { requestDeleteTargetJob } from '../requests/JobRequests'
 
@@ -11,14 +10,14 @@ export const TJSnapshot = ({ token, job }) => {
             <div className="container-action-links">
                 <Link 
                     key={`${job.pk}.edit`}
-                    to={`/jobs/edit/${job.pk}`}                        
+                    to={`/targetjobs/edit/${job.pk}`}                        
                     id="job-edit"
                     className="button-action"
                     >📝
                 </Link>
                 <Link
                     key={`${job.pk}.view`}
-                    to={`/jobs/${job.pk}`}
+                    to={`/targetjobs/${job.pk}`}
                     id="job-view"
                     className="button-action"
                     >👀

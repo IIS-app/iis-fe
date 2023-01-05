@@ -22,7 +22,7 @@ export const StarrForm = ({token}) => {
 
         .then((res) => {
             setStarr(res.data)
-            //navigate('/starrs')
+            navigate('/starrs')
         })
         .catch((error) => {
         setError(error.message)
@@ -30,11 +30,11 @@ export const StarrForm = ({token}) => {
     }
 
     return (
-        <div className='container-form'>
+        <div className='container-main'>
         {error && <div className="error">{error}</div>}
             <h2>Write a New STARR story here!</h2>
             <form className='form-starr' id='form-starr' onSubmit={handleSubmit}>
-                <div className='container-form' style={{border: 'solid', width:'88%', }}>
+                <div className='container-form'>
                     <legend><strong>fill out form, agent awesome.</strong></legend>
                     <label className='form-label' htmlFor='question'>STARR story Title</label>
                     <div className='container-input'>

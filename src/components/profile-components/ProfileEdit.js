@@ -61,7 +61,7 @@ export const ProfileEdit = ({token}) => {
 
 
     return (
-        <div className="container-form">
+        <div className="container-main">
         {error && <div className="error">{error}</div>}
             <h2>Edit your Profile.</h2>
             <form className="form-profile" id="form-profile" onSubmit={handleSubmit}>
