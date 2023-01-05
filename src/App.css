@@ -12,12 +12,12 @@ body {
 .App {
   text-align: left;
   padding-left: .5em;
+  width: 95%;
 }
 
 
 .App-header {
   background-color: #282c34;
-  /* min-height: vh; */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -26,3 +26,9 @@ body {
   color: white;
 }
 
+.navigation {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+
+}

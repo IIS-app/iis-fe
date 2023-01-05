@@ -12,6 +12,7 @@ export const Header = ({ token,setAuth }) => {
 
     return (
         <header>
+            <img className='logo' src={`${process.env.PUBLIC_URL}/iis-app-logo.png`} alt="Logo" />
             <Link
                 className='button-login'
                 onClick={handleLogout}

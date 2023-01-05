@@ -24,11 +24,9 @@ function App() {
     <div className="App">
 		{isLoggedIn ? (
                     <>
-                        <div>
                             <Header token={token} setAuth={setAuth} />
                             <NavBar />
                             <RoutesAll token={token} setAuth={setAuth} isLoggedIn={isLoggedIn}  />
-                        </div>
                     </>
                 ) : (
                     <>

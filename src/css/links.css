@@ -11,14 +11,13 @@
     color: #96FF7D;
     cursor: pointer;
     display: inline-block;
-    font-weight: 500;
-    height: 40px;
+    font-size: normal;
     width: max-content;
     line-height: 20px;
     margin-bottom: 0.2em;
     margin: .2em;
     outline: none;
-    padding: 10px 16px;
+    padding: 5px 8px;
     position: relative;
     text-align: center;
     text-decoration: none;
@@ -53,12 +52,10 @@
 
 img {
     width: 15%;
-    height: 15%;
 }
 
 .logo {
-    width: 7%;
-    height: 7%;
+    width: 15%;
 }
 
 .button-register {
