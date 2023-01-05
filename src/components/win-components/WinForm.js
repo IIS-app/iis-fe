@@ -1,6 +1,10 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router';
 import { requestCreateWin } from '../requests/WinRequests';
+import ReactQuill from 'react-quill'
+import 'react-quill/dist/quill.snow.css'
+import 'react-quill/dist/quill.bubble.css'
+
 
 export const WinForm = ({token}) => {
     const [win, setWin] = useState(null)
@@ -11,6 +15,19 @@ export const WinForm = ({token}) => {
     const [error, setError] = useState(null)
     const navigate = useNavigate()
 
+    const modules = {
+        toolbar: [
+            [{ 'header': [1, 2, 3, false] }],
+            [{ 'bold': true }, { 'italic': true }, { 'underline': true }, { 'strike': true }],
+            [{ list:  "ordered" }, { list:  "bullet" }],
+            ["blockquote", "code-block"],
+            ["clean", "undo", "redo"],
+        ],
+        history: {
+            delay: 2000,
+            maxStack: 500,
+            userOnly: false}
+    }
 
     const handleSubmit = (e) => {
         e.preventDefault()
@@ -27,27 +44,28 @@ export const WinForm = ({token}) => {
     }
 
     return (
-        <div className='container-main'>
+        <div className='container-form'>
         {error && <div className="error">{error}</div>}
             <h2>What will you be celebrating today?</h2>
             <form className='form-win' id='form-win' onSubmit={handleSubmit}>
-                <div className="container-form">
-                    <legend>Celebrate You!</legend>
-                    <label className='form-label' htmlFor="winTitle">Add a Name for Your Win.</label>
+                <div className="container-form" style={{border: 'solid 3px', borderRadius:'10px', width:'75%', padding: '10px' }}>
+                    <label className='form-label' htmlFor="winTitle">Add a Title for Your Win</label>
                     <div className='container-input'>
-                        <input 
-                            type="text"
-                            id="winTitle"
-                            className='form-input-text'
+                        <ReactQuill 
                             autoFocus
                             autoComplete='off'
-                            value={winTitle}
+                            className='custom-quill'
+                            id="winTitle"
                             maxLength={200}
-                            onChange={(e) => setWinTitle(e.target.value)}
+                            modules={modules}
                             name="winTitle"
+                            onChange={(value) => setWinTitle(value)}
+                            placeholder=''
+                            required
+                            theme="bubble"
                             />
                     </div>
-                    <label className='form-label' htmlFor='winDate'>Provide a Date for the Event.</label>
+                    <label className='form-label' htmlFor='winDate'>Provide a Date for the Event</label>
                     <div className='container-input'>
                         <input 
                             className='form-input-date'
@@ -59,17 +77,18 @@ export const WinForm = ({token}) => {
                             name='winDate'
                         />
                     </div>
-                    <label className='form-label' htmlFor='winDescription'>Describe the Circumstances of the Event. </label>
+                    <label className='form-label' htmlFor='winDescription'>Describe the Circumstances of the Event</label>
                     <div className='container-input'>
-                        <textarea 
-                            className='input-textarea'
-                            value={winDescription}
-                            onChange={(e) => setWinDescription(e.target.value)}
-                            id='winDescription'
-                            type='text'
+                        <ReactQuill 
                             autoComplete='off'
-                            maxLength={1000}
+                            className='custom-quill'
+                            id='winDescription'
+                            onChange={(value) => setWinDescription(value)}
+                            maxLength={2000}
+                            modules={modules}
                             name='winDescription'
+                            placeholder=''
+                            theme="bubble"
                         />
                     </div>
                     <label className='form-label' htmlFor='winPicture'>Provide any Visuals</label>
@@ -94,6 +113,7 @@ export const WinForm = ({token}) => {
                         className='button-submit'
                         type='submit'
                         value='Save My Work!'
+                        style={{marginTop:'30px'}}
                     />
                 </div>
             </form>

@@ -1,6 +1,9 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router';
 import { requestCreateStarr } from '../requests/StarrRequests';
+import ReactQuill from 'react-quill'
+import 'react-quill/dist/quill.snow.css'
+import 'react-quill/dist/quill.bubble.css'
 
 
 export const StarrForm = ({token}) => {
@@ -15,11 +18,24 @@ export const StarrForm = ({token}) => {
     const [error, setError] = useState(null);
     const navigate = useNavigate()
 
+    const modules = {
+        toolbar: [
+            [{ 'header': [1, 2, 3, false] }],
+            [{ 'bold': true }, { 'italic': true }, { 'underline': true }, { 'strike': true }],
+            [{ list:  "ordered" }, { list:  "bullet" }],
+            ["blockquote", "code-block"],
+            ["clean", "undo", "redo"],
+        ],
+        history: {
+            delay: 2000,
+            maxStack: 500,
+            userOnly: false}
+    }
+
     const handleSubmit = (e) => {
         e.preventDefault()
         setError(null)
         requestCreateStarr(token, question, summary, situation, task, action, result, reflection)
-
         .then((res) => {
             setStarr(res.data)
             navigate('/starrs')
@@ -30,116 +46,110 @@ export const StarrForm = ({token}) => {
     }
 
     return (
-        <div className='container-main'>
+        <div className='container-form'>
         {error && <div className="error">{error}</div>}
             <h2>Write a New STARR story here!</h2>
             <form className='form-starr' id='form-starr' onSubmit={handleSubmit}>
-                <div className='container-form'>
-                    <legend><strong>fill out form, agent awesome.</strong></legend>
+                <div className='container-form' style={{border: 'solid 3px', borderRadius:'10px', width:'75%', padding: '10px' }}>
                     <label className='form-label' htmlFor='question'>STARR story Title</label>
                     <div className='container-input'>
-                        <input 
+                        <ReactQuill 
                             autoFocus
                             autoComplete='off'
-                            className='form-input-text'
+                            className='custom-quill'
                             id='question'
                             maxLength={200}
-                            onChange={(e) => setQuestion(e.target.value)}
+                            modules={modules}
+                            name='question'
+                            onChange={(value) => setQuestion(value)}
                             placeholder='What is Your STARR Story Called?'
                             required
-                            type="text" 
-                            value={question}
+                            theme="bubble"
                             />
                     </div>
                     <label className='form-label' htmlFor='summary'>Summary: </label>
                     <div className='container-input'>
-                        <textarea 
+                        <ReactQuill 
                             autoComplete='off'
-                            className='input-textarea'
+                            className='custom-quill'
                             id='summary'
-                            maxLength={500}
+                            maxLength={2000}
+                            modules={modules}
                             name='summary'
-                            onChange={(e) => setSummary(e.target.value)}
+                            onChange={(value) => setSummary(value)}
                             placeholder='Summarize your STARR story'
-                            required
-                            type='text'
-                            value={summary}
+                            theme="bubble"
                             />
                     </div>
                     <label className='form-label' htmlFor='situation'>Situation: </label>
                     <div className='container-input'>
-                        <textarea 
+                        <ReactQuill 
                             autoComplete='off'
-                            className='input-textarea'
+                            className='custom-quill'
                             id='situation'
-                            maxLength={500}
+                            maxLength={2000}
+                            modules={modules}
                             name='situation'
-                            onChange={(e) => setSituation(e.target.value)}
+                            onChange={(value) => setSituation(value)}
                             placeholder='Describe the situation or conflict.'
-                            required
-                            type='text'
-                            value={situation}
+                            theme="bubble"
                             />
                     </div>
                     <label className='form-label' htmlFor='task'>Task: </label>
                     <div className='container-input'>
-                        <textarea 
+                        <ReactQuill 
                             autoComplete='off'
-                            className='input-textarea'
+                            className='custom-quill'
                             id='task'
-                            maxLength={500}
+                            maxLength={2000}
+                            modules={modules}
                             name='task'
-                            onChange={(e) => setTask(e.target.value)}
+                            onChange={(value) => setTask(value)}
                             placeholder='What task needs to be solved?'
-                            required
-                            type='text'
-                            value={task}
+                            theme="bubble"
                         />
                     </div>
                     <label className='form-label' htmlFor='action'>Action: </label>
                     <div className='container-input'>
-                        <textarea 
+                        <ReactQuill
                             autoComplete='off'
-                            className='input-textarea'
+                            className='custom-quill'
                             id='action'
-                            maxLength={500}
+                            maxLength={2000}
+                            modules={modules}
                             name='action'
-                            onChange={(e) => setAction(e.target.value)}
+                            onChange={(value) => setAction(value)}
                             placeholder='What action did you take to accomplish this task?'
-                            required
-                            type='text'
-                            value={action}
+                            theme="bubble"
                             />
                     </div>
                     <label className='form-label' htmlFor='result'>Result: </label>
                     <div className='container-input'>
-                        <textarea 
+                        <ReactQuill 
                             autoComplete='off'
-                            className='input-textarea'
+                            className='custom-quill'
                             id='result'
-                            maxLength={500}
+                            maxLength={2000}
                             name='result'
-                            onChange={(e) => setResult(e.target.value)}
+                            modules={modules}
+                            onChange={(value) => setResult(value)}
                             placeholder='What was the result of your action?'
-                            required
-                            type='text'
-                            value={result}
+                            theme="bubble"
                         />
                     </div>
                     <label className='form-label' htmlFor='reflection'>Reflection  : </label>
                     <div className='container-input'>
-                        <textarea 
+                        <ReactQuill
                             autoComplete='off'
-                            className='input-textarea'
+                            className='custom-quill'
                             id='reflection'
-                            maxLength={500}
+                            maxLength={2000}
+                            modules={modules}
                             name='reflection'
-                            onChange={(e) => setReflection(e.target.value)}
+                            onChange={(value) => setReflection(value)}
                             placeholder='Upon reflection, what did this experience teach you?'
-                            required
-                            type='text'
-                            value={reflection}
-                        />
+                            theme="bubble"
+                        />                        
                     </div>
                 </div> 
                 <div className='container-input'>
@@ -150,6 +160,7 @@ export const StarrForm = ({token}) => {
                         className='button-submit'
                         type='submit'
                         value='Give me my STARR!'
+                        style={{marginTop:'30px'}}
                     />
                 </div>
             </form>

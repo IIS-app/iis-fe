@@ -22,7 +22,12 @@ export const TCForm = ({token}) => {
             [{ 'bold': true }, { 'italic': true }, { 'underline': true }, { 'strike': true }],
             [{ list:  "ordered" }, { list:  "bullet" }],
             ["blockquote", "code-block"],
-        ]
+            ["clean", "undo", "redo"],
+        ],
+        history: {
+            delay: 2000,
+            maxStack: 500,
+            userOnly: false}
     }
 
 
@@ -43,12 +48,11 @@ export const TCForm = ({token}) => {
     }
 
     return (
-        <div className="container-main">   
+        <div className="container-form">   
             {error && <div className="error">{error}</div>}
             <h2 className="targetco">🎯 Where would you like to work? 🎯</h2>
             <form className="form-company" id='form-company' onSubmit={handleSubmit}>
-                <div className="container-form">
-                <legend>🎯 Add 🎯 Company Details</legend>
+                <div className="container-form" style={{border: 'solid 3px', borderRadius:'10px', width:'75%', padding: '10px' }}>
                     <label className="form-label" htmlFor="companyName">Company Name</label>
                     <div className='container-input'>
                         <input 
@@ -117,17 +121,6 @@ export const TCForm = ({token}) => {
                             onChange={(value) => setCompanyNotes(value)}
                         />                        
                     </div>
-                    {/* <label className="form-label" htmlFor="companyNotes">Agent Comment Log: </label>
-                    <div className='container-input'>
-                        <input
-                            className='form-input-text'
-                            id='companyNotes'
-                            type='text'
-                            name='companyNotes'
-                            maxLength={2000}
-                            onChange={(e) => setCompanyNotes(e.target.value)}
-                        />                        
-                    </div> */}
                 </div>
                 <div className='container-input'>
                     <label htmlFor='submit' className='form-label'></label>
@@ -136,8 +129,8 @@ export const TCForm = ({token}) => {
                         id='submit'
                         className='button-submit'
                         type='submit'
-                        value="Let's Nail Down Assets!"
-                        // TODO: would like to have {codename} available in lieu of Agent.
+                        value="Provide Company Details"
+                        style={{marginTop:'30px'}}
                     />
                 </div>
             </form>

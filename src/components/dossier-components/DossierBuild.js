@@ -12,7 +12,7 @@ import styled from 'styled-components';
     justify-content: space-around;
     margin: auto;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-    border-radius: 5px;
+    border-radius: 10px;
     background-color: #28353c;
     `;
     
@@ -21,7 +21,7 @@ import styled from 'styled-components';
     flex-direction: column;
     align-items: center;
     border: 1px solid #c3fe96;
-    border-radius: 5px;
+    border-radius: 10px;
     margin: 10px;
     `;
     

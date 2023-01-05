@@ -2,6 +2,9 @@ import { useEffect, useState } from 'react';
 import { requestUpdateStarr } from '../requests/StarrRequests';
 import { requestStarrDetail } from '../requests/StarrRequests';
 import { Link, useParams } from 'react-router-dom'
+import ReactQuill from 'react-quill'
+import 'react-quill/dist/quill.snow.css'
+import 'react-quill/dist/quill.bubble.css'
 
 export const StarrEdit = ({ token }) => {
     const { pk } = useParams()
@@ -37,6 +40,20 @@ export const StarrEdit = ({ token }) => {
             .finally(() => setIsLoading(false))
     },[token, pk]);
 
+    const modules = {
+        toolbar: [
+            [{ 'header': [1, 2, 3, false] }],
+            [{ 'bold': true }, { 'italic': true }, { 'underline': true }, { 'strike': true }],
+            [{ list:  "ordered" }, { list:  "bullet" }],
+            ["blockquote", "code-block"],
+            ["clean", "undo", "redo"],
+        ],
+        history: {
+            delay: 2000,
+            maxStack: 500,
+            userOnly: false}
+    }
+
     const handleSubmit = (e) => {
         e.preventDefault()
         setError(null)
@@ -49,112 +66,133 @@ export const StarrEdit = ({ token }) => {
 
 
     return (
-        <div className='container-main'>
+        <div className='container-form'>
         {error && <div className="error">{error}</div>}
-            <h2>Update your STARR here</h2>
+            <h2>Write a New STARR story here!</h2>
             <form className='form-starr' id='form-starr' onSubmit={handleSubmit}>
-                <div className='container-form' style={{border: 'solid', width:'88%', }}>
-                    <label className='form-label' htmlFor="question">Name your New STARR.</label>
+                <div className='container-form' style={{border: 'solid 3px', borderRadius:'10px', width:'75%', padding: '10px' }}>
+                    <label className='form-label' htmlFor='question'>STARR story Title</label>
                     <div className='container-input'>
-                        <input 
+                        <ReactQuill 
                             autoFocus
                             autoComplete='off'
-                            className='form-input-text'
-                            id="question"
-                            maxLength={50}
-                            name="question"
-                            onChange={(e) => setQuestion(e.target.value)}
-                            type="text"
+                            className='custom-quill'
+                            id='question'
+                            maxLength={200}
+                            modules={modules}
+                            onChange={(value) => setQuestion(value)}
+                            placeholder='What is Your STARR Story Called?'
+                            required
+                            theme="bubble"
                             value={question}
                             />
                     </div>
-                    <label className='form-label' htmlFor='summary'>Summarize your STARR story.</label>
+                    <label className='form-label' htmlFor='summary'>Summary: </label>
                     <div className='container-input'>
-                        <input 
+                        <ReactQuill 
                             autoComplete='off'
-                            className='text'
+                            className='custom-quill'
                             id='summary'
-                            onChange={(e) => setSummary(e.target.value)}
+                            maxLength={2000}
+                            modules={modules}
                             name='summary'
-                            type='text'
+                            onChange={(value) => setSummary(value)}
+                            placeholder='Summarize your STARR story'
+                            theme="bubble"
                             value={summary}
-                        />
+                            />
                     </div>
-                    <label className='form-label' htmlFor='situation'>Describe the Situation or conflict. </label>
+                    <label className='form-label' htmlFor='situation'>Situation: </label>
                     <div className='container-input'>
-                        <textarea 
+                        <ReactQuill 
                             autoComplete='off'
-                            className='input-textarea'
+                            className='custom-quill'
                             id='situation'
-                            maxLength={1000}
+                            maxLength={2000}
+                            modules={modules}
                             name='situation'
-                            onChange={(e) => setSituation(e.target.value)}
-                            type='text'
+                            onChange={(value) => setSituation(value)}
+                            placeholder='Describe the situation or conflict.'
+                            theme="bubble"
                             value={situation}
-                        />
+                            />
                     </div>
-                    <label className='form-label' htmlFor='task'>What task needs to be solved?</label>
+                    <label className='form-label' htmlFor='task'>Task: </label>
                     <div className='container-input'>
-                        <input 
+                        <ReactQuill 
                             autoComplete='off'
-                            className='input-textarea'
+                            className='custom-quill'
                             id='task'
+                            maxLength={2000}
+                            modules={modules}
                             name='task'
-                            onChange={(e) => setTask(e.target.value)}
-                            type='text'
+                            onChange={(value) => setTask(value)}
+                            placeholder='What task needs to be solved?'
+                            theme="bubble"
                             value={task}
                         />
                     </div>
-                    <label className='form-label' htmlFor='action'>What action did you take to accomplish this task?</label>
+                    <label className='form-label' htmlFor='action'>Action: </label>
                     <div className='container-input'>
-                        <input 
+                        <ReactQuill
                             autoComplete='off'
-                            className='input-textarea'
+                            className='custom-quill'
                             id='action'
+                            maxLength={2000}
+                            modules={modules}
                             name='action'
-                            onChange={(e) => setAction(e.target.value)}
-                            type='text'
+                            onChange={(value) => setAction(value)}
+                            placeholder='What action did you take to accomplish this task?'
+                            theme="bubble"
                             value={action}
-                        />
+                            />
                     </div>
-                    <label className='form-label' htmlFor='result'>What was the result of your action?</label>
+                    <label className='form-label' htmlFor='result'>Result: </label>
                     <div className='container-input'>
-                        <input 
+                        <ReactQuill 
                             autoComplete='off'
-                            className='input-textarea'                  
+                            className='custom-quill'
                             id='result'
+                            maxLength={2000}
                             name='result'
-                            onChange={(e) => setResult(e.target.value)}
-                            type='text'
+                            modules={modules}
+                            onChange={(value) => setResult(value)}
+                            placeholder='What was the result of your action?'
+                            theme="bubble"
                             value={result}
                         />
                     </div>
-                    <label className='form-label' htmlFor='reflection'>Upon reflection, what did this experience teach you?</label>
+                    <label className='form-label' htmlFor='reflection'>Reflection  : </label>
                     <div className='container-input'>
-                        <input 
+                        <ReactQuill
                             autoComplete='off'
-                            className='input-textarea'
+                            className='custom-quill'
                             id='reflection'
+                            maxLength={2000}
+                            modules={modules}
                             name='reflection'
-                            onChange={(e) => setReflection(e.target.value)}
-                            type='text'
+                            onChange={(value) => setReflection(value)}
+                            placeholder='Upon reflection, what did this experience teach you?'
+                            theme="bubble"
                             value={reflection}
-                        />
+                        />                        
                     </div>
                 </div> 
                 <div className='container-input'>
                     <label htmlFor='submit' className='form-label'></label>
-                    <input
+                    <input 
                         id='submit'
-                        to='starrs'
+                        to="/starrs"
                         className='button-submit'
                         type='submit'
-                        value='Save My Work!'
+                        value='Give me my STARR!'
+                        style={{marginTop:'30px'}}
                     />
                 </div>
             </form>
         </div>
     )
+
 }
 
 

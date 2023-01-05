@@ -30,7 +30,7 @@ export const Wins = ({token}) => {
         </div>
         {error && <div className="error">{error}</div>}
         <h2>List of Wins</h2>
-        <div className='container-main'>
+        <div className='container-main' style={{border: 'solid 3px', borderRadius:'10px', width:'75%', padding: '10px' }}>
             <div className='container-list'>
                 <ul key="win-info" className="list">
                     {wins ? wins.map(win => (

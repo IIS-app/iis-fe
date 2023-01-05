@@ -43,13 +43,12 @@ export const TJForm = ({token}) => {
     }
 
     return (
-        <div className="container-main">   
+        <div className="container-form">   
             {error && <div className="error">{error}</div>}
-            <h2 className="targetjob">🎯 Add 🎯 Job Details</h2>
+            <h2 className="targetjob">Add 🎯 Job Details</h2>
             <form className="form-job" id='form-job' onSubmit={handleSubmit}>
-                <div className="container-form">
-                <legend>this is the legend</legend>
-                    <label className="form-label" htmlFor="targetJobTitle">🎯 Job Title</label>
+                <div className="container-form" style={{border: 'solid 3px', borderRadius:'10px', width:'75%', padding: '10px' }}>
+                    <label className="form-label" htmlFor="targetJobTitle">Job Title</label>
                     <div className='container-input'>
                         <input 
                             type='text'
@@ -107,7 +106,7 @@ export const TJForm = ({token}) => {
                         id='submit'
                         className='button-submit'
                         type='submit'
-                        value="Add 🎯 Job"
+                        value="Add  🎯  Job"
                     />
                 </div>
             </form>

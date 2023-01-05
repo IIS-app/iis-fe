@@ -2,6 +2,10 @@ import { useEffect, useState } from 'react';
 import { requestUpdateWin } from '../requests/WinRequests';
 import { requestWinDetail } from '../requests/WinRequests';
 import { Link, useParams } from 'react-router-dom'
+import ReactQuill from 'react-quill'
+import 'react-quill/dist/quill.snow.css'
+import 'react-quill/dist/quill.bubble.css'
+
 
 export const WinEdit = ({ token }) => {
     const { pk } = useParams()
@@ -33,6 +37,20 @@ export const WinEdit = ({ token }) => {
             .finally(() => setIsLoading(false))
     },[token, pk]);
 
+    const modules = {
+        toolbar: [
+            [{ 'header': [1, 2, 3, false] }],
+            [{ 'bold': true }, { 'italic': true }, { 'underline': true }, { 'strike': true }],
+            [{ list:  "ordered" }, { list:  "bullet" }],
+            ["blockquote", "code-block"],
+            ["clean", "undo", "redo"],
+        ],
+        history: {
+            delay: 2000,
+            maxStack: 500,
+            userOnly: false}
+    }
+
     const handleSubmit = (e) => {
         e.preventDefault()
         setError(null)
@@ -48,19 +66,21 @@ export const WinEdit = ({ token }) => {
         {error && <div className="error">{error}</div>}
             <h2>What will you be celebrating today?</h2>
             <form className='form-win' id='form-win' onSubmit={handleSubmit}>
-                <div className='container-form' style={{border: 'solid', width:'88%', }}>
-                    <legend>Celebrate You!</legend>
-                    <label className='form-label' htmlFor="winTitle">Add a Name for Your Win.</label>
+                <div className='container-form' style={{border: 'solid 3px', borderRadius:'10px', width:'75%', padding: '10px' }}>
+                    <label className='form-label' htmlFor="winTitle">Add a Name for Your Win</label>
                     <div className='container-input'>
-                        <input 
-                            type="text"
-                            id="winTitle"
-                            className='form-input-text'
+                        <ReactQuill 
                             autoFocus
                             autoComplete='off'
-                            value={winTitle}
-                            maxLength={50}
-                            onChange={(e) => setWinTitle(e.target.value)}
+                            className='custom-quill'
+                            id="winTitle"
+                            maxLength={200}
+                            modules={modules}
+                            name="winTitle"
+                            onChange={(value) => setWinTitle(value)}
+                            placeholder=''
+                            required
+                            theme="bubble"
                             />
                     </div>
                     <label className='form-label' htmlFor='winDate'>Provide a Date for the Event.</label>
@@ -77,15 +97,16 @@ export const WinEdit = ({ token }) => {
                     </div>
                     <label className='form-label' htmlFor='winDescription'>Describe the Circumstances of the Event. </label>
                     <div className='container-input'>
-                        <textarea 
-                            className='input-textarea'
-                            value={winDescription}
-                            onChange={(e) => setWinDescription(e.target.value)}
-                            id='winDescription'
-                            type='text'
+                        <ReactQuill 
                             autoComplete='off'
-                            maxLength={1000}
+                            className='custom-quill'
+                            id='winDescription'
+                            onChange={(value) => setWinDescription(value)}
+                            maxLength={2000}
+                            modules={modules}
                             name='winDescription'
+                            placeholder=''
+                            theme="bubble"
                         />
                     </div>
                     <label className='form-label' htmlFor='winPicture'>Provide any Visuals</label>
@@ -99,8 +120,8 @@ export const WinEdit = ({ token }) => {
                             name='winPicture'
                             multiple
                         />
-                        {winLoadedPicture ? <img src="https://assets-prd.ignimgs.com/2022/07/19/nicolas-cage-in-con-air-1658251738731.jpg" style={{ width: "200px"}} alt={winTitle} /> :''}
-
+                        {/* TODO: MAKE SURE THIS WORKS WITH NEW WIRING */}
+                        {winLoadedPicture ? <img src={winLoadedPicture} style={{ width: "200px"}} alt={winTitle} /> :''}
                     </div>
                 </div> 
                 <div className='container-input'>
@@ -111,6 +132,7 @@ export const WinEdit = ({ token }) => {
                         className='button-submit'
                         type='submit'
                         value='Save My Work!'
+                        style={{marginTop:'30px'}}
                     />
                 </div>
             </form>

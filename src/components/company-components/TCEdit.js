@@ -43,7 +43,12 @@ export const TCEdit = ({ token }) => {
             [{ 'bold': true }, { 'italic': true }, { 'underline': true }, { 'strike': true }],
             [{ list:  "ordered" }, { list:  "bullet" }],
             ["blockquote", "code-block"],
-        ]
+            ["clean", "undo", "redo"],
+        ],
+        history: {
+            delay: 2000,
+            maxStack: 500,
+            userOnly: false}
     }
 
     const handleSubmit = (e) => {
@@ -70,12 +75,11 @@ export const TCEdit = ({ token }) => {
 
 
     return (
-        <div className="container-main">   
+        <div className="container-form">   
             {error && <div className="error">{error}</div>}
-            <h2 className="targetcomp">🎯 What additional intel do you have? 🎯</h2>
+            <h2 className="targetco">🎯 What additional intel do you have? 🎯</h2>
             <form className="form-company" id='form-company' onSubmit={handleSubmit}>
-                <div className="container-form">
-                <legend><strong>Just the basics get you started!</strong></legend>
+                <div className="container-form" style={{border: 'solid 3px', borderRadius:'10px', width:'75%', padding: '10px' }}>
                 <label className="form-label" htmlFor="companyName">Company Name</label>
                     <div className='container-input'>
                         <input 
@@ -153,8 +157,8 @@ export const TCEdit = ({ token }) => {
                         id='submit'
                         className='button-submit'
                         type='submit'
-                        value="It's Just the Beginning!"
-                        // TODO: would like to have {codename} available in lieu of Agent.
+                        value="Update Company Details"
+                        style={{marginTop:'30px'}}
                     />
                 </div>
             </form>

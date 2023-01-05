@@ -6,7 +6,7 @@ export const TJSnapshot = ({ token, job }) => {
 
     return (
         <div className="container-job">
-            <li className="list-job" >{`${job.title} at ${job.company} added on ${job.created_date}`}</li>
+            <li className="list-job" >{`${job.title} at ${job.company} added on [formatted date]`}</li>
             <div className="container-action-links">
                 <Link 
                     key={`${job.pk}.edit`}
@@ -31,14 +31,6 @@ export const TJSnapshot = ({ token, job }) => {
                     title={`WARNING this will delete your 🎯 Job: "${job.title}!" AND NO TAKE BACKS...YET`}
                     >❌
                 </Link>
-                {/* <Link
-                    key={`${job.pk}.view`}
-                    to={`/jobs/${job.pk}`}
-                    id="job-view"
-                    className="button-dossier"
-                    alt="Click here to open Dossier"
-                    >📂
-                </Link> */}
             </div>
         </div>
     )
