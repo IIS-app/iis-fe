@@ -110,6 +110,7 @@ export const Dossier = ({ token }) => {
     // DND verify drag destination and update arrays
     const onDragEnd = (result) => {
         console.log('ondragendfired')
+        console.log(result)
         // check not dropped outside the list      
         if (!result.destination) {
             return;
@@ -152,7 +153,7 @@ export const Dossier = ({ token }) => {
             <DragDropContext onDragEnd={onDragEnd}>
                 <ParentContainer>
                     {/* dossier droppable container */}
-                    <Droppable droppableId="dossier">
+                    <Droppable droppableId="dossier" type="dossier">
                         {(provided, snapshot) => (
                             <LeftStyledDroppable
                                 ref={provided.innerRef}
@@ -162,10 +163,9 @@ export const Dossier = ({ token }) => {
                                 {dossier.wins ? dossier.wins.map((win, index) => (
                                     // actual library draggable container
                                     <Draggable
-                                        key={item.pk}
-                                        draggableId={`${item.pk}`}
+                                        key={index}
+                                        draggableId={`dossier-win-${index}`}
                                         index={index}
-                                        onDragEnd={onDragEnd}
                                     >
                                         {(provided, snapshot) => (
                                             <div>
@@ -174,7 +174,7 @@ export const Dossier = ({ token }) => {
                                                     {...provided.dragHandleProps}
                                                     {...provided.draggableProps}
                                                 >
-                                                    <li key=""className="content-dossier">{`${win}`}</li>
+                                                    <li key=""className="content-dossier">{`win:${win}`}</li>
                                                 </StyledDraggable>
                                                 {provided.placeholder}
                                             </div>
@@ -186,7 +186,7 @@ export const Dossier = ({ token }) => {
                             </LeftStyledDroppable>
                         )}
                     </Droppable>
-                    <Droppable droppableId="items">
+                    <Droppable droppableId="items" type='dossier'>
                         {(provided, snapshot) => (
                             <StyledDroppable ref={provided.innerRef} {...provided.droppableProps}>
                                 {wins ? wins.map((win, index) => (
@@ -194,7 +194,7 @@ export const Dossier = ({ token }) => {
                                         key={win.pk}
                                         draggableId={`${win.pk}`}
                                         index={index}
-                                        onDragEnd={onDragEnd}
+                                        data-type="win"
                                     >
                                         {(provided, snapshot) => (
                                             <div>
@@ -203,7 +203,7 @@ export const Dossier = ({ token }) => {
                                                     {...provided.dragHandleProps}
                                                     {...provided.draggableProps}
                                                 >
-                                                    <li key={`${win.id}`}className="list-win">{`${win.title} on ${win.occured_date}`}</li>
+                                                    <li key={`${win.id}`}className="list-win">{`${win.title} on ${win.pk}`}</li>
                                                 </StyledDraggable>
                                                 {provided.placeholder}
                                             </div>
