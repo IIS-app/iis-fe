@@ -2,6 +2,7 @@
 import './App.css';
 import './css/forms.css'
 import './css/links.css'
+import './css/headerNav.css'
 import React from 'react';
 import useLocalStorageState from 'use-local-storage-state';
 import { RoutesAll } from './components/RoutesAll';
@@ -22,21 +23,20 @@ function App() {
 	const isLoggedIn = !!(email && token)  
 	
 	return (
-    <div className="App">
-		{isLoggedIn ? (
-                    <>
-                            <RoutesAll token={token} setAuth={setAuth} isLoggedIn={isLoggedIn}  />
-                    </>
+        <>
+        <Header />
+        <div className="App">
+		    {isLoggedIn ? (
+                <RoutesAll token={token} setAuth={setAuth} isLoggedIn={isLoggedIn}  />
                 ) : (
-                    <>
-                        <main id="home-box">
-                            <Login setAuth={setAuth} isLoggedIn={isLoggedIn} />
-						<header className="App-header">An Organized Agent is an Employed Agent.</header>
-                        </main>
-                    </>
+                    <main id="home-box">
+                        <Login setAuth={setAuth} isLoggedIn={isLoggedIn} />
+                    <header className="App-header">An Organized Agent is an Employed Agent.</header>
+                    </main>
                     
                 )}
-    </div>
+        </div>
+        </>
 	);
 }
 

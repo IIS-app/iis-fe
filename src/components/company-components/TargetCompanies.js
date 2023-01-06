@@ -21,7 +21,6 @@ export const TargetCompanies = ({token}) => {
 
     return (
     <>
-    <Header />
     <div className='container-button'>
         <Link
             key="button-add"

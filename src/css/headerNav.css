@@ -1,0 +1,36 @@
+.new-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px;
+}
+
+.header-links-left,
+.header-links-right {
+    display: flex;
+    flex-direction: column;
+}
+
+.logo-link {
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+width: 100px;
+height: 100px;
+}
+
+.link-button-nav {
+    font-size: 14px;
+    margin-left: 16px;
+    text-decoration: none;
+    color: black;
+}
+
+.button-login {
+    font-size: 14px;
+    margin-left: 16px;
+    text-decoration: none;
+    color: black;
+}

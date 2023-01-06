@@ -90,7 +90,7 @@ export const Dossier = ({ token }) => {
             .finally(() => setIsLoading(false))
     }, [token])
 
-    // GET DOSSIER CONTENTS - drag ✅ 
+    // GET DOSSIER CONTENTS - drag 
     useEffect(() => {
         setError(null);
         setIsLoading(true);
