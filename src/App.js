@@ -7,6 +7,7 @@ import useLocalStorageState from 'use-local-storage-state';
 import { RoutesAll } from './components/RoutesAll';
 import { Header } from './components/site-components/Header';
 import { NavBar } from './components/site-components/NavBar';
+import { Dashboard } from './components/site-components/Dashboard';
 import { Login } from './components/user-components/Login';
 
 function App() {
@@ -24,15 +25,13 @@ function App() {
     <div className="App">
 		{isLoggedIn ? (
                     <>
-                            <Header token={token} setAuth={setAuth} />
-                            <NavBar />
                             <RoutesAll token={token} setAuth={setAuth} isLoggedIn={isLoggedIn}  />
                     </>
                 ) : (
                     <>
-						<header className="App-header">An Organized Agent is an Employed Agent.</header>
                         <main id="home-box">
                             <Login setAuth={setAuth} isLoggedIn={isLoggedIn} />
+						<header className="App-header">An Organized Agent is an Employed Agent.</header>
                         </main>
                     </>
                     

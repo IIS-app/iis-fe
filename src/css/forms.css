@@ -18,6 +18,20 @@
     margin: 15px;
 }
 
+.container-login {
+    width: 60%;
+    flex-direction: column;
+}
+
+.container-logo {
+    width: 40%;
+    display: flex;
+}
+
+.container-first {
+    display: flex;
+}
+
 .container-action-links {
     display: flex;
     justify-content: space-between;
@@ -40,6 +54,7 @@ li {
 }
 
 /* FORM PARENT STYLES */
+
 
 .form-login,
 .form-register {

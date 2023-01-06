@@ -89,7 +89,7 @@ export const RoutesAll = ({token}, isLoggedIn, setAuth) => {
                 exact
                 element={ <TJEdit token={token} isLoggedIn={isLoggedIn} /> }
             />
-
+            
             {/* STARRS ROUTES */}
             <Route 
                 path="/starrs" 

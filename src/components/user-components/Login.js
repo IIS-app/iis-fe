@@ -27,12 +27,15 @@ export const Login = ({ setAuth, isLoggedIn }) => {
     }
 
     return (
-        <div>
+        <div className='container-first'>
+            {error && <div className="error">{error}</div>}
             {register===false ? (
+            <>
+            <img className="logo" src={`${process.env.PUBLIC_URL}/iis-app-logo.png`} alt="Logo" />
             <div className='container-login'>
+
                 <h3>Please log in below.</h3>
-                    <img src={`${process.env.PUBLIC_URL}/iis-logo.png`} alt="Logo" />
-                {error && <div className="error">{error}</div>}
+
                 <form id="form-login" onSubmit={handleSubmit}>
                     <div className='container-input'>
                         <label htmlFor='email' className="form-label">email</label>
@@ -44,7 +47,7 @@ export const Login = ({ setAuth, isLoggedIn }) => {
                             autoFocus
                             type='text'
                             name='My Username'
-                            placeholder='my email' />
+                        />
                     </div>
                     <div className='container-input'>
                         <label htmlFor='my-password' className="form-label">password</label>
@@ -54,7 +57,7 @@ export const Login = ({ setAuth, isLoggedIn }) => {
                             className='form-input-text'
                             autoComplete='off'
                             type='password'
-                            placeholder='my password' />
+                        />
                     </div>
                     <div className='container-input'>
                         <button
@@ -62,16 +65,17 @@ export const Login = ({ setAuth, isLoggedIn }) => {
                         >Login</button>
                     </div>
                     <div id="register">
-                    <h3>New Agent? please...
+                    <h3 className='link-register'>New Agent? Please...
                                 <Link 
                                 className='link-inline' 
                                 id='link-register'
                                 to="/register" 
                                 onClick={(e)=> setRegister(!register)}
-                                > Register </Link></h3>
+                                ><em>register.</em></Link></h3>
                     </div>
                 </form>
             </div>
+            </>
             ) : (
                 <Register />
             )}

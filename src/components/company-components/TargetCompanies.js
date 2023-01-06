@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { requestListTargetCompanies } from '../requests/CompanyRequests';
 import { Link } from 'react-router-dom';
 import { TCSnapshot } from './TCSnapshot'
+import { Header } from '../site-components/Header'
 
 
 export const TargetCompanies = ({token}) => {
@@ -20,6 +21,7 @@ export const TargetCompanies = ({token}) => {
 
     return (
     <>
+    <Header />
     <div className='container-button'>
         <Link
             key="button-add"

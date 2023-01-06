@@ -50,12 +50,9 @@
     background-image: ;
 }
 
-img {
-    width: 15%;
-}
 
 .logo {
-    width: 15%;
+    width: 50%;
 }
 
 .button-register {
@@ -88,3 +85,12 @@ img {
     -webkit-user-select: none;
     touch-action: manipulation;
 }
+
+.link-inline {
+    color: #00b9a3;
+}
+
+.link-register {
+    color: #00b9a3;
+}
+
