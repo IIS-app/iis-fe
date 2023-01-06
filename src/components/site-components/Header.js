@@ -24,6 +24,7 @@ export const Header = ({ token,setAuth }) => {
 
     return (
         <div className='new-header'>
+            <Link className='link-button-nav' to="/profile">Your Profile</Link>
             <div className='header-links-left'>
                 <Link className='link-button-nav' to="/targetjobs">🎯 Jobs</Link>
                 <Link className='link-button-nav' to="/targetcompanies">🎯 Companies</Link>
@@ -33,12 +34,12 @@ export const Header = ({ token,setAuth }) => {
                 <img className='logo' src={`${process.env.PUBLIC_URL}/iis-app-logo.png`} alt="logo" />
             </Link>
             <div className='header-links-right'>
-                <Link className='link-button-nav' to="/targetcompanies">🎯 Companies</Link>
-                <Link className='link-button-nav' to="/starrs">STARR stories</Link>
+                <Link className='link-button-nav' to="/starrs">STARRs</Link>
                 <Link className='link-button-nav' to="/questions">Questions</Link>
+                <Link className='link-button-nav' to="/wins"> Wins!</Link>
             </div>
             <Link
-                className='button-login'
+                className='link-button-nav'
                 onClick={handleLogout}
             >Log Out</Link>
         </div>

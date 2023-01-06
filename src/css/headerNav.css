@@ -9,6 +9,13 @@
 .header-links-right {
     display: flex;
     flex-direction: column;
+    flex-basis: auto;
+    flex-grow: 0;
+    flex-shrink: 0;
+}
+
+.header-links-left .link-button-nav {
+    margin-left: 16px;
 }
 
 .logo-link {
@@ -23,14 +30,15 @@ height: 100px;
 
 .link-button-nav {
     font-size: 14px;
-    margin-left: 16px;
+    /* margin-left: 16px; */
     text-decoration: none;
-    color: black;
+    color: #96FF7D;
+    width: calc(100% - 16px);
 }
+
 
 .button-login {
     font-size: 14px;
-    margin-left: 16px;
     text-decoration: none;
     color: black;
 }

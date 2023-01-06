@@ -24,10 +24,13 @@ const LeftStyledDroppable = styled.div`
     border:  black solid 2px;
     border-radius: 10px;
     display: flex;
+    flex: 1;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     background: #36454e;
+    overflow: hidden;
+    overflow-y: scroll;
     `
     
     const StyledDroppable = styled.div`
@@ -96,17 +99,17 @@ export const Dossier = ({ token }) => {
         setIsLoading(true);
         requestDossierDetail(token)
             .then(({ data }) => {
-                const { title, job, resume, cover_letter, starrs, questions, wins, created_at, updated_at, draft } = data;
-                setDossier([data]);
-                console.log(dossier)
+                // const { title, job, resume, cover_letter, starrs, questions, wins, draft } = data;
+                setDossier(data[0] || {});
             })
             .catch(error => setError(error.message))
             .finally(() => setIsLoading(false));
-    }, [token, '']);
+    }, [token]);
 
 
     // DND verify drag destination and update arrays
     const onDragEnd = (result) => {
+        console.log('ondragendfired')
         // check not dropped outside the list      
         if (!result.destination) {
             return;
@@ -116,7 +119,7 @@ export const Dossier = ({ token }) => {
             switch (result.type) {
                 case "win":
                     // remove dragged win from win container
-                    const newWins = wins.filter(win => win.pk !== result.draggableId);
+                    const newWins = wins.filter(win => win.id !== result.draggableId);
                     setWins(newWins);      
                     // add win to dossier container
                     let newDossierItems = dossier.concat({
@@ -124,6 +127,7 @@ export const Dossier = ({ token }) => {
                         type: "win" 
                     });
                     setDossier(newDossierItems);
+                    console.log(dossier.item)
                     // break;
                 // case "starr":
                 //     // remove dragged starr from starr container
@@ -136,7 +140,7 @@ export const Dossier = ({ token }) => {
                 //         type: "starr"
                 //     });
                 //     setDossier(newDossierItems);
-                //     break;
+                    break;
                 default:
                     // break;
             }
@@ -145,7 +149,7 @@ export const Dossier = ({ token }) => {
 
     return (
         <ErrorBoundary>
-            <DragDropContext>
+            <DragDropContext onDragEnd={onDragEnd}>
                 <ParentContainer>
                     {/* dossier droppable container */}
                     <Droppable droppableId="dossier">
@@ -155,7 +159,7 @@ export const Dossier = ({ token }) => {
                                 {...provided.droppableProps}>
                                 <ColumnTitle>Drop Items Here</ColumnTitle>
                                 {/* map through contents of dossier */}
-                                {items ? items.map((item, index) => (
+                                {dossier.wins ? dossier.wins.map((win, index) => (
                                     // actual library draggable container
                                     <Draggable
                                         key={item.pk}
@@ -170,7 +174,7 @@ export const Dossier = ({ token }) => {
                                                     {...provided.dragHandleProps}
                                                     {...provided.draggableProps}
                                                 >
-                                                    <li className="content-dossier">{`${dossier.item}`}</li>
+                                                    <li key=""className="content-dossier">{`${win}`}</li>
                                                 </StyledDraggable>
                                                 {provided.placeholder}
                                             </div>
@@ -199,7 +203,7 @@ export const Dossier = ({ token }) => {
                                                     {...provided.dragHandleProps}
                                                     {...provided.draggableProps}
                                                 >
-                                                    <li className="list-win">{`${win.title} on ${win.occured_date}`}</li>
+                                                    <li key={`${win.id}`}className="list-win">{`${win.title} on ${win.occured_date}`}</li>
                                                 </StyledDraggable>
                                                 {provided.placeholder}
                                             </div>
