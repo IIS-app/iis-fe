@@ -6,19 +6,18 @@
 .button-edit {
     background-color: #28353c;
     border: 2px #00b9a3 groove;
-    border-radius: 8px;
+    border-radius: 10px;
     box-sizing: border-box;
     color: #96FF7D;
     cursor: pointer;
     display: inline-block;
-    font-weight: 500;
-    height: 40px;
+    font-size: normal;
     width: max-content;
     line-height: 20px;
     margin-bottom: 0.2em;
     margin: .2em;
     outline: none;
-    padding: 10px 16px;
+    padding: 5px 8px;
     position: relative;
     text-align: center;
     text-decoration: none;
@@ -51,20 +50,15 @@
     background-image: ;
 }
 
-img {
-    width: 15%;
-    height: 15%;
-}
 
 .logo {
-    width: 7%;
-    height: 7%;
+    width: 50%;
 }
 
 .button-register {
     background-color: #28353c;
     border: 2px #00b9a3 groove;
-    border-radius: 5px;
+    border-radius: 10px;
     box-shadow: 2px 2px #96FF7D;
     text-shadow: 2px 2px 4px rgb(89, 64, 93);
     /* border-style: ; */
@@ -91,3 +85,12 @@ img {
     -webkit-user-select: none;
     touch-action: manipulation;
 }
+
+.link-inline {
+    color: #00b9a3;
+}
+
+.link-register {
+    color: #00b9a3;
+}
+
