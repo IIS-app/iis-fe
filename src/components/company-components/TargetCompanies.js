@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { requestListTargetCompanies } from '../requests/CompanyRequests';
 import { Link } from 'react-router-dom';
 import { TCSnapshot } from './TCSnapshot'
+import { Header } from '../site-components/Header'
 
 
 export const TargetCompanies = ({token}) => {
@@ -20,6 +21,7 @@ export const TargetCompanies = ({token}) => {
 
     return (
     <>
+    <Header />
     <div className='container-button'>
         <Link
             key="button-add"
@@ -30,7 +32,7 @@ export const TargetCompanies = ({token}) => {
     </div>
     {error && <div className="error">{error}</div>}
     <h2>🎯 Target Companies 🎯</h2>
-    <div className='container-main'>
+    <div className='container-main' style={{border: 'solid 3px', borderRadius:'10px', width:'75%', padding: '10px' }}>
         <div className='container-list'>
             <ul key="tc-info" className="list">
                 {companies ? companies.map(company => (

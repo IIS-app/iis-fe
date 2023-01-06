@@ -12,8 +12,8 @@ export const requestListTargetJobs = (token) => {
 }
 
 // ❌ POST CREATE A NEW TARGET JOB FULL RECORD - ep   app
-export const requestCreateTargetJobFull = (token, jobTitle, jobUrl, jobCompany, jobNotes) => {
-    const url = 'https://internal-interview-service.onrender.com/target-jobs/add'
+export const requestCreateTargetJob = (token, jobTitle, jobUrl, jobCompany, jobNotes) => {
+    const url = 'https://internal-interview-service.onrender.com/target-jobs/'
     const response = axios.post(url,
         {
             title: jobTitle,
@@ -31,8 +31,8 @@ export const requestCreateTargetJobFull = (token, jobTitle, jobUrl, jobCompany, 
 
 // ❌ POST CREATE A NEW TARGET JOB BASE RECORD - ep 
 // maybe us this one to add something on the fly...found a job throw it in
-export const requestCreateTargetJobBase = (token, jobTitle, jobUrl) => {
-    const url = 'https://internal-interview-service.onrender.com/target-jobs/add'
+export const requestQuickJob = (token, jobTitle, jobUrl) => {
+    const url = 'https://internal-interview-service.onrender.com/target-jobs/'
     const response = axios.post(url,
         {
             title: jobTitle,

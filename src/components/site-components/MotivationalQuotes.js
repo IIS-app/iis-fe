@@ -19,7 +19,7 @@ const FooterQuote = styled.p`
 const FooterImage = styled.img`
   width: 100px;
   height: 100px;
-  border-radius: 50%;
+  border-radius: 10px;
   margin: 20px 0;
 `;
 

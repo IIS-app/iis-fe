@@ -3,7 +3,6 @@
 }
 
 body {
-  margin: .45em;
   background-color: #28353c;
   color: #96FF7D;
 }
@@ -17,7 +16,6 @@ body {
 
 .App-header {
   background-color: #282c34;
-  /* min-height: vh; */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -26,3 +24,56 @@ body {
   color: white;
 }
 
+.navigation {
+  width: 95%;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.dash-profile {
+   background-image: url('/public/images/dash-profile.png');
+   width: 200px;
+   height: 200px
+}
+
+.dash-starr {
+   background-image: url('/public/images/dash-starr.png');
+   width: 200px;
+   height: 200px
+}
+.dash-company {
+   background-image: url('/public/images/dash-company.png');
+   width: 200px;
+   height: 200px
+}
+.dash-jobs {
+   background-image: url('/public/images/dash-jobs.png');
+   width: 200px;
+   height: 200px
+}
+.dash-resume {
+   background-image: url('/public/images/dash-resumes.png');
+   width: 200px;
+   height: 200px
+}
+.dash-letter {
+   background-image: url('/public/images/dash-letters.png');
+   width: 200px;
+   height: 200px
+}
+.dash-question {
+   background-image: url('/public/images/dash-questions.png');
+   width: 200px;
+   height: 200px
+}
+.dash-win {
+   background-image: url('/public/images/dash-wins.png');
+   width: 200px;
+   height: 200px
+}
+
+.dashboard {
+  display: flex;
+  flex-wrap: wrap;
+
+}

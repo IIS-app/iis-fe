@@ -15,7 +15,7 @@ border: 1px black;
 justify-content: space-around;
 align-items: center;
 box-shadow: 0 4px 8px 0 #C3FE96;
-border-radius: 5px;
+border-radius: 10px;
 `
 
 const DossierContent = styled.div `

@@ -12,7 +12,7 @@ const ParentContainer = styled.div`
     display: flex;
     flex-direction: row;
     align-items: stretch;
-    border-radius: 5px;
+    border-radius: 10px;
     overflow: hidden;
     border: white 1px;
     height: min-content;
@@ -22,7 +22,7 @@ const LeftStyledDroppable = styled.div`
     height: 300px;
     margin: 10px;
     border:  black solid 2px;
-    border-radius: 5px;
+    border-radius: 10px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -41,7 +41,7 @@ const LeftStyledDroppable = styled.div`
     justify-content: space-around;
     margin: 10px;
     padding: 10px;
-    border-radius: 5px;
+    border-radius: 10px;
     overflow: hidden;
     overflow-y: scroll;
     `
@@ -50,7 +50,7 @@ const LeftStyledDroppable = styled.div`
     padding: 8px;
     margin: 8px 0 8px 0;
     background: #96FF7D;
-    border-radius: 5px;
+    border-radius: 10px;
     border: 1px ${props => (props.isDragging ? 'dashed #4099ff' : 'solid #ddd')};
     list-style: none;
     flex-direction: column;
@@ -95,10 +95,14 @@ export const Dossier = ({ token }) => {
         setError(null);
         setIsLoading(true);
         requestDossierDetail(token)
-            .then(({ data }) => { setDossier(data) })
+            .then(({ data }) => {
+                const { title, job, resume, cover_letter, starrs, questions, wins, created_at, updated_at, draft } = data;
+                setDossier([data]);
+                console.log(dossier)
+            })
             .catch(error => setError(error.message))
-            .finally(() => setIsLoading(false))
-    }, [token])
+            .finally(() => setIsLoading(false));
+    }, [token, '']);
 
 
     // DND verify drag destination and update arrays
@@ -107,36 +111,36 @@ export const Dossier = ({ token }) => {
         if (!result.destination) {
             return;
         }
-        // // is drop in dossier container
-        // if (result.destination.droppableId === "dossier") {
-        //     switch (result.type) {
-        //         case "win":
-        //             // remove dragged win from win container
-        //             const newWins = wins.filter(win => win.pk !== result.draggableId);
-        //             setWins(newWins);      
-        //             // add win to dossier container
-        //             let newDossierItems = dossier.concat({
-        //                 key: result.draggableId,
-        //                 type: "win" 
-        //             });
-        //             setDossier(newDossierItems);
-        //             // break;
-        //         // case "starr":
-        //         //     // remove dragged starr from starr container
-        //         //     const newStarrs = starrs.filter(starr => starr.pk !== result.draggableId);
-        //         //     setStarrs(newStarrs);
+        // is drop in dossier container
+        if (result.destination.droppableId === "dossier") {
+            switch (result.type) {
+                case "win":
+                    // remove dragged win from win container
+                    const newWins = wins.filter(win => win.pk !== result.draggableId);
+                    setWins(newWins);      
+                    // add win to dossier container
+                    let newDossierItems = dossier.concat({
+                        key: result.draggableId,
+                        type: "win" 
+                    });
+                    setDossier(newDossierItems);
+                    // break;
+                // case "starr":
+                //     // remove dragged starr from starr container
+                //     const newStarrs = starrs.filter(starr => starr.pk !== result.draggableId);
+                //     setStarrs(newStarrs);
 
-        //         //     // add starr to dossier container
-        //         //     newDossierItems = dossier.concat({
-        //         //         key: result.draggableId,
-        //         //         type: "starr"
-        //         //     });
-        //         //     setDossier(newDossierItems);
-        //         //     break;
-        //         default:
-        //             // break;
-        //     }
-        // }
+                //     // add starr to dossier container
+                //     newDossierItems = dossier.concat({
+                //         key: result.draggableId,
+                //         type: "starr"
+                //     });
+                //     setDossier(newDossierItems);
+                //     break;
+                default:
+                    // break;
+            }
+        }
     }
 
     return (

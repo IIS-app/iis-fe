@@ -1,12 +1,13 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router';
-import { requestCreateQuestion } from '../requests/QuestionRequests';
+import { requestUpdateQuestion } from '../requests/QuestionRequests';
 import ReactQuill from 'react-quill'
 import 'react-quill/dist/quill.snow.css'
 import 'react-quill/dist/quill.bubble.css'
 
+// TODO: FINISH OUT QUESTION EDIT FORM
 
-export const QuestionForm = ({token}) => {
+export const QuestionEdit = ({token}) => {
     const [questionId, setQuestionId] = useState(null)
     const [questionType, setQuestionType]= useState('');
     const [question, setQuestion] = useState('');
@@ -32,7 +33,7 @@ export const QuestionForm = ({token}) => {
     const handleSubmit = (e) => {
         e.preventDefault()
         setError(null)
-        requestCreateQuestion(token, questionType, question, questionCompany, questionAnswer)
+        requestUpdateQuestion(token, questionType, question, questionCompany, questionAnswer)
 
         .then((res) => {
             // setQuestionId(res.data.id)
