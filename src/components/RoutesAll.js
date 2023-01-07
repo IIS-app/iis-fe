@@ -45,11 +45,11 @@ export const RoutesAll = ({token}, isLoggedIn, setAuth) => {
                 path="/" 
                 element={ <Dashboard token={token} isLoggedIn={isLoggedIn} setAuth={setAuth}/> }
             />
-            <Route 
+            {/* <Route 
                 path="/home"
                 exact
                 element={ <Dashboard token={token} isLoggedIn={isLoggedIn} /> }
-            />
+            /> */}
 
                 {/* USER AND PROFILE ROUTES */}
             <Route 

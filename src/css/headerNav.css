@@ -1,0 +1,115 @@
+.new-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.header-links-left,
+.header-links-right {
+    display: flex;
+    flex-direction: column;
+    flex-basis: auto;
+    flex-grow: 0;
+    flex-shrink: 0;
+    align-items:
+}
+
+.header-links-right {
+    align-items: flex-end;
+}
+
+.logo-link {
+    display: block;
+    align-items: center;
+}
+
+.logo {
+    width: 200px;
+    margin: .5em;
+}
+
+.logo:hover {
+    width: 200px;
+    margin: .5em;
+}
+
+.icon {
+    width: 30px;
+}
+
+.link-button-nav {
+    font-size: 14px;
+    /* margin-left: 16px; */
+    text-decoration: none;
+    color: #96FF7D;
+    width: calc(100% - 16px);
+}
+
+
+.button-login {
+    font-size: 14px;
+    text-decoration: none;
+    color: black;
+}
+
+.link-button-icon {
+    background-color: #28353c;
+    border: 2px #00b9a3 groove;
+    border-radius: 10px;
+    box-sizing: border-box;
+    color: #96FF7D;
+    cursor: pointer;
+    font-size: normal;
+    width: max-content;
+    line-height: 20px;
+    margin-bottom: 0.2em;
+    margin: .2em;
+    outline: none;
+    padding: 5px 8px;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    transition: color 100ms;
+    vertical-align: baseline;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+}
+
+.link-button-nav {
+    background-color: #28353c;
+    border: 2px #00b9a3 groove;
+    border-radius: 10px;
+    box-sizing: border-box;
+    color: #96FF7D;
+    cursor: pointer;
+    font-weight: 500;
+    width: max-content;
+    line-height: 20px;
+    margin-bottom: 0.2em;
+    margin: .2em;
+    outline: none;
+    padding: 5px 8px;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    transition: color 100ms;
+    vertical-align: baseline;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+}
+
+
+
+
+.link-button-nav:hover,
+.link-button-nav:focus,
+.link-button-icon:hover,
+.link-button-icon:focus
+ {
+    background-color: #096C81;
+    box-shadow: 2px 2px #96FF7D;
+    text-shadow: 2px 2px 4px rgb(89, 64, 93);
+}
+

@@ -1,4 +1,4 @@
-.link-button-nav,
+
 .button-submit,
 .button-login,
 .button-add,
@@ -28,8 +28,7 @@
     touch-action: manipulation;
 }
 
-.link-button-nav:hover,
-.link-button-nav:focus,
+
 .button-login:hover,
 .button-login:focus,
 .button-submit:hover,
@@ -48,11 +47,6 @@
 
 .button-view {
     background-image: ;
-}
-
-
-.logo {
-    width: 50%;
 }
 
 .button-register {

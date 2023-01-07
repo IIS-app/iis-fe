@@ -1,9 +1,11 @@
+
+
 * {
   box-sizing: border-box;
 }
 
 body {
-  background-color: #28353c;
+  background-color: #303f47;
   color: #96FF7D;
 }
 
@@ -11,6 +13,7 @@ body {
 .App {
   text-align: left;
   padding-left: .5em;
+  padding-right: .5em;
 }
 
 
@@ -31,9 +34,9 @@ body {
 }
 
 .dash-profile {
-   background-image: url('/public/images/dash-profile.png');
-   width: 200px;
-   height: 200px
+    background-image: url('/public/images/dash-profile.png');
+    width: 200px;
+    height: 200px
 }
 
 .dash-starr {
@@ -75,5 +78,4 @@ body {
 .dashboard {
   display: flex;
   flex-wrap: wrap;
-
 }
