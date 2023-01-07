@@ -24,10 +24,12 @@ function App() {
 	
 	return (
         <>
-        <Header />
         <div className="App">
 		    {isLoggedIn ? (
+                <>
+                <Header token={token} setAuth={setAuth}/>
                 <RoutesAll token={token} setAuth={setAuth} isLoggedIn={isLoggedIn}  />
+                </>
                 ) : (
                     <main id="home-box">
                         <Login setAuth={setAuth} isLoggedIn={isLoggedIn} />
