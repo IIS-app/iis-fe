@@ -27,7 +27,7 @@ export const TargetJobs = ({token}) => {
                 id='button-add'
                 to="/targetjobs/add"
                 className='button-add'
-            >I found a new 🎯 job!</Link>
+            >I found a new job!</Link>
         </div>
         {error && <div className="error">{error}</div>}
         <h2>List of Jobs</h2>

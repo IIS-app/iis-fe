@@ -77,7 +77,7 @@ export const TCEdit = ({ token }) => {
     return (
         <div className="container-form">   
             {error && <div className="error">{error}</div>}
-            <h2 className="targetco">🎯 What additional intel do you have? 🎯</h2>
+            <h2 className="targetco">What additional intel do you have?</h2>
             <form className="form-company" id='form-company' onSubmit={handleSubmit}>
                 <div className="container-form" style={{border: 'solid 3px', borderRadius:'10px', width:'75%', padding: '10px' }}>
                 <label className="form-label" htmlFor="companyName">Company Name</label>
