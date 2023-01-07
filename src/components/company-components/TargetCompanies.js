@@ -21,17 +21,16 @@ export const TargetCompanies = ({token}) => {
 
     return (
     <>
-    <Header />
-    <div className='container-button'>
-        <Link
-            key="button-add"
-            id='button-add'
-            to="/targetcompany/add"
-            className='button-add'
-        >Add a New 🎯 Company 🎯</Link>
-    </div>
     {error && <div className="error">{error}</div>}
-    <h2>🎯 Target Companies 🎯</h2>
+        <div className='container-button'>
+            <h2>Target Companies</h2>
+            <Link
+                key="button-add"
+                id='button-add'
+                to="/targetcompany/add"
+                className='button-add'
+            >Add a New Company</Link>
+        </div>
     <div className='container-main' style={{border: 'solid 3px', borderRadius:'10px', width:'75%', padding: '10px' }}>
         <div className='container-list'>
             <ul key="tc-info" className="list">
@@ -39,6 +38,7 @@ export const TargetCompanies = ({token}) => {
                     <TCSnapshot key={company.pk} company={company}/>
                     )) : null}
             </ul>
+
         </div>
     </div>
     </>       

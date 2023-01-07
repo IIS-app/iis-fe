@@ -23,9 +23,12 @@
     flex-direction: column;
 }
 
+.logo-login {
+    width: 40%
+}
 .container-logo {
-    width: 40%;
-    display: flex;
+    display: block;
+    flex-shrink: 0;
 }
 
 .container-first {
@@ -49,7 +52,7 @@ ul {
 
 li {
     list-style: none;
-    font-size: small;
+    font-size: smaller;
     padding: 3px;
 }
 

@@ -31,7 +31,7 @@ export const Login = ({ setAuth, isLoggedIn }) => {
             {error && <div className="error">{error}</div>}
             {register===false ? (
             <>
-            <img className="logo" src={`${process.env.PUBLIC_URL}/iis-app-logo.png`} alt="Logo" />
+            <img className="logo-login" src={`${process.env.PUBLIC_URL}/iis-app-logo.png`} alt="logo" />
             <div className='container-login'>
 
                 <h3>Please log in below.</h3>

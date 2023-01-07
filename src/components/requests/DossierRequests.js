@@ -13,7 +13,7 @@ export const requestListDossiers = (token) => {
 
 // GET DETAIL OF DOSSIER RECORD - ep  app 
 export const requestDossierDetail = (token) => {
-    const url = 'https://internal-interview-service.onrender.com/dossier/'
+    const url = 'https://internal-interview-service.onrender.com/dossier/1'
     const response = axios.get(url,
         {headers: {
             Authorization: `Token ${token}`
