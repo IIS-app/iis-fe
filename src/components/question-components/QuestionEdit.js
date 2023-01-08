@@ -73,7 +73,7 @@ export const QuestionEdit = ({token}) => {
                                 type='radio'
                                 name='questionType'
                             />
-                            <label for='answer' className='form-label'style={{width:'max-content'}}>Answer Question</label>
+                            <label htmlFor='answer' className='form-label'style={{width:'max-content'}}>Answer Question</label>
                         </div>
                         <div className='radio-group' style={{marginLeft:'1em', width:'max-content'}}>
                             <input 
@@ -84,7 +84,7 @@ export const QuestionEdit = ({token}) => {
                                 type='radio'
                                 name='questionType'
                             />
-                            <label for='ask' className='form-label' style={{width:'max-content'}}>Ask Company</label>
+                            <label htmlFor='ask' className='form-label' style={{width:'max-content'}}>Ask Company</label>
                         </div>
                     </div>
                     <label className='form-label' htmlFor='questionCompany'>Company</label>

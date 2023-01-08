@@ -21,10 +21,13 @@
 .container-login {
     width: 60%;
     flex-direction: column;
+    margin-left: 2em;
 }
 
 .logo-login {
-    width: 40%
+    width: 40%;
+    height: 40%;
+    margin: 1em;
 }
 .container-logo {
     display: block;

@@ -6,10 +6,9 @@ import 'react-quill/dist/quill.snow.css'
 import 'react-quill/dist/quill.bubble.css'
 
 
-export const QuestionForm = ({token}) => {
-    const [questionId, setQuestionId] = useState(null)
-    const [questionType, setQuestionType]= useState('');
+export const QuestionForm = ({ token }) => {
     const [question, setQuestion] = useState('');
+    const [questionType, setQuestionType]= useState('');
     const [questionAnswer, setQuestionAnswer] = useState('')
     const [questionCompany, setQuestionCompany] = useState('');
     const [error, setError] = useState(null);
@@ -72,7 +71,7 @@ export const QuestionForm = ({token}) => {
                                 type='radio'
                                 name='questionType'
                             />
-                            <label for='answer' className='form-label'style={{width:'max-content'}}>Answer Question</label>
+                            <label htmlFor='answer' className='form-label'style={{width:'max-content'}}>Answer Question</label>
                         </div>
                         <div className='radio-group' style={{marginLeft:'1em', width:'max-content'}}>
                             <input 
@@ -83,7 +82,7 @@ export const QuestionForm = ({token}) => {
                                 type='radio'
                                 name='questionType'
                             />
-                            <label for='ask' className='form-label' style={{width:'max-content'}}>Ask Company</label>
+                            <label htmlFor='ask' className='form-label' style={{width:'max-content'}}>Ask Company</label>
                         </div>
                     </div>
                     <label className='form-label' htmlFor='questionCompany'>Company</label>
@@ -126,7 +125,3 @@ export const QuestionForm = ({token}) => {
         </div>
     )
 }
-
-
-
-                
