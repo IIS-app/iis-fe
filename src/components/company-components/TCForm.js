@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { useNavigate } from 'react-router';
+import { useNavigate } from 'react-router-dom';
 import { requestCreateTargetCompany } from '../requests/CompanyRequests';
 import ReactQuill from 'react-quill'
 import 'react-quill/dist/quill.snow.css'

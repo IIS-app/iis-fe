@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { useNavigate } from 'react-router';
+import { useNavigate } from 'react-router-dom';
 import { requestCreateTargetJob } from '../requests/JobRequests';
 import ReactQuill from 'react-quill'
 import 'react-quill/dist/quill.snow.css'

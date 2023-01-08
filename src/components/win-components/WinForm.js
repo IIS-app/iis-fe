@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router';
+import { useNavigate } from 'react-router-dom';
 import { requestCreateWin } from '../requests/WinRequests';
 import ReactQuill from 'react-quill'
 import 'react-quill/dist/quill.snow.css'
