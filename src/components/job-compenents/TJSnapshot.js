@@ -1,5 +1,10 @@
 import { Link } from 'react-router-dom';
 import { requestDeleteTargetJob } from '../requests/JobRequests'
+import { PlusCircle } from '@styled-icons/bootstrap/PlusCircle'
+import { FolderPlus } from '@styled-icons/bootstrap/FolderPlus'
+import { EyeOutline } from '@styled-icons/evaicons-outline/EyeOutline'
+import { RemoveCircleOutline } from '@styled-icons/material/RemoveCircleOutline'
+import { Edit2Outline } from '@styled-icons/evaicons-outline/Edit2Outline'
 
 
 export const TJSnapshot = ({ token, job }) => {
@@ -28,7 +33,7 @@ export const TJSnapshot = ({ token, job }) => {
                     id="job-delete"
                     className="button-action"
                     onClick={() => requestDeleteTargetJob(token, job.pk)}
-                    title={`WARNING this will delete your 🎯 Job: "${job.title}!" AND NO TAKE BACKS...YET`}
+                    title={`WARNING this will remove: "${job.title}!"`}
                     >❌
                 </Link>
             </div>

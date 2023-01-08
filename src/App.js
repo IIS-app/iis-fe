@@ -3,6 +3,7 @@ import './App.css';
 import './css/forms.css'
 import './css/links.css'
 import './css/headerNav.css'
+import './css/accordion.css'
 import React from 'react';
 import useLocalStorageState from 'use-local-storage-state';
 import { RoutesAll } from './components/RoutesAll';
