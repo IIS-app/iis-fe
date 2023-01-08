@@ -1,6 +1,9 @@
 import { Link } from 'react-router-dom'
 import { useState, useEffect } from 'react';
 import { requestListSQ } from '../requests/QuestionRequests'
+import { QuestionsSQ } from './QuestionsSQ'
+import { PlusCircle } from '@styled-icons/bootstrap/PlusCircle'
+
 
 export const Questions = ({token}) => {
     const [sq, setSQ] = useState([])
@@ -26,25 +29,7 @@ export const Questions = ({token}) => {
             id="button-add"
             to="/questions/add"
         >Add Your Own Question</Link>
-        <h2>List of Suggested Questions</h2>
-        <div className='container-main' style={{border: 'solid 3px', borderRadius:'10px', width:'75%', padding: '10px' }}>
-            <div className='container-list'>
-                    {listSQ ? listSQ.map(sq => (
-                    <ul key={`${sq.pk}`} className="list">
-                        <li className="list-sq">{sq.question}</li>
-                        <li className="list-sq">{sq.question_type}</li>
-                        <Link
-                            className='sq-add'
-                            key="sq-add"
-                            id="button-add"
-                            to="/questions/add"
-                        >Add Your Own Question</Link>
-
-                    </ul>
-                        )) : null}
-            </div>
-        </div>
-
+        <QuestionsSQ token={token} />
         </>
     )
 }
