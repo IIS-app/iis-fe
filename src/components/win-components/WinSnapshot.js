@@ -8,7 +8,7 @@ export const WinSnapshot = ({ token, win }) => {
 
     return (
         <div className="container-win">
-            <li className="list-win" >{`${win.title} on ${win.occured_date}`}</li>
+            <li key={win.pk} className="list-win" >{`${win.title} on ${win.occured_date}`}</li>
             <div className="container-action-links">
                 <Link 
                     key={`${win.pk}.edit`}

@@ -31,6 +31,7 @@ import { WinEdit } from './win-components/WinEdit';
 
 import { Questions } from './question-components/Questions';
 import { QuestionForm } from './question-components/QuestionForm';
+import { QuestionFormSQ } from './question-components/QuestionFormSQ';
 
 import { Resumes } from './resume-components/Resumes';
 import { CoverLetters } from './coverletter-components/CoverLetters';
@@ -144,6 +145,11 @@ export const RoutesAll = ({token}, isLoggedIn, setAuth) => {
                 path="/questions/add"
                 exact
                 element={ <QuestionForm token={token} isLoggedIn={isLoggedIn} /> }
+            />
+            <Route 
+                path="/questions/use-sq"
+                exact
+                element={ <QuestionFormSQ token={token} isLoggedIn={isLoggedIn} /> }
             />
             
 
