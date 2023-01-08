@@ -13,7 +13,7 @@ export const requestListSQ = (token) => {
 }
 
 // ❌ POST CREATE NEW QUESTION from SYSTEM RECORD
-export const requestCreateSQAnswer = (token, answer, question, type ) => {
+export const requestCreateSQAnswer = (token, answer, question, type, company, tag ) => {
     const url = 'https://internal-interview-service.onrender.com/questions/'
     const response = axios.post(url,
         {

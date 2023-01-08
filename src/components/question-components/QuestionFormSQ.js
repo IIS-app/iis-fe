@@ -16,9 +16,10 @@ export const QuestionFormSQ = ({ token }) => {
     const [questionCompany, setQuestionCompany] = useState('');
     const [error, setError] = useState(null);
     const navigate = useNavigate()
-    const tag = ''
+    const tag = []
     const [questionTypeText, setQuestionTypeText] = useState('')
     const [companyQ, setCompanyQ] = useState('')
+    const [draft, isDraft] = useState(true)
 
     useEffect(() => {
         if (questionType === 'CQ') {
