@@ -22,7 +22,7 @@ export const Register = ({setAuth}) => {
             .then((res) => {
                 const token = res.data.auth_token
                 setAuth(email, token)
-                navigate("/home")
+                navigate("/")
             })
             .catch((error) => {
                 setError(error.message)
@@ -119,7 +119,7 @@ export const Register = ({setAuth}) => {
                             <button
                                 className='button-submit'
                             >Register</button>
-                            <Link to='/home' className='button-submit' >Return to Login</Link>
+                            <Link to='/' className='button-submit' >Return to Login</Link>
                         </div>
                     </div>
                 </form>
