@@ -1,8 +1,8 @@
 import axios from 'axios'
 
-// ❌ GET LIST OF COMPANY QUESTIONS
-export const requestListCompanyQuestions = (token) => {
-    const url = 'https://internal-interview-service.onrender.com/questions/cq'
+// ❌ GET LIST OF SYSTEM QUESTIONS
+export const requestListSQ = (token) => {
+    const url = 'https://internal-interview-service.onrender.com/system-question/'
     const response = axios.get(url,
         {headers: { 
             Authorization: `Token ${token}`       
