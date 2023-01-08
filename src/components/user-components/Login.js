@@ -19,7 +19,7 @@ export const Login = ({ setAuth, isLoggedIn }) => {
         .then((res) => {
             const token = res.data.auth_token
             setAuth(email, token)
-            navigate("/home")
+            navigate("/")
         })
         .catch((error) => {
             setError(error.message)
