@@ -50,6 +50,7 @@ export const TJDetail = ({ token }) => {
                 </Link>
             </ul>
         </div>
+        
         <Dossier token={token} />
 
         </>
