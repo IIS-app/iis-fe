@@ -1,16 +1,19 @@
-  
-  
-  h1 {
+h1 {
     text-align: center;
     margin: 2rem 0 4rem 0;
-  }
-  
-  .accordion {
+}
+
+.accordion {
     max-width: 600px;
     margin: 2rem auto;
-  }
-  
-  .accordion-title {
+}
+
+.accordion-dossier,
+.accordion-components {
+    margin: 2em 2em 5em 2em;
+}
+
+.accordion-title {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -19,27 +22,28 @@
     background-color: #303f47;
     border: 1px solid #96FF7D;
     border-radius: 10px;
-  }
-  
-  .accordion-title:hover {
+    margin-bottom: .3em;
+}
+
+.accordion-title:hover {
     background-color: #096C81;
-  }
-  
-  .accordion-title,
-  .accordion-content {
+}
+
+.accordion-title,
+.accordion-content {
     padding: 1rem;
-  }
-  
-  .accordion-content {
+}
+
+.accordion-content {
     background-color: #28353c;
-  }
-  
-  @media screen and (max-width: 700px) {
+}
+
+@media screen and (max-width: 700px) {
     body {
-      font-size: 18px;
+        font-size: 18px;
     }
-  
-    .accordion {
-      width: 90%;
-    }
-  }
+
+    /* .accordion {
+        width: 90%;
+    } */
+}

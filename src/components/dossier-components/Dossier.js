@@ -52,7 +52,20 @@ export const Dossier = ({ token }) => {
                                 userQuestions={dossier.question_titles}
                             />}
                     />
-                    <AccordionComponents token={token} />
+                </div>
+                <div className='accordion-components'>
+                    <Accordion
+                        key={dossier.id}
+                        title="Available Dossier Items"
+                        content=
+                            {<AccordionComponents 
+                                token={token}
+                                key='accordion-components'
+                                starrs={dossier.starr_titles}
+                                wins={dossier.win_titles}
+                                userQuestions={dossier.question_titles}
+                            />}
+                    />
                 </div>
             </div>
         </div>
