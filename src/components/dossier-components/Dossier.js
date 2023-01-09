@@ -31,10 +31,21 @@ export const Dossier = ({ token }) => {
         requestDossierDetail(token)
             .then(({ data }) => {
                 setDossier(data);
+                console.log(data)
+                // setStarrId(dossier.data.starr_titles.id)
             })
             .catch(error => setError(error.message))
             .finally(() => setIsLoading(false));
     }, [token]);
+
+
+        console.log(dossier.wins_titles)
+        console.log(dossier.starr_titles)
+        const [currentStarrs, setCurrentStarrs] = useState(dossier.starr_titles)
+        console.log(currentStarrs)
+
+
+    
             
     return (
         <div>
@@ -60,9 +71,9 @@ export const Dossier = ({ token }) => {
                             {<AccordionComponents 
                                 token={token}
                                 key='accordion-components'
-                                starrs={dossier.starr_titles}
-                                wins={dossier.win_titles}
-                                userQuestions={dossier.question_titles}
+                                starrsD={dossier.starr_titles}
+                                winsD={dossier.win_titles}
+                                userQD={dossier.question_titles}
                             />}
                     />
                 </div>

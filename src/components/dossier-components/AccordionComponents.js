@@ -8,16 +8,21 @@ import { Accordion } from './Accordion'
 
 
 //MAIN FUNCTION EXPORT
-export const AccordionComponents = ({ token }) => {
+export const AccordionComponents = ({ token, starrsD, winsD, userQD }) => {
     const { pk } = useParams();
     const [wins, setWins] = useState([]);
     const [userQ, setUserQ] = useState([]);
     const [starrs, setStarrs] = useState([]);
     const [error, setError] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
+    // console.log(starrsD)
 
     // ACCORDION RELATED TESTS
     const [isActive, setIsActive] = useState(false);
+
+    const handleSelectStarr = () => {
+
+    }
 
 
      // GET LIST OF WINS
@@ -68,9 +73,11 @@ export const AccordionComponents = ({ token }) => {
                                     <div className="accordion-subtitle">
                                         <input 
                                             type="checkbox"
-                                            checked={starr.is_draft}
+                                            // this is where I am trying to set the checked state to be populated by the initial data provided by the dossier contents passed through props
+                                            checked={if starr.pk starrsD.}
                                             onClick={ev => ev.stopPropagation()}/> 
                                         {starr.question}
+                                        {starr.is_draft}
                                     </div>}
                                 content={starr.summary}
                             />
@@ -105,7 +112,7 @@ export const AccordionComponents = ({ token }) => {
                     key="avail-iq"
                     title='Available Interview Questions' 
                     content={
-                        userQuestions && userQuestions.filter(q => q.question_type === 'IQ').map(q => (
+                        userQ && userQ.filter(q => q.question_type === 'IQ').map(q => (
                             <Accordion 
                                 key={q.pk} 
                                 title={
@@ -127,7 +134,7 @@ export const AccordionComponents = ({ token }) => {
                     key="avail-cq"
                     title='Available Company Questions' 
                     content={
-                        userQuestions && userQuestions.filter(q => q.question_type === 'CQ').map(q => (
+                        userQ && userQ.filter(q => q.question_type === 'CQ').map(q => (
                             <Accordion 
                                 key={q.pk} 
                                 title={
