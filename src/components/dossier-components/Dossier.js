@@ -54,10 +54,19 @@ export const Dossier = ({ token }) => {
                                 userQuestions={dossier.question_titles}
                             />}
                     />
-                    <AccordionComponents
-                        token={token}
-                        // passing the current dossier starrs in order to set checked state on available item list
-                        currentStarrs = {setCurrentStarrs}
+                </div>
+                <div className='accordion-components'>
+                    <Accordion
+                        key={dossier.id}
+                        title="Available Dossier Items"
+                        content=
+                            {<AccordionComponents 
+                                token={token}
+                                key='accordion-components'
+                                starrs={dossier.starr_titles}
+                                wins={dossier.win_titles}
+                                userQuestions={dossier.question_titles}
+                            />}
                     />
                 </div>
             </div>
