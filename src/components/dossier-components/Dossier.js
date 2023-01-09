@@ -9,9 +9,11 @@ import { AccordionComponents } from './AccordionComponents'
 //MAIN FUNCTION EXPORT
 export const Dossier = ({ token }) => {
     const { pk } = useParams();
-    // const [wins, setWins] = useState([]);
-    // const [userQuestions, setUserQuestions] = useState([]);
-    const [selectedStarr, setSelectedStarr] = useState([]);
+    const [wins, setWins] = useState([]);
+    const [userQuestions, setUserQuestions] = useState([]);
+    const [starrs, setStarrs] = useState([]);
+    const [starrTitle, setStarrTitle] = useState([]);
+    const [starrSummary, setStarrSummary] = useState([]);
     const [dossier, setDossier] = useState ([]);
     const [items, setItems] = useState ([]);
     const [item, setItem] = useState ([]);
@@ -28,16 +30,11 @@ export const Dossier = ({ token }) => {
         setIsLoading(true);
         requestDossierDetail(token)
             .then(({ data }) => {
-                setDossier(data)
-                console.log(data)
-                // setStarrId(dossier.data.starr_titles.id)
-                ;
+                setDossier(data);
             })
             .catch(error => setError(error.message))
             .finally(() => setIsLoading(false));
     }, [token]);
-
-    const [currentStarrs, setCurrentStarrs] = useState(dossier.starr_titles)
             
     return (
         <div>
