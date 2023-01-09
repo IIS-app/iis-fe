@@ -11,7 +11,7 @@ import { Accordion } from './Accordion'
 export const AccordionComponents = ({ token }) => {
     const { pk } = useParams();
     const [wins, setWins] = useState([]);
-    const [userQuestions, setUserQuestions] = useState([]);
+    const [userQ, setUserQ] = useState([]);
     const [starrs, setStarrs] = useState([]);
     const [error, setError] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
@@ -48,7 +48,7 @@ export const AccordionComponents = ({ token }) => {
         setIsLoading(true);
         requestListUserQuestions(token)
             .then((res => {
-                setUserQuestions(res.data)
+                setUserQ(res.data)
             }))   
             .catch(error => setError(error.message))
             .finally(() => setIsLoading(false))
