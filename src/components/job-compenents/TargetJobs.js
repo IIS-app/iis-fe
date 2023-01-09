@@ -40,7 +40,6 @@ export const TargetJobs = ({token}) => {
                 </ul>
             </div>
         </div>
-        <Dossier token={token} />
     </>    
     )
 }

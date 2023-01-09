@@ -1,48 +1,10 @@
 import { useState, useEffect } from 'react';
-import { requestTargetJobDetail } from '../requests/JobRequests';
 import { Link, useParams } from 'react-router-dom';
-import styled from 'styled-components'
-import { DragDropContext, Draggable, Droppable } from '@hello-pangea/dnd';
+import { requestTargetJobDetail } from '../requests/JobRequests';
+import { Dossier } from '../dossier-components/Dossier'
 
-//style information 
-const Container = styled.div `
-display: flex;
-margin: auto;
-width: 95%;
-height: min-content;
-padding: 2px;
-border: 1px black;
-justify-content: space-around;
-align-items: center;
-box-shadow: 0 4px 8px 0 #C3FE96;
-border-radius: 10px;
-`
 
-const DossierContent = styled.div `
-width: 40%;
-height: 500px;
-border: 1px solid black;
-overflow-y: scroll;
-display: flex;
-flex-direction: column;
-align-items: center;
-min-height: 100 px;
-margin: 2px;
-`;
-
-const AvailableContent = styled.div`
-width: 40%;
-height: 500px;
-border: 1px solid black;
-overflow-y: scroll;
-display: flex;
-flex-direction: column;
-align-items: center;
-min-height: 100 px;
-margin: 2px;
-`;
-
-// primary component function
+// MAIN FUNCTION EXPORT
 export const TJDetail = ({ token }) => {
     const { pk } = useParams()
     const [jobTitle, setJobTitle] = useState('')
@@ -88,6 +50,8 @@ export const TJDetail = ({ token }) => {
                 </Link>
             </ul>
         </div>
+        <Dossier token={token} />
+
         </>
     )
 }

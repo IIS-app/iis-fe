@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import { requestDossierDetail } from '../requests/DossierRequests';
 import { Link, useParams } from 'react-router-dom';
-import styled from 'styled-components'
 import { Accordion } from './Accordion'
 import { DossierComponents } from './DossierComponents'
 import { AccordionComponents } from './AccordionComponents'
@@ -10,11 +9,9 @@ import { AccordionComponents } from './AccordionComponents'
 //MAIN FUNCTION EXPORT
 export const Dossier = ({ token }) => {
     const { pk } = useParams();
-    const [wins, setWins] = useState([]);
-    const [userQuestions, setUserQuestions] = useState([]);
-    const [starrs, setStarrs] = useState([]);
-    const [starrTitle, setStarrTitle] = useState([]);
-    const [starrSummary, setStarrSummary] = useState([]);
+    // const [wins, setWins] = useState([]);
+    // const [userQuestions, setUserQuestions] = useState([]);
+    const [selectedStarr, setSelectedStarr] = useState([]);
     const [dossier, setDossier] = useState ([]);
     const [items, setItems] = useState ([]);
     const [item, setItem] = useState ([]);
@@ -31,11 +28,16 @@ export const Dossier = ({ token }) => {
         setIsLoading(true);
         requestDossierDetail(token)
             .then(({ data }) => {
-                setDossier(data);
+                setDossier(data)
+                console.log(data)
+                // setStarrId(dossier.data.starr_titles.id)
+                ;
             })
             .catch(error => setError(error.message))
             .finally(() => setIsLoading(false));
     }, [token]);
+
+    const [currentStarrs, setCurrentStarrs] = useState(dossier.starr_titles)
             
     return (
         <div>
@@ -52,7 +54,11 @@ export const Dossier = ({ token }) => {
                                 userQuestions={dossier.question_titles}
                             />}
                     />
-                    <AccordionComponents token={token} />
+                    <AccordionComponents
+                        token={token}
+                        // passing the current dossier starrs in order to set checked state on available item list
+                        currentStarrs = {setCurrentStarrs}
+                    />
                 </div>
             </div>
         </div>

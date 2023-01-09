@@ -1,8 +1,5 @@
 import { useState, useEffect } from 'react';
-import { requestListWins } from '../requests/WinRequests';
-import { requestListUserQuestions } from '../requests/QuestionRequests';
-import { requestStarrs } from '../requests/StarrRequests';
-import { Link, useParams } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components'
 import { Accordion } from './Accordion'
 
@@ -27,7 +24,7 @@ export const DossierComponents = ({ token, starrs, wins, userQuestions }) => {
                     title='STARRs' 
                     content={
                         starrs && starrs.map(starr => (
-                            <div className="accordion-item">
+                            <div key='ds-item' className="accordion-item">
                                 <div 
                                     key={starr.id}
                                     className="accordion-content"
