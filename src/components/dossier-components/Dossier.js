@@ -11,12 +11,7 @@ export const Dossier = ({ token }) => {
     const { pk } = useParams();
     const [wins, setWins] = useState([]);
     const [userQuestions, setUserQuestions] = useState([]);
-    const [starrs, setStarrs] = useState([]);
-    const [starrTitle, setStarrTitle] = useState([]);
-    const [starrSummary, setStarrSummary] = useState([]);
     const [dossier, setDossier] = useState ([]);
-    const [items, setItems] = useState ([]);
-    const [item, setItem] = useState ([]);
     const [error, setError] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
 
@@ -31,15 +26,21 @@ export const Dossier = ({ token }) => {
         requestDossierDetail(token)
             .then(({ data }) => {
                 setDossier(data);
+                console.log({data})
+                // setStarrId(dossier.data.starr_titles.id)
             })
             .catch(error => setError(error.message))
             .finally(() => setIsLoading(false));
     }, [token]);
+
+
+
+
+    
             
     return (
         <div>
             <div className='container-dossier'>
-                <div className="accordion-dossier">
                     <Accordion
                         key={dossier.id}
                         title={dossier.title}
@@ -48,11 +49,10 @@ export const Dossier = ({ token }) => {
                                 key='dossier-components'
                                 starrs={dossier.starr_titles}
                                 wins={dossier.win_titles}
-                                userQuestions={dossier.question_titles}
+                                userQ={dossier.question_titles}
                             />}
                     />
-                </div>
-                <div className='accordion-components'>
+                <div className='container-available'>
                     <Accordion
                         key={dossier.id}
                         title="Available Dossier Items"
@@ -60,9 +60,9 @@ export const Dossier = ({ token }) => {
                             {<AccordionComponents 
                                 token={token}
                                 key='accordion-components'
-                                starrs={dossier.starr_titles}
-                                wins={dossier.win_titles}
-                                userQuestions={dossier.question_titles}
+                                // starrsD={dossier && dossier.starr_titles.map(starr => starr.id)}
+                                // winsD={dossier.win_titles.map(win => win.id)}
+                                // userQD={dossier.question_titles.map(q => q.id)}
                             />}
                     />
                 </div>

@@ -3,7 +3,7 @@ import { Accordion } from './Accordion'
 
 
 //MAIN FUNCTION EXPORT
-export const DossierComponents = ({ token, starrs, wins, userQuestions }) => {
+export const DossierComponents = ({ token, starrs, wins, userQ }) => {
     const [error, setError] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
 
@@ -21,10 +21,10 @@ export const DossierComponents = ({ token, starrs, wins, userQuestions }) => {
                         starrs && starrs.map(starr => (
                             <div key='ds-item' className="accordion-item">
                                 <div 
-                                    key={`starr-${starr.id}`}
+                                    key={starr.id}
                                     className="accordion-content"
                                     onClick={() => setIsActive(!isActive)}
-                                >{starr.question}
+                                >{starr.title}{starr.id}
                                 </div>
                             </div>
                         ))}
@@ -38,10 +38,10 @@ export const DossierComponents = ({ token, starrs, wins, userQuestions }) => {
                         wins && wins.map(win => (
                             <div className="accordion-item">
                                 <div 
-                                    key={`win-${win.id}`}
+                                    key={win.iD}
                                     className="accordion-title"
                                     onClick={() => setIsActive(!isActive)}
-                                >{win.title}
+                                >{win.title}{win.iD}
                                 </div>
                             </div>
                         ))}
@@ -52,10 +52,10 @@ export const DossierComponents = ({ token, starrs, wins, userQuestions }) => {
                     key="avail-iq"
                     title='Practice Interview Questions' 
                     content={
-                        userQuestions && userQuestions.filter(q => q.question_type === 'IQ').map(q => (
+                        userQ && userQ.filter(q => q.question_type === 'IQ').map(q => (
                             <Accordion 
-                                key={`IQ-${q.id}`} 
-                                title={q.question} 
+                                key={q.id} 
+                                title={q.title} 
                                 content={q.answer}
                             />
                         ))}
@@ -66,10 +66,10 @@ export const DossierComponents = ({ token, starrs, wins, userQuestions }) => {
                     key="avail-cq"
                     title='Potential Company Questions' 
                     content={
-                        userQuestions && userQuestions.filter(q => q.question_type === 'CQ').map(q => (
+                        userQ && userQ.filter(q => q.question_type === 'CQ').map(q => (
                             <Accordion 
-                                key={`CQ-${q.id}`} 
-                                title={q.question}
+                                key={q.id} 
+                                title={q.title}
                                 content={q.answer} />
                         ))}
                 />
