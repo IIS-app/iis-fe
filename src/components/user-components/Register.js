@@ -30,10 +30,11 @@ export const Register = ({setAuth}) => {
     }
 
     return (
-        <div>
+        <div className='container-first'>
+            {error && <div className="error">{error}</div>}
+            <img className="logo-login" src={`${process.env.PUBLIC_URL}/iis-app-logo.png`} alt="logo" />
             <div className='container-register'>
-                <h1 className=''>Please register below.</h1>
-                {error && <div className="error">{error}</div>}
+                <h3 className='main-title'>Please register below.</h3>
                 <form className='form-register' id="form-register" onSubmit= {handleSubmit}>
                 <div className='container-input'>
                         <label htmlFor='firstName' className="form-label">Agent's First Name</label>

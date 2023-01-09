@@ -18,7 +18,8 @@
     margin: 15px;
 }
 
-.container-login {
+.container-login,
+.container-register {
     width: 60%;
     flex-direction: column;
     margin-left: 2em;
