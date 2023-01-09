@@ -14,6 +14,8 @@ export const WinForm = ({token}) => {
     const [winPicture, setWinPicture] = useState()
     const [error, setError] = useState(null)
     const navigate = useNavigate()
+    const [isDraft, setIsDraft] = useState(true)
+    const tags =[]
 
     const modules = {
         toolbar: [
@@ -32,7 +34,7 @@ export const WinForm = ({token}) => {
     const handleSubmit = (e) => {
         e.preventDefault()
         setError(null)
-        requestCreateWin(token, winTitle, winDescription, winDate, winPicture)
+        requestCreateWin(token, winTitle, winDescription, winDate, winPicture, isDraft, tags)
 
         .then((res) => {
             setWin(res.data)
@@ -46,9 +48,20 @@ export const WinForm = ({token}) => {
     return (
         <div className='container-form'>
         {error && <div className="error">{error}</div>}
-            <h2>What will you be celebrating today?</h2>
+            <h2>Celebrate Wins</h2>
             <form className='form-win' id='form-win' onSubmit={handleSubmit}>
                 <div className="container-form" style={{border: 'solid 3px', borderRadius:'10px', width:'75%', padding: '10px' }}>
+                <label className='form-label' htmlFor='draft'>Draft Status</label>
+                    <div className='container-input'>
+                        <input 
+                            className='draft'
+                            id='draft'
+                            name='draft'
+                            onChange={(value) => setIsDraft(value)}
+                            type='checkbox'
+                            checked={isDraft}
+                            />
+                    </div>
                     <label className='form-label' htmlFor="winTitle">Add a Title for Your Win</label>
                     <div className='container-input'>
                         <ReactQuill 
