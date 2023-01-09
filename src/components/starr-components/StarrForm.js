@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router';
+import { useNavigate } from 'react-router-dom';
 import { requestCreateStarr } from '../requests/StarrRequests';
 import ReactQuill from 'react-quill'
 import 'react-quill/dist/quill.snow.css'
@@ -17,6 +17,8 @@ export const StarrForm = ({token}) => {
     const [reflection, setReflection] = useState('');
     const [error, setError] = useState(null);
     const navigate = useNavigate()
+    const [isDraft, setIsDraft] = useState('');
+    const tags = []
 
     const modules = {
         toolbar: [
@@ -35,7 +37,7 @@ export const StarrForm = ({token}) => {
     const handleSubmit = (e) => {
         e.preventDefault()
         setError(null)
-        requestCreateStarr(token, question, summary, situation, task, action, result, reflection)
+        requestCreateStarr(token, question, summary, situation, task, action, result, reflection, isDraft, tags)
         .then((res) => {
             setStarr(res.data)
             navigate('/starrs')
@@ -51,6 +53,17 @@ export const StarrForm = ({token}) => {
             <h2>Write a New STARR story here!</h2>
             <form className='form-starr' id='form-starr' onSubmit={handleSubmit}>
                 <div className='container-form' style={{border: 'solid 3px', borderRadius:'10px', width:'75%', padding: '10px' }}>
+                    <label className='form-label' htmlFor='draft'>Draft Status</label>
+                    <div className='container-input'>
+                        <input 
+                            className='draft'
+                            id='draft'
+                            name='draft'
+                            onChange={(value) => setIsDraft(value)}
+                            type='checkbox'
+                            checked={isDraft}
+                            />
+                    </div>
                     <label className='form-label' htmlFor='question'>STARR story Title</label>
                     <div className='container-input'>
                         <ReactQuill 
