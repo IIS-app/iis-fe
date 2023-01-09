@@ -5,6 +5,7 @@ import { Link, useParams } from 'react-router-dom'
 import ReactQuill from 'react-quill'
 import 'react-quill/dist/quill.snow.css'
 import 'react-quill/dist/quill.bubble.css'
+import { Input } from 'styled-icons/material-outlined';
 
 export const StarrEdit = ({ token }) => {
     const { pk } = useParams()
@@ -19,6 +20,9 @@ export const StarrEdit = ({ token }) => {
     const [reflection, setReflection] = useState('')
     const [error, setError] = useState(null)
     const [isLoading, setIsLoading] = useState(true)
+    const [isDraft, setIsDraft] = useState(true)
+    const tag =[]
+
 
 
     useEffect(() => {
@@ -35,6 +39,7 @@ export const StarrEdit = ({ token }) => {
             setAction(res.data.action)
             setResult(res.data.result)
             setReflection(res.data.reflection)
+            setIsDraft(res.data.is_draft)
             })
             .catch(error => setError(error.message))
             .finally(() => setIsLoading(false))
@@ -58,7 +63,7 @@ export const StarrEdit = ({ token }) => {
         e.preventDefault()
         setError(null)
 
-        requestUpdateStarr(token, { pk }, question, summary, situation, task, action, result, reflection)
+        requestUpdateStarr(token, { pk }, question, summary, situation, task, action, result, reflection, isDraft, tag)
             .catch((error) => {
             setError(error.message)
         })
@@ -71,6 +76,18 @@ export const StarrEdit = ({ token }) => {
             <h2>Write a New STARR story here!</h2>
             <form className='form-starr' id='form-starr' onSubmit={handleSubmit}>
                 <div className='container-form' style={{border: 'solid 3px', borderRadius:'10px', width:'75%', padding: '10px' }}>
+                    <label className='form-label' htmlFor='draft'>Draft Status</label>
+                    <div className='container-input'>
+                        <input 
+                            className='draft'
+                            id='draft'
+                            name='draft'
+                            onClick={(value) => setIsDraft(!isDraft)}
+                            type='checkbox'
+                            checked={isDraft}
+                            />
+                    </div>
+
                     <label className='form-label' htmlFor='question'>STARR story Title</label>
                     <div className='container-input'>
                         <ReactQuill 
