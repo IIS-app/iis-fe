@@ -21,7 +21,7 @@ export const StarrEdit = ({ token }) => {
     const [error, setError] = useState(null)
     const [isLoading, setIsLoading] = useState(true)
     const [isDraft, setIsDraft] = useState(true)
-    const tag =[]
+    const tags =[]
 
 
 
@@ -63,7 +63,7 @@ export const StarrEdit = ({ token }) => {
         e.preventDefault()
         setError(null)
 
-        requestUpdateStarr(token, { pk }, question, summary, situation, task, action, result, reflection, isDraft, tag)
+        requestUpdateStarr(token, { pk }, question, summary, situation, task, action, result, reflection, isDraft, tags)
             .catch((error) => {
             setError(error.message)
         })

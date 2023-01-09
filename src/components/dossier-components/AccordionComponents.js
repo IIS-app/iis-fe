@@ -21,14 +21,14 @@ export const AccordionComponents = ({ token }) => {
 
 
      // GET LIST OF WINS
-        useEffect(() => {
-            setError(null);
-            setIsLoading(true);
-            requestListWins(token)
-            .then((res => { setWins(res.data) }))
-            .catch(error => setError(error.message))
-            .finally(() => setIsLoading(false))
-        }, [token])
+    useEffect(() => {
+        setError(null);
+        setIsLoading(true);
+        requestListWins(token)
+        .then((res => { setWins(res.data) }))
+        .catch(error => setError(error.message))
+        .finally(() => setIsLoading(false))
+    }, [token])
         
         // GET LIST OF STARRs
     useEffect(() => {

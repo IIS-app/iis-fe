@@ -15,7 +15,7 @@ export const WinForm = ({token}) => {
     const [error, setError] = useState(null)
     const navigate = useNavigate()
     const [isDraft, setIsDraft] = useState(true)
-    const tag =[]
+    const tags =[]
 
     const modules = {
         toolbar: [
@@ -34,7 +34,7 @@ export const WinForm = ({token}) => {
     const handleSubmit = (e) => {
         e.preventDefault()
         setError(null)
-        requestCreateWin(token, winTitle, winDescription, winDate, winPicture, isDraft, tag)
+        requestCreateWin(token, winTitle, winDescription, winDate, winPicture, isDraft, tags)
 
         .then((res) => {
             setWin(res.data)

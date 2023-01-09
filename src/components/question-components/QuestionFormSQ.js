@@ -16,7 +16,7 @@ export const QuestionFormSQ = ({ token }) => {
     const [questionCompany, setQuestionCompany] = useState('');
     const [error, setError] = useState(null);
     const navigate = useNavigate()
-    const tag = []
+    const tags = []
     const [questionTypeText, setQuestionTypeText] = useState('')
     const [companyQ, setCompanyQ] = useState('')
     const [draft, isDraft] = useState(true)
@@ -48,7 +48,7 @@ export const QuestionFormSQ = ({ token }) => {
     const handleSubmit = (e) => {
         e.preventDefault()
         setError(null)
-        requestCreateSQAnswer(token, questionAnswer, question, questionType, questionCompany, tag)
+        requestCreateSQAnswer(token, questionAnswer, question, questionType, questionCompany, tags)
 
         .then((res) => {
             // setQuestionId(res.data.id)

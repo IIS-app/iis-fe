@@ -19,7 +19,7 @@ export const WinEdit = ({ token }) => {
     const [error, setError] = useState(null)
     const [isLoading, setIsLoading] = useState(true)
     const [isDraft, setIsDraft] = useState(true)
-    const tag =[]
+    const tags =[]
 
 
 
@@ -57,7 +57,7 @@ export const WinEdit = ({ token }) => {
     const handleSubmit = (e) => {
         e.preventDefault()
         setError(null)
-        requestUpdateWin(token, { pk }, winTitle, winDescription, winDate, winPicture, isDraft, tag)
+        requestUpdateWin(token, { pk }, winTitle, winDescription, winDate, winPicture, isDraft, tags)
             .catch((error) => {
                 setError(error.message)
         })

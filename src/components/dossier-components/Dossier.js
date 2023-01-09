@@ -4,6 +4,7 @@ import { Link, useParams } from 'react-router-dom';
 import styled from 'styled-components'
 import { Accordion } from './Accordion'
 import { DossierComponents } from './DossierComponents'
+import { AccordionComponents } from './AccordionComponents'
 
 
 //MAIN FUNCTION EXPORT
@@ -51,7 +52,7 @@ export const Dossier = ({ token }) => {
                                 userQuestions={dossier.question_titles}
                             />}
                     />
-                
+                    <AccordionComponents token={token} />
                 </div>
             </div>
         </div>

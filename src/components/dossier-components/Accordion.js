@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-export const Accordion = ({ title, content }) => {
+export const Accordion = ({ token, title, content }) => {
     const [isActive, setIsActive] = useState(false);
 
     return (
