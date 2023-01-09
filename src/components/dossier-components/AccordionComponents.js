@@ -55,8 +55,7 @@ export const AccordionComponents = ({ token }) => {
     },[token])
 
     return (
-            <div className='container-accordion'>
-            <h3>Available Dossier Items</h3>
+        <div className='container-accordion'>
             <div className="accordion-parent">
                 <Accordion 
                     key="avail-starrs"
@@ -65,15 +64,18 @@ export const AccordionComponents = ({ token }) => {
                         starrs && starrs.map(starr => (
                             <Accordion 
                                 key={starr.pk}
-                                title={<div className="accordion-subtitle">
-                                    <input 
-                                        type="checkbox"
-                                        checked={starr.is_draft}
-                                        onClick={ev => ev.stopPropagation()}/> 
-                                    {starr.question}</div>}
+                                title={
+                                    <div className="accordion-subtitle">
+                                        <input 
+                                            type="checkbox"
+                                            checked={starr.is_draft}
+                                            onClick={ev => ev.stopPropagation()}/> 
+                                        {starr.question}
+                                    </div>}
                                 content={starr.summary}
                             />
-                        ))}
+                        ))
+                    }
                 />
             </div>
             <div className="accordion-parent">
@@ -82,8 +84,20 @@ export const AccordionComponents = ({ token }) => {
                     title='Available Wins' 
                     content={
                         wins && wins.map(win => (
-                            <Accordion key={win.pk} title={win.title} content={win.win} />
-                        ))}
+                            <Accordion 
+                                key={win.pk}    
+                                title={
+                                    <div className="accordion-subtitle">
+                                        <input 
+                                            type="checkbox"
+                                            checked={win.is_draft}
+                                            onClick={ev => ev.stopPropagation()}
+                                        /> 
+                                        {win.title}
+                                    </div>} 
+                                content={win.win} />
+                        ))
+                    }
                 />
             </div>
             <div className="accordion-parent">
@@ -92,7 +106,19 @@ export const AccordionComponents = ({ token }) => {
                     title='Available Interview Questions' 
                     content={
                         userQuestions && userQuestions.filter(q => q.question_type === 'IQ').map(q => (
-                            <Accordion key={q.pk} title={q.question} content={q.answer} />
+                            <Accordion 
+                                key={q.pk} 
+                                title={
+                                    <div className="accordion-subtitle">
+                                        <input 
+                                            type="checkbox"
+                                            checked={q.is_draft}
+                                            onClick={ev => ev.stopPropagation()}
+                                        /> 
+                                        {q.question}
+                                    </div>}
+                                content={q.answer} 
+                            />
                         ))}
                 />
             </div>
@@ -102,7 +128,19 @@ export const AccordionComponents = ({ token }) => {
                     title='Available Company Questions' 
                     content={
                         userQuestions && userQuestions.filter(q => q.question_type === 'CQ').map(q => (
-                            <Accordion key={q.pk} title={`${q.question} `} content={q.answer} />
+                            <Accordion 
+                                key={q.pk} 
+                                title={
+                                    <div className="accordion-subtitle">
+                                        <input 
+                                            type="checkbox"
+                                            checked={q.is_draft}
+                                            onClick={ev => ev.stopPropagation()}
+                                        /> 
+                                        {q.question}
+                                    </div>}
+                                content={q.answer} 
+                            />
                         ))}
                 />
             </div>
