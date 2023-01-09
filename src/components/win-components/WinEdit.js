@@ -18,6 +18,9 @@ export const WinEdit = ({ token }) => {
     const [winLoadedPicture, setWinLoadedPicture] = useState(null)
     const [error, setError] = useState(null)
     const [isLoading, setIsLoading] = useState(true)
+    const [isDraft, setIsDraft] = useState(true)
+    const tag =[]
+
 
 
     useEffect(() => {
@@ -31,7 +34,7 @@ export const WinEdit = ({ token }) => {
             setWinDate(res.data.occured_date)
             setWinDescription(res.data.win)
             setWinLoadedPicture(res.data.win_picture)
-            console.log(res)
+            setIsDraft(res.data.is_draft)
             })
             .catch(error => setError(error.message))
             .finally(() => setIsLoading(false))
@@ -54,7 +57,7 @@ export const WinEdit = ({ token }) => {
     const handleSubmit = (e) => {
         e.preventDefault()
         setError(null)
-        requestUpdateWin(token, { pk }, winTitle, winDescription, winDate, winPicture)
+        requestUpdateWin(token, { pk }, winTitle, winDescription, winDate, winPicture, isDraft, tag)
             .catch((error) => {
                 setError(error.message)
         })
@@ -67,6 +70,17 @@ export const WinEdit = ({ token }) => {
             <h2>What will you be celebrating today?</h2>
             <form className='form-win' id='form-win' onSubmit={handleSubmit}>
                 <div className='container-form' style={{border: 'solid 3px', borderRadius:'10px', width:'75%', padding: '10px' }}>
+                    <label className='form-label' htmlFor='draft'>Draft Status</label>
+                    <div className='container-input'>
+                        <input 
+                            className='draft'
+                            id='draft'
+                            name='draft'
+                            onClick={(value) => setIsDraft(!isDraft)}
+                            type='checkbox'
+                            checked={isDraft}
+                            />
+                    </div>
                     <label className='form-label' htmlFor="winTitle">Add a Name for Your Win</label>
                     <div className='container-input'>
                         <ReactQuill 
