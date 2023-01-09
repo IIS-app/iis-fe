@@ -11,12 +11,7 @@ export const Dossier = ({ token }) => {
     const { pk } = useParams();
     const [wins, setWins] = useState([]);
     const [userQuestions, setUserQuestions] = useState([]);
-    const [starrs, setStarrs] = useState([]);
-    const [starrTitle, setStarrTitle] = useState([]);
-    const [starrSummary, setStarrSummary] = useState([]);
     const [dossier, setDossier] = useState ([]);
-    const [items, setItems] = useState ([]);
-    const [item, setItem] = useState ([]);
     const [error, setError] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
 
@@ -31,7 +26,6 @@ export const Dossier = ({ token }) => {
         requestDossierDetail(token)
             .then(({ data }) => {
                 setDossier(data);
-                console.log(data)
                 // setStarrId(dossier.data.starr_titles.id)
             })
             .catch(error => setError(error.message))
@@ -39,10 +33,6 @@ export const Dossier = ({ token }) => {
     }, [token]);
 
 
-        console.log(dossier.wins_titles)
-        console.log(dossier.starr_titles)
-        const [currentStarrs, setCurrentStarrs] = useState(dossier.starr_titles)
-        console.log(currentStarrs)
 
 
     

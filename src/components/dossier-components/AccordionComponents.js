@@ -73,8 +73,7 @@ export const AccordionComponents = ({ token, starrsD, winsD, userQD }) => {
                                     <div className="accordion-subtitle">
                                         <input 
                                             type="checkbox"
-                                            // this is where I am trying to set the checked state to be populated by the initial data provided by the dossier contents passed through props
-                                            checked={if starr.pk starrsD.}
+                                            // checked={if starr.pk starrsD.}
                                             onClick={ev => ev.stopPropagation()}/> 
                                         {starr.question}
                                         {starr.is_draft}
