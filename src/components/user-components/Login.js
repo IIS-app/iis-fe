@@ -33,9 +33,7 @@ export const Login = ({ setAuth, isLoggedIn }) => {
             <>
             <img className="logo-login" src={`${process.env.PUBLIC_URL}/iis-app-logo.png`} alt="logo" />
             <div className='container-login'>
-
-                <h3>Please log in below.</h3>
-
+                <h3 className='main-title'>Please log in below.</h3>
                 <form id="form-login" onSubmit={handleSubmit}>
                     <div className='container-input'>
                         <label htmlFor='email' className="form-label">email</label>
