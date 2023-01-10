@@ -8,8 +8,9 @@ import { Accordion } from './Accordion'
 
 
 //MAIN FUNCTION EXPORT
-export const AccordionComponents = ({ token, starrsD, winsD, userQD }) => {
+export const AvailableItems = ({ token, starrsD, winsD, userQD }) => {
     const { pk } = useParams();
+    
     const [wins, setWins] = useState([]);
     const [userQ, setUserQ] = useState([]);
     const [starrs, setStarrs] = useState([]);
@@ -17,8 +18,9 @@ export const AccordionComponents = ({ token, starrsD, winsD, userQD }) => {
     const [isLoading, setIsLoading] = useState(true);
     
     
-    // RELATED TO 
-    const [selectedStarr, setSelectedStarr] = useState(null);
+    // RELATED TO ADDING/REMOVING ITEMS FROM DOSSIER
+
+    const [selectedStarr, setSelectedStarr] = useState();
     const [isActive, setIsActive] = useState(false);
 
     const handleSelectedStarr = () => {}
@@ -79,7 +81,7 @@ export const AccordionComponents = ({ token, starrsD, winsD, userQD }) => {
                                         {starr.question}
                                         {starr.is_draft}
                                     </div>}
-                                content={starr.summary}
+                                content={starr.summary} 
                             />
                         ))
                     }
