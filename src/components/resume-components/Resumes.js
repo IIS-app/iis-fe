@@ -1,42 +1,62 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { requestResume } from '../requests/ResumeRequests';
+import ReactQuill from 'react-quill'
+import 'react-quill/dist/quill.snow.css'
+import 'react-quill/dist/quill.bubble.css'
 
 export const Resumes = ({token}) => {
-  const [resume, setResume] = useState({});
-  const [error, setError] = useState(null);
-  const [isLoading, setIsLoading] = useState(false);
+    const [resume, setResume] = useState({});
+    const [error, setError] = useState(null);
+    const [isLoading, setIsLoading] = useState(false);
+	const [title, setTitle] = useState('')
+	const [job, setJob] = useState('')
+	const [summary, setSummary] = useState('')
 
-  const handleChange = event => {
-    setResume({
-      ...resume,
-      [event.target.name]: event.target.value
-    });
-  };
+	const modules = {
+        toolbar: [
+            [{ 'header': [1, 2, 3, false] }],
+            [{ 'bold': true }, { 'italic': true }, { 'underline': true }, { 'strike': true }],
+            [{ list:  "ordered" }, { list:  "bullet" }],
+            ["blockquote", "code-block"],
+            ["clean", "undo", "redo"],
+        ],
+        history: {
+            delay: 2000,
+            maxStack: 500,
+            userOnly: false}
+    }
 
-  const handleFileChange = event => {
-    setResume({
-      ...resume,
-      resume_file: event.target.files[0]
-    });
-  };
+	const handleChange = event => {
+		setResume({
+		...resume,
+		[event.target.name]: event.target.value
+		});
+	};
 
-  const handleSubmit = event => {
-    event.preventDefault();
-    setError(null);
-    setIsLoading(true);
-    requestResume(token, {
-      title: resume.title,
-      job: resume.job,
-      notes: resume.notes,
-      resume_file: resume.resume_file
-    })
-      .then(() => {
-        setResume({});
-      })
-      .catch(error => setError(error.message))
-      .finally(() => setIsLoading(false));
-  };
+	const handleFileChange = event => {
+		setResume({
+		...resume,
+		resume_file: event.target.files[0]
+		});
+	};
+
+	const handleSubmit = event => {
+		event.preventDefault();
+		setError(null);
+		setIsLoading(true);
+		requestResume(token, {
+		title: resume.title,
+		job: resume.job,
+		notes: resume.notes,
+		resume_file: resume.resume_file
+		})
+		.then(() => {
+			setResume({});
+		})
+		.catch(error => setError(error.message))
+		.finally(() => setIsLoading(false));
+	};
   
 
   return (
