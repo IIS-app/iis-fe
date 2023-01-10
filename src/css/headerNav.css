@@ -46,13 +46,6 @@
     width: calc(100% - 16px);
 }
 
-
-.button-login {
-    font-size: 14px;
-    text-decoration: none;
-    color: black;
-}
-
 .link-button-icon {
     background-color: #28353c;
     border: 2px #00b9a3 groove;
