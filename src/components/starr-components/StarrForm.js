@@ -18,7 +18,6 @@ export const StarrForm = ({token}) => {
     const [error, setError] = useState(null);
     const navigate = useNavigate()
     const [isDraft, setIsDraft] = useState('');
-    // const [tags, setTags] = useState['']
 
     const modules = {
         toolbar: [

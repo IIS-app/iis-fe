@@ -22,6 +22,17 @@ export const requestDossierDetail = (token) => {
     return response
 }
 
+// GET DETAIL OF DOSSIER RECORD - ep  app 
+export const requestDossierPDF = (token) => {
+    const url = 'https://internal-interview-service.onrender.com/dossier-pdf/1'
+    const response = axios.get(url,
+        {headers: {
+            Authorization: `Token ${token}`
+        }
+    });
+    return response
+}
+
 // POST CREATE A DOSSIER RECORD - ep   app
 export const requestCreateDossier = (token, dossierTitle, jobKey, resumeKey, coverLetterKey, starrKey, questionKey, winKey, isDraft) => {
     const url = 'https://internal-interview-service.onrender.com/dossier/'
@@ -52,8 +63,8 @@ export const requestCreateDossier = (token, dossierTitle, jobKey, resumeKey, cov
 
 
 // PATCH UPDATE A DOSSIER RECORD - ep   app
-export const requestUpdateDossierDetail = (token, dossierTitle, jobKey, resumeKey, coverLetterKey, starrKey, questionKey, winKey, isDraft) => {
-    const url = `https://internal-interview-service.onrender.com/dossier/1`
+export const requestUpdateDossierDetail = (token, {id},dossierTitle, jobKey, resumeKey, coverLetterKey, starrKey, questionKey, winKey, isDraft) => {
+    const url = `https://internal-interview-service.onrender.com/dossier/${id}`
     const response = axios.patch(url,
         {
             title: dossierTitle,
