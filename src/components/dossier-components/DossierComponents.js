@@ -14,66 +14,64 @@ export const DossierComponents = ({ token, starrs, wins, userQ }) => {
     return (
             <div className='container-accordion'>
             <div className="accordion-parent">
-                <Accordion 
-                    key="avail-starrs"
-                    title='STARRs' 
-                    content={
-                        starrs && starrs.map(starr => (
-                            <div key='ds-item' className="accordion-item">
-                                <div 
-                                    key={starr.id}
-                                    className="accordion-content"
-                                    onClick={() => setIsActive(!isActive)}
-                                >{starr.title}{starr.id}
-                                </div>
-                            </div>
-                        ))}
-                />
+                {starrs && starrs.map((starr, index) => (
+                    <Accordion 
+                        key='dossier-starrs'
+                        title='STARRs' 
+                        content={<div key={starr.id}>{starr.title}</div>}
+                    />
+                    ))
+                }
             </div>
             <div className="accordion-parent">
-                <Accordion
-                    key="avail-wins"
-                    title='Wins' 
-                    content={
-                        wins && wins.map(win => (
-                            <div className="accordion-item">
-                                <div 
-                                    key={win.iD}
-                                    className="accordion-title"
-                                    onClick={() => setIsActive(!isActive)}
-                                >{win.title}{win.iD}
-                                </div>
-                            </div>
-                        ))}
-                />
+                {wins && wins.map((win, index) => (
+                    <Accordion 
+                        key='dossier-wins'
+                        title='Wins' 
+                        content={win.title}
+                    />
+                    ))
+                }
             </div>
             <div className="accordion-parent">
-                <Accordion
+                {/* <Accordion
                     key="avail-iq"
                     title='Practice Interview Questions' 
                     content={
-                        userQ && userQ.filter(q => q.question_type === 'IQ').map(q => (
+                        userQ && userQ.filter(q => q.type === 'IQ').map(q => (
                             <Accordion 
                                 key={q.id} 
                                 title={q.title} 
                                 content={q.answer}
                             />
                         ))}
+                /> */}
+                <Accordion
+                    key="avail-q"
+                    title='Company and Interview Questions' 
+                    content={
+                        userQ && userQ.map(q => (
+                            <Accordion 
+                                key={q.id} 
+                                title={'questions'} 
+                                content={q.title}
+                            />
+                        ))}
                 />
             </div>
-            <div className="accordion-parent">
+            {/* <div className="accordion-parent">
                 <Accordion
                     key="avail-cq"
                     title='Potential Company Questions' 
                     content={
-                        userQ && userQ.filter(q => q.question_type === 'CQ').map(q => (
+                        userQ && userQ.filter(q => q.type === 'CQ').map(q => (
                             <Accordion 
                                 key={q.id} 
                                 title={q.title}
                                 content={q.answer} />
                         ))}
                 />
-            </div>
+            </div> */}
         </div>
     )
 }

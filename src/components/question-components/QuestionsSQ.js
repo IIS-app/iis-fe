@@ -1,53 +1,60 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { requestListSQ } from '../requests/QuestionRequests'
-import { PlusCircle } from '@styled-icons/bootstrap/PlusCircle'
-import { QuestionForm } from './QuestionForm'
+import { requestListSQ } from '../requests/QuestionRequests';
+import { PlusCircle } from '@styled-icons/bootstrap/PlusCircle';
+import { QuestionForm } from './QuestionForm';
 import { FileX } from 'styled-icons/bootstrap';
+import { Accordion } from '../dossier-components/Accordion';
+
+export const QuestionsSQ = ({ token }) => {
+  const [listSQ, setListSQ] = useState([]);
+  const [error, setError] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
+  const navigate = useNavigate();
+  const [userQuestions, setUserQuestions] = useState([]);
+  const [isActive, setIsActive] = useState(false);
+
+  useEffect(() => {
+    setError(null);
+    setIsLoading(true);
+    requestListSQ(token)
+        .then((res => {
+            setUserQuestions(res.data)
+        }))   
+        .catch(error => setError(error.message))
+        .finally(() => setIsLoading(false))
+},[token])
 
 
-export const QuestionsSQ = ({token}) => {
-    const [listSQ, setListSQ] = useState([])
-    const [error, setError] = useState(null);
-    const [isLoading, setIsLoading] = useState(true);
-    const navigate = useNavigate();
+  const handleClick = sq => {
+    navigate('/questions/use-sq', { state: { sq: sq } });
+  };
 
-    useEffect(() => {
-        setError(null);
-        setIsLoading(true);
-        requestListSQ(token)
-            .then((res => {
-                setListSQ(res.data)
-            }))   
-            .catch(error => setError(error.message))
-            .finally(() => setIsLoading(false))
-    },[token])
-
-    const handleClick = (sq) => {
-        navigate('/questions/use-sq', { state: { sq:sq } });
-        }
-
-    return (
-        <>
-        <h2>List of Suggested Questions</h2>
-        <div className='container-main' style={{border: 'solid 3px', borderRadius:'10px', width:'75%', padding: '10px' }}>
-            <div className='container-list'>
-                    {listSQ ? listSQ.map(sq => (
-                    <div 
-                        key={`${sq.pk}`} className="list" style={{ display:"flex", justifyContent:"space-around" }}
-                    >
-                        <div key={sq.pk} className="list-sq">{`${sq.question_type}${sq.question}`}</div>
-                        <div>
-                            <PlusCircle 
-                            key={`${sq.pk}.plus`}
-                            className="icon"
-                            onClick={() => handleClick(sq)}
-                            />
-                        </div>
-                    </div>
-                        )) : null}
-            </div>
+  return (
+    <div className='container-accordion'>
+      <h2>List of Suggested Questions</h2>
+      <div className='accordion-parent'></div>
+        <div className="accordion-parent">
+                <Accordion
+                    key="avail-iq"
+                    title='Available Interview Questions' 
+                    content={
+                        userQuestions && userQuestions.filter(q => q.question_type === 'IQ').map(q => (
+                            <Accordion key={q.pk} title={q.question} content={q.answer} />
+                        ))}
+                />
         </div>
-        </>
-    )
-}
+            <div className="accordion-parent">
+                <Accordion
+                    key="avail-cq"
+                    title='Available Company Questions' 
+                    content={
+                        userQuestions && userQuestions.filter(q => q.question_type === 'CQ').map(q => (
+                            <Accordion key={q.pk} title={`${q.question} `} content={q.answer} />
+                        ))}
+                />
+            </div>
+    </div>
+  );
+  
+};

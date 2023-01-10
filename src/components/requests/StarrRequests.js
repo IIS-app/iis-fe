@@ -15,6 +15,7 @@ export const requestStarrs = (token) => {
 // POST CREATE NEW STARR RECORD - ep ✅
 export const requestCreateStarr = (token, question, summary, situation, task, action, result, reflection) => {
     const url = 'https://internal-interview-service.onrender.com/starr-stories/'
+    const tags = ['tags']
     const response = axios.post(url,
         {
             question: question,
@@ -23,7 +24,8 @@ export const requestCreateStarr = (token, question, summary, situation, task, ac
             task: task,
             action: action,
             result: result,
-            reflection: reflection,        
+            reflection: reflection,
+            tags: tags        
         }, 
         {headers: { 
             Authorization: `Token ${token}`       

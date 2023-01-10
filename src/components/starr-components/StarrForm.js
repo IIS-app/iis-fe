@@ -18,7 +18,7 @@ export const StarrForm = ({token}) => {
     const [error, setError] = useState(null);
     const navigate = useNavigate()
     const [isDraft, setIsDraft] = useState('');
-    const tags = []
+    // const [tags, setTags] = useState['']
 
     const modules = {
         toolbar: [
@@ -37,7 +37,7 @@ export const StarrForm = ({token}) => {
     const handleSubmit = (e) => {
         e.preventDefault()
         setError(null)
-        requestCreateStarr(token, question, summary, situation, task, action, result, reflection, isDraft, tags)
+        requestCreateStarr(token, question, summary, situation, task, action, result, reflection, isDraft)
         .then((res) => {
             setStarr(res.data)
             navigate('/starrs')

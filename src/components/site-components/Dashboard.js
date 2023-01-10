@@ -12,7 +12,7 @@ export const Dashboard = ({setAuth}) => {
         <Link className='dash-starr' to="/starrs"></Link>
         <Link className='dash-company' to="/targetcompanies"></Link>
         <Link className='dash-jobs' to="/targetjobs"></Link>
-        <Link className='dash-resume' to="/resumes"></Link>
+        <Link className='dash-dossier' to="/"></Link>
         <Link className='dash-letter' to="/coverletters"></Link>
         <Link className='dash-question' to="/questions"></Link>
         <Link className='dash-win' to="/wins"></Link>

@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-// ❌ GET LIST OF TARGET JOBS - ep  app 
+// GET LIST OF TARGET JOBS - ep  app 
 export const requestListTargetJobs = (token) => {
     const url = 'https://internal-interview-service.onrender.com/target-jobs/'
     const response = axios.get(url,
@@ -11,15 +11,15 @@ export const requestListTargetJobs = (token) => {
     return response
 }
 
-// ❌ POST CREATE A NEW TARGET JOB FULL RECORD - ep   app
-export const requestCreateTargetJob = (token, jobTitle, jobUrl, jobCompany, jobNotes) => {
+// POST CREATE A NEW TARGET JOB FULL RECORD - ep   app
+export const requestCreateTargetJob = (token, targetJobTitle, targetJobCompany, targetJobUrl, targetJobNotes) => {
     const url = 'https://internal-interview-service.onrender.com/target-jobs/'
     const response = axios.post(url,
         {
-            title: jobTitle,
-            job_listing: jobUrl,
-            company: jobCompany,
-            notes: jobNotes,
+            title: targetJobTitle,
+            job_listing: targetJobUrl,
+            company: targetJobCompany,
+            notes: targetJobNotes,
         },
         {headers: {
             Authorization: `Token ${token}`
@@ -29,7 +29,7 @@ export const requestCreateTargetJob = (token, jobTitle, jobUrl, jobCompany, jobN
     return response
 }
 
-// ❌ POST CREATE A NEW TARGET JOB BASE RECORD - ep 
+// POST CREATE A NEW TARGET JOB BASE RECORD - ep 
 // maybe us this one to add something on the fly...found a job throw it in
 export const requestQuickJob = (token, jobTitle, jobUrl) => {
     const url = 'https://internal-interview-service.onrender.com/target-jobs/'
@@ -47,8 +47,8 @@ export const requestQuickJob = (token, jobTitle, jobUrl) => {
 }
 
 
-// ❌ GET TARGET JOB DETAIL - ep   app
-export const requestTargetJobDetail = (token, { pk }) => {
+// GET TARGET JOB DETAIL - ep   app
+export const requestTJDetail = (token, { pk }) => {
     const url = `https://internal-interview-service.onrender.com/target-jobs/${pk}`
     const response = axios.get(url,
         {headers: { 
@@ -59,8 +59,8 @@ export const requestTargetJobDetail = (token, { pk }) => {
     return response
 }
 
-// ❌ PATCH UPDATE A TARGET JOB RECORD - ep   app
-export const requestUpdateTargetJobFull = (token, { pk }, jobTitle, jobUrl, jobCompany, jobNotes) => {
+// PATCH UPDATE A TARGET JOB RECORD - ep   app
+export const requestUpdateTargetJob = (token, { pk }, jobTitle, jobUrl, jobCompany, jobNotes) => {
     const url = `https://internal-interview-service.onrender.com/target-jobs/${pk}`
     const response = axios.patch(url,
         {
@@ -78,7 +78,7 @@ export const requestUpdateTargetJobFull = (token, { pk }, jobTitle, jobUrl, jobC
 }
 
 
-// ❌ DELETE TARGET JOB RECORD - ep   app 
+// DELETE TARGET JOB RECORD - ep   app 
 // when a target job is deleted, none of the associated record keys stored in the dossier are deleted bc they LIVE in the other tables. A future feature might be to erase parts but management or updating of content is done outside the target job/dossier section
 export const requestDeleteTargetJob = (token, pk) => {
     const url = `https://internal-interview-service.onrender.com/target-jobs/${pk}`
