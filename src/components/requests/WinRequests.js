@@ -19,7 +19,7 @@ export const requestCreateWin = (token, winTitle, winDescription, winDate, winPi
             title: winTitle,
             win: winDescription,
             occured_date: winDate,
-            win_picture: winPicture
+            win_picture: winPicture,
         },
         {headers: {
             Authorization: `Token ${token}`

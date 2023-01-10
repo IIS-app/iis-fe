@@ -17,14 +17,11 @@ export const requestListSQ = (token) => {
 // POST CREATE NEW QUESTION from SYSTEM RECORD
 export const requestCreateSQAnswer = (token, answer, question, question_type ) => {
     const url = 'https://internal-interview-service.onrender.com/question/'
-    const tags = ["tags"]
     const response = axios.post(url,
         {
             question: question,
             answer: answer,
-            question_type: question_type,
-            tags: tags
-            
+            question_type: question_type           
         }, 
         {headers: { 
             Authorization: `Token ${token}`       
