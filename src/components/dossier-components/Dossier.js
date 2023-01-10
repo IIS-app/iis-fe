@@ -9,8 +9,6 @@ import { AccordionComponents } from './AccordionComponents'
 //MAIN FUNCTION EXPORT
 export const Dossier = ({ token }) => {
     const { pk } = useParams();
-    const [wins, setWins] = useState([]);
-    const [userQuestions, setUserQuestions] = useState([]);
     const [dossier, setDossier] = useState ([]);
     const [error, setError] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
@@ -27,12 +25,12 @@ export const Dossier = ({ token }) => {
             .then(({ data }) => {
                 setDossier(data);
                 console.log({data})
-                // setStarrId(dossier.data.starr_titles.id)
             })
             .catch(error => setError(error.message))
             .finally(() => setIsLoading(false));
     }, [token]);
 
+    const [currentStarrs, setCurrentStarrs] = useState([])
 
 
 
@@ -60,7 +58,7 @@ export const Dossier = ({ token }) => {
                             {<AccordionComponents 
                                 token={token}
                                 key='accordion-components'
-                                // starrsD={dossier && dossier.starr_titles.map(starr => starr.id)}
+                                starrsD={dossier && dossier.starr_titles.map(starr => starr.id)}
                                 // winsD={dossier.win_titles.map(win => win.id)}
                                 // userQD={dossier.question_titles.map(q => q.id)}
                             />}

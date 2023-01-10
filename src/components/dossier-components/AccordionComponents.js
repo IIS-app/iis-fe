@@ -15,14 +15,18 @@ export const AccordionComponents = ({ token, starrsD, winsD, userQD }) => {
     const [starrs, setStarrs] = useState([]);
     const [error, setError] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
-    // console.log(starrsD)
-
-    // ACCORDION RELATED TESTS
+    const [isLoading, setIsLoading] = useState(true);
+    
+    
+    // RELATED TO 
+    const [selectedStarr, setSelectedStarr] = useState(null);
     const [isActive, setIsActive] = useState(false);
 
-    const handleSelectStarr = () => {
+    const handleSelectedStarr = () => {
 
     }
+
+    const handle 
 
 
      // GET LIST OF WINS

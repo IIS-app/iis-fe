@@ -11,12 +11,11 @@ export const QuestionFormSQ = ({ token }) => {
     const location = useLocation();
     const { sq } = location.state;
     const [question, setQuestion] = useState(sq ? sq.question : '');
-    const [questionType, setQuestionType]= useState(sq ? sq.question_type : '');    
+    const [questionType, setQuestionType]= useState(sq.question_type);    
     const [questionAnswer, setQuestionAnswer] = useState('')
     const [questionCompany, setQuestionCompany] = useState('');
     const [error, setError] = useState(null);
     const navigate = useNavigate()
-    const tags = []
     const [questionTypeText, setQuestionTypeText] = useState('')
     const [companyQ, setCompanyQ] = useState('')
     const [draft, isDraft] = useState(true)
@@ -48,7 +47,8 @@ export const QuestionFormSQ = ({ token }) => {
     const handleSubmit = (e) => {
         e.preventDefault()
         setError(null)
-        requestCreateSQAnswer(token, questionAnswer, question, questionType, questionCompany, tags)
+        setQuestionType(questionType)
+        requestCreateSQAnswer(token, questionAnswer, question, questionType, questionCompany)
 
         .then((res) => {
             // setQuestionId(res.data.id)
@@ -69,7 +69,6 @@ export const QuestionFormSQ = ({ token }) => {
                 >
                     <div>
                         {questionType === 'CQ' ? (
-                            <>
                                 <div className="system-question-answer">
                                     <p><em>{`Question Type: ${questionTypeText}`}</em></p>
                                     <p><em>{`Question: ${question}`}</em></p>
@@ -85,22 +84,7 @@ export const QuestionFormSQ = ({ token }) => {
                                             onChange={(value) => setQuestionAnswer(value)}
                                         />                        
                                     </div>
-                                    <label className='form-label' htmlFor='questionCompany'>Company</label>
-                                    <div className='container-input'>
-                                        <input 
-                                            className='text'
-                                            value={questionCompany}
-                                            onChange={(e) => setQuestionCompany(e.target.value)}
-                                            id='questionCompany'
-                                            type='text'
-                                            autoComplete='off'
-                                            name='questionCompany'
-                                            />
                                 </div>
-                                </div>
-
-                            </>
-            
                         ) : (
                                 <div className="system-question-answer">
                                     <p><em>{`Question: ${question}`}</em></p>
@@ -116,18 +100,6 @@ export const QuestionFormSQ = ({ token }) => {
                                             maxLength={2000}
                                             onChange={(value) => setQuestionAnswer(value)}
                                         />                        
-                                    </div>
-                                    <label className='form-label' htmlFor='questionCompany'>If applicable, which company?</label>
-                                    <div className='container-input'>
-                                        <input 
-                                            className='text'
-                                            value={questionCompany}
-                                            onChange={(e) => setQuestionCompany(e.target.value)}
-                                            id='questionCompany'
-                                            type='text'
-                                            autoComplete='off'
-                                            name='questionCompany'
-                                            />
                                     </div>
                                 </div>
                         )}

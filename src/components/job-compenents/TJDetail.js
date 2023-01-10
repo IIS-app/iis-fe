@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
-import { requestTargetJobDetail } from '../requests/JobRequests';
+import { requestTJDetail } from '../requests/JobRequests';
 import { Dossier } from '../dossier-components/Dossier'
 
 
@@ -18,7 +18,7 @@ export const TJDetail = ({ token }) => {
     useEffect(() => {
         setError(null)
         setIsLoading(true)
-        requestTargetJobDetail(token, { pk })
+        requestTJDetail(token, { pk })
             .then(res => {
                 setJobDetail(res.data)
                 setJobTitle(res.data.title)
@@ -42,7 +42,7 @@ export const TJDetail = ({ token }) => {
                 <li key={`{pk}.company`}>{jobCompany}</li>
                 <li key={`{pk}.note`}>{jobNotes}</li>
                 <Link
-                    to={`/target-jobs/edit/${pk}`}
+                    to={`/targetjobs/edit/${pk}`}
                     id='job-list-edit'
                     className='button-edit'
                 >
