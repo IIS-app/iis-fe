@@ -2,8 +2,6 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { requestLogout } from '../requests/GeneralRequests'
 import { NavBar } from  './NavBar'
-import styled from 'styled-components'
-import { Zap } from '@styled-icons/octicons';
 import { LogoutCircleR } from '@styled-icons/remix-fill/LogoutCircleR'
 import { TargetArrow } from '@styled-icons/fluentui-system-regular/TargetArrow'
 import { Stars } from '@styled-icons/bootstrap/Stars'
