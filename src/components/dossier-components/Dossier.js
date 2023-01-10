@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { requestDossierDetail } from '../requests/DossierRequests';
+import { requestDossierPDF } from '../requests/DossierRequests';
 import { Link, useParams } from 'react-router-dom';
 import { Accordion } from './Accordion'
 import { DossierItems } from './DossierItems'
@@ -22,7 +23,7 @@ export const Dossier = ({ token }) => {
     const [isActive, setIsActive] = useState(false);
     
     // HANDLER PASSED TO CHILD AVAILABLE ITEMS COMPONENT TO GET UPDATED DOSSIER IDS
-    const updateDossier = (starrIds, ) => {
+    const updateDossier = (starrIds) => {
         setStarrsD(starrIds)
     }
 

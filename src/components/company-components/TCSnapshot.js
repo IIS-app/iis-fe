@@ -7,7 +7,7 @@ export const TCSnapshot = ({ token, company }) => {
 
     return (
         <div className="container-targetco">
-            <li className="list-targetco" >{`${company.company_name} added on ${}`}</li>
+            <li className="list-targetco" >{`${company.company_name} added on ${company.created_at}`}</li>
             <div className="container-action-links">
                 <Link 
                     key={`${company.pk}.edit`}

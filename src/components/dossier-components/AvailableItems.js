@@ -36,7 +36,10 @@ export const AvailableItems = ({ token, starrsD, winsD, userQD, updateDossier })
         } else{
             setStarrIds([...starrIds, starr.pk])
         }
-        updateDossier(starrIds)
+    }
+
+    const handleSaveDossier = () => {
+        
     }
 
     // const handleSelectedWin = () => {
