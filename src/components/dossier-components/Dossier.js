@@ -10,6 +10,7 @@ import { AvailableItems } from './AvailableItems'
 export const Dossier = ({ token }) => {
     const { pk } = useParams();
     const [dossier, setDossier] = useState ([]);
+    const [dossierId, setDossierId] = useState ('');
     const [error, setError] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
     const [starrsD, setStarrsD] = useState([])
@@ -20,6 +21,11 @@ export const Dossier = ({ token }) => {
     // ACCORDION RELATED TESTS
     const [isActive, setIsActive] = useState(false);
     
+    // HANDLER PASSED TO CHILD AVAILABLE ITEMS COMPONENT TO GET UPDATED DOSSIER IDS
+    const updateDossier = (starrIds, ) => {
+        setStarrsD(starrIds)
+    }
+
     
     // GET DOSSIER CONTENTS
     useEffect(() => {
@@ -64,6 +70,8 @@ export const Dossier = ({ token }) => {
                             starrsD={starrsD}
                             winsD={winsD}
                             userQD={userQD}
+                            dossierId={dossier.id}
+                            updateDossier={updateDossier}
                         />}
                 />
             </div>

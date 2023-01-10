@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, Checkbox } from 'react';
 import { requestListWins } from '../requests/WinRequests';
 import { requestListUserQuestions } from '../requests/QuestionRequests';
 import { requestStarrs } from '../requests/StarrRequests';
@@ -8,11 +8,12 @@ import { Accordion } from './Accordion'
 
 
 //MAIN FUNCTION EXPORT
-export const AvailableItems = ({ token, starrsD, winsD, userQD }) => {
+export const AvailableItems = ({ token, starrsD, winsD, userQD, updateDossier }) => {
     
     const [wins, setWins] = useState([]);
     const [userQ, setUserQ] = useState([]);
     const [starrs, setStarrs] = useState([]);
+    const [starr, setStarr] = useState([])
     const [error, setError] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
     
@@ -24,19 +25,31 @@ export const AvailableItems = ({ token, starrsD, winsD, userQD }) => {
     const [selectedWin, setSelectedWin] = useState();
     const [selectedUserQ, setSelectedUserQ] = useState();
 
-    const starrIds = starrsD.map(starr => starr.id)
-    const winIds = winsD.map(win => win.id)
-    const userQIds = userQD.map(userQ => userQ.id)
+    const [starrIds, setStarrIds] = useState(starrsD.map(starr => starr.id))
+    const [winIds, setWinIds] = useState(winsD.map(win => win.id))
+    const [userQIds, setUserQIds] = useState(userQD.map(userQ => userQ.id))
 
     const handleSelectedStarr = () => {
         setSelectedStarr(prevSelectedStarr => !prevSelectedStarr)
         if(starrIds.includes(starr.pk)){
-            setSelectedStarrs(selectedStarrIds.filter(id => id !== starr.pk))
+            setStarrIds(starrIds.filter(id => id !== starr.pk))
         } else{
-            setSelectedStarrIds([...selectedStarrIds, starr.pk])
+            setStarrIds([...starrIds, starr.pk])
         }
+        updateDossier(starrIds)
     }
-    
+
+    // const handleSelectedWin = () => {
+    //     setSelectedWin(prevSelectedWin => !prevSelectedWin)
+    //     if(winIds.includes(win.pk)){
+    //         setWinIds(winIds.filter(id => id !== win.pk))
+    //     } else{
+    //         setWinIds([...winIds, win.pk])
+    //     }
+    //     updateDossier(winIds)
+    // }
+
+
 
 
 
@@ -86,12 +99,12 @@ export const AvailableItems = ({ token, starrsD, winsD, userQD }) => {
                                 key={starr.pk}
                                 title={
                                     <div className="accordion-subtitle">
-                                        <Checkbox 
-                                            type="checkbox"
+                                        <input
+                                            key={starr.pk}
+                                            type='checkbox'
                                             checked=
-                                            {if (starrIds.includes(starr.pk)
-                                                ){handleSelectedStarr}}
-                                            onChange=
+                                            {starrIds.includes(starr.pk)}
+                                            onChange={handleSelectedStarr}
                                             onClick={ev => ev.stopPropagation()}
                                         /> 
                                         {starr.question}
