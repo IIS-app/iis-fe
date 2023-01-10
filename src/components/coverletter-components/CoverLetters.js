@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { requestCoverLetter } from '../requests/CoverLetterRequests';
+import { Resumes } from './Resumes';
 
 export const CoverLetters = ({token}) => {
   const [coverLetters, setCoverLetters] = useState({});

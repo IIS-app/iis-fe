@@ -46,7 +46,7 @@ export const Header = ({ token, setAuth }) => {
             </Link>
                 <Link className='link-button-nav' to="/wins"> Wins! <HappyBeaming className='icon' /></Link>
                 <Link className='link-button-nav' to="/questions">Questions <QuestionDiamondFill className='icon'/></Link>
-                <Link className='link-button-nav' to="/coverletters">Cover Letters <Documents className="icon"/></Link>
+                <Link className='link-button-nav' to="/coverletters-resumes">Cover Letters & Resumes<Documents className="icon"/></Link>
             </div>
         </div>
     )

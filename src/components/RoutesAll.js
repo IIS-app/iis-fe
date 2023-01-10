@@ -33,8 +33,7 @@ import { Questions } from './question-components/Questions';
 import { QuestionForm } from './question-components/QuestionForm';
 import { QuestionFormSQ } from './question-components/QuestionFormSQ';
 
-import { Resumes } from './resume-components/Resumes';
-import { CoverLetters } from './coverletter-components/CoverLetters';
+import { CLandR } from './coverletter-components/CLandR';
 import { Dashboard } from './site-components/Dashboard';
 import { MotivationalQuotes } from './site-components/MotivationalQuotes';
 
@@ -178,14 +177,9 @@ export const RoutesAll = ({token}, isLoggedIn, setAuth) => {
 
             {/* RESUME & COVER LETTER ROUTES */}
             <Route 
-                path="/resumes"
+                path="/coverletters-resumes"
                 exact
-                element={ <Resumes token={token} isLoggedIn={isLoggedIn} /> }
-            />
-            <Route 
-                path="/coverletters"
-                exact
-                element={ <CoverLetters token={token} isLoggedIn={isLoggedIn} /> }
+                element={ <CLandR token={token} isLoggedIn={isLoggedIn} /> }
             />
 
 
