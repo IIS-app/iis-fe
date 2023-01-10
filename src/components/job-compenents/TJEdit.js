@@ -1,20 +1,35 @@
-import { useState } from "react"
-import { useNavigate } from 'react-router-dom';
-import { requestCreateTargetJob } from '../requests/JobRequests';
+import { useState, useEffect } from "react"
+import { useNavigate, useParams } from 'react-router-dom';
+import { requestUpdateTargetJob } from '../requests/JobRequests';
+import { requestTJDetail } from '../requests/JobRequests';
 import ReactQuill from 'react-quill'
 import 'react-quill/dist/quill.snow.css'
 import 'react-quill/dist/quill.bubble.css'
 
 export const TJEdit = ({token}) => {
-    const [targetJob, setTargetJob] = useState([])
-    const [targetJobTitle, setTargetJobTitle] = useState('')
-    const [targetJobCompany, setTargetJobCompany] = useState('')
-    const [targetJobUrl, setTargetJobUrl] = useState('')
-    const [targetJobNotes, setTargetJobNotes] = useState('')
+    const { pk } = useParams()
+    const [jobTitle, setJobTitle] = useState('')
+    const [jobCompany, setJobCompany] = useState('')
+    const [jobUrl, setJobUrl] = useState('')
+    const [jobNotes, setJobNotes] = useState('')
     const [error, setError] = useState(null)
     const [isLoading, setIsLoading] = useState(true)
     const navigate = useNavigate()
 
+    useEffect(() => {
+        setError(null)
+        setIsLoading(true)
+        requestTJDetail(token, { pk })
+        .then(res => {
+            setJobTitle(res.data.title)
+            setJobUrl(res.data.job_listing)
+            setJobCompany(res.data.company)
+            setJobNotes(res.data.notes)
+            })
+            .catch(error => setError(error.message))
+            .finally(() => setIsLoading(false))
+    },[token, pk]);
+    
     const modules = {
         toolbar: [
             [{ 'header': [1, 2, 3, false] }],
@@ -29,12 +44,9 @@ export const TJEdit = ({token}) => {
     const handleSubmit = (e) => {
         e.preventDefault()
         setError(null)
-        setTargetJob([])
-        console.log(targetJob)
-        requestCreateTargetJob(token, targetJobTitle, targetJobCompany, targetJobUrl, targetJobNotes)
+        requestUpdateTargetJob(token, {pk}, jobTitle, jobCompany, jobUrl, jobNotes)
         
         .then((res) => {
-            setTargetJob(res.data)
             navigate('/targetjobs')
         })
             .catch((error) => {
@@ -42,21 +54,23 @@ export const TJEdit = ({token}) => {
         })
     }
 
+
+    
     return (
         <div className="container-form">   
             {error && <div className="error">{error}</div>}
             <h2 className="targetjob">Add Job Details</h2>
             <form className="form-job" id='form-job' onSubmit={handleSubmit}>
                 <div className="container-form" style={{border: 'solid 3px', borderRadius:'10px', width:'75%', padding: '10px' }}>
-                    <label className="form-label" htmlFor="targetJobTitle">Job Title</label>
+                    <label className="form-label" htmlFor="jobTitle">Job Title</label>
                     <div className='container-input'>
                         <input 
                             type='text'
-                            id='targetJobTitle'
+                            id='jobTitle'
                             className='form-input-text'
                             autoFocus
                             autoComplete='off'
-                            onChange={(e) => setTargetJobTitle(e.target.value)}
+                            onChange={(e) => setJobTitle(e.target.value)}
                             maxLength={100}
                             name='targetJobTitle'
                             />
@@ -68,7 +82,7 @@ export const TJEdit = ({token}) => {
                             id='targetJobCompany'
                             className='form-input-text'
                             autoComplete='off'
-                            onChange={(e) => setTargetJobCompany(e.target.value)}
+                            onChange={(e) => setJobCompany(e.target.value)}
                             maxLength={100}
                             name='targetJobCompany'
                             />
@@ -82,7 +96,7 @@ export const TJEdit = ({token}) => {
                             autoComplete='off'
                             placeholder="https://company.com/joblisting"
                             pattern="https://.*" 
-                            onChange={(e) => setTargetJobUrl(e.target.value)}
+                            onChange={(e) => setJobUrl(e.target.value)}
                             name='companyUrl'
                         />                      
                     </div>
@@ -90,12 +104,12 @@ export const TJEdit = ({token}) => {
                     <div className='container-input'>
                         <ReactQuill
                             modules={modules}
-                            theme="bubble"
+                            theme="snow"
                             className='custom-quill'
                             id='targetJobNotes'
                             name='targetJobNotes'
                             maxLength={2000}
-                            onChange={(value) => setTargetJobNotes(value)}
+                            onChange={(value) => setJobNotes(value)}
                         />                        
                     </div>
                 </div>
