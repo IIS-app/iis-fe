@@ -1,9 +1,9 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { Accordion } from './Accordion'
 
 
 //MAIN FUNCTION EXPORT
-export const DossierComponents = ({ token, starrs, wins, userQ }) => {
+export const DossierItems = ({ token, starrs, wins, userQ }) => {
     const [error, setError] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
 
