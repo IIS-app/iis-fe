@@ -7,6 +7,7 @@ import { DossierItems } from './DossierItems'
 import { AvailableItems } from './AvailableItems'
 
 
+
 //MAIN FUNCTION EXPORT
 export const Dossier = ({ token }) => {
     const { pk } = useParams();
@@ -17,6 +18,7 @@ export const Dossier = ({ token }) => {
     const [starrsD, setStarrsD] = useState([])
     const [winsD, setWinsD] = useState([])
     const [userQD, setUserQD] = useState([])
+    const [dossierPdfUrl, setDossierPdfUrl] = useState('')
     
     
     // ACCORDION RELATED TESTS
@@ -32,7 +34,7 @@ export const Dossier = ({ token }) => {
     useEffect(() => {
         setError(null);
         setIsLoading(true);
-        requestDossierDetail(token)
+        requestDossierDetail(token, pk)
         .then(({ data }) => {
             setDossier(data);
             setStarrsD(data.starr_titles)
@@ -43,10 +45,23 @@ export const Dossier = ({ token }) => {
         .finally(() => setIsLoading(false));
     }, [token]);
     
-
+    
             
     return (
+        <>
         <div>
+            
+            <div
+                id="dossier-pdf"
+                key='dossier-pdf'
+                className="get-dossier-pdf"
+                onClick={
+                    requestDossierPDF(token, { pk })
+                    setDossierPdfUrl(res)
+            }       
+            >
+            </div>
+
             <div className='container-dossier'>
                     <Accordion
                         key={dossier.id}
@@ -78,5 +93,6 @@ export const Dossier = ({ token }) => {
             </div>
             </div>
         </div>
+        </>
     );
 };

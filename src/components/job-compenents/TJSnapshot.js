@@ -11,7 +11,7 @@ export const TJSnapshot = ({ token, job }) => {
 
     return (
         <div className="container-job">
-            <li className="list-job" >{`${job.title} at ${job.company} added on [formatted date]`}</li>
+            <li className="list-job" >{`${job.title} at ${job.company} added on ${job.created_at}`}</li>
             <div className="container-action-links">
                 <Link 
                     key={`${job.pk}.edit`}
