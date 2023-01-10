@@ -9,9 +9,9 @@ import { Accordion } from './Accordion'
 
 //MAIN FUNCTION EXPORT
 export const DossierComponents = ({ token, starrs, wins, userQuestions }) => {
-    // const [wins, setWins] = useState([]);
-    // const [userQuestions, setUserQuestions] = useState([]);
-    // const [starrs, setStarrs] = useState([]);
+   // const [wins, setWins] = useState([]);
+   // const [userQuestions, setUserQuestions] = useState([]);
+   // const [starrs, setStarrs] = useState([]);
     const [error, setError] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
 
