@@ -8,21 +8,35 @@ import { Accordion } from './Accordion'
 
 
 //MAIN FUNCTION EXPORT
-export const AccordionComponents = ({ token, starrsD, winsD, userQD }) => {
-    const { pk } = useParams();
+export const AvailableItems = ({ token, starrsD, winsD, userQD }) => {
+    
     const [wins, setWins] = useState([]);
     const [userQ, setUserQ] = useState([]);
     const [starrs, setStarrs] = useState([]);
     const [error, setError] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
     
-    
-    // RELATED TO 
-    const [selectedStarr, setSelectedStarr] = useState(null);
     const [isActive, setIsActive] = useState(false);
+    
+    // RELATED TO ADDING/REMOVING ITEMS FROM DOSSIER
 
-    const handleSelectedStarr = () => {}
+    const [selectedStarr, setSelectedStarr] = useState();
+    const [selectedWin, setSelectedWin] = useState();
+    const [selectedUserQ, setSelectedUserQ] = useState();
 
+    const starrIds = starrsD.map(starr => starr.id)
+    const winIds = winsD.map(win => win.id)
+    const userQIds = userQD.map(userQ => userQ.id)
+
+    const handleSelectedStarr = () => {
+        setSelectedStarr(prevSelectedStarr => !prevSelectedStarr)
+        if(starrIds.includes(starr.pk)){
+            setSelectedStarrs(selectedStarrIds.filter(id => id !== starr.pk))
+        } else{
+            setSelectedStarrIds([...selectedStarrIds, starr.pk])
+        }
+    }
+    
 
 
 
@@ -72,14 +86,18 @@ export const AccordionComponents = ({ token, starrsD, winsD, userQD }) => {
                                 key={starr.pk}
                                 title={
                                     <div className="accordion-subtitle">
-                                        <input 
+                                        <Checkbox 
                                             type="checkbox"
-                                            // checked={if starr.pk starrsD.}
-                                            onClick={ev => ev.stopPropagation()}/> 
+                                            checked=
+                                            {if (starrIds.includes(starr.pk)
+                                                ){handleSelectedStarr}}
+                                            onChange=
+                                            onClick={ev => ev.stopPropagation()}
+                                        /> 
                                         {starr.question}
                                         {starr.is_draft}
                                     </div>}
-                                content={starr.summary}
+                                content={starr.summary} 
                             />
                         ))
                     }
