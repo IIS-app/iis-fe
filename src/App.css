@@ -1,43 +1,43 @@
 
 
 * {
-  box-sizing: border-box;
+box-sizing: border-box;
 }
 
 body {
-  background-color: #303f47;
-  color: #96FF7D;
-  padding-bottom: 2em;
+background-color: #303f47;
+color: #96FF7D;
+padding-bottom: 2em;
 }
 
 
 .App {
-  text-align: left;
-  padding-left: .5em;
-  padding-right: .5em;
+text-align: left;
+padding-left: .5em;
+padding-right: .5em;
 }
 
 
 .App-header {
-  background-color: #282c34;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+background-color: #282c34;
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+font-size: calc(10px + 2vmin);
+color: white;
 }
 
 .navigation {
-  width: 95%;
-  display: flex;
-  flex-wrap: wrap;
+width: 95%;
+display: flex;
+flex-wrap: wrap;
 }
 
 .dash-profile {
-    background-image: url('/public/images/dash-profile.png');
-    width: 200px;
-    height: 200px
+   background-image: url('/public/images/dash-profile.png');
+   width: 200px;
+   height: 200px
 }
 
 .dash-starr {
@@ -55,8 +55,8 @@ body {
    width: 200px;
    height: 200px
 }
-.dash-resume {
-   background-image: url('/public/images/dash-resumes.png');
+.dash-dossier {
+   background-image: url('/public/images/dash-dossiers.png');
    width: 200px;
    height: 200px
 }
