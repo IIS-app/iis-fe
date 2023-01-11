@@ -45,7 +45,7 @@ export const QuestionForm = ({ token }) => {
     return (
         <div className='question'>
         {error && <div className="error">{error}</div>}
-            <h2>What question do you want to answer today?</h2>
+            <h2 className='main-title'>What question do you want to answer today?</h2>
             <form className='form-question' id='form-question' onSubmit={handleSubmit}>
                 <div className="container-form" >
                     <label className='form-label' htmlFor="question">Question</label>

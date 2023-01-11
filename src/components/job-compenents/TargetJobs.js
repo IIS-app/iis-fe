@@ -30,7 +30,7 @@ export const TargetJobs = ({token}) => {
             >I found a new job!</Link>
         </div>
         {error && <div className="error">{error}</div>}
-        <h2>List of Jobs</h2>
+        <h2 className='main-title'>List of Jobs</h2>
         <div className='container-main' >
             <div className='container-list'>
                 <ul key="job-info" className="list">

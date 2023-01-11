@@ -66,7 +66,7 @@ export const WinEdit = ({ token }) => {
     return (
         <div className='container-main'>
         {error && <div className="error">{error}</div>}
-            <h2>What will you be celebrating today?</h2>
+            <h2 className='main-title'>What will you be celebrating today?</h2>
             <form className='form-win' id='form-win' onSubmit={handleSubmit}>
                 <div className='container-form'>
                     <label className='form-label' htmlFor='draft'>Draft Status</label>

@@ -29,7 +29,7 @@ export const Starrs = ({token}) => {
             >Add a New Starr</Link>
         </div>
         {error && <div className="error">{error}</div>}
-        <h2>List of Starr Stories</h2>
+        <h2 className='main-title'>List of Starr Stories</h2>
         <div className='container-main' >
             <div className='container-list'>
                 <ul key="starr-info" className="list">

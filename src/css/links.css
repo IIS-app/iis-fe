@@ -1,4 +1,16 @@
 
+.main-title {
+    color: ;
+    background-color:#096C81;
+    box-shadow: #00b9a3;
+    width: 300px;
+    border-radius: 10px;
+    padding: 10px;
+    align-items: center;
+    margin-left: .2em;
+    font-family: monospace;
+}
+
 .button-submit,
 .button-login,
 .button-add,

@@ -30,7 +30,7 @@ export const WinDetail = ({ token }) => {
     return (
         <div className='container-list'>
         {error && <div className="error">{ error }</div>}
-            <h2>Review the Details of Your Win</h2>
+            <h2 className='main-title'>Review the Details of Your Win</h2>
                 <ul className="details-win" key={pk}>
                     <li key={`{pk}.title`}>{winTitle}</li>
                     <li key={`{pk}.date`}>{winDate}</li>

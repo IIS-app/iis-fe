@@ -35,7 +35,7 @@ export const TJDetail = ({ token }) => {
         <>
         <div className='container-list'>
             {error && <div className='error'>{error}</div>}
-            <h2>Review the Details of Your Job</h2>
+            <h2 className='main-title'>Review the Details of Your Job</h2>
             <ul className='details-job' key={pk}>
                 <li key={`{pk}.title`}>{jobTitle}</li>
                 <li key={`{pk}.date`}>{jobAddedDate}</li>

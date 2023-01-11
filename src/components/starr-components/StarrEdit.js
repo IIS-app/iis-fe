@@ -72,7 +72,7 @@ export const StarrEdit = ({ token }) => {
     return (
         <div className='container-form'>
         {error && <div className="error">{error}</div>}
-            <h2>Write a New STARR story here!</h2>
+            <h2 className='main-title'>Write a New STARR story here!</h2>
             <form className='form-starr' id='form-starr' onSubmit={handleSubmit}>
                 <div className='container-form' >
                     <label className='form-label' htmlFor='draft'>Draft Status</label>

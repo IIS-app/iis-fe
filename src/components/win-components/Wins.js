@@ -29,7 +29,7 @@ export const Wins = ({token}) => {
             >Add a New Win</Link>
         </div>
         {error && <div className="error">{error}</div>}
-        <h2>List of Wins</h2>
+        <h2 className='main-title'>List of Wins</h2>
         <div className='container-main'>
             <div className='container-list'>
                 <ul key="win-info" className="list">

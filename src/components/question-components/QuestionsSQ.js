@@ -32,7 +32,7 @@ export const QuestionsSQ = ({ token }) => {
 
   return (
     <div className='container-accordion'>
-      <h2>List of Suggested Questions</h2>
+      <h2 className='main-title'>List of Suggested Questions</h2>
       <div className='accordion-parent'></div>
         <div className="accordion-parent">
                 <Accordion

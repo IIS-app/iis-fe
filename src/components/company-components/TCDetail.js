@@ -41,7 +41,7 @@ export const TCDetail = ({ token }) => {
         <div className='container-list'>
         {error && <div className="error">{ error }</div>}
 
-            <h2>Company Information</h2>
+            <h2 className='main-title'>Company Information</h2>
                 <ul key={pk} className="details-targetco" >
                     <li key={`{pk}.rank`}>{companyRank}</li>
                     <li key={`{pk}.company_name`}>{companyName}</li>

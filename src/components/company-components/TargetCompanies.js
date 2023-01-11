@@ -23,7 +23,7 @@ export const TargetCompanies = ({token}) => {
     <>
     {error && <div className="error">{error}</div>}
         <div className='container-button'>
-            <h2>Target Companies</h2>
+            <h2 className='main-title'>Target Companies</h2>
             <Link
                 key="button-add"
                 id='button-add'

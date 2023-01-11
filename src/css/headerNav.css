@@ -48,8 +48,7 @@
 }
 
 .link-button-nav {
-    font-size: 14px;
-    /* margin-left: 16px; */
+    font-size: 16px;
     text-decoration: none;
     color: #96FF7D;
     width: calc(100% - 16px);

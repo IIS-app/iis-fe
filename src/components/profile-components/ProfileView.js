@@ -53,7 +53,7 @@ export const ProfileView = ({ token }) => {
         <div className='container-profile'>
         {error && <div className="error">{ error }</div>}
 
-            <h2>The facts.</h2>
+            <h2 className='main-title'>The facts.</h2>
             <div key={userId}>
                 <p>{`First Name: ${userFirstName}`}</p>
                 <p>{`Last Name: ${userLastName}`}</p>

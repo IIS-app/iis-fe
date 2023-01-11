@@ -1,6 +1,6 @@
 /* CONTAINER SIZING AND STYLING */
 .container-main {
-    max-width: 
+    max-width: 700px;
 }
 
 .container-win,
@@ -14,6 +14,7 @@
     border-radius: 10px;
     padding: 3px;
     margin: 15px;
+    font-size: ;
 }
 
 .container-login,
@@ -54,7 +55,7 @@ ul {
 
 li {
     list-style: none;
-    font-size: smaller;
+    font-size: larger;
     padding: 3px;
 }
 
