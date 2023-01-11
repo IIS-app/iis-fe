@@ -14,8 +14,10 @@
     border-radius: 10px;
     padding: 3px;
     margin: 15px;
-    font-size: ;
 }
+
+.container-resume,
+.container-letter
 
 .container-login,
 .container-register {
@@ -55,8 +57,8 @@ ul {
 
 li {
     list-style: none;
-    font-size: larger;
-    padding: 3px;
+    font-size: 16px;
+    padding: 10px;
 }
 
 /* FORM PARENT STYLES */
@@ -91,7 +93,7 @@ label {
 input[type='text'],
 input[type='email'],
 input[type='password'] {
-    width: 60%;
+    width: 400px;
     padding: 12px 20px;
     margin-bottom: 20px;
     box-sizing: border-box;
@@ -99,27 +101,70 @@ input[type='password'] {
     border-radius: 10px;
     font-size: larger;
     font-family: monospace;
+    box-shadow: 3px 3px 3px #00b9a3;
+}
+input
+input[type='number'],
+input [type='file' i] {
+    font-size: 20px;
+    font-family: monospace;
+    width: 50px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    box-shadow: 3px 3px 3px #00b9a3;
+    padding: 5px;
+    border: none;
+    
+    
 }
 
+.custom-upload {
+    display: inline-block;
+    padding: 8px 12px;
+    cursor: pointer;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    transition: all 0.2s ease-in-out;
+}
+
+.custom-upload:hover {
+    background-color: #f5f5f5;
+}
+
+
+
+
+
 textarea {
-    width: 300px;
+    width: 400px;
     padding: 12px 20px;
     margin-bottom: 20px;
     box-sizing: border-box;
     border: 1px solid #ccc;
     border-radius: 10px;
+    box-shadow: 3px 3px 3px #00b9a3;
 }
 
 /* STYLING FOR QUILL */
 /* REMEMBER STYLE EDIT VS READ, esp. on snow theme */
 
 .custom-quill {
-    border: #096C81 1px solid;
     border-radius: 10px;
     width: 400px;
     background-color: white;
     color: black;
     margin-bottom: 15px;
+    font-size: larger;
+    font-family: monospace;
+    box-shadow: 3px 3px 3px #00b9a3;
+    height: 90px;
+    border: none;
+
+}
+
+.ql-editor {
+    font-size: larger;
+    font-family: monospace;
 }
 
 .ql-tooltip {
@@ -128,3 +173,15 @@ textarea {
     font-size: smaller;
     cursor: pointer;
 }
+
+/* .ql-container {
+    border-radius: 0px 0px 10px 10px;
+    box-shadow: 3px 3px 3px #00b9a3;
+    width: 400px;
+}*/
+
+.ql-toolbar .ql-snow {
+    border-radius: 10px;
+    width: 400px;
+
+} 

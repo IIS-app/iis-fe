@@ -64,6 +64,7 @@ export const TCForm = ({token}) => {
                             onChange={(e) => setCompanyName(e.target.value)}
                             maxLength={100}
                             name='companyName'
+                            placeholder='Company Name'
                             />
                     </div>
                     <label className="form-label" htmlFor="companyRank">On a scale of 1 to 5, rank your interest.</label>
@@ -118,6 +119,7 @@ export const TCForm = ({token}) => {
                             name='companyNotes'
                             maxLength={2000}
                             onChange={(value) => setCompanyNotes(value)}
+                            placeholder='Capture notes about company research, informal coffee chats, or company contacts.'
                         />                        
                     </div>
                 </div>

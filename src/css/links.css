@@ -2,13 +2,21 @@
 .main-title {
     color: ;
     background-color:#096C81;
-    box-shadow: #00b9a3;
+    box-shadow: 3px 3px 3px #00b9a3;
     width: max-content;
     border-radius: 10px;
-    padding: 10px;
+    padding: 15px;
     align-items: center;
     margin-left: .2em;
+    margin-bottom: 2em;
     font-family: monospace;
+    width: 400px;
+    font-size: 20px;
+}
+#targetco-list-edit,
+.button-submit,
+.button-edit {
+    margin-top: 30px;
 }
 
 .button-submit,

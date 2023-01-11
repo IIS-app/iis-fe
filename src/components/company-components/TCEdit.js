@@ -92,6 +92,7 @@ export const TCEdit = ({ token }) => {
                             onChange={(e) => setCompanyName(e.target.value)}
                             maxLength={100}
                             name='companyName'
+                            placeholder='Company Name'
                             />
                     </div>
                     <label className="form-label" htmlFor="companyRank">On a scale of 1 to 5, rank your interest.</label>
@@ -108,7 +109,6 @@ export const TCEdit = ({ token }) => {
                             onChange={(e) => setCompanyRank(e.target.value)}
                             name='companyRank'
                             value={companyRank}
-                            // placeholder="Leave blank if you are unsure."
                             />
                             <p>{`Current Rank: ${companyRank}`}</p>
                     </div>
@@ -147,6 +147,7 @@ export const TCEdit = ({ token }) => {
                         maxLength={2000}
                         value={companyNotes}
                         onChange={(value) => setCompanyNotes(value)}
+                        placeholder='Capture notes about company research, informal coffee chats, or company contacts.'
                         />                 
                     </div>
                 </div>
@@ -158,7 +159,6 @@ export const TCEdit = ({ token }) => {
                         className='button-submit'
                         type='submit'
                         value="Update Company Details"
-                        style={{marginTop:'30px'}}
                     />
                 </div>
             </form>

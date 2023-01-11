@@ -43,21 +43,23 @@ export const TCDetail = ({ token }) => {
 
             <h2 className='main-title'>Company Information</h2>
                 <ul key={pk} className="details-targetco" >
-                    <li key={`{pk}.rank`}>{companyRank}</li>
-                    <li key={`{pk}.company_name`}>{companyName}</li>
-                    <li key={`{pk}.website`}>{companyUrl}</li>
-                    <li key={`{pk}.jobs_page`}>{companyJobsUrl}</li>
+                    <p className="form-label-data" key={`{pk}.rank`}>{`Level of Interest: ${companyRank}`}</p>
+                    <p className="form-label-data" key={`{pk}.company_name`}>{`Company Name: ${companyName}`}</p>
+                    <p className="form-label-data" key={`{pk}.website`}>{`Company URL: ${companyUrl}`}</p>
+                    <p className="form-label-data" key={`${pk}.jobs_page`}>
+                        {companyJobsUrl ? `Company Job or Career Page: ${companyJobsUrl}` : 'No company jobs url added.'}
+                    </p>
                     <ReactQuill
                         key={`{pk}.comments`}
                         value={companyNotes}
                         readOnly={true}
-                        theme={'bubble'}
+                        theme='bubble'
                     />
                     <Link 
                         to={`/targetcompany/edit/${pk}`}
                         id="targetco-list-edit"
                         className="button-edit"
-                    >Add More Company Recon</Link>
+                    >Edit Company Details</Link>
                 </ul>
         </div>
     )
