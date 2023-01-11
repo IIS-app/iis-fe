@@ -1,6 +1,6 @@
 import { useState, useEffect, Checkbox } from 'react';
 import { requestListWins } from '../requests/WinRequests';
-import { requestListUserQuestions } from '../requests/QuestionRequests';
+import { requestListUserQ } from '../requests/QuestionRequests';
 import { requestStarrs } from '../requests/StarrRequests';
 import { Link, useParams } from 'react-router-dom';
 import styled from 'styled-components'
@@ -82,7 +82,7 @@ export const AvailableItems = ({ token, starrsD, winsD, userQD, updateDossier })
     useEffect(() => {
         setError(null);
         setIsLoading(true);
-        requestListUserQuestions(token)
+        requestListUserQ(token)
             .then((res => {
                 setUserQ(res.data)
             }))   

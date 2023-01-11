@@ -101,7 +101,7 @@ input[type='password'] {
     border-radius: 10px;
     font-size: larger;
     font-family: monospace;
-    box-shadow: 3px 3px 3px #00b9a3;
+    box-shadow: 2px 2px 2px #00b9a3;
 }
 input
 input[type='number'],
@@ -111,7 +111,7 @@ input [type='file' i] {
     width: 50px;
     border-radius: 10px;
     margin-bottom: 20px;
-    box-shadow: 3px 3px 3px #00b9a3;
+    box-shadow: 2px 2px 2px #00b9a3;
     padding: 5px;
     border: none;
     
@@ -142,7 +142,7 @@ textarea {
     box-sizing: border-box;
     border: 1px solid #ccc;
     border-radius: 10px;
-    box-shadow: 3px 3px 3px #00b9a3;
+    box-shadow: 2px 2px 2px #00b9a3;
 }
 
 /* STYLING FOR QUILL */
@@ -156,7 +156,7 @@ textarea {
     margin-bottom: 15px;
     font-size: larger;
     font-family: monospace;
-    box-shadow: 3px 3px 3px #00b9a3;
+    box-shadow: 2px 2px 2px #00b9a3;
     height: 90px;
     border: none;
 
@@ -176,7 +176,7 @@ textarea {
 
 /* .ql-container {
     border-radius: 0px 0px 10px 10px;
-    box-shadow: 3px 3px 3px #00b9a3;
+    box-shadow: 2px 2px 2px #00b9a3;
     width: 400px;
 }*/
 

@@ -41,6 +41,8 @@ export const CoverLetters = ({token}) => {
   
 
   return (
+    <div className='container-clr'>
+    <h2 className='main-title'>Upload Cover Letter</h2> 
     <form onSubmit={handleSubmit}>
       <label htmlFor='title'>Title:</label>
       <input
@@ -77,9 +79,10 @@ export const CoverLetters = ({token}) => {
         onChange={handleFileChange}
       />
       <br />
-      <button type='submit'>Save</button>
+      <button className='button-submit'  type='submit'>Save</button>
       {error && <p style={{ color: 'red' }}>{error}</p>}
       {isLoading && <p>Loading...</p>}
     </form>
+    </div>
   );
 };
