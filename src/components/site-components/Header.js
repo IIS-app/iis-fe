@@ -11,15 +11,6 @@ import { HappyBeaming } from '@styled-icons/boxicons-regular/HappyBeaming'
 import { QuestionDiamondFill } from '@styled-icons/bootstrap/QuestionDiamondFill'
 import { Documents } from '@styled-icons/ionicons-outline/Documents'
 
-// const NewHeader = styled.div`
-//     display: flex,
-//     align-items: center,
-//     justify-content: space-between,
-//     padding: 16px,
-//     background-color: white,
-//     flex-wrap: nowrap,
-//     flex-direction: column,
-// `
 
 export const Header = ({ token, setAuth }) => {
 

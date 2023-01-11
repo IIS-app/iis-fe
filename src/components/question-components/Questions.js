@@ -5,6 +5,8 @@ import { requestListUserQ } from '../requests/QuestionRequests'
 import { QuestionsSQ } from './QuestionsSQ'
 import { PlusCircle } from '@styled-icons/bootstrap/PlusCircle'
 import { Accordion } from '../dossier-components/Accordion'
+import { QuestionDiamondFill } from '@styled-icons/bootstrap/QuestionDiamondFill'
+
 
 
 export const Questions = ({token}) => {
@@ -25,6 +27,20 @@ export const Questions = ({token}) => {
     return (
         <>
             <div className='container-accordion'>
+            <div 
+            className='container-button'
+            style={{display: 'flex', justifyContent: 'space-evenly'}}
+        >
+            <h2 className='main-title'>List of Starr Stories</h2>
+            <Link
+                key="button-add"
+                id='button-add'
+                to="/question/add"
+                className='button-add'
+                style={{width:'100px'}}
+            >Add<QuestionDiamondFill className='icon'/></Link>
+        </div>
+
                 <h2 className='main-title'>List of User Questions</h2>
                     <div className="accordion-parent">
                         <Accordion

@@ -7,7 +7,7 @@ import 'react-quill/dist/quill.snow.css'
 import 'react-quill/dist/quill.bubble.css'
 
 
-export const QuestionFormSQ = ({ token }) => {
+export const QuestionFormSQ = ({ token,  }) => {
     const location = useLocation();
     const { sq } = location.state;
     const [question, setQuestion] = useState(sq ? sq.question : '');

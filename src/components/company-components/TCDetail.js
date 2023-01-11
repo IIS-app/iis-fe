@@ -39,12 +39,11 @@ export const TCDetail = ({ token }) => {
 
     return (
         <div className='container-list'>
-        {error && <div className="error">{ error }</div>}
 
             <h2 className='main-title'>Company Information</h2>
-                <ul key={pk} className="details-targetco" >
-                    <p className="form-label-data" key={`{pk}.rank`}>{`Level of Interest: ${companyRank}`}</p>
+                <div key={pk} className="details-targetco" >
                     <p className="form-label-data" key={`{pk}.company_name`}>{`Company Name: ${companyName}`}</p>
+                    <p className="form-label-data" key={`{pk}.rank`}>{`Level of Interest: ${companyRank}`}</p>
                     <p className="form-label-data" key={`{pk}.website`}>{`Company URL: ${companyUrl}`}</p>
                     <p className="form-label-data" key={`${pk}.jobs_page`}>
                         {companyJobsUrl ? `Company Job or Career Page: ${companyJobsUrl}` : 'No company jobs url added.'}
@@ -54,13 +53,14 @@ export const TCDetail = ({ token }) => {
                         value={companyNotes}
                         readOnly={true}
                         theme='bubble'
-                    />
+                        />
                     <Link 
                         to={`/targetcompany/edit/${pk}`}
                         id="targetco-list-edit"
-                        className="button-edit"
-                    >Edit Company Details</Link>
-                </ul>
+                        className="button-submit"
+                        >Edit Company</Link>
+                </div>
+                        {error && <div className="error">{ error }</div>}
         </div>
     )
 }

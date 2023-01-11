@@ -154,11 +154,11 @@ export const TCEdit = ({ token }) => {
                 <div className='container-input'>
                     <label htmlFor='submit' className='form-label'></label>
                     <input 
-                        to="/targetcompanies"
+                        to="/targetcompany"
                         id='submit'
                         className='button-submit'
                         type='submit'
-                        value="Update Company Details"
+                        value="Update Company"
                     />
                 </div>
             </form>

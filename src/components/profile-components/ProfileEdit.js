@@ -82,7 +82,7 @@ export const ProfileEdit = ({token}) => {
                     <label className='form-label' htmlFor='userLastName'>Your last name, Agent.</label>
                     <div className='container-input'>
                         <input 
-                            className='text'
+                            className='input-text'
                             value={userLastName}
                             onChange={(e) => setUserLastName(e.target.value)}
                             id='userLastName'
@@ -93,7 +93,7 @@ export const ProfileEdit = ({token}) => {
                     </div>
                     <label className='form-label' htmlFor='codename'>Choose your Codename, Agent. </label>
                     <div className='container-input'>
-                        <text 
+                        <input 
                             className='input-text'
                             value={codename}
                             onChange={(e) => setCodename(e.target.value)}
@@ -128,13 +128,14 @@ export const ProfileEdit = ({token}) => {
                             theme="snow"
                             name='personalNotes'
                             modules={modules}
+                            placeholder='Here you can capture thoughts as you develop your 30 and 90 second personal pitches.'
                         />
                     </div>
                     <label className='form-label' htmlFor='linkedin'>LinkedIn Profile link</label>
                     <div className='container-input'>
                         <input 
                             className='form-input-url'                  
-                            value={linkedin}
+                            value={`https://linkedin.com/agentawesomeIIS`}
                             onChange={(e) => setLinkedin(e.target.value)}
                             id='linkedin'
                             pattern="https://.*"
@@ -147,7 +148,7 @@ export const ProfileEdit = ({token}) => {
                     <div className='container-input'>
                         <input 
                             className='form-input-url'
-                            value={github}
+                            value={`https://github.com/agentawesomeIIS`}
                             onChange={(e) => setGithub(e.target.value)}
                             id='github'
                             type='url'
@@ -155,7 +156,7 @@ export const ProfileEdit = ({token}) => {
                             name='github'
                         />
                     </div>
-                    <label className='form-label' htmlFor='codepen'>Codepen link</label>
+                    {/* <label className='form-label' htmlFor='codepen'>Codepen link</label>
                     <div className='container-input'>
                         <input 
                             className='form-input-url'
@@ -166,7 +167,7 @@ export const ProfileEdit = ({token}) => {
                             autoComplete='off'
                             name='codepen'
                         />
-                    </div>
+                    </div> */}
                 </div> 
                 <div className='container-input'>
                     <label htmlFor='submit' className='form-label'></label>

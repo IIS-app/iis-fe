@@ -29,19 +29,19 @@ export const WinDetail = ({ token }) => {
 
     return (
         <div className='container-list'>
-        {error && <div className="error">{ error }</div>}
             <h2 className='main-title'>Review the Details of Your Win</h2>
-                <ul className="details-win" key={pk}>
-                    <li key={`{pk}.title`}>{winTitle}</li>
-                    <li key={`{pk}.date`}>{winDate}</li>
-                    <li key={`{pk}.desc`}>{winDescription}</li>
+                <div className="details-win" key={pk}>
+                    <p className="form-label-data" key={`{pk}.win`}>{`Win Title: ${winTitle}`}</p>
+                    {/* <p className="form-label-data" key={`{pk}.occurence_date`}>{`Win Date: ${winTitle}`}</p> */}
+                    <p className="form-label-data" key={`{pk}.win_description`}>{`Win Description: ${winDescription}`}</p>
                     {winPicture ? <img key={`{pk}.pic`} src={winPicture} alt={winTitle} /> :''}
                     <Link 
                         to={`/wins/edit/${pk}`}
                         id="win-list-edit"
                         className="button-edit"
-                    >Make My Win Better</Link>
-                </ul>
+                        >Edit Win Better</Link>
+                </div>
+                        {error && <div className="error">{ error }</div>}
         </div>
     )
 }

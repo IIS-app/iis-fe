@@ -47,7 +47,7 @@ export const requestUserInfo = (token) => {
         return response   
 }
 
-// ❌ PATCH UPDATE USER INFO - ep 
+// PATCH UPDATE USER INFO - ep 
 export const requestUpdateUserInfo = (token) => {
     const url = 'https://internal-interview-service.onrender.com/auth/users/me/'
     const response = axios.patch(url, {

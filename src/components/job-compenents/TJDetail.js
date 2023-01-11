@@ -37,6 +37,11 @@ export const TJDetail = ({ token }) => {
             {error && <div className='error'>{error}</div>}
             <h2 className='main-title'>Review the Details of Your Job</h2>
             <ul className='details-job' key={pk}>
+                <p className="form-label-data" key={`{pk}.title`}>{`Job Title: ${jobTitle}`}</p>
+                <p className="form-label-data" key={`{pk}.date`}>{`Date Added: ${jobAddedDate}`}</p>
+                <p className="form-label-data" key={`{pk}.targetco`}>{`Company Name: ${jobTitle}`}</p>
+                <p className="form-label-data" key={`{pk}.note`}>{`Company Name: ${jobNotes}`}</p>
+
                 <li key={`{pk}.title`}>{jobTitle}</li>
                 <li key={`{pk}.date`}>{jobAddedDate}</li>
                 <li key={`{pk}.company`}>{jobCompany}</li>

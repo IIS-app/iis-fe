@@ -1,3 +1,6 @@
+.created-date {
+     
+}
 
 .main-title {
     color: ;
@@ -19,9 +22,12 @@
     margin-top: 30px;
 }
 
+.action-word {
+    font-size: 16px;
+}
+
 .button-submit,
 .button-login,
-.button-add,
 .button-view,
 .button-edit {
     background-color: #28353c;
@@ -30,14 +36,13 @@
     box-sizing: border-box;
     color: #96FF7D;
     cursor: pointer;
-    display: inline-block;
     font-size: normal;
     width: max-content;
     line-height: 20px;
     margin-bottom: 0.2em;
     margin: .2em;
     outline: none;
-    padding: 5px 8px;
+    padding: 5px 5px 8px 5px;
     position: relative;
     text-align: center;
     text-decoration: none;
@@ -48,7 +53,36 @@
     touch-action: manipulation;
 }
 
+.button-add {
+    width: max-width;
+    height: 75px;
+    background-color: #28353c;
+    border: 2px #00b9a3 groove;
+    border-radius: 10px;
+    color: #96FF7D;
+    line-height: 20px;
+    margin-bottom: 0.2em;
+    margin: .2em;
+    outline: none;
+    padding: 5px 8px;
+    position: relative;
+    text-decoration: none;
+    transition: color 100ms;
+    vertical-align: baseline;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    font-size: x-large;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
 
+
+}
+
+.button-add:hover,
+.button-add:focus,
 .button-login:hover,
 .button-login:focus,
 .button-submit:hover,

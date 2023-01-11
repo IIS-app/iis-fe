@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { requestListSQ } from '../requests/QuestionRequests';
 import { PlusCircle } from '@styled-icons/bootstrap/PlusCircle';
 import { QuestionForm } from './QuestionForm';
+import { QuestionFormSQ } from './QuestionFormSQ';
 import { FileX } from 'styled-icons/bootstrap';
 import { Accordion } from '../dossier-components/Accordion';
 
@@ -40,7 +41,25 @@ export const QuestionsSQ = ({ token }) => {
                     title='Available Interview Questions' 
                     content={
                         userQuestions && userQuestions.filter(q => q.question_type === 'IQ').map(q => (
-                            <Accordion key={q.pk} title={q.question} content={q.answer} />
+                            <Accordion 
+                              key={q.pk} 
+                              title={
+                                <div>
+                                <PlusCircle 
+                                key={`${q.pk}.plus`}
+                                className="icon"
+                                style={{width:'15px'}}
+                                onClick={() => handleClick(q)}
+                                />
+                                <div>{q.question}</div>
+                                </div>}
+                              content={
+                                <>
+                                <div>
+                                    
+                                </div>
+                                </>} 
+                              />
                         ))}
                 />
         </div>
