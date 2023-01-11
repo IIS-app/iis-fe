@@ -62,7 +62,7 @@ export const QuestionFormSQ = ({ token }) => {
     return (
         <div className='question'>
         {error && <div className="error">{error}</div>}
-            <p className="page title">Suggested Question</p>
+            <h2 className="main-title">Suggested Question</h2>
             <form className='form-question' id='form-question' onSubmit={handleSubmit}>
                 <div 
                     className="container-form" >
