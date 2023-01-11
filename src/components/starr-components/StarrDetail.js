@@ -37,21 +37,21 @@ export const StarrDetail = ({token}) => {
     return (
         <div className="container-list">
         {error && <div className="error">{error}</div>}
-            <h3 Your Starr Details></h3>
-                <ul className="details-starr" key={pk}>
-                    <li key={`{pk}.question`}>{question}</li>
-                    <li key={`{pk}.summary`}>{summary}</li>
-                    <li key={`{pk}.situation`}>{situation}</li>
-                    <li key={`{pk}.task`}>{task}</li>
-                    <li key={`{pk}.action`}>{action}</li>
-                    <li key={`{pk}.result`}>{result}</li>
-                    <li key={`{pk}.reflection`}>{reflection}</li>
+            <h2 className="main-title"> Your STARR Details</h2>
+                <div className="details-starr" key={pk}>
+                    <p className="form-label-data" key={`{pk}.question`}>{`Title of STARR: ${question}`}</p>
+                    <p className="form-label-data" key={`{pk}.summary`}>{`Summary:${summary}`}</p>
+                    <p className="form-label-data" key={`{pk}.situation`}>{`Situation:${situation}`}</p>
+                    <p className="form-label-data" key={`{pk}.task`}>{`Task:${situation}`}</p>
+                    <p className="form-label-data" key={`{pk}.action`}>{`Action:${situation}`}</p>
+                    <p className="form-label-data" key={`{pk}.result`}>{`Result:${situation}`}</p>
+                    <p className="form-label-data" key={`{pk}.reflection`}>{`Reflection:${situation}`}</p>
                     <Link 
                         to={`/starrs/edit/${pk}`}
                         id="starrs-list-edit"
                         className="button-edit"
-                    >Edit your STARR stories here.</Link>
-                </ul>       
+                    >Edit STARR</Link>
+                </div>       
         </div>
     )
 }

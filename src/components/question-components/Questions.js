@@ -32,8 +32,8 @@ export const Questions = ({token}) => {
             <div 
             className='container-button'
             style={{display: 'flex', justifyContent: 'space-evenly'}}
-        >
-            <h2 className='main-title'>List of Starr Stories</h2>
+        >            
+                <h2 className='main-title'>List of User Questions</h2>
             <Link
                 key="button-add"
                 id='button-add'
@@ -41,9 +41,7 @@ export const Questions = ({token}) => {
                 className='button-add'
                 style={{width:'100px'}}
             >Add<QuestionDiamondFill className='icon'/></Link>
-        </div>
-
-                <h2 className='main-title'>List of User Questions</h2>
+            </div>
                     <div className="accordion-parent">
                         <Accordion
                             key="avail-iq"
