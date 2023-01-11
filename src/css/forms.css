@@ -1,22 +1,23 @@
 /* CONTAINER SIZING AND STYLING */
-
-.question-box {
-    border: 1px black double;
+.container-main {
+    max-width: 700px;
 }
 
 .container-win,
-.container-main,
 .container-starr,
 .container-targetco,
 .container-job {
     display: flex;
     justify-content: space-between;
-    align-items: baseline;
+    align-items: flex-start;
     border: 1px solid;
     border-radius: 10px;
-    padding: 3px;
+    padding: 10px 0 10px 10px;
     margin: 15px;
 }
+
+.container-resume,
+.container-letter
 
 .container-login,
 .container-register {
@@ -41,23 +42,56 @@
 
 .container-action-links {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
+    align-content: flex-end;
     padding: 2px;
     margin-left: 7px;
+    flex-direction: row;
+    height: 100%;
 }
 
 ul {
     padding: 3px
 }
 
-.button-action {
-    margin-right: 10px;
+.container-button {
+    display: flex;
+
 }
 
-li {
+
+.button-action {
+    margin-right: 10px;
+    display: flex;
+    flex-direction: row;
+}
+
+.list-starr,
+.list-targetco,
+.list-job,
+.list-win {
     list-style: none;
-    font-size: smaller;
-    padding: 3px;
+    font-size: 16px;
+    padding: 0 px;
+}
+
+.snapshot {
+    display: flex;
+    
+
+}
+.snapshot-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    width: 100%;    
+}
+
+.created-date {
+    justify-content: flex-end;
+    flex-direction: column;
+    padding: 10px 0 10px 0;
+    
 }
 
 /* FORM PARENT STYLES */
@@ -75,7 +109,7 @@ li {
 .form-win {
     display: flex;
     flex-direction: column;
-    width: 85%;
+    width: 100%;
     border-radius: 10px;
 }
 
@@ -84,44 +118,105 @@ li {
 label {
     display: block;
     margin-bottom: 10px;
-    /* font-size: 16px; */
-    /* font-weight: bold; */
+    font-size: 16px;
+    font-weight: bold;
 }
-
+.form-label-data,
+.form-input-url,
 input[type='text'],
 input[type='email'],
-input[type='password'] {
-    width: 85%;
+input[type='password'],
+input[type='date'] {
+    width: 400px;
     padding: 12px 20px;
     margin-bottom: 20px;
     box-sizing: border-box;
     border: 1px solid #ccc;
     border-radius: 10px;
-    background-color: ;
+    font-size: larger;
+    font-family: monospace;
+    box-shadow: 3px 5px 3px #00b9a3;
+}
+input
+input[type='number'],
+input [type='file' i] {
+    font-size: 20px;
+    font-family: monospace;
+    width: 50px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    box-shadow: 3px 5px 5px #00b9a3;
+    padding: 5px;
+    border: none;
+    
+    
+}
+
+.custom-upload {
+    display: inline-block;
+    padding: 8px 12px;
+    cursor: pointer;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    transition: all 0.2s ease-in-out;
+}
+
+.custom-upload:hover {
+    background-color: #f5f5f5;
+}
+
+
+.folder {
+    font-family: 'monospace';
 }
 
 textarea {
-    width: 100%;
+    width: 400px;
     padding: 12px 20px;
     margin-bottom: 20px;
     box-sizing: border-box;
     border: 1px solid #ccc;
     border-radius: 10px;
+    box-shadow: 2px 2px 2px #00b9a3;
 }
 
 /* STYLING FOR QUILL */
 /* REMEMBER STYLE EDIT VS READ, esp. on snow theme */
 
 .custom-quill {
-    border: 1px solid black;
     border-radius: 10px;
+    width: 400px;
     background-color: white;
     color: black;
     margin-bottom: 15px;
+    font-size: larger;
+    font-family: monospace;
+    box-shadow: 2px 2px 2px #00b9a3;
+    height: 90px;
+    border: none;
+
+}
+
+.ql-editor {
+    font-size: larger;
+    font-family: monospace;
 }
 
 .ql-tooltip {
     width: 200px;
-    height: 200px;
+    height: 100px;
     font-size: smaller;
+    cursor: pointer;
 }
+
+/* .ql-container {
+    border-radius: 0px 0px 10px 10px;
+    box-shadow: 2px 2px 2px #00b9a3;
+    width: 400px;
+}*/
+
+.ql-toolbar .ql-snow {
+    border-radius: 10px;
+    width: 400px;
+
+} 

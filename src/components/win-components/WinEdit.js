@@ -66,10 +66,10 @@ export const WinEdit = ({ token }) => {
     return (
         <div className='container-main'>
         {error && <div className="error">{error}</div>}
-            <h2>What will you be celebrating today?</h2>
+            <h2 className='main-title'>Edit Your Win</h2>
             <form className='form-win' id='form-win' onSubmit={handleSubmit}>
-                <div className='container-form' style={{border: 'solid 3px', borderRadius:'10px', width:'75%', padding: '10px' }}>
-                    <label className='form-label' htmlFor='draft'>Draft Status</label>
+                <div className='container-form'>
+                    {/* <label className='form-label' htmlFor='draft'>Draft Status</label>
                     <div className='container-input'>
                         <input 
                             className='draft'
@@ -79,8 +79,8 @@ export const WinEdit = ({ token }) => {
                             type='checkbox'
                             checked={isDraft}
                             />
-                    </div>
-                    <label className='form-label' htmlFor="winTitle">Add a Name for Your Win</label>
+                    </div> */}
+                    <label className='form-label' htmlFor="winTitle">Win Title</label>
                     <div className='container-input'>
                         <ReactQuill 
                             autoFocus
@@ -90,6 +90,7 @@ export const WinEdit = ({ token }) => {
                             maxLength={200}
                             modules={modules}
                             name="winTitle"
+                            value={winTitle}
                             onChange={(value) => setWinTitle(value)}
                             placeholder=''
                             required
@@ -114,6 +115,7 @@ export const WinEdit = ({ token }) => {
                             autoComplete='off'
                             className='custom-quill'
                             id='winDescription'
+                            value={winDescription}
                             onChange={(value) => setWinDescription(value)}
                             maxLength={2000}
                             modules={modules}
@@ -131,10 +133,18 @@ export const WinEdit = ({ token }) => {
                             type='file'
                             autoComplete='off'
                             name='winPicture'
-                            multiple
+                            style={{
+                                width: '400px',
+                                height: '40px',
+                                position: 'relative',
+                                overflow: 'hidden',
+                                display: 'inline-block',
+                                border: '1px solid #ccc',
+                                borderRadius: '10px',
+                                marginBottom: '20px'
+                            }}
+                
                         />
-                        {/* TODO: MAKE SURE THIS WORKS WITH NEW WIRING */}
-                        {winLoadedPicture ? <img src={winLoadedPicture} style={{ width: "200px"}} alt={winTitle} /> :''}
                     </div>
                 </div> 
                 <div className='container-input'>

@@ -33,8 +33,8 @@ export const requestCreateSQAnswer = (token, answer, question, question_type ) =
 
 
 
-// ❌ GET LIST OF USER QUESTIONS
-export const requestListUserQuestions = (token) => {
+// GET LIST OF USER QUESTIONS
+export const requestListUserQ = (token) => {
     const url = 'https://internal-interview-service.onrender.com/question/'
     const response = axios.get(url,
         {headers: { 

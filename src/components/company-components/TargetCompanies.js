@@ -3,6 +3,8 @@ import { requestListTargetCompanies } from '../requests/CompanyRequests';
 import { Link } from 'react-router-dom';
 import { TCSnapshot } from './TCSnapshot'
 import { Header } from '../site-components/Header'
+import { TargetArrow } from '@styled-icons/fluentui-system-regular/TargetArrow'
+
 
 
 export const TargetCompanies = ({token}) => {
@@ -22,16 +24,20 @@ export const TargetCompanies = ({token}) => {
     return (
     <>
     {error && <div className="error">{error}</div>}
-        <div className='container-button'>
-            <h2>Target Companies</h2>
+        <div 
+            className='container-button'
+            style={{display: 'flex', justifyContent: 'space-evenly', alignItems:'center'}}
+        >
+            <h2 className='main-title'>Target Companies</h2>
             <Link
                 key="button-add"
                 id='button-add'
                 to="/targetcompany/add"
                 className='button-add'
-            >Add a New Company</Link>
+                // style={{width:'100px'}}
+            >Add<TargetArrow className='icon'/>Company</Link>
         </div>
-    <div className='container-main' style={{border: 'solid 3px', borderRadius:'10px', width:'75%', padding: '10px' }}>
+    <div className='container-main' >
         <div className='container-list'>
             <ul key="tc-info" className="list">
                 {companies ? companies.map(company => (

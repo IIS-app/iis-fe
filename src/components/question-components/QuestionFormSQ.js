@@ -65,8 +65,7 @@ export const QuestionFormSQ = ({ token }) => {
             <p className="page title">Suggested Question</p>
             <form className='form-question' id='form-question' onSubmit={handleSubmit}>
                 <div 
-                    className="container-form" style={{border: 'solid 3px', borderRadius:'10px', width:'75%', padding: '10px' }}
-                >
+                    className="container-form" >
                     <div>
                         {questionType === 'CQ' ? (
                                 <div className="system-question-answer">

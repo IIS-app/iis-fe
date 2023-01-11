@@ -40,6 +40,8 @@ export const Resumes = ({token}) => {
   
 
   return (
+    <div className='container-clr'>
+    <h2 className='main-title'>Upload Resume</h2>
     <form onSubmit={handleSubmit}>
       <label htmlFor='title'>Title:</label>
       <input
@@ -49,7 +51,7 @@ export const Resumes = ({token}) => {
         value={resume.title || ''}
         onChange={handleChange}
       />
-      <br />
+      {/* <br />
       <label htmlFor='job'>Job:</label>
       <input
         type='text'
@@ -57,28 +59,40 @@ export const Resumes = ({token}) => {
         name='job'
         value={resume.job || ''}
         onChange={handleChange}
-      />
+      /> */}
       <br />
       <label htmlFor='notes'>Notes:</label>
       <textarea
-        id='notes'
-        name='notes'
-        value={resume.notes || ''}
-        onChange={handleChange}
+          id='notes'
+          name='notes'
+          value={resume.notes || ''}
+          onChange={handleChange}
       />
       <br />
       <label htmlFor='resume_file'>Resume file:</label>
       <input
-        type='file'
-        id='resume_file'
-        name='resume_file'
-        accept='application/pdf'
-        onChange={handleFileChange}
+          type='file'
+          className='custom-upload'
+          id='resume_file'
+          name='resume_file'
+          accept='application/pdf'
+          onChange={handleFileChange}
+          style={{
+            width: '400px',
+            height: '40px',
+            position: 'relative',
+            overflow: 'hidden',
+            display: 'inline-block',
+            border: '1px solid #ccc',
+            borderRadius: '10px',
+            marginBottom: '20px'
+          }}
       />
       <br />
-      <button type='submit'>Save</button>
+      <button className='button-submit'  type='submit'>Save</button>
       {error && <p style={{ color: 'red' }}>{error}</p>}
       {isLoading && <p>Loading...</p>}
     </form>
+    </div>
   );
 };

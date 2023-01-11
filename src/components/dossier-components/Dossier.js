@@ -5,6 +5,10 @@ import { Link, useParams } from 'react-router-dom';
 import { Accordion } from './Accordion'
 import { DossierItems } from './DossierItems'
 import { AvailableItems } from './AvailableItems'
+import { HappyBeaming } from '@styled-icons/boxicons-regular/HappyBeaming'
+
+
+
 
 
 //MAIN FUNCTION EXPORT
@@ -17,6 +21,7 @@ export const Dossier = ({ token }) => {
     const [starrsD, setStarrsD] = useState([])
     const [winsD, setWinsD] = useState([])
     const [userQD, setUserQD] = useState([])
+    const [dossierPdfUrl, setDossierPdfUrl] = useState('')
     
     
     // ACCORDION RELATED TESTS
@@ -32,7 +37,7 @@ export const Dossier = ({ token }) => {
     useEffect(() => {
         setError(null);
         setIsLoading(true);
-        requestDossierDetail(token)
+        requestDossierDetail(token, pk)
         .then(({ data }) => {
             setDossier(data);
             setStarrsD(data.starr_titles)
@@ -43,9 +48,15 @@ export const Dossier = ({ token }) => {
         .finally(() => setIsLoading(false));
     }, [token]);
     
-
+    useEffect(() => {
+        requestDossierPDF(token, pk)
+            .then(response => {
+                setDossierPdfUrl(response.data.pdf_preview_url);
+            });
+    }, [token]);
             
     return (
+        <>
         <div>
             <div className='container-dossier'>
                     <Accordion
@@ -78,5 +89,6 @@ export const Dossier = ({ token }) => {
             </div>
             </div>
         </div>
+        </>
     );
 };

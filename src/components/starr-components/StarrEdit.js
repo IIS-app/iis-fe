@@ -72,10 +72,10 @@ export const StarrEdit = ({ token }) => {
     return (
         <div className='container-form'>
         {error && <div className="error">{error}</div>}
-            <h2>Write a New STARR story here!</h2>
+            <h2 className='main-title'>Edit STARR Story</h2>
             <form className='form-starr' id='form-starr' onSubmit={handleSubmit}>
-                <div className='container-form' style={{border: 'solid 3px', borderRadius:'10px', width:'75%', padding: '10px' }}>
-                    <label className='form-label' htmlFor='draft'>Draft Status</label>
+                <div className='container-form' >
+                    {/* <label className='form-label' htmlFor='draft'>Draft Status</label>
                     <div className='container-input'>
                         <input 
                             className='draft'
@@ -85,21 +85,19 @@ export const StarrEdit = ({ token }) => {
                             type='checkbox'
                             checked={isDraft}
                             />
-                    </div>
+                    </div> */}
 
-                    <label className='form-label' htmlFor='question'>STARR story Title</label>
+                    <label className='form-label' htmlFor='question'>STARR Story Title</label>
                     <div className='container-input'>
-                        <ReactQuill 
+                        <textarea
                             autoFocus
                             autoComplete='off'
                             className='custom-quill'
                             id='question'
                             maxLength={200}
-                            modules={modules}
                             onChange={(value) => setQuestion(value)}
                             placeholder='What is Your STARR Story Called?'
                             required
-                            theme="bubble"
                             value={question}
                             />
                     </div>
@@ -201,7 +199,7 @@ export const StarrEdit = ({ token }) => {
                         to="/starrs"
                         className='button-submit'
                         type='submit'
-                        value='Give me my STARR!'
+                        value='Update STARR'
                         style={{marginTop:'30px'}}
                     />
                 </div>

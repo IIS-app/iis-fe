@@ -46,11 +46,10 @@ export const WinForm = ({token}) => {
 
     return (
         <div className='container-form'>
-        {error && <div className="error">{error}</div>}
-            <h2>Celebrate Wins</h2>
+            <h2 className='main-title'>Celebrate Wins</h2>
             <form className='form-win' id='form-win' onSubmit={handleSubmit}>
-                <div className="container-form" style={{border: 'solid 3px', borderRadius:'10px', width:'75%', padding: '10px' }}>
-                <label className='form-label' htmlFor='draft'>Draft Status</label>
+                <div className="container-form">
+                {/* <label className='form-label' htmlFor='draft'>Draft Status</label>
                     <div className='container-input'>
                         <input 
                             className='draft'
@@ -60,21 +59,20 @@ export const WinForm = ({token}) => {
                             type='checkbox'
                             checked={isDraft}
                             />
-                    </div>
+                    </div> */}
                     <label className='form-label' htmlFor="winTitle">Add a Title for Your Win</label>
                     <div className='container-input'>
-                        <ReactQuill 
+                        <input 
                             autoFocus
+                            type='text'
                             autoComplete='off'
-                            className='custom-quill'
+                            className='input-text'
                             id="winTitle"
                             maxLength={200}
-                            modules={modules}
                             name="winTitle"
                             onChange={(value) => setWinTitle(value)}
-                            placeholder=''
+                            placeholder='Title Your Win'
                             required
-                            theme="bubble"
                             />
                     </div>
                     <label className='form-label' htmlFor='winDate'>Provide a Date for the Event</label>
@@ -113,7 +111,15 @@ export const WinForm = ({token}) => {
                             type='file'
                             autoComplete='off'
                             name='winPicture'
-                            multiple
+                            style={{
+                                width: '400px',
+                                height: '40px',
+                                position: 'relative',
+                                overflow: 'hidden',
+                                display: 'inline-block',
+                                border: '1px solid #ccc',
+                                borderRadius: '10px',
+                                marginBottom: '20px'}}
                         />
                     </div>
                 </div> 
@@ -129,6 +135,7 @@ export const WinForm = ({token}) => {
                     />
                 </div>
             </form>
+            {error && <div className="error">{error}</div>}
         </div>
     )
 }

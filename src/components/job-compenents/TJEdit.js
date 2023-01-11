@@ -61,7 +61,7 @@ export const TJEdit = ({token}) => {
             {error && <div className="error">{error}</div>}
             <h2 className="targetjob">Add Job Details</h2>
             <form className="form-job" id='form-job' onSubmit={handleSubmit}>
-                <div className="container-form" style={{border: 'solid 3px', borderRadius:'10px', width:'75%', padding: '10px' }}>
+                <div className="container-form" >
                     <label className="form-label" htmlFor="jobTitle">Job Title</label>
                     <div className='container-input'>
                         <input 
