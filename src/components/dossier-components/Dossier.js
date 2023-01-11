@@ -8,9 +8,6 @@ import { AvailableItems } from './AvailableItems'
 import { HappyBeaming } from '@styled-icons/boxicons-regular/HappyBeaming'
 
 
-
-
-
 //MAIN FUNCTION EXPORT
 export const Dossier = ({ token }) => {
     const { pk } = useParams();
