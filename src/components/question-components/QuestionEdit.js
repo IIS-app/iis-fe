@@ -49,7 +49,7 @@ export const QuestionEdit = ({token}) => {
         {error && <div className="error">{error}</div>}
             <h2>What question do you want to answer today?</h2>
             <form className='form-question' id='form-question' onSubmit={handleSubmit}>
-                <div className="container-form" style={{border: 'solid 3px', borderRadius:'10px', width:'75%', padding: '10px' }}>
+                <div className="container-form">
                     <label className='form-label' htmlFor="question">Question</label>
                     <div className='container-input'>
                         <input 

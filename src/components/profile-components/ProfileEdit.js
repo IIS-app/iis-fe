@@ -65,7 +65,7 @@ export const ProfileEdit = ({token}) => {
         {error && <div className="error">{error}</div>}
             <h2>Edit your Profile.</h2>
             <form className="form-profile" id="form-profile" onSubmit={handleSubmit}>
-            <div className='container-form' style={{border: 'solid 3px', borderRadius:'10px', width:'75%', padding: '10px' }}>
+            <div className='container-form' >
                     <label className='form-label' htmlFor="userFirstName">First Name</label>
                     <div className='container-input'>
                         <input 

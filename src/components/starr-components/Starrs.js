@@ -30,7 +30,7 @@ export const Starrs = ({token}) => {
         </div>
         {error && <div className="error">{error}</div>}
         <h2>List of Starr Stories</h2>
-        <div className='container-main' style={{border: 'solid 3px', borderRadius:'10px', width:'75%', padding: '10px' }}>
+        <div className='container-main' >
             <div className='container-list'>
                 <ul key="starr-info" className="list">
                     {starrs ? starrs.map(starr => (

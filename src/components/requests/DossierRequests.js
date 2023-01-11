@@ -1,4 +1,5 @@
 import axios from 'axios'
+import { IdBadge } from 'styled-icons/octicons';
 
 // GET LIST OF DOSSIERS - ep  app 
 export const requestListDossiers = (token) => {
@@ -12,8 +13,8 @@ export const requestListDossiers = (token) => {
 }
 
 // GET DETAIL OF DOSSIER RECORD - ep  app 
-export const requestDossierDetail = (token, pk) => {
-    const url = `https://internal-interview-service.onrender.com/dossier/${pk}`
+export const requestDossierDetail = (token, id) => {
+    const url = `https://internal-interview-service.onrender.com/dossier/${id}`
     const response = axios.get(url,
         {headers: {
             Authorization: `Token ${token}`
@@ -22,9 +23,9 @@ export const requestDossierDetail = (token, pk) => {
     return response
 }
 
-// GET DETAIL OF DOSSIER RECORD - ep  app 
-export const requestDossierPDF = (token) => {
-    const url = 'https://internal-interview-service.onrender.com/dossier-pdf/1'
+// GET CREATE DOSSIER PDF - ep  app 
+export const requestDossierPDF = (token, id) => {
+    const url = `https://internal-interview-service.onrender.com/dossier-pdf/${id}`
     const response = axios.get(url,
         {headers: {
             Authorization: `Token ${token}`

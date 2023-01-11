@@ -15,8 +15,13 @@ export const DossierPDF = ({token, props}) => {
     }, [token]);
 
     return (
+        <>
         <div>
             {pdfPreviewUrl && <a href={pdfPreviewUrl} target="_blank">Preview PDF</a>}
         </div>
+        <object data={pdfPreviewUrl} type="application/pdf" width="100%" height="100%">
+            <p>Alternative text - include a link <a href={pdfPreviewUrl}>to the PDF!</a></p>
+        </object>
+        </>
     );
 }

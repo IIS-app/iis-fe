@@ -37,7 +37,6 @@
 .button-add:focus {
     background-color: #096C81;
     box-shadow: 2px 2px #96FF7D;
-    text-shadow: 2px 2px 4px rgb(89, 64, 93);
 }
 
 .button-edit {
@@ -53,8 +52,6 @@
     border: 2px #00b9a3 groove;
     border-radius: 10px;
     box-shadow: 2px 2px #96FF7D;
-    text-shadow: 2px 2px 4px rgb(89, 64, 93);
-    /* border-style: ; */
     box-sizing: border-box;
     color: #96FF7D;
     cursor: pointer;
@@ -65,7 +62,6 @@
     height: 35px;
     width: max-content;
     line-height: 10px;
-    /* list-style: none; */
     margin-bottom: 0.2em;
     margin: .2em;
     outline: none;

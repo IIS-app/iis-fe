@@ -31,7 +31,7 @@ export const TargetCompanies = ({token}) => {
                 className='button-add'
             >Add a New Company</Link>
         </div>
-    <div className='container-main' style={{border: 'solid 3px', borderRadius:'10px', width:'75%', padding: '10px' }}>
+    <div className='container-main' >
         <div className='container-list'>
             <ul key="tc-info" className="list">
                 {companies ? companies.map(company => (

@@ -36,6 +36,15 @@
 
 .icon {
     width: 30px;
+    color: #96FF7D
+}
+
+.clr {
+    display: flex;
+    flex-wrap: wrap;
+    width: 127px;
+    height: 49px;
+    align-items: center;
 }
 
 .link-button-nav {

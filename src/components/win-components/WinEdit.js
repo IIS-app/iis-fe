@@ -68,7 +68,7 @@ export const WinEdit = ({ token }) => {
         {error && <div className="error">{error}</div>}
             <h2>What will you be celebrating today?</h2>
             <form className='form-win' id='form-win' onSubmit={handleSubmit}>
-                <div className='container-form' style={{border: 'solid 3px', borderRadius:'10px', width:'75%', padding: '10px' }}>
+                <div className='container-form'>
                     <label className='form-label' htmlFor='draft'>Draft Status</label>
                     <div className='container-input'>
                         <input 

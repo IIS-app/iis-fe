@@ -5,27 +5,28 @@ import { FolderPlus } from '@styled-icons/bootstrap/FolderPlus'
 import { EyeOutline } from '@styled-icons/evaicons-outline/EyeOutline'
 import { RemoveCircleOutline } from '@styled-icons/material/RemoveCircleOutline'
 import { Edit2Outline } from '@styled-icons/evaicons-outline/Edit2Outline'
+import { EditOutline } from 'styled-icons/evaicons-outline';
 
 
 export const TJSnapshot = ({ token, job }) => {
 
     return (
         <div className="container-job">
-            <li className="list-job" >{`${job.title} at ${job.company} added on ${job.created_at}`}</li>
+            <li className="list-job" >{`${job.title} at ${job.company_title} added on ${job.created_at}`}</li>
             <div className="container-action-links">
                 <Link 
                     key={`${job.pk}.edit`}
                     to={`/targetjobs/edit/${job.pk}`}                        
                     id="job-edit"
                     className="button-action"
-                    >📝
+                    ><Edit2Outline className="icon"/>
                 </Link>
                 <Link
                     key={`${job.pk}.view`}
                     to={`/targetjobs/${job.pk}`}
                     id="job-view"
                     className="button-action"
-                    >👀
+                    ><EyeOutline className='icon'/>
                 </Link>
                 <Link
                     key={`${job.pk}.delete`}
@@ -34,7 +35,7 @@ export const TJSnapshot = ({ token, job }) => {
                     className="button-action"
                     onClick={() => requestDeleteTargetJob(token, job.pk)}
                     title={`WARNING this will remove: "${job.title}!"`}
-                    >❌
+                    ><RemoveCircleOutline className='icon'/>
                 </Link>
             </div>
         </div>

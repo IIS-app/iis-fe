@@ -5,6 +5,9 @@ import { Link, useParams } from 'react-router-dom';
 import { Accordion } from './Accordion'
 import { DossierItems } from './DossierItems'
 import { AvailableItems } from './AvailableItems'
+import { HappyBeaming } from '@styled-icons/boxicons-regular/HappyBeaming'
+
+
 
 
 
@@ -45,22 +48,24 @@ export const Dossier = ({ token }) => {
         .finally(() => setIsLoading(false));
     }, [token]);
     
-    
+    useEffect(() => {
+        requestDossierPDF(token, pk)
+            .then(response => {
+                setDossierPdfUrl(response.data.pdf_preview_url);
+            });
+    }, [token]);
             
     return (
         <>
         <div>
             
-            <div
+            <button
                 id="dossier-pdf"
                 key='dossier-pdf'
-                className="get-dossier-pdf"
-                onClick={
-                    requestDossierPDF(token, { pk })
-                    setDossierPdfUrl(res)
-            }       
-            >
-            </div>
+                className="icon"
+                onClick={() => requestDossierPDF(token, { pk })}>  
+                <HappyBeaming/></button>
+            {dossierPdfUrl && <div>{dossierPdfUrl}</div>}
 
             <div className='container-dossier'>
                     <Accordion

@@ -1,11 +1,9 @@
 /* CONTAINER SIZING AND STYLING */
-
-.question-box {
-    border: 1px black double;
+.container-main {
+    max-width: 
 }
 
 .container-win,
-.container-main,
 .container-starr,
 .container-targetco,
 .container-job {
