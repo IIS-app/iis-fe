@@ -113,7 +113,15 @@ export const WinForm = ({token}) => {
                             type='file'
                             autoComplete='off'
                             name='winPicture'
-                            multiple
+                            style={{
+                                width: '400px',
+                                height: '40px',
+                                position: 'relative',
+                                overflow: 'hidden',
+                                display: 'inline-block',
+                                border: '1px solid #ccc',
+                                borderRadius: '10px',
+                                marginBottom: '20px'}}
                         />
                     </div>
                 </div> 
