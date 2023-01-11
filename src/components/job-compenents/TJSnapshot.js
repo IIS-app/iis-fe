@@ -17,7 +17,6 @@ export const TJSnapshot = ({ token, job }) => {
                     <div className="list-job" >{`${job.title} at ${job.company_title}`}</div>
                     <div className='created-date'><em>{` added on ${job.created_at}`}</em></div>
                 </div>
-                <div style={{maxWidth: ''}}></div>
                 <div className="container-action-links">
                     <Link 
                         key={`${job.pk}.edit`}
@@ -41,7 +40,7 @@ export const TJSnapshot = ({ token, job }) => {
                         onClick={() => requestDeleteTargetJob(token, job.pk)}
                         ><RemoveCircleOutline className='icon'/>
                     </Link>
-            </div>
+                </div>
         </div>
     )
 }

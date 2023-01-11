@@ -58,15 +58,6 @@ export const Dossier = ({ token }) => {
     return (
         <>
         <div>
-            
-            <button
-                id="dossier-pdf"
-                key='dossier-pdf'
-                className="icon"
-                onClick={() => requestDossierPDF(token, { pk })}>  
-                <HappyBeaming/></button>
-            {dossierPdfUrl && <div>{dossierPdfUrl}</div>}
-
             <div className='container-dossier'>
                     <Accordion
                         key={dossier.id}

@@ -6,6 +6,8 @@ import { QuestionsSQ } from './QuestionsSQ'
 import { PlusCircle } from '@styled-icons/bootstrap/PlusCircle'
 import { Accordion } from '../dossier-components/Accordion'
 import { QuestionDiamondFill } from '@styled-icons/bootstrap/QuestionDiamondFill'
+import { Edit2Outline, EyeOutline } from 'styled-icons/evaicons-outline';
+import { RemoveCircle } from 'styled-icons/ionicons-outline';
 
 
 
@@ -48,8 +50,11 @@ export const Questions = ({token}) => {
                             title='Available Interview Questions' 
                             content={
                                 userQ && userQ.filter(q => q.question_type === 'IQ').map(q => (
-                                    <Accordion key={q.pk} title={q.question} content={q.answer} />
-                                ))}
+                                    <Accordion 
+                                        key={q.pk} 
+                                        title={q.question}
+                                        content={q.answer} />
+                                        ))}
                         />
                     </div>
                     <div className="accordion-parent">
@@ -58,8 +63,11 @@ export const Questions = ({token}) => {
                             title='Available Company Questions' 
                             content={
                                 userQ && userQ.filter(q => q.question_type === 'CQ').map(q => (
-                                    <Accordion key={q.pk} title={`${q.question} `} content={q.answer} />
-                                ))}
+                                    <Accordion 
+                                        key={q.pk} 
+                                        title={q.question}
+                                        content={q.answer} />
+                                    ))}
                         />
                     </div>
             <QuestionsSQ token={token} />
