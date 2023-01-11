@@ -39,26 +39,28 @@ export const TCDetail = ({ token }) => {
 
     return (
         <div className='container-list'>
-        {error && <div className="error">{ error }</div>}
 
-            <h2>Company Information</h2>
-                <ul key={pk} className="details-targetco" >
-                    <li key={`{pk}.rank`}>{companyRank}</li>
-                    <li key={`{pk}.company_name`}>{companyName}</li>
-                    <li key={`{pk}.website`}><Link className="link-inline" to={companyUrl}>{companyUrl}</Link></li>
-                    <li key={`{pk}.jobs_page`}>{companyJobsUrl}</li>
+            <h2 className='main-title'>Company Information</h2>
+                <div key={pk} className="details-targetco" >
+                    <p className="form-label-data" key={`{pk}.company_name`}>{`Company Name: ${companyName}`}</p>
+                    <p className="form-label-data" key={`{pk}.rank`}>{`Level of Interest: ${companyRank}`}</p>
+                    <p className="form-label-data" key={`{pk}.website`}>{`Company URL: ${companyUrl}`}</p>
+                    <p className="form-label-data" key={`${pk}.jobs_page`}>
+                        {companyJobsUrl ? `Company Job or Career Page: ${companyJobsUrl}` : 'No company jobs url added.'}
+                    </p>
                     <ReactQuill
                         key={`{pk}.comments`}
                         value={companyNotes}
-                        reaadOnly={true}
-                        theme={'bubble'}
-                    />
+                        readOnly={true}
+                        theme='bubble'
+                        />
                     <Link 
                         to={`/targetcompany/edit/${pk}`}
                         id="targetco-list-edit"
-                        className="button-edit"
-                    >Add More Company Recon</Link>
-                </ul>
+                        className="button-submit"
+                        >Edit Company</Link>
+                </div>
+                        {error && <div className="error">{ error }</div>}
         </div>
     )
 }

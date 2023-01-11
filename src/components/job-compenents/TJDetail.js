@@ -2,6 +2,9 @@ import { useState, useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { requestTJDetail } from '../requests/JobRequests';
 import { Dossier } from '../dossier-components/Dossier'
+import { FolderPlus } from '@styled-icons/bootstrap/FolderPlus'
+import { HappyBeaming } from '@styled-icons/boxicons-regular/HappyBeaming'
+
 
 
 // MAIN FUNCTION EXPORT
@@ -34,18 +37,28 @@ export const TJDetail = ({ token }) => {
     return (
         <>
         <div className='container-list'>
-            {error && <div className='error'>{error}</div>}
-            <h2>Review the Details of Your Job</h2>
+        <div 
+            className='container-button'
+            style={{display: 'flex', justifyContent: 'space-evenly'}}
+        >
+            <h2 className='main-title'>Review the Details of Your Job</h2>
+            <button className='button-add' style={{fontFamily:'monospace'}}>Create
+                    <FolderPlus className='icon'style={{width:'100px'}}/>
+                    Dossier</button>
+            <button className='button-add' style={{fontFamily:'monospace'}}>Generate My
+                    <HappyBeaming className='icon'style={{width:'100px', fontFamily:'monospace'}}/>
+                    Dossier</button>
+        </div>
             <ul className='details-job' key={pk}>
-                <li key={`{pk}.title`}>{jobTitle}</li>
-                <li key={`{pk}.date`}>{jobAddedDate}</li>
-                <li key={`{pk}.company`}>{jobCompany}</li>
-                <li key={`{pk}.note`}>{jobNotes}</li>
+                <p className="form-label-data" key={`{pk}.title`}>{`Job Title: ${jobTitle}`}</p>
+                <p className="form-label-data" key={`{pk}.date`}>{`Date Added: ${jobAddedDate}`}</p>
+                <p className="form-label-data" key={`{pk}.targetco`}>{`Company Name: ${jobTitle}`}</p>
+                <p className="form-label-data" key={`{pk}.note`}>{`Company Name: ${jobNotes}`}</p>
                 <Link
                     to={`/targetjobs/edit/${pk}`}
                     id='job-list-edit'
                     className='button-edit'
-                >
+                    >
                     Edit Job Detail
                 </Link>
             </ul>
@@ -53,6 +66,7 @@ export const TJDetail = ({ token }) => {
         
         <Dossier token={token} />
 
+                    {error && <div className='error'>{error}</div>}
         </>
     )
 }

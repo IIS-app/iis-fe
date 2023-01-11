@@ -53,22 +53,22 @@ export const ProfileView = ({ token }) => {
         <div className='container-profile'>
         {error && <div className="error">{ error }</div>}
 
-            <h2>The facts.</h2>
+            <h2 className='main-title'>The facts.</h2>
             <div key={userId}>
-                <p>{`First Name: ${userFirstName}`}</p>
-                <p>{`Last Name: ${userLastName}`}</p>
-                <p>{`Codename: ${codename}`}</p>
-                <p>{`Email: ${userEmail}`}</p>
-                <p>{`LinkedIn: ${linkedin}`}</p>
-                <p>{`Github: ${github}`}</p>          
-                <p>Personal Notes:</p>
+                <p className="form-label-data">{`First Name: ${userFirstName}`}</p>
+                <p className="form-label-data">{`Last Name: ${userLastName}`}</p>
+                <p className="form-label-data">{`Codename: ${codename}`}</p>
+                <p className="form-label-data">{`Email: ${userEmail}`}</p>
+                <p className="form-label-data">{`LinkedIn: ${linkedin}`}</p>
+                <p className="form-label-data">{`Github: ${github}`}</p>          
+                <p className="form-label-data">Personal Notes:</p>
                 <ReactQuill
                     modules={modules}
                     theme="snow"
-                    readOnly
+                    readOnly={true}
                     className='custom-quill'
                     id='personalNotes'
-                    style={{height: 'auto', minHeight: '200px'}}
+                    style={{height: 'auto', minHeight: '200px', maxWidth: '300px'}}
                     name='personalNotes'
                     maxLength={2000}
                     onChange={(value) => setPersonalNotes(value)}              

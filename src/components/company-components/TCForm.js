@@ -50,9 +50,9 @@ export const TCForm = ({token}) => {
     return (
         <div className="container-form">   
             {error && <div className="error">{error}</div>}
-            <h2 className="targetco">Where would you like to work?</h2>
+            <h2 className="main-title">Where would you like to work?</h2>
             <form className="form-company" id='form-company' onSubmit={handleSubmit}>
-                <div className="container-form" style={{border: 'solid 3px', borderRadius:'10px', width:'75%', padding: '10px' }}>
+                <div className="container-form" >
                     <label className="form-label" htmlFor="companyName">Company Name</label>
                     <div className='container-input'>
                         <input 
@@ -64,6 +64,7 @@ export const TCForm = ({token}) => {
                             onChange={(e) => setCompanyName(e.target.value)}
                             maxLength={100}
                             name='companyName'
+                            placeholder='Company Name'
                             />
                     </div>
                     <label className="form-label" htmlFor="companyRank">On a scale of 1 to 5, rank your interest.</label>
@@ -80,7 +81,6 @@ export const TCForm = ({token}) => {
                             onChange={(e) => setCompanyRank(e.target.value)}
                             name='companyRank'
                             value={companyRank}
-                            // placeholder="Leave blank if you are unsure."
                             />
                     </div>
                     <label className="form-label" htmlFor="companyUrl">Company Website:</label>
@@ -119,6 +119,7 @@ export const TCForm = ({token}) => {
                             name='companyNotes'
                             maxLength={2000}
                             onChange={(value) => setCompanyNotes(value)}
+                            placeholder='Capture notes about company research, informal coffee chats, or company contacts.'
                         />                        
                     </div>
                 </div>

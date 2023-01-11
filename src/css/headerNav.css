@@ -36,21 +36,22 @@
 
 .icon {
     width: 30px;
+    color: #96FF7D
+}
+
+.clr {
+    display: flex;
+    flex-wrap: wrap;
+    width: 127px;
+    height: 49px;
+    align-items: center;
 }
 
 .link-button-nav {
-    font-size: 14px;
-    /* margin-left: 16px; */
+    font-size: 16px;
     text-decoration: none;
     color: #96FF7D;
     width: calc(100% - 16px);
-}
-
-
-.button-login {
-    font-size: 14px;
-    text-decoration: none;
-    color: black;
 }
 
 .link-button-icon {

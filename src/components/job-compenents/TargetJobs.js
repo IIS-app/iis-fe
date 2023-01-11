@@ -3,6 +3,7 @@ import { requestListTargetJobs } from '../requests/JobRequests';
 import { Link } from 'react-router-dom';
 import { TJSnapshot } from './TJSnapshot'
 import { Dossier } from '../dossier-components/Dossier';
+import { TargetArrow } from '@styled-icons/fluentui-system-regular/TargetArrow'
 
 
 export const TargetJobs = ({token}) => {
@@ -21,17 +22,20 @@ export const TargetJobs = ({token}) => {
 
     return (
     <>
-        <div className='container-button'>
+        <div 
+            className='container-button'
+            style={{display: 'flex', justifyContent: 'space-evenly', alignItems:'center'}}
+        >
+            <h2 className='main-title'>List of Target Jobs</h2>
             <Link
                 key="button-add"
                 id='button-add'
                 to="/targetjobs/add"
                 className='button-add'
-            >I found a new job!</Link>
+                style={{width:'100px'}}
+                >Add<TargetArrow className='icon'/>Job</Link>
         </div>
-        {error && <div className="error">{error}</div>}
-        <h2>List of Jobs</h2>
-        <div className='container-main' style={{border: 'solid 3px', borderRadius:'10px', width:'75%', padding: '10px' }}>
+        <div className='container-main' >
             <div className='container-list'>
                 <ul key="job-info" className="list">
                     {jobs ? jobs.map(job => (
@@ -39,6 +43,7 @@ export const TargetJobs = ({token}) => {
                         )) : null}
                 </ul>
             </div>
+        {error && <div className="error">{error}</div>}
         </div>
     </>    
     )

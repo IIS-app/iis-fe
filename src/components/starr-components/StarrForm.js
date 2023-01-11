@@ -48,11 +48,10 @@ export const StarrForm = ({token}) => {
 
     return (
         <div className='container-form'>
-        {error && <div className="error">{error}</div>}
-            <h2>Write a New STARR story here!</h2>
+            <h2 className='main-title'>Write a New STARR story here!</h2>
             <form className='form-starr' id='form-starr' onSubmit={handleSubmit}>
-                <div className='container-form' style={{border: 'solid 3px', borderRadius:'10px', width:'75%', padding: '10px' }}>
-                    <label className='form-label' htmlFor='draft'>Draft Status</label>
+                <div className='container-form' >
+                    {/* <label className='form-label' htmlFor='draft'>Draft Status</label>
                     <div className='container-input'>
                         <input 
                             className='draft'
@@ -62,7 +61,7 @@ export const StarrForm = ({token}) => {
                             type='checkbox'
                             checked={isDraft}
                             />
-                    </div>
+                    </div> */}
                     <label className='form-label' htmlFor='question'>STARR story Title</label>
                     <div className='container-input'>
                         <ReactQuill 
@@ -171,11 +170,12 @@ export const StarrForm = ({token}) => {
                         to="/starrs"
                         className='button-submit'
                         type='submit'
-                        value='Give me my STARR!'
+                        value='Add STARR'
                         style={{marginTop:'30px'}}
                     />
                 </div>
             </form>
+            {error && <div className="error">{error}</div>}
         </div>
     )
 }

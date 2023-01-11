@@ -77,9 +77,9 @@ export const TCEdit = ({ token }) => {
     return (
         <div className="container-form">   
             {error && <div className="error">{error}</div>}
-            <h2 className="targetco">What additional intel do you have?</h2>
+            <h2 className="main-title">What additional intel do you have?</h2>
             <form className="form-company" id='form-company' onSubmit={handleSubmit}>
-                <div className="container-form" style={{border: 'solid 3px', borderRadius:'10px', width:'75%', padding: '10px' }}>
+                <div className="container-form" >
                 <label className="form-label" htmlFor="companyName">Company Name</label>
                     <div className='container-input'>
                         <input 
@@ -92,6 +92,7 @@ export const TCEdit = ({ token }) => {
                             onChange={(e) => setCompanyName(e.target.value)}
                             maxLength={100}
                             name='companyName'
+                            placeholder='Company Name'
                             />
                     </div>
                     <label className="form-label" htmlFor="companyRank">On a scale of 1 to 5, rank your interest.</label>
@@ -108,7 +109,6 @@ export const TCEdit = ({ token }) => {
                             onChange={(e) => setCompanyRank(e.target.value)}
                             name='companyRank'
                             value={companyRank}
-                            // placeholder="Leave blank if you are unsure."
                             />
                             <p>{`Current Rank: ${companyRank}`}</p>
                     </div>
@@ -147,18 +147,18 @@ export const TCEdit = ({ token }) => {
                         maxLength={2000}
                         value={companyNotes}
                         onChange={(value) => setCompanyNotes(value)}
+                        placeholder='Capture notes about company research, informal coffee chats, or company contacts.'
                         />                 
                     </div>
                 </div>
                 <div className='container-input'>
                     <label htmlFor='submit' className='form-label'></label>
                     <input 
-                        to="/targetcompanies"
+                        to="/targetcompany"
                         id='submit'
                         className='button-submit'
                         type='submit'
-                        value="Update Company Details"
-                        style={{marginTop:'30px'}}
+                        value="Update Company"
                     />
                 </div>
             </form>

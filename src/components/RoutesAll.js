@@ -16,7 +16,7 @@ import { TJForm } from './job-compenents/TJForm';
 import { TJEdit } from './job-compenents/TJEdit';
 
 import { Dossier } from './dossier-components/Dossier';
-import { DossierBuild } from './dossier-components/DossierBuild';
+import { DossierPDF } from './dossier-components/DossierPDF';
 import { DossierDetail } from './dossier-components/DossierDetail';
 
 import { Starrs } from './starr-components/Starrs';
@@ -198,12 +198,12 @@ export const RoutesAll = ({token}, isLoggedIn, setAuth) => {
                 element={ <Dossier token={token} isLoggedIn={isLoggedIn} /> }
             />
             <Route 
-                path="/dossier/add"
+                path="/dossier-pdf/:id"
                 exact
-                element={ <DossierBuild token={token} isLoggedIn={isLoggedIn} /> }
+                element={ <DossierPDF token={token} isLoggedIn={isLoggedIn} /> }
             />
             <Route 
-                path="/dossier/:pk"
+                path="/dossier/:id"
                 exact
                 element={ <DossierDetail token={token} isLoggedIn={isLoggedIn} /> }
             />

@@ -47,7 +47,7 @@ export const TJForm = ({token}) => {
             {error && <div className="error">{error}</div>}
             <h2 className="targetjob">Add Job Details</h2>
             <form className="form-job" id='form-job' onSubmit={handleSubmit}>
-                <div className="container-form" style={{border: 'solid 3px', borderRadius:'10px', width:'75%', padding: '10px' }}>
+                <div className="container-form" >
                     <label className="form-label" htmlFor="targetJobTitle">Job Title</label>
                     <div className='container-input'>
                         <input 
@@ -59,6 +59,7 @@ export const TJForm = ({token}) => {
                             onChange={(e) => setTargetJobTitle(e.target.value)}
                             maxLength={100}
                             name='targetJobTitle'
+                            placeholder="Enter job title or description."
                             />
                     </div>
                     <label className="form-label" htmlFor="targetJobCompany">What company?</label>
@@ -71,6 +72,7 @@ export const TJForm = ({token}) => {
                             onChange={(e) => setTargetJobCompany(e.target.value)}
                             maxLength={100}
                             name='targetJobCompany'
+                            placeholder="Select the company from your target list."
                             />
                     </div>
                     <label className="form-label" htmlFor="targetJobUrl">Link to Job Listing Details</label>
@@ -96,6 +98,7 @@ export const TJForm = ({token}) => {
                             name='targetJobNotes'
                             maxLength={2000}
                             onChange={(value) => setTargetJobNotes(value)}
+                            placeholder="Capture updates on your progress as you move through the job application process."
                         />                        
                     </div>
                 </div>

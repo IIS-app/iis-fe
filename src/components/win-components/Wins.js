@@ -2,6 +2,8 @@ import { useState, useEffect } from 'react';
 import { requestListWins } from '../requests/WinRequests';
 import { Link } from 'react-router-dom';
 import { WinSnapshot } from './WinSnapshot'
+import { HappyBeaming } from 'styled-icons/boxicons-regular';
+
 
 
 export const Wins = ({token}) => {
@@ -20,17 +22,21 @@ export const Wins = ({token}) => {
 
     return (
         <>
-        <div className='container-button'>
+        <div 
+            className='container-button'
+            style={{display: 'flex', justifyContent: 'space-evenly', alignItems:'center'}}
+        >
+            <h2 className='main-title'>List of Wins</h2>
             <Link
                 key="button-add"
                 id='button-add'
                 to="/wins/add"
                 className='button-add'
-            >Add a New Win</Link>
+                style={{width:'100px'}}
+            >Add<HappyBeaming className='icon'/>
+            </Link>
         </div>
-        {error && <div className="error">{error}</div>}
-        <h2>List of Wins</h2>
-        <div className='container-main' style={{border: 'solid 3px', borderRadius:'10px', width:'75%', padding: '10px' }}>
+        <div className='container-main'>
             <div className='container-list'>
                 <ul key="win-info" className="list">
                     {wins ? wins.map(win => (
@@ -39,6 +45,7 @@ export const Wins = ({token}) => {
                 </ul>
             </div>
         </div>
+        {error && <div className="error">{error}</div>}
         </>
     )
 }
