@@ -50,7 +50,7 @@ export const TCForm = ({token}) => {
     return (
         <div className="container-form">   
             {error && <div className="error">{error}</div>}
-            <h2 className="targetco">Where would you like to work?</h2>
+            <h2 className="main-title">Where would you like to work?</h2>
             <form className="form-company" id='form-company' onSubmit={handleSubmit}>
                 <div className="container-form" >
                     <label className="form-label" htmlFor="companyName">Company Name</label>
@@ -80,7 +80,6 @@ export const TCForm = ({token}) => {
                             onChange={(e) => setCompanyRank(e.target.value)}
                             name='companyRank'
                             value={companyRank}
-                            // placeholder="Leave blank if you are unsure."
                             />
                     </div>
                     <label className="form-label" htmlFor="companyUrl">Company Website:</label>

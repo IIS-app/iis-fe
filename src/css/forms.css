@@ -83,24 +83,26 @@ li {
 label {
     display: block;
     margin-bottom: 10px;
-    /* font-size: 16px; */
-    /* font-weight: bold; */
+    font-size: 16px;
+    font-weight: bold;
 }
-
+.form-label-data,
+.form-input-url,
 input[type='text'],
 input[type='email'],
 input[type='password'] {
-    width: 85%;
+    width: 60%;
     padding: 12px 20px;
     margin-bottom: 20px;
     box-sizing: border-box;
     border: 1px solid #ccc;
     border-radius: 10px;
-    background-color: ;
+    font-size: larger;
+    font-family: monospace;
 }
 
 textarea {
-    width: 100%;
+    width: 300px;
     padding: 12px 20px;
     margin-bottom: 20px;
     box-sizing: border-box;
@@ -112,8 +114,9 @@ textarea {
 /* REMEMBER STYLE EDIT VS READ, esp. on snow theme */
 
 .custom-quill {
-    border: 1px solid black;
+    border: #096C81 1px solid;
     border-radius: 10px;
+    width: 400px;
     background-color: white;
     color: black;
     margin-bottom: 15px;
@@ -121,6 +124,7 @@ textarea {
 
 .ql-tooltip {
     width: 200px;
-    height: 200px;
+    height: 100px;
     font-size: smaller;
+    cursor: pointer;
 }

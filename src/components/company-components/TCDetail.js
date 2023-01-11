@@ -45,12 +45,12 @@ export const TCDetail = ({ token }) => {
                 <ul key={pk} className="details-targetco" >
                     <li key={`{pk}.rank`}>{companyRank}</li>
                     <li key={`{pk}.company_name`}>{companyName}</li>
-                    <li key={`{pk}.website`}><Link className="link-inline" to={companyUrl}>{companyUrl}</Link></li>
+                    <li key={`{pk}.website`}>{companyUrl}</li>
                     <li key={`{pk}.jobs_page`}>{companyJobsUrl}</li>
                     <ReactQuill
                         key={`{pk}.comments`}
                         value={companyNotes}
-                        reaadOnly={true}
+                        readOnly={true}
                         theme={'bubble'}
                     />
                     <Link 

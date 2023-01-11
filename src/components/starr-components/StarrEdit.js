@@ -89,17 +89,15 @@ export const StarrEdit = ({ token }) => {
 
                     <label className='form-label' htmlFor='question'>STARR story Title</label>
                     <div className='container-input'>
-                        <ReactQuill 
+                        <textarea
                             autoFocus
                             autoComplete='off'
                             className='custom-quill'
                             id='question'
                             maxLength={200}
-                            modules={modules}
                             onChange={(value) => setQuestion(value)}
                             placeholder='What is Your STARR Story Called?'
                             required
-                            theme="bubble"
                             value={question}
                             />
                     </div>

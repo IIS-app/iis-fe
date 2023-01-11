@@ -93,8 +93,8 @@ export const ProfileEdit = ({token}) => {
                     </div>
                     <label className='form-label' htmlFor='codename'>Choose your Codename, Agent. </label>
                     <div className='container-input'>
-                        <textarea 
-                            className='input-textarea'
+                        <text 
+                            className='input-text'
                             value={codename}
                             onChange={(e) => setCodename(e.target.value)}
                             id='codename'
@@ -107,7 +107,7 @@ export const ProfileEdit = ({token}) => {
                     <label className='form-label' htmlFor='userEmail'>Email</label>
                     <div className='container-input'>
                         <input 
-                            className='input-textarea'
+                            className='input-text'
                             value={userEmail}
                             onChange={(e) => setUserEmail(e.target.value)}
                             id='task'
