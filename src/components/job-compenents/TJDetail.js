@@ -43,7 +43,7 @@ export const TJDetail = ({ token }) => {
         >
             <h2 className='main-title'>Review the Details of Your Job</h2>
 
-            <button className='button-add' style={{fontFamily:'monospace'}}>Generate My
+            <button className='button-add' style={{fontFamily:'monospace'}}>Download My
                     <HappyBeaming className='icon'style={{width:'100px', fontFamily:'monospace'}}/>
                     Dossier</button>
         </div>

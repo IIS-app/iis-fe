@@ -14,7 +14,7 @@ export const requestListDossiers = (token) => {
 
 // GET DETAIL OF DOSSIER RECORD - ep  app 
 export const requestDossierDetail = (token, id) => {
-    const url = `https://internal-interview-service.onrender.com/dossier/${id}`
+    const url = `https://internal-interview-service.onrender.com/dossier/1`
     const response = axios.get(url,
         {headers: {
             Authorization: `Token ${token}`
@@ -25,7 +25,7 @@ export const requestDossierDetail = (token, id) => {
 
 // GET CREATE DOSSIER PDF - ep  app 
 export const requestDossierPDF = (token, id) => {
-    const url = `https://internal-interview-service.onrender.com/dossier-pdf/${id}`
+    const url = `https://internal-interview-service.onrender.com/dossier-pdf/1`
     const response = axios.get(url,
         {headers: {
             Authorization: `Token ${token}`
