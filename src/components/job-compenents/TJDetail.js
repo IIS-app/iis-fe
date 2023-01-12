@@ -42,9 +42,7 @@ export const TJDetail = ({ token }) => {
             style={{display: 'flex', justifyContent: 'space-evenly'}}
         >
             <h2 className='main-title'>Review the Details of Your Job</h2>
-            <button className='button-add' style={{fontFamily:'monospace'}}>Create
-                    <FolderPlus className='icon'style={{width:'100px'}}/>
-                    Dossier</button>
+
             <button className='button-add' style={{fontFamily:'monospace'}}>Generate My
                     <HappyBeaming className='icon'style={{width:'100px', fontFamily:'monospace'}}/>
                     Dossier</button>
@@ -61,6 +59,7 @@ export const TJDetail = ({ token }) => {
                     >
                     Edit Job Detail
                 </Link>
+                <button className='button-edit'>Update Dossier</button>
             </ul>
         </div>
         

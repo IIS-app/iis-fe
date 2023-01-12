@@ -45,7 +45,6 @@ export const WinEdit = ({ token }) => {
             [{ 'bold': true }, { 'italic': true }, { 'underline': true }, { 'strike': true }],
             [{ list:  "ordered" }, { list:  "bullet" }],
             ["blockquote", "code-block"],
-            ["clean", "undo", "redo"],
         ],
         history: {
             delay: 2000,
