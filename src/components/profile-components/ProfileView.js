@@ -77,7 +77,7 @@ export const ProfileView = ({ token }) => {
                 <Link
                     to={`/profile/edit/`}
                     >
-                    <button>Edit</button>
+                    <button className='button-edit'>Edit</button>
                 </Link>               
         </div>
     )
