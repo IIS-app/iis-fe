@@ -141,7 +141,7 @@ export const RoutesAll = ({token}, isLoggedIn, setAuth) => {
                 element={ <Questions token={token} isLoggedIn={isLoggedIn} /> }
             />
             <Route 
-                path="/questions/add"
+                path="/question/add"
                 exact
                 element={ <QuestionForm token={token} isLoggedIn={isLoggedIn} /> }
             />
