@@ -27,7 +27,7 @@ export const TJDetail = ({ token }) => {
                 setJobTitle(res.data.title)
                 setJobCompany(res.data.company)
                 setJobNotes(res.data.notes)
-                setJobAddedDate(res.data.created_date)
+                setJobAddedDate(res.data.created_at)
             })
             .catch(error => setError(error.message))
             .finally(() => setIsLoading(false))
